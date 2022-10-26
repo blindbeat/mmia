@@ -1,0 +1,85 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50em;
+  margin: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  grid-column: 1 / span 3;
+  margin: auto auto 1.5rem;
+}
+
+.header span {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 100%;
+  vertical-align: middle;
+}
+
+.header .rectangle {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.title {
+  text-transform: capitalize;
+  grid-column: 1 / span 3;
+  margin: auto auto 3.5rem;
+  font-weight: 300;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  line-height: 148;
+  align-items: end;
+  font-size: 0.75rem;
+  margin-right: 1.5rem;
+}
+
+.text p {
+  text-align: right;
+  opacity: 0.5;
+}
+
+.text .link {
+  text-transform: uppercase;
+}
+
+.imageWrapper {
+  position: relative;
+}
+
+.backdropPhoto {
+  height: 40%;
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(80%, -10%);
+}
+
+.founderTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  margin-left: 10px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
