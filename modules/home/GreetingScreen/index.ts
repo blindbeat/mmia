@@ -1,1 +1,1 @@
-export * from "./GreetingScreen"
+export { default } from "./GreetingScreen"

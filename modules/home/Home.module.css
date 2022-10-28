@@ -1,0 +1,11 @@
+.wrapper {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  pointer-events: none;
+  z-index: -1;
+  object-fit: cover;
+  object-position: center;
+}

@@ -1,4 +1,5 @@
 import styles from "./GreetingScreen.module.css"
+import baseStyles from "../Home.module.css"
 import Image from "next/image"
 import backgroundImage from "./assets/background.jpg"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -15,7 +16,7 @@ const slides = new Array(4).fill({
 
 function GreetingScreen() {
   return (
-    <div className={styles.wrapper}>
+    <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <a className={styles.allProjectsLink}>all projects</a>
       <a className={styles.languageChange}>en</a>
       <div className={styles.swiperWrapper}>
@@ -67,11 +68,9 @@ function GreetingScreen() {
       <div className={styles.swiperPaginationWrapper} />
       <Socials className={styles.socials} />
       <Image
-        className={styles.background}
+        className={baseStyles.backgroundImage}
         src={backgroundImage}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        fill
         alt=""
       />
     </div>

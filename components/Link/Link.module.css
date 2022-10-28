@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   width: max-content;
+  cursor: pointer;
 }
 
 .link {
