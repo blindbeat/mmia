@@ -40,10 +40,9 @@
 
 .bubblesWrapper {
   display: flex;
-  gap: 0.5rem;
   grid-row: 2;
   grid-column: 1;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .bubblesWrapper > *:first-child {

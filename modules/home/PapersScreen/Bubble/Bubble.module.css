@@ -1,6 +1,6 @@
 .bubbleWrapper {
   position: relative;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .bubble {
@@ -19,6 +19,7 @@
   text-align: center;
   gap: 1.25rem;
   transition: border ease-in-out 0.3s;
+  /*transition: border ease-in-out 0.03s, transform ease-in-out 0.3s;*/
 }
 
 .bubble:after {
@@ -44,9 +45,12 @@
 .bubble .bubbleIndex {
   opacity: 0.5;
   position: absolute;
-  transform: translate(0, calc(-100% - 1.25rem));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-150% - 1.25rem));
 }
 
 .bubble .bubbleText {
+  position: relative;
   max-width: 11.5em;
 }

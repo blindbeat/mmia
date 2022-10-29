@@ -22,8 +22,6 @@ function AboutCompanyScreen() {
     triggerOnce: true,
   })
 
-  console.log(inView)
-
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>

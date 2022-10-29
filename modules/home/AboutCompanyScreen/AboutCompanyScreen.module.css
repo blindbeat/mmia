@@ -60,10 +60,10 @@
 .text {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 1rem;
   line-height: 148;
-  align-items: end;
+  align-items: flex-end;
   font-size: 0.75rem;
   margin-right: 1.5rem;
   margin-bottom: 3.5rem;
