@@ -24,6 +24,7 @@
   text-orientation: sideways;
   transform: rotate(180deg);
   padding-left: 8rem;
+  margin-left: -1rem;
 }
 
 .languageChange {

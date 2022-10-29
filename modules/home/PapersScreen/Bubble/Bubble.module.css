@@ -1,0 +1,52 @@
+.bubbleWrapper {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.bubble {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  text-transform: uppercase;
+  padding: 2.25rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  transition: border ease-in-out 0.3s;
+}
+
+.bubble:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 1px dashed transparent;
+  border-radius: inherit;
+  transition: inherit;
+}
+
+.bubble:hover {
+  border-color: transparent;
+}
+
+.bubble:hover:after {
+  border-color: white;
+}
+
+.bubble .bubbleIndex {
+  opacity: 0.5;
+  position: absolute;
+  transform: translate(0, calc(-100% - 1.25rem));
+}
+
+.bubble .bubbleText {
+  max-width: 11.5em;
+}

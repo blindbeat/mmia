@@ -5,12 +5,13 @@ import Image from "next/image"
 import backgroundImage from "./assets/background.jpg"
 import Link from "components/Link"
 import { useRef, useState } from "react"
+import Bubble from "modules/home/PapersScreen/Bubble"
 
 const textHeading = "We improve the world around us and create an"
 const textParagraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 
-const bubbleText = "AIMM is the team that implements "
+const bubbleText = "AIMM is the team that implements"
 const bubbleTextArr = new Array(3).fill(bubbleText)
 
 const paperTitle = "AIMM is the team that implements"
@@ -58,16 +59,9 @@ function PapersScreen() {
         </div>
         <div className={styles.bubblesWrapper}>
           {bubbleTextArr.map((text, index) => (
-            <div
-              key={index}
-              className={styles.bubbleWrapper}
-              onClick={() => changePage(index)}
-            >
-              <div key={index} className={styles.bubble}>
-                <span className={styles.bubbleIndex}>{`0${index + 1}.`}</span>
-                <span className={styles.bubbleText}>{text}</span>
-              </div>
-            </div>
+            <Bubble key={index} index={index} onClick={() => changePage(index)}>
+              {text}
+            </Bubble>
           ))}
         </div>
         <div className={styles.papersWrapper}>
@@ -86,9 +80,6 @@ function PapersScreen() {
                   style={{
                     zIndex: papers.length + 1,
                   }}
-                  // onAnimationEnd={() =>
-                  //   setFlyingPapers((state) => state.slice(1))
-                  // }
                 >
                   <div className={styles.paperContentWrapper}>
                     <h3>{paperTitle}</h3>

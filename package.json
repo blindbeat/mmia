@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@use-gesture/react": "^10.2.20",
     "classnames": "^2.3.2",
     "next": "^13.0.0",
     "normalize.css": "^8.0.1",
