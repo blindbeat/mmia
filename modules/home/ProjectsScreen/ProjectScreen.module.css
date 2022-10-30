@@ -1,0 +1,29 @@
+.wrapper {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.textWrapper {
+  padding: 0 5.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.textWrapper .screenTitle {
+  justify-self: start;
+  align-self: start;
+}
+
+.textWrapper h2 {
+  margin-bottom: 3.5rem;
+}
+
+.textWrapper p {
+  max-width: 35em;
+  padding-right: 2.5rem;
+}
+
+.link {
+  margin: 5.5rem auto 0;
+}

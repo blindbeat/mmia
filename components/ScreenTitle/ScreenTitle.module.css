@@ -1,0 +1,15 @@
+.screenTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+.screenTitle:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translate(calc(-100% - 12px), -50%);
+  width: 10px;
+  height: 10px;
+  background-color: black;
+}

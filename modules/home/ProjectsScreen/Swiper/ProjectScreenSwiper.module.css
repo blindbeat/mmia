@@ -1,0 +1,62 @@
+.swiper {
+}
+
+.slide {
+  padding-left: 2rem;
+  display: grid;
+  width: min-content;
+  grid-template-columns: auto 2rem;
+  grid-template-rows: repeat(2, auto);
+  margin-top: 4rem;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.tags {
+  display: flex;
+  height: min-content;
+  gap: 1rem;
+  writing-mode: vertical-lr;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+}
+
+.description {
+  height: 1.75rem;
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 1;
+}
+
+.swiperButton {
+  line-height: 0;
+  background: white;
+  padding: 0 1.25rem;
+  aspect-ratio: 1/1;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 1.75rem);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 5.5rem;
+}
+
+.next {
+  right: 5.5rem;
+  transform: scaleX(-1);
+}
+
+.arrow {
+  height: 1.25rem;
+}

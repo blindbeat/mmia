@@ -1,12 +1,14 @@
-.wrapper {
-  height: 100vh;
-  overflow: hidden;
-  padding: 2.5rem 5.5rem;
-}
+@layer generalStyles {
+  .wrapper {
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 9rem 5.5rem 11.25rem;
+  }
 
-.backgroundImage {
-  pointer-events: none;
-  z-index: -1;
-  object-fit: cover;
-  object-position: center;
+  .backgroundImage {
+    pointer-events: none;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+  }
 }

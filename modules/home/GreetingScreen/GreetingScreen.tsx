@@ -1,9 +1,9 @@
-import styles from "./GreetingScreen.module.css"
 import baseStyles from "../Home.module.css"
+import styles from "./GreetingScreen.module.css"
 import Image from "next/image"
 import backgroundImage from "./assets/background.jpg"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
+import { Autoplay, Pagination } from "swiper"
 import classNames from "classnames"
 import Link from "components/Link"
 import Socials from "./Socials"
@@ -21,7 +21,8 @@ function GreetingScreen() {
       <a className={styles.languageChange}>en</a>
       <div className={styles.swiperWrapper}>
         <Swiper
-          modules={[Pagination]}
+          autoplay
+          modules={[Pagination, Autoplay]}
           pagination={{
             el: `.${styles.swiperPaginationWrapper}`,
             clickable: true,
@@ -32,7 +33,7 @@ function GreetingScreen() {
               return `<span class=${className}>${index + 1}</span>`
             },
           }}
-          slidesPerView={1.25}
+          slidesPerView="auto"
           spaceBetween={100}
           loop={true}
           speed={1000}
@@ -63,8 +64,8 @@ function GreetingScreen() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <Link wrapperClassName={styles.linkWrapper} />
       </div>
+      <Link wrapperClassName={styles.link} />
       <div className={styles.swiperPaginationWrapper} />
       <Socials className={styles.socials} />
       <Image
