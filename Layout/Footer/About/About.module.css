@@ -1,0 +1,65 @@
+.content {
+  padding: 2.5rem 5.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  row-gap: 9rem;
+  overflow: hidden;
+  background-image: url("./assets/line.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.cta {
+}
+
+.cta h2 {
+  margin-bottom: 3rem;
+}
+
+.pages,
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pages a,
+.contacts a {
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.contacts a[href^="mailto:"] {
+  text-transform: unset;
+}
+
+.copyright,
+.policies,
+.developedBy {
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.copyright {
+}
+
+.copyright span,
+.developedBy span {
+  opacity: 0.5;
+}
+
+.policies {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.developedBy {
+  justify-self: end;
+}
+
+.blockTitle {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+}

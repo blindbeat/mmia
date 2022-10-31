@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import styles from "./ProjectScreenSwiper.module.css"
-import slideImage from "./assets/slide.jpg"
+import slideImage from "assets/dummyPics/slide.jpg"
 import Image from "next/image"
 import { Navigation } from "swiper"
 import Arrow from "./assets/arrow.svg"

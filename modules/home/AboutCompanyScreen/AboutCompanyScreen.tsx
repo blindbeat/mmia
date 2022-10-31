@@ -1,8 +1,8 @@
-import styles from "modules/home/AboutCompanyScreen/AboutCompanyScreen.module.css"
-import Link from "components/Link"
+import styles from "./AboutCompanyScreen.module.css"
+import LinkWithLine from "components/LinkWithLine"
 import Image from "next/image"
-import photo from "./assets/photo.jpg"
-import backdropPhoto from "./assets/backdropPhoto.jpg"
+import photo from "assets/dummyPics/photo.jpg"
+import backdropPhoto from "assets/dummyPics/backdropPhoto.jpg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
@@ -32,7 +32,9 @@ function AboutCompanyScreen() {
           {text.map((text, index) => (
             <p key={index}>{text}</p>
           ))}
-          <Link lineColor="black" className={styles.link} />
+          <LinkWithLine color="black" className={styles.link}>
+            view more
+          </LinkWithLine>
         </div>
         <div ref={ref} className={styles.imageWrapper}>
           <Image src={photo} alt="" className={styles.founderPhoto} />

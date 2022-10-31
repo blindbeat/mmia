@@ -2,8 +2,8 @@ import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
 import styles from "./PapersScreen.module.css"
 import Image from "next/image"
-import backgroundImage from "./assets/background.jpg"
-import Link from "components/Link"
+import backgroundImage from "assets/dummyPics/genericBackground2.jpg"
+import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
 import Bubble from "modules/home/PapersScreen/Bubble"
 
@@ -55,7 +55,9 @@ function PapersScreen() {
         <div className={styles.title}>
           <h2>{textHeading}</h2>
           <p>{textParagraph}</p>
-          <Link lineColor="white" />
+          <LinkWithLine color="white" wrapperClassName={styles.link}>
+            view more
+          </LinkWithLine>
         </div>
         <div className={styles.bubblesWrapper}>
           {bubbleTextArr.map((text, index) => (

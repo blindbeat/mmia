@@ -1,11 +1,11 @@
 import baseStyles from "../Home.module.css"
 import styles from "./GreetingScreen.module.css"
 import Image from "next/image"
-import backgroundImage from "./assets/background.jpg"
+import backgroundImage from "assets/dummyPics/genericBackground.jpg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination } from "swiper"
 import classNames from "classnames"
-import Link from "components/Link"
+import LinkWithLine from "components/LinkWithLine"
 import Socials from "./Socials"
 
 const slides = new Array(4).fill({
@@ -65,7 +65,7 @@ function GreetingScreen() {
           ))}
         </Swiper>
       </div>
-      <Link wrapperClassName={styles.link} />
+      <LinkWithLine wrapperClassName={styles.link}>view more</LinkWithLine>
       <div className={styles.swiperPaginationWrapper} />
       <Socials className={styles.socials} />
       <Image

@@ -3,6 +3,7 @@ import GreetingScreen from "modules/home/GreetingScreen"
 import AboutCompanyScreen from "modules/home/AboutCompanyScreen"
 import PapersScreen from "modules/home/PapersScreen"
 import ProjectsScreen from "modules/home/ProjectsScreen"
+import Footer from "Layout/Footer"
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
       <AboutCompanyScreen />
       <PapersScreen />
       <ProjectsScreen />
+      <Footer />
     </>
   )
 }

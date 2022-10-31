@@ -2,7 +2,7 @@ import baseStyles from "modules/home/Home.module.css"
 import styles from "./ProjectScreen.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import ProjectScreenSwiper from "modules/home/ProjectsScreen/Swiper/ProjectScreenSwiper"
-import Link from "components/Link"
+import LinkWithLine from "components/LinkWithLine"
 import classNames from "classnames"
 
 const title =
@@ -19,7 +19,9 @@ function ProjectsScreen() {
         <p>{paragraph}</p>
       </div>
       <ProjectScreenSwiper />
-      <Link lineColor="black" wrapperClassName={styles.link} />
+      <LinkWithLine color="black" wrapperClassName={styles.link}>
+        view more
+      </LinkWithLine>
     </div>
   )
 }
