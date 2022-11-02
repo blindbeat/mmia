@@ -1,1 +1,1 @@
-export const triggerDistance = 25
+export const triggerDistance = 50

@@ -1,10 +1,9 @@
 .content {
-  line-height: 100%;
-  display: inline-block;
   animation-name: appear;
-  animation-duration: 1s;
+  animation-duration: 1.25s;
   animation-play-state: paused;
-  /*animation-timing-function: cubic-bezier(0.12, 0.57, 0.54, 0.94);*/
+  animation-timing-function: cubic-bezier(0.25, 0.53, 0.45, 0.87);
+  /*animation-iteration-count: infinite;*/
   animation-fill-mode: both;
 }
 
@@ -14,7 +13,7 @@
 
 @keyframes appear {
   from {
-    transform: translate(0, 25%);
-    opacity: 0.01;
+    transform: translate(0, 50%);
+    opacity: 0;
   }
 }

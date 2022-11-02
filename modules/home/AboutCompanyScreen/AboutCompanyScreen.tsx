@@ -20,8 +20,8 @@ const text = [
 
 function AboutCompanyScreen() {
   const { ref, inView } = useInView({
-    threshold: 1,
-    rootMargin: "-25px",
+    threshold: 0.75,
+    // rootMargin: "150px",
     triggerOnce: true,
   })
 
@@ -30,15 +30,15 @@ function AboutCompanyScreen() {
       <div className={styles.content}>
         <ScreenTitle className={styles.screenTitle}>about company</ScreenTitle>
         <H2 className={styles.title}>{title}</H2>
-        <div className={styles.text}>
+        <div ref={ref} className={styles.text}>
           {text.map((text, index) => (
             <P key={index}>{text}</P>
           ))}
-          <LinkWithLine color="black" className={styles.link}>
+          <LinkWithLine color="black" wrapperClassName={styles.link}>
             view more
           </LinkWithLine>
         </div>
-        <div ref={ref} className={styles.imageWrapper}>
+        <div className={styles.imageWrapper}>
           <Image src={photo} alt="" className={styles.founderPhoto} />
           <Image
             className={classNames(

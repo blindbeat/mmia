@@ -1,15 +1,25 @@
 .screenTitle {
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
   position: relative;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  gap: 0.75rem;
 }
 
-.screenTitle:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translate(calc(-100% - 12px), -50%);
+.square {
   width: 10px;
   height: 10px;
+  transform: translate(0, -1px);
   background-color: black;
 }
+
+/*.screenTitle:before {*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  width: 10px;*/
+/*  height: 10px;*/
+/*  content: "";*/
+/*  transform: translate(calc(-100% - 12px), calc(-50% - 1px));*/
+/*  background-color: black;*/
+/*}*/

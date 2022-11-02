@@ -19,7 +19,7 @@ function ProjectScreenSwiper() {
         prevEl: `.${styles.prev}`,
         nextEl: `.${styles.next}`,
       }}
-      slidesPerView={2}
+      slidesPerView="auto"
       centeredSlides
       loop
       spaceBetween={140}
@@ -27,7 +27,9 @@ function ProjectScreenSwiper() {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index} className={styles.slide}>
-          <Image src={slideImage} alt="" className={styles.image} />
+          <div className={styles.imageContainer}>
+            <Image src={slideImage} alt="" />
+          </div>
           <div className={styles.tags}>
             {tags.map((tag) => (
               <span key={tag}>{`(${tag})`}</span>

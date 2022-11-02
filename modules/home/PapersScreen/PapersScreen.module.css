@@ -3,6 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  padding: 2.5rem 5.5rem;
 }
 
 .wrapper > * {
@@ -12,8 +14,9 @@
 .content {
   display: grid;
   max-width: 1920px;
+  height: 100%;
   color: white;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 7fr 5fr;
   grid-template-rows: repeat(2, auto);
 }
 
@@ -37,6 +40,7 @@
 .bubblesWrapper {
   display: flex;
   align-items: flex-end;
+  margin-left: -0.5rem;
   grid-row: 2;
   grid-column: 1;
 }
