@@ -25,16 +25,11 @@
 
 .line path {
   transition: stroke-dashoffset ease-in-out 1.5s;
-  stroke-dasharray: 855;
+  --lineLength: 855;
+  stroke-dasharray: var(--lineLength);
   stroke-dashoffset: 0;
 }
 
 .content:hover .line path {
-  stroke-dashoffset: calc(855 * 2);
+  stroke-dashoffset: calc(var(--lineLength) * 2);
 }
-
-/*@keyframes drawLine {*/
-/*  to {*/
-/*    stroke-dashoffset: 0;*/
-/*  }*/
-/*}*/

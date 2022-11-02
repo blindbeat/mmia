@@ -1,9 +1,15 @@
 .wrapper {
+  --first-column: 18.5rem;
+  --mx: 5.5rem;
+}
+
+.wrapper {
+  position: relative;
   display: grid;
   padding-bottom: 2.5rem;
   color: white;
-  grid-template-columns: 18.5rem 1fr auto;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: var(--first-column) 1fr auto;
+  grid-template-rows: 1fr auto;
 }
 
 .allProjectsLink,
@@ -23,25 +29,32 @@
   transform: rotate(180deg);
   text-align: center;
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   text-orientation: sideways;
   writing-mode: vertical-lr;
+}
+
+.swiperWrapper {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  margin: 0 calc(var(--mx) * -1);
+  grid-column: 1 / span 3;
+  grid-row: 1;
 }
 
 .swiper {
   display: flex;
   flex-direction: column;
-  margin: 0 -5.5rem;
-  padding-left: 23.5rem;
-  grid-column: 1 / span 4;
-  grid-row: 1;
+  width: 100%;
+  padding-left: calc(var(--first-column) + var(--mx));
 }
 
 .slide {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 990px;
+  width: 60rem;
   transition: transform ease-out 0.3s;
   gap: 2rem;
 }
@@ -80,8 +93,7 @@
 
 .link {
   margin-top: 3rem;
-  grid-column: 2 / span 3;
-  grid-row: 2;
+  margin-left: calc(var(--first-column) + var(--mx));
 }
 
 .languageChange {
@@ -95,15 +107,15 @@
 
 .swiperPagination {
   display: flex;
-  width: 30em;
+  width: 25rem;
 }
 
 .bullet {
-  font-size: 0.875rem;
+  font-size: 0.875em;
   flex-grow: 1;
-  padding: 1rem;
+  padding: 1em;
   cursor: pointer;
-  transition: border-bottom-color ease-in-out 0.15s;
+  transition: border-bottom-color ease-in-out 0.3s, color ease-in-out 0.3s;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   border-width: 0;
@@ -112,11 +124,37 @@
   border-bottom-width: 1px;
 }
 
-.bulletActive,
-.bullet:hover {
+.bulletActive {
   border-color: rgba(255, 255, 255, 0.75);
+}
+
+.bullet:hover {
+  color: white;
 }
 
 .socials {
   align-self: end;
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .wrapper {
+    --first-column: 9.75rem;
+    --mx: 3.5rem;
+  }
+
+  .wrapper {
+    padding-bottom: 1.5rem;
+  }
+
+  .slide {
+    width: 37.5rem;
+  }
+
+  .slide h2 {
+    font-size: 3.5rem;
+  }
+
+  .swiperPagination {
+    width: 18rem;
+  }
 }

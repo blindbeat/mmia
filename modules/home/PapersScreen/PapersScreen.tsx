@@ -2,10 +2,12 @@ import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
 import styles from "./PapersScreen.module.css"
 import Image from "next/image"
-import backgroundImage from "assets/dummyPics/genericBackground2.jpg"
+import backgroundImage from "assets/dummyPics/scaffolding.jpg"
 import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
 import Bubble from "modules/home/PapersScreen/Bubble"
+import H2 from "components/H2"
+import P from "components/P"
 
 const textHeading = "We improve the world around us and create an"
 const textParagraph =
@@ -45,16 +47,10 @@ function PapersScreen() {
 
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
-      <Image
-        className={baseStyles.backgroundImage}
-        src={backgroundImage}
-        fill
-        alt=""
-      />
       <div className={styles.content}>
         <div className={styles.title}>
-          <h2>{textHeading}</h2>
-          <p>{textParagraph}</p>
+          <H2>{textHeading}</H2>
+          <P>{textParagraph}</P>
           <LinkWithLine color="white" wrapperClassName={styles.link}>
             view more
           </LinkWithLine>
@@ -114,6 +110,12 @@ function PapersScreen() {
           </div>
         </div>
       </div>
+      <Image
+        className={baseStyles.backgroundImage}
+        src={backgroundImage}
+        fill
+        alt=""
+      />
     </div>
   )
 }

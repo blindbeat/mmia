@@ -1,55 +1,55 @@
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
 }
 
 .wrapper:before {
-  z-index: -1;
-  content: "";
   position: absolute;
+  z-index: -1;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
-  background-image: url("assets/backgroundLines.svg");
-  background-size: cover;
-  background-position: center;
+  bottom: 0;
+  left: 0;
+  content: "";
   transform: scale(1.25) rotate(-6.98deg);
+  background-image: url("assets/backgroundLines.svg");
+  background-position: center;
+  background-size: cover;
 }
 
 .content {
-  margin: auto;
-  max-width: 1440px;
   display: grid;
+  max-width: 1440px;
+  margin: auto;
   grid-template-columns: 1fr auto 1fr;
 }
 
 .screenTitle {
+  margin: auto auto 1.5rem;
   text-align: center;
   grid-column: 1 / span 3;
-  margin: auto auto 1.5rem;
 }
 
 .title {
-  grid-column: 1 / span 3;
+  font-weight: 300;
   max-width: 18em;
   margin: auto auto 3.5rem;
-  font-weight: 300;
   text-align: center;
+  grid-column: 1 / span 3;
 }
 
 .text {
+  font-size: 0.75rem;
+  line-height: 148;
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 1rem;
-  line-height: 148;
-  align-items: flex-end;
-  font-size: 0.75rem;
   margin-right: 1.5rem;
   margin-bottom: 3.5rem;
+  gap: 1rem;
 }
 
 .text p {
@@ -70,18 +70,20 @@
   position: relative;
   z-index: 1;
   display: block;
+  width: auto;
+  height: 35rem;
 }
 
 .backdropPhoto {
-  margin-bottom: 3.5rem;
-  height: 50%;
-  width: auto;
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  width: auto;
+  height: 50%;
+  margin-bottom: 3.5rem;
+  transition: transform ease-in-out 0.7s;
   transform: translate(80%);
   transform-origin: bottom left;
-  transition: transform ease-in-out 0.7s;
 }
 
 .backdropPhoto.hiding {
@@ -90,9 +92,19 @@
 
 .founderTitle {
   font-size: 0.75rem;
-  text-transform: uppercase;
-  writing-mode: vertical-lr;
   margin-left: 10px;
   letter-spacing: 1px;
+  text-transform: uppercase;
   opacity: 0.7;
+  writing-mode: vertical-lr;
 }
+
+/*@media (max-width: calc(120em - 1px)) {*/
+/*  .text p {*/
+/*    max-width: 14.625rem;*/
+/*  }*/
+
+/*  .founderPhoto {*/
+/*    height: 23.25rem;*/
+/*  }*/
+/*}*/

@@ -1,6 +1,7 @@
 import "normalize.css/normalize.css"
 import "styles/globals.css"
 import "styles/fonts.css"
+import "styles/breakponts.css"
 import "swiper/css"
 // import "swiper/css/bundle"
 import type { AppProps } from "next/app"

@@ -8,6 +8,8 @@ import classNames from "classnames"
 import LinkWithLine from "components/LinkWithLine"
 import Socials from "./Socials"
 import Link from "next/link"
+import H2 from "components/H2"
+import P from "components/P"
 
 const slides = new Array(4).fill({
   primaryText: "we create impressive architecture and modern interiors",
@@ -21,35 +23,40 @@ function GreetingScreen() {
       <Link href="#" className={styles.allProjectsLink}>
         all projects
       </Link>
-      <Swiper
-        // autoplay
-        modules={[Pagination, Autoplay]}
-        pagination={{
-          el: `.${styles.swiperPaginationWrapper}`,
-          clickable: true,
-          horizontalClass: styles.swiperPagination,
-          bulletClass: styles.bullet,
-          bulletActiveClass: styles.bulletActive,
-          renderBullet: (index, className) => {
-            return `<span class=${className}>${index + 1}</span>`
-          },
-        }}
-        slidesPerView="auto"
-        spaceBetween={100}
-        loop={true}
-        speed={1000}
-        className={styles.swiper}
-      >
-        {slides.map(({ primaryText, secondaryText }, index) => (
-          <SwiperSlide className={styles.slide} key={index}>
-            <h2>{primaryText}</h2>
-            <p className={classNames(styles.slideTextSecondary)}>
-              {secondaryText}
-            </p>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <LinkWithLine wrapperClassName={styles.link}>view more</LinkWithLine>
+      <div className={styles.swiperWrapper}>
+        <Swiper
+          // autoplay
+          modules={[Pagination, Autoplay]}
+          pagination={{
+            el: `.${styles.swiperPaginationWrapper}`,
+            clickable: true,
+            horizontalClass: styles.swiperPagination,
+            bulletClass: styles.bullet,
+            bulletActiveClass: styles.bulletActive,
+            renderBullet: (index, className) => {
+              return `<span class=${className}>${index + 1}</span>`
+            },
+          }}
+          slidesPerView="auto"
+          spaceBetween={100}
+          loop={true}
+          speed={1000}
+          className={styles.swiper}
+        >
+          {slides.map(({ primaryText, secondaryText }, index) => (
+            <SwiperSlide className={styles.slide} key={index}>
+              <H2>{primaryText}</H2>
+              <P
+                appearImmediately
+                className={classNames(styles.slideTextSecondary)}
+              >
+                {secondaryText}
+              </P>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <LinkWithLine wrapperClassName={styles.link}>view more</LinkWithLine>
+      </div>
       <Link href="#" className={styles.languageChange}>
         en
       </Link>

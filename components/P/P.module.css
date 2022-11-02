@@ -1,0 +1,20 @@
+.content {
+  line-height: 100%;
+  display: inline-block;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-play-state: paused;
+  /*animation-timing-function: cubic-bezier(0.12, 0.57, 0.54, 0.94);*/
+  animation-fill-mode: both;
+}
+
+.appear {
+  animation-play-state: running;
+}
+
+@keyframes appear {
+  from {
+    transform: translate(0, 25%);
+    opacity: 0.01;
+  }
+}

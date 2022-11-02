@@ -6,9 +6,16 @@
   }
 
   .backgroundImage {
+    filter: brightness(0.65);
     pointer-events: none;
     z-index: -1;
     object-fit: cover;
     object-position: center;
+  }
+
+  @media (max-width: calc(90em - 1px)) {
+    .wrapper {
+      padding: 1.5rem 3.5rem;
+    }
   }
 }

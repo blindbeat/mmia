@@ -7,6 +7,8 @@ import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
 import ScreenTitle from "components/ScreenTitle"
+import H2 from "components/H2"
+import P from "components/P"
 
 const title =
   "We improve the world around us and create an impressive architecture using innovative solutions and We "
@@ -27,10 +29,10 @@ function AboutCompanyScreen() {
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <ScreenTitle className={styles.screenTitle}>about company</ScreenTitle>
-        <h2 className={styles.title}>{title}</h2>
+        <H2 className={styles.title}>{title}</H2>
         <div className={styles.text}>
           {text.map((text, index) => (
-            <p key={index}>{text}</p>
+            <P key={index}>{text}</P>
           ))}
           <LinkWithLine color="black" className={styles.link}>
             view more

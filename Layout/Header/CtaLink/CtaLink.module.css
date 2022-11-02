@@ -1,0 +1,29 @@
+.content {
+  position: relative;
+}
+
+.content svg,
+.content path {
+  animation-play-state: inherit;
+}
+
+.content path {
+  transition: stroke-dashoffset ease-in-out 1.5s;
+  animation-name: lineDraw;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  --lineLength: 135;
+  stroke-dasharray: 135;
+}
+
+@keyframes lineDraw {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 270;
+  }
+}

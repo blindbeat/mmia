@@ -13,8 +13,6 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
 
   const [swiper, setSwiper] = useState<any>(null)
 
-  console.log(swiper)
-  console.log(ref.current)
   return (
     <Swiper
       modules={[Autoplay]}
@@ -22,7 +20,7 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
       slidesPerView="auto"
       className={classNames(styles.swiper, className)}
       loop
-      speed={5000}
+      speed={10000}
       onSwiper={(swiper) => setSwiper(swiper)}
       autoplay={{ delay: 1 }}
       onClick={() => swiper.slideNext()}
