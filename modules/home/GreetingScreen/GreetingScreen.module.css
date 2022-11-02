@@ -1,21 +1,16 @@
 .wrapper {
-  --first-column: 18.5rem;
-  --mx: 5.5rem;
-}
-
-.wrapper {
   position: relative;
   display: grid;
-  padding-bottom: 2.5rem;
+  padding-top: var(--heading-h);
+  padding-bottom: var(--sm);
   color: white;
-  grid-template-columns: var(--first-column) 1fr auto;
-  grid-template-rows: 1fr auto;
+  --heading-h: 6rem;
+  grid-template-columns: var(--greeting-screen-first-line) 1fr auto;
+  grid-template-rows: 1fr calc(var(--heading-h) - var(--sm));
 }
 
 .allProjectsLink,
 .languageChange {
-  line-height: 115%;
-  align-self: center;
   padding: 1rem;
   text-transform: uppercase;
   opacity: 0.7;
@@ -25,74 +20,63 @@
 .allProjectsLink {
   position: relative;
   z-index: 2;
+  align-self: center;
   margin-left: -1rem;
   transform: rotate(180deg);
-  text-align: center;
-  grid-column: 1;
-  grid-row: 1;
   text-orientation: sideways;
   writing-mode: vertical-lr;
 }
 
-.swiperWrapper {
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  margin: 0 calc(var(--mx) * -1);
-  grid-column: 1 / span 3;
-  grid-row: 1;
+.languageChange {
+  margin-bottom: -1rem;
+  margin-left: -1rem;
 }
 
 .swiper {
   display: flex;
   overflow: visible;
+  align-self: center;
   flex-direction: column;
   width: min(105rem, 75%);
-  /*width: 105rem;*/
   margin: unset;
-  /*width: 100%;*/
-  padding-left: calc(var(--first-column) + var(--mx));
+  grid-column: 2 / span 3;
 }
 
 .slide {
-  display: flex;
-  align-items: start;
-  flex-direction: column;
-  width: 60rem;
   cursor: grab;
-  transition: transform ease-out 0.3s;
-  gap: 1.5rem;
+  transition: transform ease-out 1s;
 }
 
 .slide:global(.swiper-slide-prev) {
   transform: translate(-50%);
 }
 
-.slide h2 {
-  font-size: 5.5rem;
+.slideContent {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  max-width: 60rem;
+}
+
+.slideContent h2 {
+  font-size: var(--2xl);
   font-weight: 300;
   line-height: 115%;
-  transition: color ease-in-out 0.75s, opacity ease-in-out 0.75s;
-  letter-spacing: 4px;
-  text-transform: capitalize;
-  /*opacity: 0.2;*/
-  opacity: 0.5;
+  margin-bottom: var(--xs);
+  transition: color ease-in-out 1s, opacity ease-in-out 1s;
+  opacity: 0.2;
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 1px white;
 }
 
-.slide p {
-  line-height: 148%;
-  max-width: 30em;
+.slideContent p {
+  max-width: 30rem;
+  margin-bottom: var(--md);
 }
 
-.slide .link {
-  margin-top: 1rem;
-}
-
-.slide p,
-.slide .link {
-  transition: opacity ease-in-out 0.75s;
+.slideContent p,
+.slideContent .linkWithLine {
+  transition: opacity ease-in-out 1s;
   opacity: 0;
 }
 
@@ -105,28 +89,19 @@
   opacity: 0.5;
 }
 
-.slide:global(.swiper-slide-active) .link {
+.slide:global(.swiper-slide-active) .linkWithLine {
   opacity: 1;
-}
-
-.languageChange {
-  align-self: end;
-  margin-bottom: -1rem;
-  margin-left: -1rem;
-}
-
-.swiperPaginationWrapper {
 }
 
 .swiperPagination {
   display: flex;
-  width: 25rem;
+  width: 30rem;
 }
 
 .bullet {
   font-size: 0.875em;
   flex-grow: 1;
-  padding: 1em;
+  padding: 1rem;
   cursor: pointer;
   transition: border-bottom-color ease-in-out 0.3s, color ease-in-out 0.3s;
   text-align: center;
@@ -137,39 +112,18 @@
   border-bottom-width: 1px;
 }
 
-.bulletActive {
-  border-color: rgba(255, 255, 255, 0.75);
-}
-
 .bullet:hover {
   color: white;
 }
 
-.socials {
-  align-self: end;
+.bulletActive {
+  border-color: rgba(255, 255, 255, 0.75);
 }
 
-@media (max-width: calc(90em - 1px)) {
-  .wrapper {
-    --first-column: 9.75rem;
-    --mx: 3.5rem;
-  }
-
-  .wrapper {
-    padding-bottom: 1.5rem;
-  }
-
-  .slide {
-    width: 37.5rem;
-  }
-
-  .slide h2 {
-    font-size: 3.5rem;
-  }
-
-  .swiperPagination {
-    width: 18rem;
-  }
+.socials,
+.languageChange,
+.swiperPaginationWrapper {
+  align-self: end;
 }
 
 .controlledSwiper {
@@ -180,3 +134,24 @@
   bottom: 0;
   left: 0;
 }
+
+/*@media (max-width: calc(90em - 1px)) {*/
+/*  .wrapper {*/
+/*  }*/
+
+/*  .wrapper {*/
+/*    padding-bottom: 1.5rem;*/
+/*  }*/
+
+/*  .slide {*/
+/*    width: 37.5rem;*/
+/*  }*/
+
+/*  .slide h2 {*/
+/*    font-size: 3.5rem;*/
+/*  }*/
+
+/*  .swiperPagination {*/
+/*    width: 18rem;*/
+/*  }*/
+/*}*/

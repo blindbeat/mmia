@@ -26,52 +26,45 @@ const slides = new Array(4).fill({
 const images = [image1, image2, image3, image4]
 
 function GreetingScreen() {
-  const [controlledSwiper, setControlledSwiper] = useState<SwiperClass | null>(
-    null
-  )
+  const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <Link href="#" className={styles.allProjectsLink}>
         all projects
       </Link>
-      <div className={styles.swiperWrapper}>
-        {controlledSwiper && (
-          <Swiper
-            // autoplay
-            modules={[Pagination, Autoplay, Controller]}
-            controller={{ control: controlledSwiper }}
-            pagination={{
-              el: `.${styles.swiperPaginationWrapper}`,
-              clickable: true,
-              horizontalClass: styles.swiperPagination,
-              bulletClass: styles.bullet,
-              bulletActiveClass: styles.bulletActive,
-              renderBullet: (index, className) => {
-                return `<span class=${className}>${index + 1}</span>`
-              },
-            }}
-            spaceBetween={200}
-            loop
-            speed={1000}
-            className={styles.swiper}
-          >
-            {slides.map(({ primaryText, secondaryText }, index) => (
-              <SwiperSlide className={styles.slide} key={index}>
-                <H2 appearImmediate>{primaryText}</H2>
-                <P
-                  appearImmediately
-                  className={classNames(styles.slideTextSecondary)}
-                >
-                  {secondaryText}
-                </P>
-                <LinkWithLine wrapperClassName={styles.link}>
+      {imageSwiper && (
+        <Swiper
+          // autoplay
+          modules={[Pagination, Autoplay, Controller]}
+          controller={{ control: imageSwiper }}
+          pagination={{
+            el: `.${styles.swiperPaginationWrapper}`,
+            clickable: true,
+            horizontalClass: styles.swiperPagination,
+            bulletClass: styles.bullet,
+            bulletActiveClass: styles.bulletActive,
+            renderBullet: (index, className) => {
+              return `<span class=${className}>${index + 1}</span>`
+            },
+          }}
+          spaceBetween={200}
+          loop
+          speed={1000}
+          className={styles.swiper}
+        >
+          {slides.map(({ primaryText, secondaryText }, index) => (
+            <SwiperSlide className={styles.slide} key={index}>
+              <div className={styles.slideContent}>
+                <H2 appearImmediately>{primaryText}</H2>
+                <P appearImmediately>{secondaryText}</P>
+                <LinkWithLine wrapperClassName={styles.linkWithLine}>
                   view more
                 </LinkWithLine>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-      </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
       <Link href="#" className={styles.languageChange}>
         en
       </Link>
@@ -79,8 +72,7 @@ function GreetingScreen() {
       <Socials className={styles.socials} />
       <Swiper
         className={styles.controlledSwiper}
-        onSwiper={setControlledSwiper}
-        // slidesPerView={2}
+        onSwiper={setImageSwiper}
         loop
         effect="fade"
         modules={[EffectFade]}

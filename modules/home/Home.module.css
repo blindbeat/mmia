@@ -2,7 +2,7 @@
   .wrapper {
     min-height: 100vh;
     overflow: hidden;
-    padding: 9rem 5.5rem 11.25rem;
+    padding: var(--4xl) var(--2xl) var(--5xl);
   }
 
   .backgroundImage {
@@ -13,9 +13,9 @@
     object-position: center;
   }
 
-  @media (max-width: calc(90em - 1px)) {
-    .wrapper {
-      padding: 1.5rem 3.5rem;
-    }
-  }
+  /*@media (max-width: calc(90em - 1px)) {*/
+  /*  .wrapper {*/
+  /*    padding: 1.5rem 3.5rem;*/
+  /*  }*/
+  /*}*/
 }

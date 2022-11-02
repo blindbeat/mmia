@@ -7,10 +7,15 @@ import { triggerDistance } from "utils"
 
 interface Props extends ComponentPropsWithoutRef<"h2"> {
   children: string
-  appearImmediate?: boolean
+  appearImmediately?: boolean
 }
 
-function H2({ children, className, appearImmediate = false, ...rest }: Props) {
+function H2({
+  children,
+  className,
+  appearImmediately = false,
+  ...rest
+}: Props) {
   const ref = useRef<HTMLElement | null>(null)
 
   const { ref: observerRef, inView } = useInView({
@@ -44,7 +49,7 @@ function H2({ children, className, appearImmediate = false, ...rest }: Props) {
       }}
       className={classNames(
         styles.content,
-        (inView || appearImmediate) && styles.appear,
+        (inView || appearImmediately) && styles.appear,
         className
       )}
     >

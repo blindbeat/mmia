@@ -48,16 +48,20 @@ function Header() {
         hidden && styles.hidden
       )}
     >
-      <Burger className={styles.burger} />
-      <Logo className={styles.logo} />
-      <nav>
-        {navLinks.map(([name, url]) => (
-          <Link key={url} href={url}>
-            {name}
-          </Link>
-        ))}
-      </nav>
-      <CtaLink href="#" className={styles.cta} />
+      <div>
+        <Burger className={styles.burger} />
+        <Logo className={styles.logo} />
+      </div>
+      <div>
+        <nav>
+          {navLinks.map(([name, url]) => (
+            <Link key={url} href={url}>
+              {name}
+            </Link>
+          ))}
+        </nav>
+        <CtaLink href="#" className={styles.cta} />
+      </div>
     </header>
   )
 }
