@@ -1,17 +1,16 @@
 .wrapper {
   display: flex;
-  margin-bottom: -1rem;
   margin-right: -1rem;
+  margin-bottom: -1rem;
 }
 
 .link {
-  cursor: pointer;
-  padding: 1rem;
-  font-size: 0.75rem;
   line-height: 115%;
-  opacity: 0.7;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
   transition: opacity ease-in-out 0.15s;
   text-transform: uppercase;
+  opacity: 0.7;
 }
 
 .link:hover {

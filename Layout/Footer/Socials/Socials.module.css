@@ -1,17 +1,17 @@
 .wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
   padding: 9rem 0;
-  position: relative;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .wrapper h2 {
   max-width: 10em;
+  margin-bottom: 5.5rem;
   text-align: center;
-  margin-bottom: 3.75rem;
 }
 
 .swiper {
@@ -20,8 +20,8 @@
 
 .wrapper p {
   max-width: 35em;
-  text-align: center;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .socialLinks {
@@ -31,16 +31,16 @@
 
 .socialLinks a {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 55px;
   padding: 1rem;
+  transition: border ease-in-out 0.3s;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   aspect-ratio: 1/1;
-  width: 55px;
-  transition: border ease-in-out 0.3s;
 }
 
 .socialLinks a:hover {

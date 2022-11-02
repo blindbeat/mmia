@@ -12,10 +12,11 @@ interface Props extends ComponentPropsWithoutRef<"p"> {
 function P({ children, className, appearImmediately = false, ...rest }: Props) {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: `${triggerDistance}px`,
+    rootMargin: `-${triggerDistance}px`,
     triggerOnce: true,
   })
 
+  console.log(inView)
   return (
     <p
       {...rest}

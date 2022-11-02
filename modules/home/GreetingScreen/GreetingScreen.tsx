@@ -37,7 +37,7 @@ function GreetingScreen() {
       <div className={styles.swiperWrapper}>
         {controlledSwiper && (
           <Swiper
-            autoplay
+            // autoplay
             modules={[Pagination, Autoplay, Controller]}
             controller={{ control: controlledSwiper }}
             pagination={{
@@ -50,7 +50,7 @@ function GreetingScreen() {
                 return `<span class=${className}>${index + 1}</span>`
               },
             }}
-            spaceBetween={100}
+            spaceBetween={200}
             loop
             speed={1000}
             className={styles.swiper}

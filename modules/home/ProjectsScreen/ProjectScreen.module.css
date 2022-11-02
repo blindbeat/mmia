@@ -1,22 +1,22 @@
 .wrapper {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
 .textWrapper {
-  padding: 0 5.5rem;
   display: grid;
+  padding: 0 5.5rem;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
 }
 
 .textWrapper .screenTitle {
-  justify-self: start;
   align-self: start;
+  justify-self: start;
 }
 
 .textWrapper h2 {
-  margin-bottom: 3.5rem;
+  margin-bottom: 5.5rem;
 }
 
 .textWrapper p {

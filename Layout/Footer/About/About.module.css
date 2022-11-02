@@ -1,18 +1,19 @@
 .content {
-  padding: 2.5rem 5.5rem;
   display: grid;
+  overflow: hidden;
+  padding: 2.5rem 5.5rem;
+  background-image: url("./assets/line.svg");
+  background-position: left;
+  background-size: cover;
   grid-template-columns: 2fr 1fr 1fr;
   row-gap: 9rem;
-  overflow: hidden;
-  background-image: url("./assets/line.svg");
-  background-size: cover;
-  background-position: center;
 }
 
 .cta {
 }
 
 .cta h2 {
+  max-width: 35rem;
   margin-bottom: 3rem;
 }
 
@@ -25,9 +26,9 @@
 
 .pages a,
 .contacts a {
-  text-transform: capitalize;
-  font-weight: 300;
   font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: capitalize;
 }
 
 .contacts a[href^="mailto:"] {
@@ -37,8 +38,8 @@
 .copyright,
 .policies,
 .developedBy {
-  opacity: 0.7;
   text-transform: uppercase;
+  opacity: 0.7;
 }
 
 .copyright {
@@ -60,6 +61,6 @@
 
 .blockTitle {
   margin-bottom: 1rem;
-  opacity: 0.5;
   text-transform: uppercase;
+  opacity: 0.5;
 }

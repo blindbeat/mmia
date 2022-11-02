@@ -9,6 +9,7 @@ interface Props extends ComponentPropsWithoutRef<"span"> {
 function ScreenTitle({ children, className, ...rest }: Props) {
   return (
     <span {...rest} className={classNames(styles.screenTitle, className)}>
+      <div className={styles.square}></div>
       {children}
     </span>
   )

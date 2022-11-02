@@ -1,37 +1,38 @@
 .bubbleWrapper {
   position: relative;
-  padding: 0.75rem;
+  margin: 0 -0.5rem;
+  padding: 1rem;
 }
 
 .bubble {
   position: relative;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  text-transform: uppercase;
-  padding: 2.25rem;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 1.25rem;
+  padding: 2.25rem;
+  cursor: pointer;
   transition: border ease-in-out 0.3s;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  gap: 1.25rem;
   /*transition: border ease-in-out 0.03s, transform ease-in-out 0.3s;*/
 }
 
 .bubble:after {
-  content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  transition: inherit;
   border: 1px dashed transparent;
   border-radius: inherit;
-  transition: inherit;
 }
 
 .bubble:hover {
@@ -43,11 +44,11 @@
 }
 
 .bubble .bubbleIndex {
-  opacity: 0.5;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, calc(-150% - 1.25rem));
+  opacity: 0.5;
 }
 
 .bubble .bubbleText {
