@@ -45,8 +45,11 @@
 
 .swiper {
   display: flex;
+  overflow: visible;
   flex-direction: column;
-  width: 100%;
+  width: 75%;
+  margin: unset;
+  /*width: 100%;*/
   padding-left: calc(var(--first-column) + var(--mx));
 }
 
@@ -157,4 +160,13 @@
   .swiperPagination {
     width: 18rem;
   }
+}
+
+.controlledSwiper {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
