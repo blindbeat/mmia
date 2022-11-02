@@ -8,7 +8,7 @@ import H2 from "components/H2"
 import P from "components/P"
 
 const title =
-  "Through the last years, we worked on more than 100 projects located all"
+  "Through the last years we worked on more than 100 projects located all"
 const paragraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 

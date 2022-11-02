@@ -8,8 +8,8 @@ import classNames from "classnames"
 import LinkWithLine from "components/LinkWithLine"
 import Socials from "./Socials"
 import Link from "next/link"
-import H2 from "components/H2"
 import P from "components/P"
+import H2 from "components/H2"
 
 const slides = new Array(4).fill({
   primaryText: "we create impressive architecture and modern interiors",
@@ -45,7 +45,7 @@ function GreetingScreen() {
         >
           {slides.map(({ primaryText, secondaryText }, index) => (
             <SwiperSlide className={styles.slide} key={index}>
-              <H2>{primaryText}</H2>
+              <H2 appearImmediate>{primaryText}</H2>
               <P
                 appearImmediately
                 className={classNames(styles.slideTextSecondary)}

@@ -1,27 +1,23 @@
 .wrapper {
-  /*float: left;*/
-  display: inline-block;
   overflow: hidden;
-  margin-bottom: -1rem;
 }
 
-.span {
+.animated {
   line-height: 100%;
   display: inline-block;
   animation-name: appear;
-  animation-duration: 1s;
+  animation-duration: 0.9s;
   animation-play-state: paused;
   animation-fill-mode: both;
-  /*animation-timing-function: cubic-bezier(0.12, 0.57, 0.54, 0.94);*/
 }
 
-.appear {
+.appear .animated {
   animation-play-state: running;
 }
 
 @keyframes appear {
   from {
-    transform: translate(-1rem, -100%) rotate(-5deg);
+    transform: translate(-1rem, -100%) rotate(-2deg);
     opacity: 0;
   }
 }
