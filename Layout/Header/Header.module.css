@@ -4,6 +4,7 @@
   display: grid;
   align-items: center;
   width: 100%;
+  height: 6rem;
   padding: 2rem 5.5rem;
   transition: background-color var(--transitionTime),
     color var(--transitionTime), transform var(--transitionTime);
