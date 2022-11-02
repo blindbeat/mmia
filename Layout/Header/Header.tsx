@@ -3,7 +3,7 @@ import Logo from "./assets/logo.svg"
 import Burger from "./assets/burger.svg"
 import Link from "next/link"
 import CtaLink from "Layout/Header/CtaLink"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 
 const navLinks: [name: string, url: string][] = [
@@ -12,23 +12,42 @@ const navLinks: [name: string, url: string][] = [
   ["contact", "contact"],
 ]
 
+const defineTransparency = (scrollY: number) => scrollY === 0
+
 function Header() {
-  const [transparent, setTransparent] = useState(true)
+  const [transparent, setTransparent] = useState(
+    typeof window !== "undefined" ? defineTransparency(window.scrollY) : true
+  )
+  const [hidden, setHidden] = useState(false)
+  const lastScrollRef = useRef(
+    typeof window !== "undefined" ? window.scrollY : 0
+  )
+
   const transparencyController = () => {
-    setTransparent((state) => {
-      return window.scrollY === 0 && !state
-    })
+    setTransparent(defineTransparency(window.scrollY))
   }
 
-  console.log("rerender")
+  const hideController = () => {
+    console.log(window.scrollY, lastScrollRef.current)
+    if (window.scrollY === lastScrollRef.current) return
+    setHidden(window.scrollY > lastScrollRef.current && window.scrollY > 100)
+    lastScrollRef.current = window.scrollY
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", transparencyController)
+    window.addEventListener("scroll", () => {
+      transparencyController()
+      hideController()
+    })
   }, [])
 
   return (
     <header
-      className={classNames(styles.content, transparent && styles.transparent)}
+      className={classNames(
+        styles.content,
+        transparent && styles.transparent,
+        hidden && styles.hidden
+      )}
     >
       <Burger className={styles.burger} />
       <Logo className={styles.logo} />
