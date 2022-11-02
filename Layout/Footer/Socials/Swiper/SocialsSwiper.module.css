@@ -8,7 +8,15 @@
 }
 
 .slide {
-  width: min-content;
+  width: 25rem;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
 }
 
 .slide:nth-child(even) {
