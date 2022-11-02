@@ -1,6 +1,6 @@
 .content {
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   display: grid;
   align-items: center;
   width: 100%;
