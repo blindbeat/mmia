@@ -55,8 +55,8 @@
 
 .slide {
   display: flex;
+  align-items: start;
   flex-direction: column;
-  justify-content: flex-end;
   width: 60rem;
   transition: transform ease-out 0.3s;
   gap: 2rem;
@@ -81,6 +81,14 @@
 .slide p {
   line-height: 148%;
   max-width: 30em;
+}
+
+.slide .link {
+  margin-top: 3rem;
+}
+
+.slide p,
+.slide .link {
   transition: opacity ease-in-out 0.75s;
   opacity: 0;
 }
@@ -94,9 +102,8 @@
   opacity: 0.5;
 }
 
-.link {
-  margin-top: 3rem;
-  margin-left: calc(var(--first-column) + var(--mx));
+.slide:global(.swiper-slide-active) .link {
+  opacity: 1;
 }
 
 .languageChange {

@@ -37,7 +37,7 @@ function GreetingScreen() {
       <div className={styles.swiperWrapper}>
         {controlledSwiper && (
           <Swiper
-            // autoplay
+            autoplay
             modules={[Pagination, Autoplay, Controller]}
             controller={{ control: controlledSwiper }}
             pagination={{
@@ -64,11 +64,13 @@ function GreetingScreen() {
                 >
                   {secondaryText}
                 </P>
+                <LinkWithLine wrapperClassName={styles.link}>
+                  view more
+                </LinkWithLine>
               </SwiperSlide>
             ))}
           </Swiper>
         )}
-        <LinkWithLine wrapperClassName={styles.link}>view more</LinkWithLine>
       </div>
       <Link href="#" className={styles.languageChange}>
         en

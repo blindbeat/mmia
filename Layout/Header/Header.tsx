@@ -28,7 +28,6 @@ function Header() {
   }
 
   const hideController = () => {
-    console.log(window.scrollY, lastScrollRef.current)
     if (window.scrollY === lastScrollRef.current) return
     setHidden(window.scrollY > lastScrollRef.current && window.scrollY > 100)
     lastScrollRef.current = window.scrollY
