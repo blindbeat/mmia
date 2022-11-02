@@ -16,6 +16,7 @@ function P({ children, className, appearImmediately = false, ...rest }: Props) {
     triggerOnce: true,
   })
 
+  console.log(inView)
   return (
     <p
       {...rest}
