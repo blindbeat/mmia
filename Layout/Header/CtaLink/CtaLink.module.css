@@ -2,6 +2,13 @@
   position: relative;
 }
 
+.content svg {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+}
+
 .content svg,
 .content path {
   animation-play-state: inherit;
@@ -14,7 +21,6 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: reverse;
-  --lineLength: 135;
   stroke-dasharray: 135;
 }
 

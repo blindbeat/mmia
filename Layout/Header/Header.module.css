@@ -5,10 +5,18 @@
   align-items: center;
   width: 100%;
   padding: 2rem 5.5rem;
+  transition: background-color 0.3s;
   text-transform: uppercase;
-  color: white;
+  color: var(--accentColor);
+  background-color: #fff;
+  --accentColor: #000;
   justify-items: center;
   grid-template-columns: 18.5rem auto 1fr auto;
+}
+
+.transparent {
+  background-color: transparent;
+  --accentColor: #fff;
 }
 
 .content nav {
@@ -33,11 +41,31 @@
   width: auto;
 }
 
+.content path,
+.content line {
+  transition: fill 1s, stroke 1s;
+  /*transition-delay: 1s;*/
+  /*transition-property: fill, stroke;*/
+}
+
+.logo {
+  height: 75%;
+}
+
+.logo path {
+  fill: var(--accentColor);
+}
+
 .burger {
   height: 2rem;
   justify-self: start;
 }
 
-.logo {
-  height: 75%;
+.burger line,
+.burger path {
+  stroke: var(--accentColor);
+}
+
+.cta path {
+  stroke: var(--accentColor);
 }
