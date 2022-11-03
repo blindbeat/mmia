@@ -1,32 +1,40 @@
 .content {
   display: grid;
-  overflow: hidden;
-  padding: 2.5rem 5.5rem;
+  min-height: unset;
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
   background-image: url("./assets/line.svg");
   background-position: left;
   background-size: cover;
   grid-template-columns: 2fr 1fr 1fr;
-  row-gap: 9rem;
+  row-gap: var(--4xl);
 }
 
-.cta {
+.ctaBlock {
 }
 
-.cta h2 {
+.ctaBlock h2 {
   max-width: 35rem;
-  margin-bottom: 3rem;
+  margin-bottom: var(--md);
 }
 
 .pages,
 .contacts {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  margin-top: 0.5rem;
+  gap: var(--2xs);
+}
+
+.blockTitle {
+  margin-bottom: var(--3xs);
+  text-transform: uppercase;
+  opacity: 0.5;
 }
 
 .pages a,
 .contacts a {
-  font-size: 1.5rem;
+  font-size: var(--2xs);
   font-weight: 300;
   text-transform: capitalize;
 }
@@ -52,15 +60,9 @@
 
 .policies {
   display: flex;
-  gap: 2.5rem;
+  gap: var(--sm);
 }
 
 .developedBy {
   justify-self: end;
-}
-
-.blockTitle {
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  opacity: 0.5;
 }

@@ -1,5 +1,5 @@
 import Socials from "./Socials"
-import About from "Layout/Footer/About"
+import About from "./About"
 
 function Footer() {
   return (

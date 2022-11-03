@@ -44,7 +44,7 @@
 
 .slide {
   cursor: grab;
-  transition: transform ease-out 1s;
+  transition: transform ease-out var(--tl);
 }
 
 .slide:global(.swiper-slide-prev) {
@@ -63,7 +63,7 @@
   font-weight: 300;
   line-height: 115%;
   margin-bottom: var(--xs);
-  transition: color ease-in-out 1s, opacity ease-in-out 1s;
+  transition: color ease-in-out 1s, opacity ease-in-out var(--tl);
   opacity: 0.2;
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 1px white;
@@ -76,7 +76,7 @@
 
 .slideContent p,
 .slideContent .linkWithLine {
-  transition: opacity ease-in-out 1s;
+  transition: opacity ease-in-out var(--tl);
   opacity: 0;
 }
 
@@ -103,7 +103,8 @@
   flex-grow: 1;
   padding: 1rem;
   cursor: pointer;
-  transition: border-bottom-color ease-in-out 0.3s, color ease-in-out 0.3s;
+  transition: border-bottom-color ease-in-out var(--ts),
+    color ease-in-out var(--ts);
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   border-width: 0;

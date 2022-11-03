@@ -93,7 +93,7 @@
 }
 
 .flyingPaper {
-  animation-duration: 1s;
+  animation-duration: var(--tl);
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }

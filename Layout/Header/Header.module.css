@@ -11,7 +11,7 @@
   color: var(--accentColor);
   background-color: #fff;
   --accentColor: #000;
-  --transitionTime: 0.3s;
+  --transitionTime: var(--ts);
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -71,6 +71,6 @@
   stroke: var(--accentColor);
 }
 
-.cta path {
+.ctaBlock path {
   stroke: var(--accentColor);
 }

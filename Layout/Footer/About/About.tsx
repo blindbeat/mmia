@@ -1,6 +1,8 @@
 import styles from "./About.module.css"
+import baseStyles from "modules/home/Home.module.css"
 import LinkWithLine from "components/LinkWithLine"
 import Link from "next/link"
+import classNames from "classnames"
 
 const ctaText = "Let’s talk about  your project!"
 
@@ -10,8 +12,8 @@ const number = "+38 (044) 228 91 59"
 
 function About() {
   return (
-    <div className={styles.content}>
-      <div className={styles.cta}>
+    <div className={classNames(styles.content, baseStyles.wrapper)}>
+      <div className={styles.ctaBlock}>
         <h2>{ctaText}</h2>
         <LinkWithLine color="black">drop request</LinkWithLine>
       </div>

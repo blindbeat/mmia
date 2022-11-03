@@ -1,26 +1,27 @@
-.wrapper {
+.content {
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  padding: 9rem 0;
+  padding-right: 0;
+  padding-left: 0;
   color: white;
 }
 
-.wrapper h2 {
+.content h2 {
   max-width: 10em;
-  margin-bottom: 5.5rem;
+  margin-bottom: var(--2xl);
   text-align: center;
 }
 
 .swiper {
-  margin-bottom: 3.75rem;
+  margin-bottom: var(--2xl);
 }
 
-.wrapper p {
+.content p {
   max-width: 35em;
-  margin-bottom: 2rem;
+  margin-bottom: var(--xs);
   text-align: center;
 }
 
@@ -33,14 +34,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  padding: 1rem;
-  transition: border ease-in-out 0.3s;
+  width: 3.375rem;
+  height: 3.375rem;
+  transition: border var(--ts);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  aspect-ratio: 1/1;
 }
 
 .socialLinks a:hover {
@@ -48,6 +48,5 @@
 }
 
 .backgroundImage {
-  z-index: -1;
   filter: brightness(0.25);
 }

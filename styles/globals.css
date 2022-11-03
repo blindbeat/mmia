@@ -13,6 +13,10 @@
   --4xs: 0.625rem;
 
   --greeting-screen-first-line: 18.5rem;
+
+  --ts: 0.3s;
+  --tm: 0.6s;
+  --tl: 1s;
 }
 
 * {
