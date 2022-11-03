@@ -1,9 +1,9 @@
 .wrapper {
   position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: var(--sm);
   padding-bottom: var(--sm);
 }
@@ -14,7 +14,8 @@
   max-width: var(--bp-xl);
   color: white;
   grid-template-columns: 7fr 5fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  row-gap: var(--sm);
 }
 
 .title {
@@ -48,7 +49,7 @@
 .papersWrapper {
   position: relative;
   align-self: center;
-  height: 700px;
+  height: 65vh;
   --sqrtof2: 1.41421356237;
   aspect-ratio: 1 / var(--sqrtof2);
   grid-row: span 2;

@@ -14,7 +14,7 @@
   bottom: 0;
   left: 0;
   content: "";
-  transform: scale(1.25) rotate(-6.98deg);
+  transform: scale(1.072) rotate(-6.98deg);
   background-image: url("assets/backgroundLines.svg");
   background-position: center;
   background-size: cover;
@@ -92,19 +92,19 @@
 
 .founderTitle {
   align-self: start;
-  margin-left: var(--3xs);
+  margin-left: var(--4xs);
   text-transform: uppercase;
   opacity: 0.7;
   justify-self: start;
   writing-mode: vertical-lr;
 }
 
-/*@media (max-width: calc(120em - 1px)) {*/
-/*  .text p {*/
-/*    max-width: 14.625rem;*/
-/*  }*/
+@media (max-width: calc(120em - 1px)) {
+  .title {
+    max-width: 20em;
+  }
 
-/*  .founderPhoto {*/
-/*    height: 23.25rem;*/
-/*  }*/
-/*}*/
+  .founderPhoto {
+    height: 33.75rem;
+  }
+}

@@ -7,13 +7,13 @@
   padding-left: 2rem;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
-  gap: var(--2xs) var(--3xs);
+  gap: var(--2xs) var(--4xs);
 }
 
 .imageContainer {
   overflow: hidden;
   width: 53.5rem;
-  height: 33.5rem;
+  aspect-ratio: 1 / 0.625;
 }
 
 .slide img {
@@ -69,4 +69,18 @@
 .arrow {
   height: 1.125rem;
   transform: translate(-12.5%, 0);
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .imageContainer {
+    width: 40rem;
+  }
+
+  .swiperButton {
+    padding: 0 1.125rem;
+  }
 }

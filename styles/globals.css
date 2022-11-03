@@ -9,8 +9,9 @@
   --sm: 2.5rem;
   --xs: 2rem;
   --2xs: 1.5rem;
-  --3xs: 1rem;
-  --4xs: 0.625rem;
+  --3xs: 1.5rem;
+  --4xs: 1rem;
+  --5xs: 0.625rem;
 
   --greeting-screen-first-line: 18.5rem;
 
@@ -56,15 +57,30 @@ a {
   color: inherit;
 }
 
-/*@media (max-width: calc(90em - 1px)) {*/
-/*  body {*/
-/*    font-size: 12px;*/
-/*  }*/
+@media (max-width: calc(120em - 1px)) {
+  :root {
+    --5xl: 9.25rem;
+    --4xl: 7rem;
+    --3xl: 5.5rem;
+    --2xl: 4.5rem;
+    --xl: 3.5rem;
+    --lg: 3rem;
+    --md: 2.5rem;
+    --sm: 2rem;
+    --xs: 1.5rem;
+    --2xs: 1.25rem;
+    --3xs: 1;
+    --4xs: 0.75rem;
+    --5xs: 0.5rem;
 
-/*  h2 {*/
-/*    font-size: 2.5rem;*/
-/*  }*/
+    --greeting-screen-first-line: 14rem;
+  }
 
-/*  p {*/
-/*  }*/
-/*}*/
+  body {
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}

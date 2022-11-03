@@ -102,7 +102,7 @@
 }
 
 .bullet {
-  font-size: 0.875em;
+  font-size: 0.875rem;
   flex-grow: 1;
   padding: 1rem;
   cursor: pointer;
@@ -139,23 +139,8 @@
   left: 0;
 }
 
-/*@media (max-width: calc(90em - 1px)) {*/
-/*  .wrapper {*/
-/*  }*/
-
-/*  .wrapper {*/
-/*    padding-bottom: 1.5rem;*/
-/*  }*/
-
-/*  .slide {*/
-/*    width: 37.5rem;*/
-/*  }*/
-
-/*  .slide h2 {*/
-/*    font-size: 3.5rem;*/
-/*  }*/
-
-/*  .swiperPagination {*/
-/*    width: 18rem;*/
-/*  }*/
-/*}*/
+@media (max-width: calc(120em - 1px)) {
+  .bullet {
+    font-size: 0.625rem;
+  }
+}

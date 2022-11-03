@@ -14,7 +14,7 @@
 }
 
 .ctaBlock h2 {
-  max-width: 35rem;
+  max-width: 66%;
   margin-bottom: var(--md);
 }
 
@@ -27,7 +27,7 @@
 }
 
 .blockTitle {
-  margin-bottom: var(--3xs);
+  margin-bottom: var(--4xs);
   text-transform: uppercase;
   opacity: 0.5;
 }

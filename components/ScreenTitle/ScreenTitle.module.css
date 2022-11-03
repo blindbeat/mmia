@@ -6,7 +6,18 @@
 }
 
 .square {
-  width: 10px;
-  height: 10px;
+  width: var(--squareSide);
+  height: var(--squareSide);
   background-color: black;
+  --squareSide: 10px;
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .square {
+    --squareSide: 9px;
+  }
+
+  .screenTitle {
+    gap: 10px;
+  }
 }

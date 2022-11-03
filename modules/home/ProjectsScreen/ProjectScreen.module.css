@@ -6,7 +6,7 @@
 .textWrapper {
   display: grid;
   max-width: var(--bp-xl);
-  margin: 0 auto var(--2xl);
+  margin: 0 auto var(--xl);
   padding: 0 var(--2xl);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);

@@ -13,9 +13,9 @@
     object-position: center;
   }
 
-  /*@media (max-width: calc(90em - 1px)) {*/
-  /*  .wrapper {*/
-  /*    padding: 1.5rem 3.5rem;*/
-  /*  }*/
-  /*}*/
+  @media (max-width: calc(120em - 1px)) {
+    .wrapper {
+      padding: var(--4xl) 4rem var(--5xl);
+    }
+  }
 }

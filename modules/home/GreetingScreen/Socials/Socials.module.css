@@ -6,7 +6,7 @@
 }
 
 .link {
-  padding: var(--3xs);
+  padding: var(--4xs);
   cursor: pointer;
   transition: opacity var(--ts);
   text-transform: uppercase;

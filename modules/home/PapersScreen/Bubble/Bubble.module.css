@@ -41,15 +41,30 @@
   border-color: white;
 }
 
-.bubble .bubbleIndex {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-150% - 1.25rem));
-  opacity: 0.5;
-}
-
 .bubble .bubbleText {
   position: relative;
   max-width: 11.5em;
+}
+
+.bubbleIndex {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - var(--bottomMargin)));
+  opacity: 0.5;
+  --bottomMargin: 1.25rem;
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .bubble {
+    padding: 1rem;
+  }
+
+  .bubble .bubbleText {
+    max-width: 13.25em;
+  }
+
+  .bubbleIndex {
+    --bottomMargin: 1rem;
+  }
 }

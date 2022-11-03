@@ -3,8 +3,7 @@
   z-index: 10;
   display: grid;
   width: 100%;
-  height: 6rem;
-  padding: 0 var(--2xl);
+  padding: calc(var(--sm) - 1rem) var(--2xl);
   transition: background-color var(--transitionTime),
     color var(--transitionTime), transform var(--transitionTime);
   text-transform: uppercase;
