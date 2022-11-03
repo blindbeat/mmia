@@ -2,7 +2,7 @@ import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
 import styles from "./PapersScreen.module.css"
 import Image from "next/image"
-import backgroundImage from "assets/dummyPics/scaffolding.jpg"
+import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
 import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
 import Bubble from "modules/home/PapersScreen/Bubble"
@@ -55,13 +55,6 @@ function PapersScreen() {
             view more
           </LinkWithLine>
         </div>
-        <div className={styles.bubblesWrapper}>
-          {bubbleTextArr.map((text, index) => (
-            <Bubble key={index} index={index} onClick={() => changePage(index)}>
-              {text}
-            </Bubble>
-          ))}
-        </div>
         <div className={styles.papersWrapper}>
           <div className={styles.papers}>
             {flyingPapers.length > 0 &&
@@ -108,6 +101,13 @@ function PapersScreen() {
               </div>
             ))}
           </div>
+        </div>
+        <div className={styles.bubblesWrapper}>
+          {bubbleTextArr.map((text, index) => (
+            <Bubble key={index} index={index} onClick={() => changePage(index)}>
+              {text}
+            </Bubble>
+          ))}
         </div>
       </div>
       <Image

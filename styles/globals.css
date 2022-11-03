@@ -22,9 +22,10 @@
 html,
 body {
   font-family: -apple-system, Helvetica, BlinkMacSystemFont, Segoe UI, Roboto,
-  Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin: 0;
   padding: 0;
+  letter-spacing: 0.04em;
 }
 
 h1,
@@ -42,6 +43,7 @@ h2 {
 
 p {
   line-height: 148%;
+  letter-spacing: unset;
   opacity: 0.5;
 }
 

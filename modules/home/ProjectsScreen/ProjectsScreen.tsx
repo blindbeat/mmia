@@ -20,7 +20,7 @@ function ProjectsScreen() {
         <H2>{title}</H2>
         <P>{paragraph}</P>
       </div>
-      <ProjectScreenSwiper />
+      <ProjectScreenSwiper className={styles.swiper} />
       <LinkWithLine color="black" wrapperClassName={styles.link}>
         view more
       </LinkWithLine>

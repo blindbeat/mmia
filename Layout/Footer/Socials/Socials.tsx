@@ -1,6 +1,6 @@
 import styles from "./Socials.module.css"
 import Image from "next/image"
-import backgroundImage from "assets/dummyPics/genericBackground.jpg"
+import backgroundImage from "assets/dummyPics/greetiongPhotos/4.jpg"
 import SocialsSwiper from "./Swiper"
 import Link from "next/link"
 

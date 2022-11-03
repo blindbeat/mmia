@@ -2,11 +2,11 @@ import { ComponentPropsWithoutRef } from "react"
 import styles from "./ScreenTitle.module.css"
 import classNames from "classnames"
 
-interface Props extends ComponentPropsWithoutRef<"span"> {
-  children: string
-}
-
-function ScreenTitle({ children, className, ...rest }: Props) {
+function ScreenTitle({
+  children,
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<"span">) {
   return (
     <span {...rest} className={classNames(styles.screenTitle, className)}>
       <div className={styles.square}></div>

@@ -5,25 +5,31 @@
 
 .textWrapper {
   display: grid;
-  padding: 0 5.5rem;
+  max-width: var(--bp-xl);
+  margin: 0 auto var(--2xl);
+  padding: 0 var(--2xl);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
 }
 
 .textWrapper .screenTitle {
   align-self: start;
+  margin-bottom: var(--2xl);
   justify-self: start;
 }
 
 .textWrapper h2 {
-  margin-bottom: 5.5rem;
+  margin-bottom: var(--2xl);
 }
 
 .textWrapper p {
-  max-width: 35em;
-  padding-right: 2.5rem;
+  max-width: 60%;
+}
+
+.swiper {
+  margin-bottom: var(--2xl);
 }
 
 .link {
-  margin: 5.5rem auto 0;
+  margin: auto;
 }

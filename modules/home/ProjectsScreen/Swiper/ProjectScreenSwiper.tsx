@@ -1,6 +1,8 @@
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperProps, SwiperSlide } from "swiper/react"
 import styles from "./ProjectScreenSwiper.module.css"
-import slideImage from "assets/dummyPics/slide.jpg"
+import slide1 from "assets/dummyPics/ourProjects/1.jpg"
+import slide2 from "assets/dummyPics/ourProjects/2.jpg"
+import slide3 from "assets/dummyPics/ourProjects/3.jpg"
 import Image from "next/image"
 import { Navigation } from "swiper"
 import Arrow from "./assets/arrow.svg"
@@ -9,9 +11,9 @@ import classNames from "classnames"
 
 const title = "Cardiological Hospital in Bryukhovichi"
 const tags = ["interior", "architecture"]
-const slides = [1, 2, 3, 4, 5]
+const slides = [slide1, slide2, slide3]
 
-function ProjectScreenSwiper() {
+function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
   return (
     <Swiper
       modules={[Navigation]}
@@ -23,12 +25,13 @@ function ProjectScreenSwiper() {
       centeredSlides
       loop
       spaceBetween={140}
-      className={styles.swiper}
+      className={classNames(styles.swiper, className)}
+      {...rest}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index} className={styles.slide}>
           <div className={styles.imageContainer}>
-            <Image src={slideImage} alt="" />
+            <Image src={slide} alt="" />
           </div>
           <div className={styles.tags}>
             {tags.map((tag) => (
