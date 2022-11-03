@@ -24,17 +24,28 @@ const slides = new Array(4).fill({
 })
 
 const images = [image1, image2, image3, image4]
+const baseDelay = 0.4
+const delayBetweenAppears = 0.4
+const calcAnimationDelay = (showingOrder: number) =>
+  baseDelay + showingOrder * delayBetweenAppears
 
 function GreetingScreen() {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
-      <Link href="#" className={styles.allProjectsLink}>
-        all projects
-      </Link>
+      <div
+        style={{
+          animationDelay: `${calcAnimationDelay(4)}s`,
+        }}
+        className={classNames(styles.allProjectsLinkWrapper, "textAppear")}
+      >
+        <Link href="#" className={styles.allProjectsLink}>
+          all projects
+        </Link>
+      </div>
       {imageSwiper && (
         <Swiper
-          // autoplay
+          autoplay
           modules={[Pagination, Autoplay, Controller]}
           controller={{ control: imageSwiper }}
           pagination={{
@@ -55,8 +66,12 @@ function GreetingScreen() {
           {slides.map(({ primaryText, secondaryText }, index) => (
             <SwiperSlide className={styles.slide} key={index}>
               <div className={styles.slideContent}>
-                <H2 appearImmediately>{primaryText}</H2>
-                <P appearImmediately>{secondaryText}</P>
+                <H2 appearImmediately delay={calcAnimationDelay(1)}>
+                  {primaryText}
+                </H2>
+                <P appearImmediately delay={calcAnimationDelay(2)}>
+                  {secondaryText}
+                </P>
                 <LinkWithLine wrapperClassName={styles.linkWithLine}>
                   view more
                 </LinkWithLine>
@@ -65,11 +80,27 @@ function GreetingScreen() {
           ))}
         </Swiper>
       )}
-      <Link href="#" className={styles.languageChange}>
+      <Link
+        href="#"
+        style={{
+          animationDelay: `${calcAnimationDelay(3)}s`,
+        }}
+        className={classNames(styles.languageChange, "textAppear")}
+      >
         en
       </Link>
-      <div className={styles.swiperPaginationWrapper} />
-      <Socials className={styles.socials} />
+      <div
+        style={{
+          animationDelay: `${calcAnimationDelay(3)}s`,
+        }}
+        className={classNames(styles.swiperPaginationWrapper, "textAppear")}
+      />
+      <Socials
+        style={{
+          animationDelay: `${calcAnimationDelay(3)}s`,
+        }}
+        className={classNames(styles.socials, "textAppear")}
+      />
       <Swiper
         className={styles.controlledSwiper}
         onSwiper={setImageSwiper}

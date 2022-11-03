@@ -49,18 +49,18 @@ function Header() {
       )}
     >
       <div>
-        <Burger className={styles.burger} />
-        <Logo className={styles.logo} />
+        <Burger className={classNames(styles.burger, "textAppear")} />
+        <Logo className={classNames(styles.logo, "textAppear")} />
       </div>
       <div>
         <nav>
           {navLinks.map(([name, url]) => (
-            <Link key={url} href={url}>
+            <Link key={url} href={url} className="textAppear">
               {name}
             </Link>
           ))}
         </nav>
-        <CtaLink href="#" className={styles.cta} />
+        <CtaLink href="#" className={classNames(styles.cta, "textAppear")} />
       </div>
     </header>
   )

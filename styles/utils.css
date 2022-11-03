@@ -1,0 +1,12 @@
+.textAppear {
+  animation-name: textAppear;
+  animation-duration: 1.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes textAppear {
+  from {
+    opacity: 0;
+    transform: translate(0, -3rem);
+  }
+}

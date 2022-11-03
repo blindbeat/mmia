@@ -2,8 +2,6 @@
   animation-name: appear;
   animation-duration: 1.25s;
   animation-play-state: paused;
-  animation-timing-function: cubic-bezier(0.25, 0.53, 0.45, 0.87);
-  /*animation-iteration-count: infinite;*/
   animation-fill-mode: both;
 }
 

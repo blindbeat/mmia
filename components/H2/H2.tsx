@@ -8,11 +8,13 @@ import { triggerDistance } from "utils"
 interface Props extends ComponentPropsWithoutRef<"h2"> {
   children: string
   appearImmediately?: boolean
+  delay?: number
 }
 
 function H2({
   children,
   className,
+  delay = 0,
   appearImmediately = false,
   ...rest
 }: Props) {
@@ -36,9 +38,9 @@ function H2({
 
       line.before(div)
       div.append(line)
-      line.style.animationDelay = `${index * 0.1}s`
+      line.style.animationDelay = `${delay + index * 0.1}s`
     })
-  }, [])
+  }, [delay])
 
   return (
     <h2

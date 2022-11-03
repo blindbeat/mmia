@@ -9,19 +9,21 @@
   grid-template-rows: 1fr calc(var(--heading-h) - var(--sm));
 }
 
-.allProjectsLink,
+.allProjectsLinkWrapper {
+  align-self: center;
+  margin-left: -1rem;
+}
+
+.allProjectsLinkWrapper,
 .languageChange {
-  padding: 1rem;
   text-transform: uppercase;
   opacity: 0.7;
   justify-self: start;
 }
 
 .allProjectsLink {
-  position: relative;
   z-index: 2;
-  align-self: center;
-  margin-left: -1rem;
+  padding: 1rem;
   transform: rotate(180deg);
   text-orientation: sideways;
   writing-mode: vertical-lr;
@@ -30,6 +32,7 @@
 .languageChange {
   margin-bottom: -1rem;
   margin-left: -1rem;
+  padding: 1rem;
 }
 
 .swiper {

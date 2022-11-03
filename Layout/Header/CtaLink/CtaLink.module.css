@@ -2,19 +2,26 @@
   position: relative;
 }
 
-.content svg {
+.line {
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
   width: 100%;
 }
 
-.content svg,
-.content path {
+.paused {
+  animation-play-state: paused;
+}
+
+.running {
+  animation-play-state: running;
+}
+
+.line path {
   animation-play-state: inherit;
 }
 
-.content path {
+.line path {
   transition: stroke-dashoffset ease-in-out 1.5s;
   animation-name: lineDraw;
   animation-duration: 2s;

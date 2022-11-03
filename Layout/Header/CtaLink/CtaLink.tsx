@@ -14,15 +14,17 @@ function CtaLink({
   return (
     <Link
       className={classNames(styles.content, className)}
-      style={{
-        animationPlayState,
-      }}
       onMouseEnter={() => setAnimationPlayState("running")}
       onAnimationIteration={() => setAnimationPlayState("paused")}
       {...rest}
     >
       drop request
-      <CtaLine />
+      <CtaLine
+        className={classNames(
+          styles.line,
+          animationPlayState === "paused" ? styles.paused : styles.running
+        )}
+      />
     </Link>
   )
 }
