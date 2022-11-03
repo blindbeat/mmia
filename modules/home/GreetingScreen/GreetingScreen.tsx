@@ -28,15 +28,16 @@ const baseDelay = 0.4
 const delayBetweenAppears = 0.4
 const calcAnimationDelay = (showingOrder: number) =>
   baseDelay + showingOrder * delayBetweenAppears
+const createAnimationDelayStyle = (showingOrder: number) => ({
+  animationDelay: `${calcAnimationDelay(showingOrder)}s`,
+})
 
 function GreetingScreen() {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <div
-        style={{
-          animationDelay: `${calcAnimationDelay(4)}s`,
-        }}
+        style={createAnimationDelayStyle(4)}
         className={classNames(styles.allProjectsLinkWrapper, "textAppear")}
       >
         <Link href="#" className={styles.allProjectsLink}>
@@ -82,23 +83,17 @@ function GreetingScreen() {
       )}
       <Link
         href="#"
-        style={{
-          animationDelay: `${calcAnimationDelay(3)}s`,
-        }}
+        style={createAnimationDelayStyle(3)}
         className={classNames(styles.languageChange, "textAppear")}
       >
         en
       </Link>
       <div
-        style={{
-          animationDelay: `${calcAnimationDelay(3)}s`,
-        }}
+        style={createAnimationDelayStyle(3)}
         className={classNames(styles.swiperPaginationWrapper, "textAppear")}
       />
       <Socials
-        style={{
-          animationDelay: `${calcAnimationDelay(3)}s`,
-        }}
+        style={createAnimationDelayStyle(3)}
         className={classNames(styles.socials, "textAppear")}
       />
       <Swiper
