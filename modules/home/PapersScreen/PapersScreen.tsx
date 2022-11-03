@@ -5,7 +5,7 @@ import Image from "next/image"
 import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
 import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
-import Bubble from "modules/home/PapersScreen/Bubble"
+import Bubble from "./Bubble"
 import H2 from "components/H2"
 import P from "components/P"
 

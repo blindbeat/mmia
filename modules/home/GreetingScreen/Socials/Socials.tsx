@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef } from "react"
 import classNames from "classnames"
-import styles from "modules/home/GreetingScreen/Socials/Socials.module.css"
+import styles from "./Socials.module.css"
+
 const links = ["ig", "be", "fb", "yt"]
 
 function Socials({ className, ...rest }: ComponentPropsWithoutRef<"div">) {
