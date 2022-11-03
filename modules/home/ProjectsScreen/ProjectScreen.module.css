@@ -19,6 +19,8 @@
 }
 
 .textWrapper h2 {
+  overflow: hidden;
+  max-height: 3.25em;
   margin-bottom: var(--2xl);
 }
 
