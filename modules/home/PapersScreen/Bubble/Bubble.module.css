@@ -7,7 +7,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   padding: 2.25rem;
   cursor: pointer;
@@ -18,11 +17,11 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   aspect-ratio: 1/1;
-  gap: 1.25rem;
 }
 
 .bubble:after {
   position: absolute;
+  z-index: -1;
   top: 0;
   right: 0;
   bottom: 0;
@@ -66,5 +65,15 @@
 
   .bubbleIndex {
     --bottomMargin: 1rem;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .bubble {
+    padding: 0.5rem;
+  }
+
+  .bubble .bubbleText {
+    max-width: 11.5em;
   }
 }

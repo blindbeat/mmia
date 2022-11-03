@@ -35,14 +35,16 @@ function About() {
         </Link>
       </div>
       <div className={styles.copyright}>
-        aimm © copyright 2020. <span>all rights reserved</span>
+        <span>aimm © copyright 2020.</span>{" "}
+        <span className={styles.textWithOpacity}>all rights reserved</span>
       </div>
       <div className={styles.policies}>
         <Link href="#">privacy policy</Link>
         <Link href="#">terms of use</Link>
       </div>
       <div className={styles.developedBy}>
-        <span>developed by</span> <Link href="#">black fire</Link>
+        <span className={styles.textWithOpacity}>developed by</span>{" "}
+        <Link href="#">black fire</Link>
       </div>
     </div>
   )

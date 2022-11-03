@@ -12,6 +12,7 @@
   --accentColor: #000;
   --transitionTime: var(--ts);
   grid-template-columns: repeat(2, 1fr);
+  --linkPadding: 1rem;
 }
 
 .content.hidden {
@@ -37,11 +38,12 @@
 
 .content nav {
   display: flex;
-  gap: calc(var(--2xl) - 1rem);
+  --desirableGap: var(--2xl);
+  gap: calc(var(--desirableGap) - calc(var(--linkPadding) * 2));
 }
 
 .content nav a {
-  padding: 1rem;
+  padding: var(--linkPadding);
   transition: opacity var(--transitionTime),
     border-bottom-color var(--transitionTime);
   opacity: 0.7;
@@ -70,6 +72,21 @@
   stroke: var(--accentColor);
 }
 
+.cta {
+  padding: var(--linkPadding);
+}
+
 .cta path {
   stroke: var(--accentColor);
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .content {
+    padding: calc(var(--sm) - 0.5rem) var(--2xl);
+    --linkPadding: 0.5rem;
+  }
+
+  .content nav {
+    --desirableGap: var(--lg);
+  }
 }

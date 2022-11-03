@@ -1,18 +1,18 @@
 .swiper {
+  --desctiptionFontSize: 1.5rem;
+  --rowGap: var(--2xs);
 }
 
 .slide {
   display: grid;
-  width: min-content;
-  padding-left: 2rem;
+  width: min(50vw, 55rem);
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
-  gap: var(--2xs) var(--4xs);
+  gap: var(--rowGap) var(--4xs);
 }
 
 .imageContainer {
   overflow: hidden;
-  width: 53.5rem;
   aspect-ratio: 1 / 0.625;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: var(--desctiptionFontSize);
   font-weight: 300;
   display: block;
   height: 1.5rem;
@@ -48,9 +48,14 @@
   line-height: 0;
   position: absolute;
   z-index: 1;
-  top: calc(50% - 1.75rem);
-  padding: 0 1.375rem;
+  top: calc(50% - var(--desctiptionFontSize) * 1 / 2 - var(--rowGap) * 1 / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lg);
+  padding: 0;
   cursor: pointer;
+  transform: translateY(-50%);
   border: none;
   border-radius: 50%;
   background: white;
@@ -67,20 +72,21 @@
 }
 
 .arrow {
-  height: 1.125rem;
-  transform: translate(-12.5%, 0);
+  height: calc(1 / 3 * 100%);
 }
 
 @media (max-width: calc(120em - 1px)) {
-  .description {
-    font-size: 1.25rem;
+  .swiper {
+    --desctiptionFontSize: 1.25rem;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .swiper {
+    --desctiptionFontSize: 1rem;
   }
 
-  .imageContainer {
-    width: 40rem;
-  }
-
-  .swiperButton {
-    padding: 0 1.125rem;
+  .slide {
+    column-gap: 0.625rem;
   }
 }

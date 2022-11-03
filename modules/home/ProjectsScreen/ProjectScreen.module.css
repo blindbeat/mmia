@@ -1,4 +1,7 @@
 .wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding-right: 0;
   padding-left: 0;
 }
@@ -6,7 +9,7 @@
 .textWrapper {
   display: grid;
   max-width: var(--bp-xl);
-  margin: 0 auto var(--xl);
+  margin-bottom: var(--xl);
   padding: 0 var(--2xl);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -29,9 +32,17 @@
 }
 
 .swiper {
+  width: 100%;
   margin-bottom: var(--2xl);
 }
 
-.link {
-  margin: auto;
+@media (max-width: calc(90em - 1px)) {
+  .textWrapper {
+    margin-bottom: 5.25rem;
+  }
+
+  .textWrapper p {
+    max-width: calc(5 / 6 * 100%);
+    grid-column: 2;
+  }
 }

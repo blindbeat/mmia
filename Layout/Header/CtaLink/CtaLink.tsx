@@ -18,13 +18,15 @@ function CtaLink({
       onAnimationIteration={() => setAnimationPlayState("paused")}
       {...rest}
     >
-      drop request
-      <CtaLine
-        className={classNames(
-          styles.line,
-          animationPlayState === "paused" ? styles.paused : styles.running
-        )}
-      />
+      <span>
+        drop request
+        <CtaLine
+          className={classNames(
+            styles.line,
+            animationPlayState === "paused" ? styles.paused : styles.running
+          )}
+        />
+      </span>
     </Link>
   )
 }

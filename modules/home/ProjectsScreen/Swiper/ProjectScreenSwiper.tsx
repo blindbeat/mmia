@@ -24,7 +24,17 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
       slidesPerView="auto"
       centeredSlides
       loop
-      spaceBetween={140}
+      breakpoints={{
+        1920: {
+          spaceBetween: 138,
+        },
+        1440: {
+          spaceBetween: 118,
+        },
+        1024: {
+          spaceBetween: 78,
+        },
+      }}
       className={classNames(styles.swiper, className)}
       {...rest}
     >

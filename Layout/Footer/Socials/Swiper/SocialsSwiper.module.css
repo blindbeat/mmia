@@ -10,7 +10,8 @@
 
 .slide {
   width: var(--width);
-  --width: 25.375rem;
+  /*--width: 25.375rem;*/
+  --width: calc(min(25vw, 25rem));
 }
 
 .slide img {
@@ -23,10 +24,4 @@
 
 .slide:nth-child(even) {
   width: calc(var(--width) * 0.75);
-}
-
-@media (max-width: calc(120em - 1px)) {
-  .slide {
-    --width: 19.5rem;
-  }
 }

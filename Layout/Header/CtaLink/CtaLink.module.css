@@ -1,12 +1,15 @@
 .content {
+}
+
+.content span {
   position: relative;
 }
 
 .line {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + var(--gapToLine));
   left: 0;
-  width: 100%;
+  --gapToLine: 6px;
 }
 
 .paused {
@@ -38,5 +41,11 @@
 
   to {
     stroke-dashoffset: 270;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .line {
+    --gapToLine: 3px;
   }
 }

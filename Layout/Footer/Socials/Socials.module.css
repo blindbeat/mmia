@@ -3,9 +3,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-  padding-right: 0;
-  padding-left: 0;
+  padding: var(--4xl) 0;
   color: white;
 }
 
@@ -35,12 +33,12 @@
   align-items: center;
   justify-content: center;
   width: 3.375rem;
-  height: 3.375rem;
   transition: border var(--ts);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
+  aspect-ratio: 1/1;
 }
 
 .socialLinks a:hover {
@@ -49,4 +47,16 @@
 
 .backgroundImage {
   filter: brightness(0.25);
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .socialLinks a {
+    width: var(--lg);
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .socialLinks a {
+    width: 2.75rem;
+  }
 }

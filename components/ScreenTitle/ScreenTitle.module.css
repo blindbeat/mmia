@@ -21,3 +21,13 @@
     gap: 10px;
   }
 }
+
+@media (max-width: calc(120em - 1px)) {
+  .square {
+    --squareSide: 8px;
+  }
+
+  .screenTitle {
+    gap: 8px;
+  }
+}

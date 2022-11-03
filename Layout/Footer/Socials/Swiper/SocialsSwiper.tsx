@@ -21,6 +21,17 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
       loop
       spaceBetween={64}
       speed={10000}
+      breakpoints={{
+        1920: {
+          spaceBetween: 64,
+        },
+        1440: {
+          spaceBetween: 48,
+        },
+        1024: {
+          spaceBetween: 40,
+        },
+      }}
       autoplay={{
         delay: 1,
         disableOnInteraction: true,
