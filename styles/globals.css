@@ -13,7 +13,9 @@
   --4xs: 1rem;
   --5xs: 0.625rem;
 
-  --greeting-screen-first-line: 18.5rem;
+  --linkPadding: 1rem;
+
+  --wrapperPaddingX: var(--2xl);
 
   --ts: 0.3s;
   --tm: 0.6s;
@@ -27,7 +29,7 @@
 html,
 body {
   font-family: -apple-system, Helvetica, BlinkMacSystemFont, Segoe UI, Roboto,
-  Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin: 0;
   padding: 0;
   letter-spacing: 0.04em;
@@ -73,7 +75,7 @@ a {
     --4xs: 0.75rem;
     --5xs: 0.5rem;
 
-    --greeting-screen-first-line: 14rem;
+    --wrapperPaddingX: 4rem;
   }
 
   body {
@@ -97,10 +99,17 @@ a {
     --sm: 1.5rem;
     --xs: 1.25rem;
     --2xs: 1rem;
-    --3xs: 1rem;
-    --4xs: 0.75rem;
-    --5xs: 0.5rem;
 
-    --greeting-screen-first-line: 9.75rem;
+    --wrapperPaddingX: 3.5rem;
+
+    --linkPadding: 0.75rem;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  :root {
+    --5xl: 7.5rem;
+
+    --wrapperPaddingX: 3rem;
   }
 }

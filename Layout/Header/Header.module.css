@@ -2,17 +2,17 @@
   position: fixed;
   z-index: 10;
   display: grid;
+  align-items: center;
   width: 100%;
-  padding: calc(var(--sm) - 1rem) var(--2xl);
+  padding: calc(var(--sm) - var(--linkPadding)) var(--wrapperPaddingX);
   transition: background-color var(--transitionTime),
     color var(--transitionTime), transform var(--transitionTime);
   text-transform: uppercase;
   color: var(--accentColor);
-  background-color: #fff;
-  --accentColor: #000;
+  background-color: white;
+  --accentColor: black;
   --transitionTime: var(--ts);
-  grid-template-columns: repeat(2, 1fr);
-  --linkPadding: 1rem;
+  grid-template-columns: 2fr 4fr 4fr 2fr;
 }
 
 .content.hidden {
@@ -21,19 +21,7 @@
 
 .content.transparent {
   background-color: transparent;
-  --accentColor: #fff;
-}
-
-.content > div:first-child {
-  display: grid;
-  align-items: center;
-  grid-template-columns: var(--greeting-screen-first-line) auto;
-}
-
-.content > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  --accentColor: white;
 }
 
 .content nav {
@@ -72,21 +60,43 @@
   stroke: var(--accentColor);
 }
 
-.cta {
+.corner {
+  margin-right: calc(var(--linkPadding) * -1);
   padding: var(--linkPadding);
+  justify-self: end;
 }
 
-.cta path {
+.corner path {
   stroke: var(--accentColor);
 }
 
 @media (max-width: calc(90em - 1px)) {
   .content {
-    padding: calc(var(--sm) - 0.5rem) var(--2xl);
-    --linkPadding: 0.5rem;
+    grid-template-columns: calc((100vw - var(--wrapperPaddingX) * 2) * 2 / 12) auto 1fr auto;
   }
 
   .content nav {
     --desirableGap: var(--lg);
+    justify-self: center;
+  }
+
+  .logo,
+  .burger {
+    height: var(--sm);
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .logo {
+    width: 100%;
+    justify-self: center;
+  }
+
+  .content nav {
+    display: none;
   }
 }

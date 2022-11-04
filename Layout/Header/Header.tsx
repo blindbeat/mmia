@@ -5,6 +5,7 @@ import Link from "next/link"
 import CtaLink from "Layout/Header/CtaLink"
 import { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
+import LanguageChangeButton from "components/LanguageChangeButton"
 
 const navLinks: [name: string, url: string][] = [
   ["projects", "projects"],
@@ -12,17 +13,19 @@ const navLinks: [name: string, url: string][] = [
   ["contact", "contact"],
 ]
 
+const threshold = 768
+
 const defineTransparency = (scrollY: number) => scrollY === 0
+const defineExtendsThreshold = (windowWidth: number) => windowWidth > threshold
 
 function Header() {
-  const [transparent, setTransparent] = useState(
-    typeof window !== "undefined" ? defineTransparency(window.scrollY) : true
-  )
-  const [hidden, setHidden] = useState(false)
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
 
+  const [transparent, setTransparent] = useState(true)
+  const [hidden, setHidden] = useState(false)
+  const [extendsThreshold, setExtendsThreshold] = useState(false)
   const transparencyController = () => {
     setTransparent(defineTransparency(window.scrollY))
   }
@@ -33,12 +36,24 @@ function Header() {
     lastScrollRef.current = window.scrollY
   }
 
+  const thresholdController = () => {
+    setExtendsThreshold(defineExtendsThreshold(window.innerWidth))
+  }
+
   useEffect(() => {
+    transparencyController()
+    hideController()
+    thresholdController()
+
     window.addEventListener("scroll", () => {
       transparencyController()
       hideController()
     })
+
+    window.addEventListener("resize", thresholdController)
   }, [])
+
+  const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
 
   return (
     <header
@@ -48,20 +63,19 @@ function Header() {
         hidden && styles.hidden
       )}
     >
-      <div>
-        <Burger className={classNames(styles.burger, "textAppear")} />
-        <Logo className={classNames(styles.logo, "textAppear")} />
-      </div>
-      <div>
-        <nav>
-          {navLinks.map(([name, url]) => (
-            <Link key={url} href={url} className="textAppear">
-              {name}
-            </Link>
-          ))}
-        </nav>
-        <CtaLink href="#" className={classNames(styles.cta, "textAppear")} />
-      </div>
+      <Burger className={classNames(styles.burger, "textAppear")} />
+      <Logo className={classNames(styles.logo, "textAppear")} />
+      <nav>
+        {navLinks.map(([name, url]) => (
+          <Link key={url} href={url} className="textAppear">
+            {name}
+          </Link>
+        ))}
+      </nav>
+      <CornerComponent
+        href="#"
+        className={classNames(styles.corner, "textAppear")}
+      />
     </header>
   )
 }

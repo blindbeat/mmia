@@ -1,8 +1,7 @@
 @layer generalStyles {
   .wrapper {
     overflow: hidden;
-    --paddingX: var(--2xl);
-    padding: var(--4xl) var(--paddingX) var(--5xl);
+    padding: var(--4xl) var(--wrapperPaddingX) var(--5xl);
   }
 
   .backgroundImage {
@@ -11,17 +10,5 @@
     z-index: -1;
     object-fit: cover;
     object-position: center;
-  }
-
-  @media (max-width: calc(120em - 1px)) {
-    .wrapper {
-      --paddingX: 4rem;
-    }
-  }
-
-  @media (max-width: calc(90em - 1px)) {
-    .wrapper {
-      --paddingX: 3.5rem;
-    }
   }
 }

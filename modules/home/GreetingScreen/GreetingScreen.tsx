@@ -16,6 +16,7 @@ import H2 from "components/H2"
 import { useState } from "react"
 import "swiper/css/effect-fade"
 import { Swiper as SwiperClass } from "swiper/types"
+import LanguageChangeButton from "components/LanguageChangeButton"
 
 const slides = new Array(4).fill({
   primaryText: "we create impressive architecture and modern interiors",
@@ -46,7 +47,7 @@ function GreetingScreen() {
       </div>
       {imageSwiper && (
         <Swiper
-          autoplay
+          // autoplay
           modules={[Pagination, Autoplay, Controller]}
           controller={{ control: imageSwiper }}
           pagination={{
@@ -59,7 +60,6 @@ function GreetingScreen() {
               return `<span class=${className}>${index + 1}</span>`
             },
           }}
-          spaceBetween={200}
           loop
           speed={1000}
           className={styles.swiper}
@@ -81,13 +81,10 @@ function GreetingScreen() {
           ))}
         </Swiper>
       )}
-      <Link
-        href="#"
+      <LanguageChangeButton
         style={createAnimationDelayStyle(3)}
         className={classNames(styles.languageChange, "textAppear")}
-      >
-        en
-      </Link>
+      />
       <div
         style={createAnimationDelayStyle(3)}
         className={classNames(styles.swiperPaginationWrapper, "textAppear")}

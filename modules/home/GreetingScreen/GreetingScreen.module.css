@@ -1,11 +1,12 @@
 .wrapper {
   position: relative;
   display: grid;
+  min-height: 100vh;
   padding-top: var(--heading-h);
   padding-bottom: var(--sm);
   color: white;
   --heading-h: 6rem;
-  grid-template-columns: var(--greeting-screen-first-line) 1fr auto;
+  grid-template-columns: 2fr 8fr 2fr;
   grid-template-rows: 1fr calc(var(--heading-h) - var(--sm));
 }
 
@@ -40,9 +41,9 @@
   overflow: visible;
   align-self: center;
   flex-direction: column;
-  width: min(105rem, 75%);
+  width: min(105rem, 80%);
   margin: unset;
-  grid-column: 2 / span 3;
+  grid-column: 2 / span 4;
 }
 
 .slide {
@@ -58,13 +59,11 @@
   display: flex;
   align-items: start;
   flex-direction: column;
-  max-width: 60rem;
+  max-width: 80%;
 }
 
 .slideContent h2 {
   font-size: var(--2xl);
-  font-weight: 300;
-  line-height: 115%;
   margin-bottom: var(--xs);
   transition: color ease-in-out 1s, opacity ease-in-out var(--tl);
   opacity: 0.2;
@@ -73,7 +72,7 @@
 }
 
 .slideContent p {
-  max-width: 30rem;
+  max-width: 40%;
   margin-bottom: var(--md);
 }
 
@@ -98,13 +97,13 @@
 
 .swiperPagination {
   display: flex;
-  width: 30rem;
+  width: 100%;
 }
 
 .bullet {
   font-size: 0.875rem;
   flex-grow: 1;
-  padding: 1rem;
+  padding: var(--linkPadding);
   cursor: pointer;
   transition: border-bottom-color ease-in-out var(--ts),
     color ease-in-out var(--ts);
@@ -130,6 +129,14 @@
   align-self: end;
 }
 
+.socials {
+  justify-self: end;
+}
+
+.swiperPaginationWrapper {
+  width: calc(1 / 3 * 100%);
+}
+
 .controlledSwiper {
   position: absolute;
   z-index: -1;
@@ -142,5 +149,40 @@
 @media (max-width: calc(120em - 1px)) {
   .bullet {
     font-size: 0.625rem;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .slideContent p {
+    max-width: 50%;
+  }
+
+  .swiperPaginationWrapper {
+    width: 50%;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr calc(var(--heading-h) - var(--sm));
+  }
+
+  .allProjectsLinkWrapper,
+  .languageChange {
+    display: none;
+  }
+
+  .swiper {
+    width: 85%;
+    grid-column: 1 / span 2;
+  }
+
+  .slideContent p {
+    max-width: 60%;
+  }
+
+  .swiperPaginationWrapper {
+    width: 100%;
   }
 }
