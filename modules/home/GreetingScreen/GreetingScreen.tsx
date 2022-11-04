@@ -57,7 +57,7 @@ function GreetingScreen() {
             bulletClass: styles.bullet,
             bulletActiveClass: styles.bulletActive,
             renderBullet: (index, className) => {
-              return `<span class=${className}>${index + 1}</span>`
+              return `<span class=${className}>0${index + 1}</span>`
             },
           }}
           loop

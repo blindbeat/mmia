@@ -26,7 +26,7 @@ function About() {
         ))}
       </div>
       <div className={styles.contacts}>
-        <span className={styles.blockTitle}>pages</span>
+        <span className={styles.blockTitle}>contacts</span>
         <Link key={email} href={`mailto:${email}`}>
           {email}
         </Link>

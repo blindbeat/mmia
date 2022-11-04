@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 0.5rem;
+  white-space: nowrap;
   gap: var(--2xs);
 }
 
@@ -75,5 +76,12 @@ span.textWithOpacity {
   .developedBy {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .policies {
+    flex-direction: column;
+    gap: unset;
   }
 }

@@ -33,6 +33,7 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.04em;
+  /*scroll-behavior: smooth;*/
 }
 
 h1,
@@ -111,5 +112,9 @@ a {
     --5xl: 7.5rem;
 
     --wrapperPaddingX: 3rem;
+  }
+
+  h2 {
+    font-size: var(--md);
   }
 }

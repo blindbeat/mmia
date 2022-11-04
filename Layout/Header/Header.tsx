@@ -13,7 +13,7 @@ const navLinks: [name: string, url: string][] = [
   ["contact", "contact"],
 ]
 
-const threshold = 768
+const threshold = 1024
 
 const defineTransparency = (scrollY: number) => scrollY === 0
 const defineExtendsThreshold = (windowWidth: number) => windowWidth > threshold
@@ -64,7 +64,9 @@ function Header() {
       )}
     >
       <Burger className={classNames(styles.burger, "textAppear")} />
-      <Logo className={classNames(styles.logo, "textAppear")} />
+      <Link href="/" className={classNames(styles.logo, "textAppear")}>
+        <Logo />
+      </Link>
       <nav>
         {navLinks.map(([name, url]) => (
           <Link key={url} href={url} className="textAppear">

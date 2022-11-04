@@ -1,6 +1,7 @@
 .swiper {
   --desctiptionFontSize: 1.5rem;
   --rowGap: var(--2xs);
+  --descriptionMb: var(--4xs);
 }
 
 .slide {
@@ -40,7 +41,6 @@
   font-size: var(--desctiptionFontSize);
   font-weight: 300;
   display: block;
-  height: 1.5rem;
   opacity: 1;
 }
 
@@ -68,7 +68,7 @@
 
 .next {
   right: var(--2xl);
-  transform: scaleX(-1);
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .arrow {
@@ -88,5 +88,36 @@
 
   .slide {
     column-gap: 0.625rem;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .slide {
+    width: 60vw;
+    gap: unset;
+    grid-template-columns: unset;
+  }
+
+  .slide .tags {
+    grid-row: 3;
+    writing-mode: unset;
+  }
+
+  .slide .imageContainer {
+    margin-bottom: var(--rowGap);
+  }
+
+  .slide .description {
+    margin-bottom: var(--descriptionMb);
+  }
+
+  .swiperButton {
+    top: calc(
+      50% -
+        (
+          var(--rowGap) + var(--desctiptionFontSize) + var(--descriptionMb) +
+            1em
+        ) * 1 / 2
+    );
   }
 }

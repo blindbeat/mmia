@@ -43,12 +43,13 @@
   border-bottom-color: white;
 }
 
-.logo {
-  height: var(--2xs);
-}
-
+.logo,
 .burger {
   height: var(--xs);
+}
+
+.logo svg {
+  height: 100%;
 }
 
 .logo path {

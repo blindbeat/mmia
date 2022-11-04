@@ -8,10 +8,10 @@ function ScreenTitle({
   ...rest
 }: ComponentPropsWithoutRef<"span">) {
   return (
-    <span {...rest} className={classNames(styles.screenTitle, className)}>
+    <div {...rest} className={classNames(styles.screenTitle, className)}>
       <div className={styles.square}></div>
       {children}
-    </span>
+    </div>
   )
 }
 

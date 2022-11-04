@@ -64,6 +64,7 @@
 
 .imageWrapper {
   position: relative;
+  height: min-content;
 }
 
 .founderPhoto {
@@ -77,17 +78,16 @@
 .backdropPhoto {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: var(--lg);
   width: auto;
   height: 50%;
-  margin-bottom: var(--lg);
   transition: transform cubic-bezier(0.11, 0.71, 0.36, 0.94) 1.5s;
-  transform: translate(80%);
+  transform: translateX(80%);
   transform-origin: bottom left;
 }
 
 .backdropPhoto.hiding {
-  transform: translate(40%, -10%) rotate(-12deg);
+  transform: translateX(40%) rotate(-12deg);
 }
 
 .founderTitle {
@@ -110,7 +110,57 @@
     margin-bottom: 1.75rem;
   }
 
+  .text p {
+    max-width: 20em;
+  }
+
   .founderTitle {
     margin-left: 0.625rem;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    justify-items: start;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content h2 {
+    width: unset;
+    text-align: unset;
+  }
+
+  .imageWrapper {
+  }
+
+  .founderPhoto {
+    width: 100%;
+  }
+
+  .backdropPhoto {
+    bottom: var(--sm);
+    width: 110%;
+    height: 60%;
+    transform: translateX(90%);
+    object-fit: cover;
+  }
+
+  .content .text {
+    display: grid;
+    margin-top: var(--lg);
+    margin-right: unset;
+    margin-bottom: unset;
+    column-gap: var(--sm);
+    row-gap: var(--md);
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: 4;
+    grid-column: span 2;
+  }
+
+  .content .text p {
+    max-width: unset;
+    margin-right: unset;
+    margin-bottom: unset;
+    text-align: start;
   }
 }

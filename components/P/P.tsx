@@ -2,7 +2,6 @@ import { ComponentPropsWithoutRef } from "react"
 import styles from "./P.module.css"
 import classNames from "classnames"
 import { useInView } from "react-intersection-observer"
-import { triggerDistance } from "utils"
 
 interface Props extends ComponentPropsWithoutRef<"p"> {
   appearImmediately?: boolean
@@ -19,9 +18,11 @@ function P({
 }: Props) {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: `-${triggerDistance}px`,
+    // rootMargin: `-${triggerDistance}px`,
     triggerOnce: true,
   })
+
+  console.log(inView)
 
   return (
     <p

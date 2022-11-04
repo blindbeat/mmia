@@ -147,6 +147,10 @@
 }
 
 @media (max-width: calc(120em - 1px)) {
+  .swiper {
+    width: 95%;
+  }
+
   .bullet {
     font-size: 0.625rem;
   }
@@ -174,8 +178,7 @@
   }
 
   .swiper {
-    width: 85%;
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 3;
   }
 
   .slideContent p {

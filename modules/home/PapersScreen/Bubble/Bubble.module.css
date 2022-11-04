@@ -77,3 +77,9 @@
     max-width: 11.5em;
   }
 }
+
+@media (max-width: calc(64em - 1px)) {
+  .bubbleWrapper {
+    flex-grow: 1;
+  }
+}

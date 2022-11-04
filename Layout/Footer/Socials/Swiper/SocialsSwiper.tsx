@@ -28,7 +28,7 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
         1440: {
           spaceBetween: 48,
         },
-        1024: {
+        768: {
           spaceBetween: 40,
         },
       }}

@@ -34,6 +34,9 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
         1024: {
           spaceBetween: 78,
         },
+        768: {
+          spaceBetween: 58,
+        },
       }}
       className={classNames(styles.swiper, className)}
       {...rest}
