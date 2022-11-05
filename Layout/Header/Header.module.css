@@ -52,8 +52,11 @@
   height: 100%;
 }
 
-.logo path {
+.logo path,
+.logo rect,
+.logo mask {
   fill: var(--accentColor);
+  stroke: var(--accentColor);
 }
 
 .burger line,

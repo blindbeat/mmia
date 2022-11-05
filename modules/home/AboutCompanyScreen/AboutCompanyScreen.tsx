@@ -3,12 +3,13 @@ import LinkWithLine from "components/LinkWithLine"
 import Image from "next/image"
 import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
 import backdropPhoto from "assets/dummyPics/backdropPhoto.jpg"
+import BackgroundSvg from "./assets/backgroundLines.svg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import baseStyles from "modules/home/Home.module.css"
 import ScreenTitle from "components/ScreenTitle"
-import H2 from "components/H2"
 import P from "components/P"
+import useAnimateLine from "hooks/useAnimateLine"
 
 const title = "about company"
 const heading =
@@ -23,11 +24,13 @@ function AboutCompanyScreen() {
     triggerOnce: true,
   })
 
+  const { ref: bgRef, style: bgStyle } = useAnimateLine()
+
   return (
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <ScreenTitle className={styles.screenTitle}>{title}</ScreenTitle>
-        <H2 className={styles.title}>{heading}</H2>
+        <h2 className={styles.title}>{heading}</h2>
         <div ref={ref} className={styles.text}>
           {paragraph.map((text, index) => (
             <P key={index}>{text}</P>
@@ -49,6 +52,11 @@ function AboutCompanyScreen() {
         </div>
         <span className={styles.founderTitle}>( Company founder )</span>
       </div>
+      <BackgroundSvg
+        ref={bgRef}
+        style={bgStyle}
+        className={styles.backgroundSvg}
+      />
     </div>
   )
 }

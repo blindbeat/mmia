@@ -3,6 +3,8 @@ import baseStyles from "modules/home/Home.module.css"
 import LinkWithLine from "components/LinkWithLine"
 import Link from "next/link"
 import classNames from "classnames"
+import BackgroundSvg from "./assets/line.svg"
+import useAnimateLine from "hooks/useAnimateLine"
 
 const ctaText = "Let’s talk about  your project!"
 
@@ -11,6 +13,8 @@ const email = "info@aimm-group.com"
 const number = "+38 (044) 228 91 59"
 
 function About() {
+  const { ref: bgRef, style: bgStyle } = useAnimateLine()
+
   return (
     <div className={classNames(styles.content, baseStyles.wrapper)}>
       <div className={styles.ctaBlock}>
@@ -46,6 +50,11 @@ function About() {
         <span className={styles.textWithOpacity}>developed by</span>{" "}
         <Link href="#">black fire</Link>
       </div>
+      <BackgroundSvg
+        ref={bgRef}
+        style={bgStyle}
+        className={styles.backgroundSvg}
+      />
     </div>
   )
 }

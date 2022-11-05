@@ -22,8 +22,6 @@ function P({
     triggerOnce: true,
   })
 
-  console.log(inView)
-
   return (
     <p
       {...rest}

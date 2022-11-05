@@ -41,7 +41,7 @@
   overflow: visible;
   align-self: center;
   flex-direction: column;
-  width: min(105rem, 80%);
+  width: min(105rem, 85%);
   margin: unset;
   grid-column: 2 / span 4;
 }
@@ -72,7 +72,7 @@
 }
 
 .slideContent p {
-  max-width: 40%;
+  max-width: 55%;
   margin-bottom: var(--md);
 }
 
@@ -148,7 +148,7 @@
 
 @media (max-width: calc(120em - 1px)) {
   .swiper {
-    width: 95%;
+    /*width: 95%;*/
   }
 
   .bullet {
@@ -158,7 +158,7 @@
 
 @media (max-width: calc(90em - 1px)) {
   .slideContent p {
-    max-width: 50%;
+    max-width: 60%;
   }
 
   .swiperPaginationWrapper {

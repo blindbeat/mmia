@@ -50,7 +50,7 @@
 .papersWrapper {
   position: relative;
   align-self: center;
-  height: 65vh;
+  height: 85%;
   --sqrtof2: 1.41421356237;
   aspect-ratio: 1 / var(--sqrtof2);
   grid-row: span 2;

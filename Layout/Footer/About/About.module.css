@@ -1,13 +1,20 @@
 .content {
+  position: relative;
   display: grid;
   min-height: unset;
   padding-top: var(--sm);
   padding-bottom: var(--sm);
-  background-image: url("./assets/line.svg");
-  background-position: left;
-  background-size: cover;
   grid-template-columns: 2fr 1fr 1fr;
   row-gap: var(--4xl);
+}
+
+.backgroundSvg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .ctaBlock {
