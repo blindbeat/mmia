@@ -2,6 +2,7 @@ import styles from "./Bubble.module.css"
 import { ComponentPropsWithoutRef, useRef } from "react"
 import { useMove } from "@use-gesture/react"
 import { animated, useSpring } from "react-spring"
+import classNames from "classnames"
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   index: number
@@ -32,7 +33,7 @@ function calcPadding(target: HTMLDivElement) {
   ]
 }
 
-function Bubble({ index, children, ...rest }: Props) {
+function Bubble({ index, children, className, ...rest }: Props) {
   const ref = useRef<null | HTMLDivElement>(null)
   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }))
 
@@ -50,7 +51,7 @@ function Bubble({ index, children, ...rest }: Props) {
   return (
     <div
       ref={ref}
-      className={styles.bubbleWrapper}
+      className={classNames(styles.bubbleWrapper, className)}
       {...rest}
       {...bind()}
       onMouseLeave={() => api.start({ x: 0, y: 0 })}

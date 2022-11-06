@@ -3,14 +3,15 @@ import { useEffect, useState } from "react"
 function useThresholdObserver(threshold: number) {
   const [extendsThreshold, setExtendsThreshold] = useState(false)
 
-  useEffect(() => {
-    const thresholdController = () => {
-      const defineExtendsThreshold = (windowWidth: number) =>
-        windowWidth > threshold
+  const thresholdController = (e: MediaQueryListEvent) => {
+    setExtendsThreshold(e.matches)
+  }
 
-      setExtendsThreshold(defineExtendsThreshold(window.innerWidth))
-    }
-    window.addEventListener("resize", thresholdController)
+  useEffect(() => {
+    const media = window.matchMedia(`(min-width: ${threshold}px)`)
+    media.addEventListener("change", thresholdController)
+    setExtendsThreshold(media.matches)
+    return () => media.removeEventListener("change", thresholdController)
   }, [threshold])
 
   return extendsThreshold

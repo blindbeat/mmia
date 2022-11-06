@@ -39,7 +39,6 @@ function PapersScreen() {
   const nextAnimationName = useRef<AnimationName>("toLeft")
 
   const extendsThreshold = useThresholdObserver(768)
-
   const changePage = (pageIndex: number) => {
     if (pageIndex === currentPaper) return
     const animationName = nextAnimationName.current
@@ -113,6 +112,7 @@ function PapersScreen() {
               <Bubble
                 key={index}
                 index={index}
+                className={index === currentPaper ? "active-bubble" : undefined}
                 onClick={() => changePage(index)}
               >
                 {text}
@@ -123,7 +123,6 @@ function PapersScreen() {
           <Swiper
             slidesPerView={1.75}
             centeredSlides
-            slideActiveClass="active-bubble"
             modules={[FreeMode]}
             freeMode={{
               enabled: true,

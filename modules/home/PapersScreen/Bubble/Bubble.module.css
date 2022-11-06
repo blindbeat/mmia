@@ -21,7 +21,6 @@
 
 .bubble:after {
   position: absolute;
-  z-index: -1;
   top: 0;
   right: 0;
   bottom: 0;
@@ -33,11 +32,13 @@
 }
 
 .bubble:hover,
+:global(.swiper-slide-active) .bubble,
 :global(.active-bubble) .bubble {
   border-color: transparent;
 }
 
 .bubble:hover:after,
+:global(.swiper-slide-active) .bubble:after,
 :global(.active-bubble) .bubble:after {
   border-color: white;
 }

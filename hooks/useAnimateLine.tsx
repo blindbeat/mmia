@@ -5,7 +5,7 @@ function useAnimateLine() {
   const [ref, setRef] = useState<SVGSVGElement | null>(null)
   const { ref: observerRef, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.3,
   })
   const [style, setStyle] = useState<CSSProperties>({})
 
@@ -22,7 +22,7 @@ function useAnimateLine() {
     setStyle({
       strokeDasharray: lineLength,
       strokeDashoffset: inView ? 0 : lineLength,
-      transition: "stroke-dashoffset linear 3s",
+      transition: inView ? "stroke-dashoffset linear 3s" : undefined,
     })
   }, [ref, inView])
   return {

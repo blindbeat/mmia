@@ -7,16 +7,12 @@ import Image from "next/image"
 import { Navigation, Pagination } from "swiper"
 import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
-import useThresholdObserver from "hooks/useThresholdObserver"
-// import "swiper/css/pagination"
 
-const title = "Cardiological Hospital in Bryukhovichi"
+const title = "Cardiovascular Hospital in Briukhovychi"
 const tags = ["interior", "architecture"]
 const slides = [slide1, slide2, slide3]
 
 function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
-  const extendsThreshold = useThresholdObserver(768)
-  console.log(extendsThreshold)
   return (
     <Swiper
       modules={[Navigation, Pagination]}

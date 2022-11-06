@@ -47,6 +47,10 @@
   margin-bottom: var(--2xl);
 }
 
+.swiper {
+  display: none;
+}
+
 .papersWrapper {
   position: relative;
   align-self: center;
@@ -153,6 +157,16 @@
 }
 
 @media (max-width: calc(48em - 1px)) {
+  .bubblesWrapper {
+    display: none;
+  }
+
+  .swiper {
+    display: block;
+    width: 100%;
+    margin-bottom: -1rem;
+  }
+
   .wrapper {
     padding-right: 0;
     padding-left: 0;
@@ -165,10 +179,5 @@
   .text {
     width: 100%;
     padding: 0 var(--wrapperPaddingX);
-  }
-
-  .swiper {
-    width: 100%;
-    margin-bottom: -1rem;
   }
 }
