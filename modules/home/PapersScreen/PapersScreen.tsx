@@ -10,7 +10,6 @@ import H2 from "components/H2"
 import P from "components/P"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { FreeMode } from "swiper"
 
 const textHeading = "We improve the world around us and create an"
 const textParagraph =
@@ -120,16 +119,7 @@ function PapersScreen() {
             ))}
           </div>
         ) : (
-          <Swiper
-            slidesPerView={1.75}
-            centeredSlides
-            modules={[FreeMode]}
-            freeMode={{
-              enabled: true,
-              sticky: true,
-            }}
-            className={styles.swiper}
-          >
+          <Swiper slidesPerView={1.75} centeredSlides className={styles.swiper}>
             {bubbleTextArr.map((text, index) => (
               <SwiperSlide key={index}>
                 <Bubble index={index}>{text}</Bubble>
