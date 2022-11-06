@@ -25,8 +25,8 @@ const slides = new Array(4).fill({
 })
 
 const images = [image1, image2, image3, image4]
-const baseDelay = 0.4
-const delayBetweenAppears = 0.4
+const baseDelay = 0.3
+const delayBetweenAppears = 0.3
 const calcAnimationDelay = (showingOrder: number) =>
   baseDelay + showingOrder * delayBetweenAppears
 const createAnimationDelayStyle = (showingOrder: number) => ({
@@ -111,6 +111,7 @@ function GreetingScreen() {
               className={baseStyles.backgroundImage}
               src={image}
               fill
+              priority={index === 0}
               alt=""
             />
           </SwiperSlide>
