@@ -21,7 +21,7 @@ function ProjectsScreen() {
         <P>{paragraph}</P>
       </div>
       <ProjectScreenSwiper className={styles.swiper} />
-      <LinkWithLine color="black" wrapperClassName={styles.link}>
+      <LinkWithLine color="black" className={styles.link}>
         view more
       </LinkWithLine>
     </div>

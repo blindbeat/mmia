@@ -54,7 +54,7 @@ function PapersScreen() {
         <div className={styles.text}>
           <H2>{textHeading}</H2>
           <P>{textParagraph}</P>
-          <LinkWithLine color="white" wrapperClassName={styles.link}>
+          <LinkWithLine color="white" className={styles.link}>
             view more
           </LinkWithLine>
         </div>

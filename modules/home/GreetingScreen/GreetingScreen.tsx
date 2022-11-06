@@ -75,7 +75,10 @@ function GreetingScreen() {
                     {secondaryText}
                   </P>
                 </div>
-                <LinkWithLine wrapperClassName={styles.linkWithLine}>
+                <LinkWithLine
+                  className={classNames(styles.linkWithLine, "textAppear")}
+                  style={createAnimationDelayStyle(3)}
+                >
                   view more
                 </LinkWithLine>
               </div>

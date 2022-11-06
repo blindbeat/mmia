@@ -4,7 +4,6 @@ import classNames from "classnames"
 import Link from "next/link"
 
 interface Props extends ComponentPropsWithoutRef<"a"> {
-  wrapperClassName?: string
   color?: string
   children: ReactNode
 }
@@ -12,18 +11,16 @@ interface Props extends ComponentPropsWithoutRef<"a"> {
 function LinkWithLine({
   color = "white",
   className,
-  wrapperClassName,
   children,
   ...rest
 }: Props) {
   return (
-    <Link className={classNames(styles.content, wrapperClassName)} href="#">
+    <Link className={classNames(styles.content, className)} {...rest} href="#">
       <span
-        className={classNames(styles.text, className)}
+        className={classNames(styles.text)}
         style={{
           color,
         }}
-        {...rest}
       >
         {children}
       </span>

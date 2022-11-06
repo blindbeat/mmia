@@ -36,7 +36,7 @@ function AboutCompanyScreen() {
           {paragraph.map((text, index) => (
             <P key={index}>{text}</P>
           ))}
-          <LinkWithLine color="black" wrapperClassName={styles.link}>
+          <LinkWithLine color="black" className={styles.link}>
             view more
           </LinkWithLine>
         </div>

@@ -88,7 +88,7 @@
 }
 
 .slide:global(.swiper-slide-active) .pWrapper {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .slide:global(.swiper-slide-active) .linkWithLine {
