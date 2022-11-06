@@ -118,3 +118,28 @@ a {
     font-size: var(--md);
   }
 }
+
+@media (max-width: calc(48em - 1px)) {
+  :root {
+    --5xl: 6rem;
+    --4xl: 5rem;
+    --3xl: 4rem;
+    --2xl: 3.5rem;
+    --xl: 3rem;
+    --lg: 2.5rem;
+    --md: 2rem;
+    --sm: 1.5rem;
+    --xs: 1.25rem;
+    --2xs: 1rem;
+    --3xs: 1rem;
+    --4xs: 0.75rem;
+    --5xs: 0.5rem;
+
+    --wrapperPaddingX: 1rem;
+    --linkPadding: 0.5rem;
+  }
+}
+
+/*for copying*/
+@media (max-width: calc(48em - 1px)) {
+}

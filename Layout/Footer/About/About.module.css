@@ -92,3 +92,75 @@ span.textWithOpacity {
     gap: unset;
   }
 }
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    padding: 0;
+    background: hsla(0, 0%, 97%, 1);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .content > * {
+    padding-right: var(--wrapperPaddingX);
+    padding-left: var(--wrapperPaddingX);
+  }
+
+  .backgroundSvg {
+    display: none;
+  }
+
+  .ctaBlock {
+    margin-bottom: var(--lg);
+    padding-top: var(--sm);
+    padding-bottom: var(--lg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background: white;
+    grid-column: span 2;
+  }
+
+  .ctaBlock h2 {
+    max-width: unset;
+  }
+
+  .pages,
+  .contacts {
+    margin-top: 0;
+    margin-bottom: var(--2xl);
+  }
+
+  .pages {
+    padding-right: 0;
+  }
+
+  .contacts {
+    padding-left: 0;
+  }
+
+  .blockTitle {
+    margin-bottom: var(--5xs);
+  }
+
+  .copyright,
+  .policies,
+  .developedBy {
+    display: flex;
+    flex-direction: row;
+    grid-column: span 2;
+    justify-self: unset;
+  }
+
+  .policies {
+    margin-bottom: var(--lg);
+    grid-row: 3;
+    gap: var(--md);
+  }
+
+  .copyright {
+    margin-bottom: var(--5xs);
+  }
+
+  .developedBy {
+    margin-bottom: var(--sm);
+  }
+}

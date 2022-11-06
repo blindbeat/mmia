@@ -7,14 +7,14 @@
 
 .square {
   width: var(--squareSide);
-  height: var(--squareSide);
   background-color: black;
+  aspect-ratio: 1/1;
   --squareSide: 10px;
 }
 
 @media (max-width: calc(120em - 1px)) {
   .square {
-    --squareSide: 9px;
+    width: 9px;
   }
 
   .screenTitle {
@@ -22,12 +22,22 @@
   }
 }
 
-@media (max-width: calc(120em - 1px)) {
+@media (max-width: calc(90em - 1px)) {
   .square {
-    --squareSide: 8px;
+    width: 8px;
   }
 
   .screenTitle {
     gap: 8px;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .square {
+    width: 9px;
+  }
+
+  .screenTitle {
+    gap: 10px;
   }
 }

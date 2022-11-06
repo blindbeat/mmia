@@ -4,19 +4,22 @@ import slide1 from "assets/dummyPics/ourProjects/1.jpg"
 import slide2 from "assets/dummyPics/ourProjects/2.jpg"
 import slide3 from "assets/dummyPics/ourProjects/3.jpg"
 import Image from "next/image"
-import { Navigation } from "swiper"
+import { Navigation, Pagination } from "swiper"
 import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
-// import "swiper/css/navigation"
+import useThresholdObserver from "hooks/useThresholdObserver"
+// import "swiper/css/pagination"
 
 const title = "Cardiological Hospital in Bryukhovichi"
 const tags = ["interior", "architecture"]
 const slides = [slide1, slide2, slide3]
 
 function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
+  const extendsThreshold = useThresholdObserver(768)
+  console.log(extendsThreshold)
   return (
     <Swiper
-      modules={[Navigation]}
+      modules={[Navigation, Pagination]}
       navigation={{
         prevEl: `.${styles.prev}`,
         nextEl: `.${styles.next}`,
@@ -24,6 +27,12 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
       slidesPerView="auto"
       centeredSlides
       loop
+      pagination={{
+        enabled: true,
+        horizontalClass: styles.swiperPaginationHorizontal,
+        bulletClass: styles.swiperPaginationBullet,
+        bulletActiveClass: styles.swiperPaginationBulletActive,
+      }}
       breakpoints={{
         1920: {
           spaceBetween: 138,
@@ -35,6 +44,9 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
           spaceBetween: 78,
         },
         768: {
+          pagination: {
+            enabled: false,
+          },
           spaceBetween: 58,
         },
       }}

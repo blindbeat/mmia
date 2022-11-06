@@ -10,6 +10,7 @@ import baseStyles from "modules/home/Home.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import P from "components/P"
 import useAnimateLine from "hooks/useAnimateLine"
+import H2 from "components/H2"
 
 const title = "about company"
 const heading =
@@ -30,7 +31,7 @@ function AboutCompanyScreen() {
     <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <ScreenTitle className={styles.screenTitle}>{title}</ScreenTitle>
-        <h2 className={styles.title}>{heading}</h2>
+        <H2 className={styles.title}>{heading}</H2>
         <div ref={ref} className={styles.text}>
           {paragraph.map((text, index) => (
             <P key={index}>{text}</P>

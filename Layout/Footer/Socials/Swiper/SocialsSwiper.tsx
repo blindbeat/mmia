@@ -19,7 +19,7 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
       slidesPerView="auto"
       className={classNames(styles.swiper, className)}
       loop
-      spaceBetween={64}
+      spaceBetween={32}
       speed={10000}
       breakpoints={{
         1920: {

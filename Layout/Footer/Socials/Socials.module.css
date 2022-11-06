@@ -90,3 +90,23 @@
     width: var(--lg);
   }
 }
+
+@media (max-width: calc(48em - 1px)) {
+  .content > *:not(.swiper):not(.backgroundImage) {
+    padding-right: var(--wrapperPaddingX);
+    padding-left: var(--wrapperPaddingX);
+  }
+
+  .content h2 {
+    max-width: unset;
+    text-align: unset;
+  }
+
+  .content p {
+    max-width: unset;
+  }
+
+  .socialLinks a {
+    width: var(--xl);
+  }
+}

@@ -26,3 +26,9 @@
 .slide:nth-child(even) {
   width: calc(var(--width) * 0.75);
 }
+
+@media (max-width: calc(48em - 1px)) {
+  .slide {
+    --width: 55%;
+  }
+}

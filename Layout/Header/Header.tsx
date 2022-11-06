@@ -6,6 +6,7 @@ import CtaLink from "Layout/Header/CtaLink"
 import { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
+import useThresholdObserver from "hooks/useThresholdObserver"
 
 const navLinks: [name: string, url: string][] = [
   ["projects", "projects"],
@@ -13,10 +14,7 @@ const navLinks: [name: string, url: string][] = [
   ["contact", "contact"],
 ]
 
-const threshold = 1024
-
 const defineTransparency = (scrollY: number) => scrollY === 0
-const defineExtendsThreshold = (windowWidth: number) => windowWidth > threshold
 
 function Header() {
   const lastScrollRef = useRef(
@@ -25,7 +23,7 @@ function Header() {
 
   const [transparent, setTransparent] = useState(true)
   const [hidden, setHidden] = useState(false)
-  const [extendsThreshold, setExtendsThreshold] = useState(false)
+  const extendsThreshold = useThresholdObserver(1024)
   const transparencyController = () => {
     setTransparent(defineTransparency(window.scrollY))
   }
@@ -36,21 +34,14 @@ function Header() {
     lastScrollRef.current = window.scrollY
   }
 
-  const thresholdController = () => {
-    setExtendsThreshold(defineExtendsThreshold(window.innerWidth))
-  }
-
   useEffect(() => {
     transparencyController()
     hideController()
-    thresholdController()
 
     window.addEventListener("scroll", () => {
       transparencyController()
       hideController()
     })
-
-    window.addEventListener("resize", thresholdController)
   }, [])
 
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton

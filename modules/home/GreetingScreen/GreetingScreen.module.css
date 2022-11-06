@@ -147,10 +147,6 @@
 }
 
 @media (max-width: calc(120em - 1px)) {
-  .swiper {
-    /*width: 95%;*/
-  }
-
   .bullet {
     font-size: 0.625rem;
   }
@@ -187,5 +183,30 @@
 
   .swiperPaginationWrapper {
     width: 100%;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .wrapper {
+    grid-template-columns: 100%;
+  }
+
+  .swiper {
+    width: 100vw;
+    margin-left: calc(var(--wrapperPaddingX) * -1);
+    grid-column: 1;
+  }
+
+  .slideContent {
+    max-width: unset;
+    padding: 0 var(--wrapperPaddingX);
+  }
+
+  .slideContent h2 {
+    font-size: var(--lg);
+  }
+
+  .wrapper .socials {
+    display: none;
   }
 }

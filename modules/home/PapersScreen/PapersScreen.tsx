@@ -8,6 +8,9 @@ import { useRef, useState } from "react"
 import Bubble from "./Bubble"
 import H2 from "components/H2"
 import P from "components/P"
+import useThresholdObserver from "hooks/useThresholdObserver"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { FreeMode } from "swiper"
 
 const textHeading = "We improve the world around us and create an"
 const textParagraph =
@@ -34,6 +37,8 @@ function PapersScreen() {
     []
   )
   const nextAnimationName = useRef<AnimationName>("toLeft")
+
+  const extendsThreshold = useThresholdObserver(768)
 
   const changePage = (pageIndex: number) => {
     if (pageIndex === currentPaper) return
@@ -102,13 +107,37 @@ function PapersScreen() {
             ))}
           </div>
         </div>
-        <div className={styles.bubblesWrapper}>
-          {bubbleTextArr.map((text, index) => (
-            <Bubble key={index} index={index} onClick={() => changePage(index)}>
-              {text}
-            </Bubble>
-          ))}
-        </div>
+        {extendsThreshold ? (
+          <div className={styles.bubblesWrapper}>
+            {bubbleTextArr.map((text, index) => (
+              <Bubble
+                key={index}
+                index={index}
+                onClick={() => changePage(index)}
+              >
+                {text}
+              </Bubble>
+            ))}
+          </div>
+        ) : (
+          <Swiper
+            slidesPerView={1.75}
+            centeredSlides
+            slideActiveClass="active-bubble"
+            modules={[FreeMode]}
+            freeMode={{
+              enabled: true,
+              sticky: true,
+            }}
+            className={styles.swiper}
+          >
+            {bubbleTextArr.map((text, index) => (
+              <SwiperSlide key={index}>
+                <Bubble index={index}>{text}</Bubble>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
       <Image
         className={baseStyles.backgroundImage}

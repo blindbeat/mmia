@@ -32,11 +32,13 @@
   border-radius: inherit;
 }
 
-.bubble:hover {
+.bubble:hover,
+:global(.active-bubble) .bubble {
   border-color: transparent;
 }
 
-.bubble:hover:after {
+.bubble:hover:after,
+:global(.active-bubble) .bubble:after {
   border-color: white;
 }
 
@@ -81,5 +83,11 @@
 @media (max-width: calc(64em - 1px)) {
   .bubbleWrapper {
     flex-grow: 1;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .bubble .bubbleText {
+    max-width: unset;
   }
 }

@@ -28,7 +28,7 @@
 }
 
 .title {
-  width: 71%;
+  width: 18em;
   margin-bottom: var(--2xl);
 }
 
@@ -96,6 +96,12 @@
   writing-mode: vertical-lr;
 }
 
+@media (max-width: calc(120em - 1px)) {
+  .title {
+    width: 19.5em;
+  }
+}
+
 @media (max-width: calc(90em - 1px)) {
   .text {
     margin-bottom: 1.75rem;
@@ -136,7 +142,7 @@
     object-fit: cover;
   }
 
-  .content .text {
+  .text {
     display: grid;
     margin-top: var(--lg);
     margin-right: unset;
@@ -148,10 +154,56 @@
     grid-column: span 2;
   }
 
-  .content .text p {
+  .text.text p {
     max-width: unset;
     margin-right: unset;
     margin-bottom: unset;
     text-align: start;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    grid-template-columns: 100%;
+    justify-items: stretch;
+  }
+
+  .screenTitle,
+  .title,
+  .text {
+    grid-column: 1;
+  }
+
+  .text {
+    grid-row: 5;
+  }
+
+  .title {
+    margin-bottom: var(--lg);
+  }
+
+  .imageWrapper {
+    margin-bottom: var(--2xs);
+  }
+
+  .backdropPhoto {
+    display: none;
+  }
+
+  .founderTitle {
+    writing-mode: unset;
+    justify-self: center;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: var(--2xs);
+  }
+
+  .link {
+    align-self: start;
+    margin-top: var(--2xs);
   }
 }
