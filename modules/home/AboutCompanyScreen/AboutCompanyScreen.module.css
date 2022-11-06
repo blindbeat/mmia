@@ -64,7 +64,6 @@
 
 .imageWrapper {
   position: relative;
-  overflow: hidden;
   height: min-content;
 }
 
