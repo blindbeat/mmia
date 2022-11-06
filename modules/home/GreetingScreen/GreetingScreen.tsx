@@ -70,9 +70,11 @@ function GreetingScreen() {
                 <H2 appearImmediately delay={calcAnimationDelay(1)}>
                   {primaryText}
                 </H2>
-                <P appearImmediately delay={calcAnimationDelay(2)}>
-                  {secondaryText}
-                </P>
+                <div className={styles.pWrapper}>
+                  <P appearImmediately delay={calcAnimationDelay(2)}>
+                    {secondaryText}
+                  </P>
+                </div>
                 <LinkWithLine wrapperClassName={styles.linkWithLine}>
                   view more
                 </LinkWithLine>
