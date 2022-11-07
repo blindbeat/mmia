@@ -3,7 +3,7 @@ import SplitType from "split-type"
 import styles from "./H2.module.css"
 import classNames from "classnames"
 import { useInView } from "react-intersection-observer"
-import { triggerDistance } from "utils"
+import { inViewOptions } from "utils"
 
 interface Props extends ComponentPropsWithoutRef<"h2"> {
   children: string
@@ -20,11 +20,7 @@ function H2({
 }: Props) {
   const ref = useRef<HTMLElement | null>(null)
 
-  const { ref: observerRef, inView } = useInView({
-    threshold: 1,
-    rootMargin: `${triggerDistance}px`,
-    triggerOnce: true,
-  })
+  const { ref: observerRef, inView } = useInView(inViewOptions)
 
   useEffect(() => {
     if (ref.current === null) return

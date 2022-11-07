@@ -1,12 +1,10 @@
 import { CSSProperties, useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
+import { inViewOptions } from "utils"
 
 function useAnimateLine() {
   const [ref, setRef] = useState<SVGSVGElement | null>(null)
-  const { ref: observerRef, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
-  })
+  const { ref: observerRef, inView } = useInView(inViewOptions)
   const [style, setStyle] = useState<CSSProperties>({})
 
   const setBothRefs = (elem: SVGSVGElement | null) => {
@@ -22,7 +20,7 @@ function useAnimateLine() {
     setStyle({
       strokeDasharray: lineLength,
       strokeDashoffset: inView ? 0 : lineLength,
-      transition: inView ? "stroke-dashoffset linear 3s" : undefined,
+      transition: inView ? "stroke-dashoffset linear 5s" : undefined,
     })
   }, [ref, inView])
   return {

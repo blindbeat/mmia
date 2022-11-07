@@ -21,8 +21,9 @@ const paragraph = new Array(2).fill(
 
 function AboutCompanyScreen() {
   const { ref, inView } = useInView({
-    threshold: 0.75,
+    threshold: 0,
     triggerOnce: true,
+    delay: 1000,
   })
 
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
