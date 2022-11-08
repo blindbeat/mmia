@@ -44,7 +44,7 @@ function GreetingScreen() {
           utilStyles.textAppear
         )}
       >
-        <Link href="#" className={styles.allProjectsLink}>
+        <Link href="/projects" className={styles.allProjectsLink}>
           all projects
         </Link>
       </div>
@@ -78,24 +78,28 @@ function GreetingScreen() {
                     {secondaryText}
                   </P>
                 </div>
-                <LinkWithLine
-                  className={classNames(
-                    styles.linkWithLine,
-                    utilStyles.textAppear
-                  )}
+                <div
                   style={createAnimationDelayStyle(3)}
+                  className={utilStyles.textAppear}
                 >
-                  view more
-                </LinkWithLine>
+                  <LinkWithLine className={classNames(styles.linkWithLine)}>
+                    view more
+                  </LinkWithLine>
+                </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       )}
-      <LanguageChangeButton
+      <div
         style={createAnimationDelayStyle(3)}
-        className={classNames(styles.languageChange, utilStyles.textAppear)}
-      />
+        className={classNames(
+          styles.languageChangeWrapper,
+          utilStyles.textAppear
+        )}
+      >
+        <LanguageChangeButton className={styles.languageChange} />
+      </div>
       <div
         style={createAnimationDelayStyle(3)}
         className={classNames(

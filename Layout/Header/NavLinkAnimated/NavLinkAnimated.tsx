@@ -53,7 +53,7 @@ export default function NavLinkAnimated({
 
   return (
     <Link
-      className={classNames(className)}
+      className={classNames(styles.link, className)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onAnimationEnd={handleAnimationEnd}
@@ -71,7 +71,7 @@ export default function NavLinkAnimated({
         >
           <line
             x1="0"
-            y1="1"
+            y1="0"
             x2="100"
             y2="1"
             stroke="white"

@@ -1,5 +1,11 @@
 .text {
   position: relative;
+  transition: opacity var(--ts);
+  opacity: 0.7;
+}
+
+.link:hover .text {
+  opacity: 1;
 }
 
 .svg {
