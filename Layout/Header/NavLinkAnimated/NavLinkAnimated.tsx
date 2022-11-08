@@ -64,7 +64,7 @@ export default function NavLinkAnimated({
         <svg
           viewBox="0 0 100 1"
           className={classNames(
-            styles.svg,
+            styles.lineSvg,
             animation === "appear" && styles.appearLine,
             animation === "hide" && styles.hideLine
           )}
@@ -74,7 +74,6 @@ export default function NavLinkAnimated({
             y1="0"
             x2="100"
             y2="1"
-            stroke="white"
             vectorEffect="non-scaling-stroke"
             strokeDasharray={2}
           ></line>

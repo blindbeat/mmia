@@ -11,6 +11,8 @@
 }
 
 .allProjectsLinkWrapper {
+  position: relative;
+  z-index: 1;
   align-self: center;
   margin-left: calc(var(--link-padding) * -1);
   justify-self: start;

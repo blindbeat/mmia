@@ -54,7 +54,7 @@
 }
 
 .burger path:last-child {
-  transition: opacity var(--ts);
+  transition: opacity var(--tm);
   opacity: 0.2;
 }
 
@@ -76,11 +76,9 @@
 }
 
 .burger line,
-.burger path {
-  stroke: var(--accentColor);
-}
-
-.corner path {
+.burger path,
+.corner path,
+.content nav line {
   stroke: var(--accentColor);
 }
 
