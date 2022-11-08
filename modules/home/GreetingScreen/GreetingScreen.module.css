@@ -28,14 +28,14 @@
 .languageChange {
   display: block;
   padding: var(--link-padding);
-  transition: opacity var(--tm);
+  transition: color var(--tm);
   text-transform: uppercase;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .allProjectsLink:hover,
 .languageChange:hover {
-  opacity: 1;
+  color: rgba(255, 255, 255, 1);
 }
 
 .allProjectsLink {
