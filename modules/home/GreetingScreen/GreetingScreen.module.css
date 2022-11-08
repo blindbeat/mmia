@@ -48,8 +48,9 @@
   overflow: visible;
   align-self: center;
   flex-direction: column;
-  width: min(105rem, 85%);
+  width: calc(var(--swiperWidth) * 3);
   margin: unset;
+  --swiperWidth: min(105rem, 85%);
   grid-column: 2 / span 4;
 }
 
@@ -190,8 +191,8 @@
   }
 
   .swiper {
-    width: 100vw;
     margin-left: calc(var(--wrapper-padding-x) * -1);
+    --swiperWidth: 100vw;
     grid-column: 1;
   }
 
