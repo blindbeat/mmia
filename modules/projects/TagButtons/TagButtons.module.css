@@ -1,0 +1,31 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--2xs) var(--sm);
+}
+
+.tag {
+  font-size: var(--lg-font-size);
+  font-weight: 300;
+  display: inline-flex;
+  transition: opacity var(--tm);
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  opacity: 0.5;
+  border: none;
+  background: transparent;
+}
+
+.tag:hover {
+  opacity: 1;
+}
+
+.tag .amount {
+  font-size: var(--sm-font-size);
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .tags {
+    column-gap: 2rem;
+  }
+}

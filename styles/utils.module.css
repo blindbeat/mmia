@@ -1,0 +1,27 @@
+@layer generalStyles {
+  .wrapper {
+    overflow: hidden;
+    padding: var(--4xl) var(--wrapper-padding-x) var(--5xl);
+  }
+
+  .backgroundImage {
+    filter: brightness(0.5);
+    pointer-events: none;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .textAppear {
+    animation-name: textAppear;
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes textAppear {
+    from {
+      opacity: 0;
+      transform: translate(0, -3rem);
+    }
+  }
+}

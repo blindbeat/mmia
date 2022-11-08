@@ -178,6 +178,6 @@
 
   .text {
     width: 100%;
-    padding: 0 var(--wrapperPaddingX);
+    padding: 0 var(--wrapper-padding-x);
   }
 }

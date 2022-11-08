@@ -7,6 +7,8 @@ import Image from "next/image"
 import { Navigation, Pagination } from "swiper"
 import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
+import TagList from "components/TagList/TagList"
+import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTitle"
 
 const title = "Cardiovascular Hospital in Briukhovychi"
 const tags = ["interior", "architecture"]
@@ -54,12 +56,8 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
           <div className={styles.imageContainer}>
             <Image src={slide} alt="" />
           </div>
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <span key={tag}>{`(${tag})`}</span>
-            ))}
-          </div>
-          <span className={styles.description}>{title}</span>
+          <TagList tags={tags} className={styles.tags} />
+          <ProjectPreviewTitle title={title} className={styles.title} />
         </SwiperSlide>
       ))}
       <button className={classNames(styles.swiperButton, styles.prev)}>

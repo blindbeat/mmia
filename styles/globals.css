@@ -12,14 +12,18 @@
   --3xs: 1.5rem;
   --4xs: 1rem;
   --5xs: 0.625rem;
-
-  --linkPadding: 1rem;
-
-  --wrapperPaddingX: var(--2xl);
+  --gapSize: 2rem;
 
   --ts: 0.3s;
   --tm: 0.6s;
   --tl: 1s;
+
+  --lg-font-size: var(--xl);
+  --sm-font-size: 0.875rem;
+  --project-preview-title-font-size: 1.5rem;
+
+  --link-padding: 1rem;
+  --wrapper-padding-x: var(--2xl);
 }
 
 * {
@@ -36,6 +40,11 @@ body {
   /*scroll-behavior: smooth;*/
 }
 
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
 h1,
 h2,
 p {
@@ -43,7 +52,7 @@ p {
 }
 
 h2 {
-  font-size: var(--xl);
+  font-size: var(--lg-font-size);
   font-weight: 300;
   letter-spacing: 0.04em;
   text-transform: capitalize;
@@ -76,15 +85,15 @@ a {
     --4xs: 0.75rem;
     --5xs: 0.5rem;
 
-    --wrapperPaddingX: 4rem;
+    --lg-font-size: var(--lg);
+    --sm-font-size: 0.625rem;
+    --project-preview-title-font-size: 1.25rem;
+
+    --wrapper-padding-x: 4rem;
   }
 
   body {
     font-size: 12px;
-  }
-
-  h2 {
-    font-size: var(--lg);
   }
 }
 
@@ -100,10 +109,12 @@ a {
     --sm: 1.5rem;
     --xs: 1.25rem;
     --2xs: 1rem;
+    --gapSize: 1.5rem;
 
-    --wrapperPaddingX: 3.5rem;
+    --project-preview-title-font-size: 1rem;
 
-    --linkPadding: 0.75rem;
+    --link-padding: 0.75rem;
+    --wrapper-padding-x: 3.5rem;
   }
 }
 
@@ -111,11 +122,9 @@ a {
   :root {
     --5xl: 7.5rem;
 
-    --wrapperPaddingX: 3rem;
-  }
+    --wrapper-padding-x: 3rem;
 
-  h2 {
-    font-size: var(--md);
+    --lg-font-size: var(--md);
   }
 }
 
@@ -135,11 +144,7 @@ a {
     --4xs: 0.75rem;
     --5xs: 0.5rem;
 
-    --wrapperPaddingX: 1rem;
-    --linkPadding: 0.5rem;
+    --wrapper-padding-x: 1rem;
+    --link-padding: 0.5rem;
   }
-}
-
-/*for copying*/
-@media (max-width: calc(48em - 1px)) {
 }

@@ -3,10 +3,10 @@ import LinkWithLine from "components/LinkWithLine"
 import Image from "next/image"
 import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
 import backdropPhoto from "assets/dummyPics/backdropPhoto.jpg"
-import BackgroundSvg from "./assets/backgroundLines.svg"
+import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
-import baseStyles from "modules/home/Home.module.css"
+import utilStyles from "styles/utils.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import P from "components/P"
 import useAnimateLine from "hooks/useAnimateLine"
@@ -29,7 +29,7 @@ function AboutCompanyScreen() {
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
 
   return (
-    <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
+    <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <ScreenTitle className={styles.screenTitle}>{title}</ScreenTitle>
         <H2 className={styles.title}>{heading}</H2>

@@ -1,0 +1,5 @@
+.title {
+  font-size: var(--project-preview-title-font-size);
+  font-weight: 300;
+  opacity: 1;
+}

@@ -93,8 +93,8 @@
 
 @media (max-width: calc(48em - 1px)) {
   .content > *:not(.swiper):not(.backgroundImage) {
-    padding-right: var(--wrapperPaddingX);
-    padding-left: var(--wrapperPaddingX);
+    padding-right: var(--wrapper-padding-x);
+    padding-left: var(--wrapper-padding-x);
   }
 
   .content h2 {

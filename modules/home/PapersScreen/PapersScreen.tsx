@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import baseStyles from "modules/home/Home.module.css"
+import utilStyles from "styles/utils.module.css"
 import styles from "./PapersScreen.module.css"
 import Image from "next/image"
 import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
@@ -49,7 +49,7 @@ function PapersScreen() {
   }
 
   return (
-    <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
+    <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <div className={styles.text}>
           <H2>{textHeading}</H2>
@@ -129,7 +129,7 @@ function PapersScreen() {
         )}
       </div>
       <Image
-        className={baseStyles.backgroundImage}
+        className={utilStyles.backgroundImage}
         src={backgroundImage}
         fill
         alt=""

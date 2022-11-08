@@ -1,0 +1,47 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--xl) var(--gapSize);
+}
+
+.requiresAnimation {
+  animation: 1s both appear;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--2xs);
+}
+
+.project {
+  transition: opacity var(--tl), transform var(--tl);
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+}
+
+.title {
+  margin-bottom: var(--4xs);
+}
+
+@media (min-width: 64em) {
+  .project:nth-child(even) {
+    animation-delay: 0.25s;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    grid-template-columns: unset;
+  }
+
+  .tags {
+    display: none;
+  }
+}

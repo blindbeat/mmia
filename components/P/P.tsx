@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef } from "react"
 import styles from "./P.module.css"
 import classNames from "classnames"
 import { useInView } from "react-intersection-observer"
-import { inViewOptions } from "utils"
+import { inViewOptions } from "misc/utils"
 
 interface Props extends ComponentPropsWithoutRef<"p"> {
   appearImmediately?: boolean

@@ -1,6 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
-import { inViewOptions } from "utils"
+import { inViewOptions } from "misc/utils"
 
 function useAnimateLine() {
   const [ref, setRef] = useState<SVGSVGElement | null>(null)

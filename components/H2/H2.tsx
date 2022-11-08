@@ -3,7 +3,7 @@ import SplitType from "split-type"
 import styles from "./H2.module.css"
 import classNames from "classnames"
 import { useInView } from "react-intersection-observer"
-import { inViewOptions } from "utils"
+import { inViewOptions } from "misc/utils"
 
 interface Props extends ComponentPropsWithoutRef<"h2"> {
   children: string

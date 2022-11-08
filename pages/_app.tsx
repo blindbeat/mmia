@@ -2,13 +2,30 @@ import "normalize.css/normalize.css"
 import "styles/globals.css"
 import "styles/fonts.css"
 import "styles/breakponts.css"
-import "styles/utils.css"
+import "styles/utils.module.css"
 import "swiper/css"
-// import "swiper/css/bundle"
 import type { AppProps } from "next/app"
+import Layout from "Layout"
+import { NextPage } from "next"
+import { LayoutConfig } from "Layout/Layout"
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export type NextPageWithLayoutConfig<P = {}, IP = P> = NextPage<P, IP> & {
+  layoutConfig: LayoutConfig
 }
 
-export default MyApp
+interface AppPropsWithLayoutConfig extends AppProps {
+  Component: NextPageWithLayoutConfig
+}
+
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppPropsWithLayoutConfig) {
+  console.log(Component.layoutConfig)
+
+  return (
+    <Layout config={Component.layoutConfig}>
+      <Component {...pageProps} />
+    </Layout>
+  )
+}

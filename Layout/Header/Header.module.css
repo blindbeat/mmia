@@ -4,7 +4,7 @@
   display: grid;
   align-items: center;
   width: 100%;
-  padding: calc(var(--sm) - var(--linkPadding)) var(--wrapperPaddingX);
+  padding: calc(var(--sm) - var(--link-padding)) var(--wrapper-padding-x);
   transition: background-color var(--transitionTime),
     color var(--transitionTime), transform var(--transitionTime);
   text-transform: uppercase;
@@ -27,11 +27,11 @@
 .content nav {
   display: flex;
   --desirableGap: var(--2xl);
-  gap: calc(var(--desirableGap) - calc(var(--linkPadding) * 2));
+  gap: calc(var(--desirableGap) - calc(var(--link-padding) * 2));
 }
 
 .content nav a {
-  padding: var(--linkPadding);
+  padding: var(--link-padding);
   transition: opacity var(--transitionTime),
     border-bottom-color var(--transitionTime);
   opacity: 0.7;
@@ -65,8 +65,8 @@
 }
 
 .corner {
-  margin-right: calc(var(--linkPadding) * -1);
-  padding: var(--linkPadding);
+  margin-right: calc(var(--link-padding) * -1);
+  padding: var(--link-padding);
   justify-self: end;
 }
 
@@ -76,7 +76,7 @@
 
 @media (max-width: calc(90em - 1px)) {
   .content {
-    grid-template-columns: calc((100vw - var(--wrapperPaddingX) * 2) * 2 / 12) auto 1fr auto;
+    grid-template-columns: calc((100vw - var(--wrapper-padding-x) * 2) * 2 / 12) auto 1fr auto;
   }
 
   .content nav {

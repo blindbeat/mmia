@@ -102,8 +102,8 @@ span.textWithOpacity {
   }
 
   .content > * {
-    padding-right: var(--wrapperPaddingX);
-    padding-left: var(--wrapperPaddingX);
+    padding-right: var(--wrapper-padding-x);
+    padding-left: var(--wrapper-padding-x);
   }
 
   .backgroundSvg {

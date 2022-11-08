@@ -1,13 +1,13 @@
 .wrapper {
   display: flex;
-  margin-right: calc(var(--linkPadding) * -1);
-  margin-bottom: calc(var(--linkPadding) * -1);
+  margin-right: calc(var(--link-padding) * -1);
+  margin-bottom: calc(var(--link-padding) * -1);
   --disirableGap: var(--sm);
-  gap: calc(var(--disirableGap) - var(--linkPadding) * 2);
+  gap: calc(var(--disirableGap) - var(--link-padding) * 2);
 }
 
 .link {
-  padding: var(--linkPadding);
+  padding: var(--link-padding);
   cursor: pointer;
   transition: opacity var(--ts);
   text-transform: uppercase;

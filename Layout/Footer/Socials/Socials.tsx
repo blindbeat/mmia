@@ -1,5 +1,5 @@
 import styles from "./Socials.module.css"
-import baseStyles from "modules/home/Home.module.css"
+import utilStyles from "styles/utils.module.css"
 import Image from "next/image"
 import backgroundImage from "assets/dummyPics/greetiongPhotos/4.jpg"
 import SocialsSwiper from "./Swiper"
@@ -12,9 +12,9 @@ const paragraph =
 
 const socialLinks = ["ig", "be", "fb", "yt"]
 
-function Socials() {
+export default function Socials() {
   return (
-    <div className={classNames(baseStyles.wrapper, styles.content)}>
+    <div className={classNames(utilStyles.wrapper, styles.content)}>
       <h2>{heading}</h2>
       <SocialsSwiper className={styles.swiper} />
       <p>{paragraph}</p>
@@ -23,7 +23,7 @@ function Socials() {
         alt=""
         fill
         className={classNames(
-          baseStyles.backgroundImage,
+          utilStyles.backgroundImage,
           styles.backgroundImage
         )}
       />
@@ -37,5 +37,3 @@ function Socials() {
     </div>
   )
 }
-
-export default Socials

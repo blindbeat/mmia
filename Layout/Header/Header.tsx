@@ -1,4 +1,5 @@
 import styles from "./Header.module.css"
+import utilStyles from "styles/utils.module.css"
 import Logo from "./assets/logo.svg"
 import Burger from "./assets/burger.svg"
 import Link from "next/link"
@@ -14,9 +15,13 @@ const navLinks: [name: string, url: string][] = [
   ["contact", "contact"],
 ]
 
-const defineTransparency = (scrollY: number) => scrollY === 0
+const isScrolled = (scrollY: number) => scrollY !== 0
 
-function Header() {
+interface Props {
+  adaptiveTransparency: boolean
+}
+
+function Header({ adaptiveTransparency }: Props) {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
@@ -25,7 +30,7 @@ function Header() {
   const [hidden, setHidden] = useState(false)
   const extendsThreshold = useThresholdObserver(1024)
   const transparencyController = () => {
-    setTransparent(defineTransparency(window.scrollY))
+    setTransparent(!isScrolled(window.scrollY))
   }
 
   const hideController = () => {
@@ -50,24 +55,24 @@ function Header() {
     <header
       className={classNames(
         styles.content,
-        transparent && styles.transparent,
+        adaptiveTransparency && transparent && styles.transparent,
         hidden && styles.hidden
       )}
     >
-      <Burger className={classNames(styles.burger, "textAppear")} />
-      <Link href="/" className={classNames(styles.logo, "textAppear")}>
+      <Burger className={classNames(styles.burger, utilStyles.textAppear)} />
+      <Link href="/" className={classNames(styles.logo, utilStyles.textAppear)}>
         <Logo />
       </Link>
       <nav>
         {navLinks.map(([name, url]) => (
-          <Link key={url} href={url} className="textAppear">
+          <Link key={url} href={url} className={utilStyles.textAppear}>
             {name}
           </Link>
         ))}
       </nav>
       <CornerComponent
         href="#"
-        className={classNames(styles.corner, "textAppear")}
+        className={classNames(styles.corner, utilStyles.textAppear)}
       />
     </header>
   )

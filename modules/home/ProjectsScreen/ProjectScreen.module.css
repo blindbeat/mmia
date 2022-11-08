@@ -69,7 +69,7 @@
 @media (max-width: calc(48em - 1px)) {
   .textWrapper {
     margin-bottom: var(--xl);
-    padding-right: var(--wrapperPaddingX);
-    padding-left: var(--wrapperPaddingX);
+    padding-right: var(--wrapper-padding-x);
+    padding-left: var(--wrapper-padding-x);
   }
 }

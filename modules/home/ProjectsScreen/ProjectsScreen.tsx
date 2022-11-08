@@ -1,4 +1,4 @@
-import baseStyles from "modules/home/Home.module.css"
+import utilStyles from "styles/utils.module.css"
 import styles from "./ProjectScreen.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import ProjectScreenSwiper from "./Swiper"
@@ -14,7 +14,7 @@ const paragraph =
 
 function ProjectsScreen() {
   return (
-    <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
+    <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.textWrapper}>
         <ScreenTitle className={styles.screenTitle}>our projects</ScreenTitle>
         <H2>{title}</H2>

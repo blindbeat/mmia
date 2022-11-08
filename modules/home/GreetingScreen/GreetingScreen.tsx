@@ -1,5 +1,5 @@
-import baseStyles from "../Home.module.css"
 import styles from "./GreetingScreen.module.css"
+import utilStyles from "styles/utils.module.css"
 import Image from "next/image"
 import image1 from "assets/dummyPics/greetiongPhotos/1.jpg"
 import image2 from "assets/dummyPics/greetiongPhotos/2.jpg"
@@ -36,10 +36,13 @@ const createAnimationDelayStyle = (showingOrder: number) => ({
 function GreetingScreen() {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
-    <div className={classNames(baseStyles.wrapper, styles.wrapper)}>
+    <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div
         style={createAnimationDelayStyle(4)}
-        className={classNames(styles.allProjectsLinkWrapper, "textAppear")}
+        className={classNames(
+          styles.allProjectsLinkWrapper,
+          utilStyles.textAppear
+        )}
       >
         <Link href="#" className={styles.allProjectsLink}>
           all projects
@@ -76,7 +79,10 @@ function GreetingScreen() {
                   </P>
                 </div>
                 <LinkWithLine
-                  className={classNames(styles.linkWithLine, "textAppear")}
+                  className={classNames(
+                    styles.linkWithLine,
+                    utilStyles.textAppear
+                  )}
                   style={createAnimationDelayStyle(3)}
                 >
                   view more
@@ -88,15 +94,18 @@ function GreetingScreen() {
       )}
       <LanguageChangeButton
         style={createAnimationDelayStyle(3)}
-        className={classNames(styles.languageChange, "textAppear")}
+        className={classNames(styles.languageChange, utilStyles.textAppear)}
       />
       <div
         style={createAnimationDelayStyle(3)}
-        className={classNames(styles.swiperPaginationWrapper, "textAppear")}
+        className={classNames(
+          styles.swiperPaginationWrapper,
+          utilStyles.textAppear
+        )}
       />
       <Socials
         style={createAnimationDelayStyle(3)}
-        className={classNames(styles.socials, "textAppear")}
+        className={classNames(styles.socials, utilStyles.textAppear)}
       />
       <Swiper
         className={styles.controlledSwiper}
@@ -108,7 +117,7 @@ function GreetingScreen() {
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <Image
-              className={baseStyles.backgroundImage}
+              className={utilStyles.backgroundImage}
               src={image}
               fill
               priority={index === 0}

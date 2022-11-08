@@ -101,9 +101,9 @@
 }
 
 .bullet {
-  font-size: 0.875rem;
+  font-size: var(--sm-font-size);
   flex-grow: 1;
-  padding: var(--linkPadding);
+  padding: var(--link-padding);
   cursor: pointer;
   transition: border-bottom-color ease-in-out var(--ts),
     color ease-in-out var(--ts);
@@ -144,12 +144,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-@media (max-width: calc(120em - 1px)) {
-  .bullet {
-    font-size: 0.625rem;
-  }
 }
 
 @media (max-width: calc(90em - 1px)) {
@@ -193,13 +187,13 @@
 
   .swiper {
     width: 100vw;
-    margin-left: calc(var(--wrapperPaddingX) * -1);
+    margin-left: calc(var(--wrapper-padding-x) * -1);
     grid-column: 1;
   }
 
   .slideContent {
     max-width: unset;
-    padding: 0 var(--wrapperPaddingX);
+    padding: 0 var(--wrapper-padding-x);
   }
 
   .slideContent h2 {

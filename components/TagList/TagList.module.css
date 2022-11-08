@@ -1,0 +1,6 @@
+.tags {
+  display: flex;
+  text-transform: uppercase;
+  opacity: 0.5;
+  gap: 1rem;
+}
