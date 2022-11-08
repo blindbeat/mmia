@@ -4,13 +4,15 @@
   display: grid;
   align-items: center;
   width: 100%;
-  padding: calc(var(--sm) - var(--link-padding)) var(--wrapper-padding-x);
+  padding: calc(var(--xs) - var(--link-padding)) var(--wrapper-padding-x);
   transition: background-color var(--transitionTime),
     color var(--transitionTime), transform var(--transitionTime);
   text-transform: uppercase;
   color: var(--accentColor);
-  background-color: white;
+  background-color: var(--bgColor);
+  justify-items: start;
   --accentColor: black;
+  --bgColor: white;
   --transitionTime: var(--ts);
   grid-template-columns: 2fr 4fr 4fr 2fr;
 }
@@ -20,7 +22,7 @@
 }
 
 .content.transparent {
-  background-color: transparent;
+  --bgColor: transparent;
   --accentColor: white;
 }
 
@@ -38,18 +40,38 @@
   border-bottom: 1px dashed rgba(255, 255, 255, 0);
 }
 
-.content nav a:hover {
-  opacity: 1;
-  border-bottom-color: white;
-}
+/*.content nav a:hover {*/
+/*  opacity: 1;*/
+/*  border-bottom-color: white;*/
+/*}*/
 
 .logo,
 .burger {
+  padding: var(--link-padding);
+}
+
+.logo svg,
+.burger svg {
   height: var(--xs);
 }
 
-.logo svg {
-  height: 100%;
+.burger {
+  margin-left: calc(var(--link-padding) * -1);
+}
+
+.burger path:last-child {
+  transition: opacity var(--ts);
+  opacity: 0.2;
+}
+
+.burger:hover path:last-child {
+  opacity: 0.5;
+}
+
+.corner {
+  margin-right: calc(var(--link-padding) * -1);
+  padding: var(--link-padding);
+  justify-self: end;
 }
 
 .logo path,
@@ -62,12 +84,6 @@
 .burger line,
 .burger path {
   stroke: var(--accentColor);
-}
-
-.corner {
-  margin-right: calc(var(--link-padding) * -1);
-  padding: var(--link-padding);
-  justify-self: end;
 }
 
 .corner path {
@@ -83,11 +99,6 @@
     --desirableGap: var(--lg);
     justify-self: center;
   }
-
-  .logo,
-  .burger {
-    height: var(--sm);
-  }
 }
 
 @media (max-width: calc(64em - 1px)) {
@@ -95,12 +106,12 @@
     grid-template-columns: 1fr auto 1fr;
   }
 
+  .content nav {
+    display: none;
+  }
+
   .logo {
     width: 100%;
     justify-self: center;
-  }
-
-  .content nav {
-    display: none;
   }
 }

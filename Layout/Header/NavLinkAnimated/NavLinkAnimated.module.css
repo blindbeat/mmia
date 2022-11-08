@@ -1,0 +1,40 @@
+.text {
+  position: relative;
+}
+
+.svg {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.svg {
+  animation: 0.6s both uin;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+.appearLine {
+  animation-name: appearLineFrames;
+}
+
+.hideLine {
+  animation-name: hideLineFrames;
+}
+
+@keyframes appearLineFrames {
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes hideLineFrames {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+}

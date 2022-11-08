@@ -21,8 +21,6 @@ export default function MyApp({
   Component,
   pageProps,
 }: AppPropsWithLayoutConfig) {
-  console.log(Component.layoutConfig)
-
   return (
     <Layout config={Component.layoutConfig}>
       <Component {...pageProps} />

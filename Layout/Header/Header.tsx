@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
+import NavLinkAnimated from "Layout/Header/NavLinkAnimated"
 
 const navLinks: [name: string, url: string][] = [
   ["projects", "projects"],
@@ -59,15 +60,21 @@ function Header({ adaptiveTransparency }: Props) {
         hidden && styles.hidden
       )}
     >
-      <Burger className={classNames(styles.burger, utilStyles.textAppear)} />
+      <button className={classNames(styles.burger, utilStyles.textAppear)}>
+        <Burger />
+      </button>
       <Link href="/" className={classNames(styles.logo, utilStyles.textAppear)}>
         <Logo />
       </Link>
       <nav>
         {navLinks.map(([name, url]) => (
-          <Link key={url} href={url} className={utilStyles.textAppear}>
+          <NavLinkAnimated
+            key={url}
+            href={url}
+            className={utilStyles.textAppear}
+          >
             {name}
-          </Link>
+          </NavLinkAnimated>
         ))}
       </nav>
       <CornerComponent
