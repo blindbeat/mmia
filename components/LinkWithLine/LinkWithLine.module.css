@@ -23,12 +23,5 @@
 }
 
 .line path {
-  transition: stroke-dashoffset ease-in-out 1.5s;
-  --lineLength: 855;
-  stroke-dasharray: var(--lineLength);
-  stroke-dashoffset: 0;
-}
-
-.content:hover .line path {
-  stroke-dashoffset: calc(var(--lineLength) * 2);
+  transition: stroke-dashoffset 1.5s;
 }
