@@ -50,7 +50,7 @@ function GreetingScreen() {
       </div>
       {imageSwiper && (
         <Swiper
-          // autoplay
+          autoplay
           modules={[Pagination, Autoplay, Controller]}
           controller={{ control: imageSwiper }}
           pagination={{
