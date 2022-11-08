@@ -4,7 +4,7 @@ import slide1 from "assets/dummyPics/ourProjects/1.jpg"
 import slide2 from "assets/dummyPics/ourProjects/2.jpg"
 import slide3 from "assets/dummyPics/ourProjects/3.jpg"
 import Image from "next/image"
-import { Navigation, Pagination } from "swiper"
+import { Autoplay, Navigation, Pagination } from "swiper"
 import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
 import TagList from "components/TagList/TagList"
@@ -17,7 +17,8 @@ const slides = [slide1, slide2, slide3]
 function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
   return (
     <Swiper
-      modules={[Navigation, Pagination]}
+      modules={[Navigation, Pagination, Autoplay]}
+      autoplay
       navigation={{
         prevEl: `.${styles.prev}`,
         nextEl: `.${styles.next}`,
