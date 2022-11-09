@@ -44,10 +44,16 @@ function Header({ adaptiveTransparency }: Props) {
     transparencyController()
     hideController()
 
-    window.addEventListener("scroll", () => {
-      transparencyController()
-      hideController()
-    })
+    window.addEventListener(
+      "scroll",
+      () => {
+        transparencyController()
+        hideController()
+      },
+      {
+        passive: true,
+      }
+    )
   }, [])
 
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton

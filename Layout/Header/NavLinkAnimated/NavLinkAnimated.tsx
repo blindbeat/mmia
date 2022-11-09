@@ -62,7 +62,8 @@ export default function NavLinkAnimated({
       <span className={styles.text}>
         {children}
         <svg
-          viewBox="0 0 100 1"
+          viewBox="0 0 100 2"
+          preserveAspectRatio="none"
           className={classNames(
             styles.lineSvg,
             animation === "appear" && styles.appearLine,
@@ -71,7 +72,7 @@ export default function NavLinkAnimated({
         >
           <line
             x1="0"
-            y1="0"
+            y1="1"
             x2="100"
             y2="1"
             vectorEffect="non-scaling-stroke"

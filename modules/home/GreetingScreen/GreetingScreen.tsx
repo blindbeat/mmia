@@ -117,6 +117,7 @@ function GreetingScreen() {
         className={styles.controlledSwiper}
         onSwiper={setImageSwiper}
         loop
+        cssMode
         slidesPerView={3}
         effect="fade"
         modules={[EffectFade]}

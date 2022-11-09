@@ -71,6 +71,7 @@
 .logo path,
 .logo rect,
 .logo mask {
+  transition: fill var(--transitionTime), stroke var(--transitionTime);
   fill: var(--accentColor);
   stroke: var(--accentColor);
 }
@@ -79,6 +80,7 @@
 .burger path,
 .corner path,
 .content nav line {
+  transition: stroke var(--transitionTime);
   stroke: var(--accentColor);
 }
 
