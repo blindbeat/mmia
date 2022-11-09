@@ -45,6 +45,9 @@ function Project({ project: { title, image, tags } }: ProjectProps) {
     }
   }, [])
 
+  const imageSizes = `(max-width: 1024px) 100vw,
+                      50vw`
+
   return (
     <Link
       ref={ref}
@@ -57,7 +60,7 @@ function Project({ project: { title, image, tags } }: ProjectProps) {
         requiresAnimation && styles.requiresAnimation
       )}
     >
-      <Image src={image as unknown as any} alt={title} />
+      <Image src={image as unknown as any} alt={title} sizes={imageSizes} />
       <ProjectPreviewTitle title={title} className={styles.title} />
       <TagList tags={tags} className={styles.tags} />
     </Link>
