@@ -1,0 +1,6 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--3xl);
+  gap: var(--4xl);
+}

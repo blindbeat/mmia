@@ -1,27 +1,28 @@
 import { ReactNode } from "react"
 import Header from "./Header"
 import Footer from "./Footer"
+import styles from "./Layout.module.css"
 
 export interface LayoutConfig {
   adaptiveHeaderTransparency: boolean
+  showFooter: boolean
 }
 
 interface Props {
   children: ReactNode
-  config?: LayoutConfig
+  config?: Partial<LayoutConfig>
 }
 
-const defaultConfig: LayoutConfig = {
-  adaptiveHeaderTransparency: true,
-}
-
-function Layout({ children, config = defaultConfig }: Props) {
+function Layout({
+  children,
+  config: { showFooter = true, adaptiveHeaderTransparency = true } = {},
+}: Props) {
   return (
-    <div>
-      <Header adaptiveTransparency={config?.adaptiveHeaderTransparency} />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <>
+      <Header adaptiveTransparency={adaptiveHeaderTransparency} />
+      <main className={styles.content}>{children}</main>
+      {showFooter && <Footer />}
+    </>
   )
 }
 

@@ -9,9 +9,8 @@ import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
 import TagList from "components/TagList/TagList"
 import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTitle"
+import { tags, title } from "assets/dummyText"
 
-const title = "Cardiovascular Hospital in Briukhovychi"
-const tags = ["interior", "architecture"]
 const slides = [slide1, slide2, slide3]
 
 const imageSizes = `

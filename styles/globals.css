@@ -12,7 +12,9 @@
   --3xs: 1.5rem;
   --4xs: 1rem;
   --5xs: 0.625rem;
-  --gapSize: 2rem;
+
+  --md-gap: 2rem;
+  --sm-gap: 0.75rem;
 
   --ts: 0.3s;
   --tm: 0.6s;
@@ -87,6 +89,8 @@ a {
     --4xs: 0.75rem;
     --5xs: 0.5rem;
 
+    --sm-gap: 0.625rem;
+
     --lg-font-size: var(--lg);
     --sm-font-size: 0.625rem;
     --project-preview-title-font-size: 1.25rem;
@@ -111,7 +115,8 @@ a {
     --sm: 1.5rem;
     --xs: 1.25rem;
     --2xs: 1rem;
-    --gapSize: 1.5rem;
+
+    --md-gap: 1.5rem;
 
     --project-preview-title-font-size: 1rem;
 
@@ -142,9 +147,6 @@ a {
     --sm: 1.5rem;
     --xs: 1.25rem;
     --2xs: 1rem;
-    --3xs: 1rem;
-    --4xs: 0.75rem;
-    --5xs: 0.5rem;
 
     --wrapper-padding-x: 1rem;
     --link-padding: 0.5rem;

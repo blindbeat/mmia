@@ -1,0 +1,34 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 var(--wrapper-padding-x);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity var(--tm), gap var(--tm);
+  text-transform: uppercase;
+  opacity: 0.7;
+  gap: var(--sm-gap);
+}
+
+.link:hover {
+  opacity: 1;
+  gap: 1rem;
+}
+
+.arrow {
+  width: 1em;
+}
+
+.arrowLeft {
+  transform: scaleX(-1);
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .nextProject {
+    display: none;
+  }
+}

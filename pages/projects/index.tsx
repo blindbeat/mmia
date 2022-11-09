@@ -8,6 +8,7 @@ import ProjectsList from "modules/projects/ProjectsList"
 import { ProjectBrief } from "misc/types"
 import projectPhoto1 from "assets/dummyPics/ourProjects/1.jpg"
 import { NextPageWithLayoutConfig } from "pages/_app"
+import { tags, title } from "assets/dummyText"
 
 interface Props {
   tags: string[]
@@ -15,8 +16,8 @@ interface Props {
 }
 
 const dummyProject: ProjectBrief = {
-  title: "Cardiovascular Hospital in Briukhovychi",
-  tags: ["interior", "architecture"],
+  title,
+  tags,
   image: projectPhoto1,
 }
 

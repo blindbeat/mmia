@@ -1,11 +1,14 @@
 .content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--xl) var(--gapSize);
+  gap: var(--xl) var(--md-gap);
 }
 
 .requiresAnimation {
-  animation: 1s both appear;
+  /*animation: 1.5s ease-out both appear;*/
+  animation: 0.6s both appear,
+    1.5s cubic-bezier(0.03, 0.66, 0.35, 0.96) both elevate;
+  /*animation: 0.5s both appear, 3s both elevate;*/
 }
 
 .project img {
@@ -15,14 +18,20 @@
 }
 
 .project {
-  transition: opacity var(--tl), transform var(--tl);
+  transition: opacity 0.1s, transform 3s;
   animation-delay: 0.1s;
 }
 
 @keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(25%);
+    /*transform: translateY(2rem);*/
+  }
+}
+
+@keyframes elevate {
+  from {
+    transform: translateY(12.5%);
   }
 }
 
@@ -32,7 +41,7 @@
 
 @media (min-width: 64em) {
   .project:nth-child(even) {
-    animation-delay: 0.25s;
+    animation-delay: 0.3s;
   }
 }
 
