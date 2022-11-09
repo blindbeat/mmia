@@ -14,6 +14,12 @@ const title = "Cardiovascular Hospital in Briukhovychi"
 const tags = ["interior", "architecture"]
 const slides = [slide1, slide2, slide3]
 
+const imageSizes = `
+                   (max-width: calc(48em - 1px)) 100vw,
+                   (max-width: calc(64em - 1px)) 60vw,
+                   50vw,
+  `
+
 function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
   return (
     <Swiper
@@ -55,7 +61,7 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
       {slides.map((slide, index) => (
         <SwiperSlide key={index} className={styles.slide}>
           <div className={styles.imageContainer}>
-            <Image src={slide} alt="" />
+            <Image src={slide} alt="" sizes={imageSizes} />
           </div>
           <TagList tags={tags} className={styles.tags} />
           <ProjectPreviewTitle title={title} className={styles.title} />

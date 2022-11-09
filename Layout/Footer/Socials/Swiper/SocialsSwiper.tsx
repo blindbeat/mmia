@@ -11,6 +11,11 @@ import Tilt from "react-parallax-tilt"
 
 const images = [image1, image2, image3, image4]
 
+const imageSizes = `
+                   (max-width: calc(48em - 1px)) 55vw,
+                   25vw,
+`
+
 function SocialsSwiper({ className, ...props }: SwiperProps) {
   return (
     <Swiper
@@ -44,7 +49,7 @@ function SocialsSwiper({ className, ...props }: SwiperProps) {
             transitionSpeed={1000}
             transitionEasing="cubic-bezier(.09,.7,.31,.94)"
           >
-            <Image src={image} alt="" />
+            <Image src={image} alt="" sizes={imageSizes} />
           </Tilt>
         </SwiperSlide>
       ))}

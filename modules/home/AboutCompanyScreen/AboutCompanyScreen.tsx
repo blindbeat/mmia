@@ -42,7 +42,12 @@ function AboutCompanyScreen() {
           </LinkWithLine>
         </div>
         <div className={styles.imageWrapper}>
-          <Image src={founderPhoto} alt="" className={styles.founderPhoto} />
+          <Image
+            src={founderPhoto}
+            alt=""
+            className={styles.founderPhoto}
+            sizes="100vw"
+          />
           <Image
             className={classNames(
               styles.backdropPhoto,
