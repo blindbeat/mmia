@@ -48,7 +48,7 @@
   overflow: visible;
   align-self: center;
   flex-direction: column;
-  width: calc(var(--swiperWidth) * 3);
+  width: calc(var(--swiperWidth) * 1);
   margin: unset;
   --swiperWidth: min(105rem, 85%);
   grid-column: 2 / span 4;
@@ -168,7 +168,7 @@
   }
 
   .allProjectsLinkWrapper,
-  .languageChange {
+  .languageChangeWrapper {
     display: none;
   }
 
