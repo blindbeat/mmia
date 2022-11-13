@@ -1,5 +1,5 @@
 import { useState } from "react"
-import TagButtons from "modules/projects/TagButtons"
+import ProjectsTagButtons from "modules/projects/ProjectsTagButtons"
 import styles from "./Projects.module.css"
 import utilStyles from "styles/utils.module.css"
 import classNames from "classnames"
@@ -35,7 +35,7 @@ const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
 
   return (
     <div className={classNames(utilStyles.wrapper, styles.projects)}>
-      <TagButtons tagSelector={setSelectedTag} tags={tags} />
+      <ProjectsTagButtons tagSelector={setSelectedTag} tags={tags} />
       <ProjectsList projects={projects} />
     </div>
   )

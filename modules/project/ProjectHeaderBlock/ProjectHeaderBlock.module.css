@@ -1,3 +1,7 @@
+.content {
+  margin: var(--4xl) 0;
+}
+
 .titleWrapper {
   display: grid;
   margin: 0 var(--wrapper-padding-x) var(--sm);

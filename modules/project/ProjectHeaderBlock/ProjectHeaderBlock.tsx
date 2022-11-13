@@ -1,4 +1,4 @@
-import styles from "./ProjectHeader.module.css"
+import styles from "modules/project/ProjectHeaderBlock/ProjectHeaderBlock.module.css"
 import H2 from "components/H2"
 import TagList from "components/TagList/TagList"
 import { metadata, projectDescription, tags, title } from "assets/dummyText"
@@ -9,9 +9,9 @@ import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
 import P from "components/P"
 
-export default function ProjectHeader() {
+export default function ProjectHeaderBlock() {
   return (
-    <div>
+    <div className={styles.content}>
       <div className={styles.titleWrapper}>
         <H2 className={styles.title}>{title}</H2>
         <TagList tags={tags} className={styles.tags} />

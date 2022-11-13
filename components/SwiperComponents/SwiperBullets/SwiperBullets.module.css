@@ -1,0 +1,30 @@
+@media (max-width: calc(48em - 1px)) {
+  .slide {
+    width: 100%;
+    margin-bottom: var(--md);
+    padding: 1rem;
+  }
+
+  .swiperButton {
+    display: none;
+  }
+
+  .swiperPaginationHorizontal {
+    display: flex;
+    width: 50%;
+    margin: var(--md) auto 0;
+  }
+
+  .swiperPaginationBullet {
+    flex-grow: 1;
+    transition: opacity var(--tm);
+    opacity: 0.2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+  }
+
+  .swiperPaginationBulletActive {
+    opacity: 0.75;
+  }
+}

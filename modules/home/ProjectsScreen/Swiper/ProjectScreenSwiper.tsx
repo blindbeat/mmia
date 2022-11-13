@@ -5,11 +5,15 @@ import slide2 from "assets/dummyPics/ourProjects/2.jpg"
 import slide3 from "assets/dummyPics/ourProjects/3.jpg"
 import Image from "next/image"
 import { Autoplay, Navigation, Pagination } from "swiper"
-import Arrow from "./assets/arrow.svg"
 import classNames from "classnames"
 import TagList from "components/TagList/TagList"
 import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTitle"
 import { tags, title } from "assets/dummyText"
+import {
+  SwiperNavigationNext,
+  SwiperNavigationPrev,
+} from "components/SwiperComponents"
+import { swiperStyles } from "components/SwiperComponents/SwiperBullets/SwiperBullets"
 
 const slides = [slide1, slide2, slide3]
 
@@ -33,9 +37,9 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
       loop
       pagination={{
         enabled: true,
-        horizontalClass: styles.swiperPaginationHorizontal,
-        bulletClass: styles.swiperPaginationBullet,
-        bulletActiveClass: styles.swiperPaginationBulletActive,
+        horizontalClass: swiperStyles.swiperPaginationHorizontal,
+        bulletClass: swiperStyles.bulletClass,
+        bulletActiveClass: swiperStyles.bulletActiveClass,
       }}
       breakpoints={{
         1920: {
@@ -66,12 +70,12 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
           <ProjectPreviewTitle title={title} className={styles.title} />
         </SwiperSlide>
       ))}
-      <button className={classNames(styles.swiperButton, styles.prev)}>
-        <Arrow className={styles.arrow} />
-      </button>
-      <button className={classNames(styles.swiperButton, styles.next)}>
-        <Arrow className={styles.arrow} />
-      </button>
+      <SwiperNavigationNext
+        className={classNames(styles.swiperButton, styles.next)}
+      />
+      <SwiperNavigationPrev
+        className={classNames(styles.swiperButton, styles.prev)}
+      />
     </Swiper>
   )
 }

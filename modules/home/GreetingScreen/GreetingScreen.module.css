@@ -65,7 +65,7 @@
 
 .slideContent {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   max-width: 80%;
 }
@@ -77,6 +77,10 @@
   opacity: 0.2;
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 1px white;
+}
+
+.slideContent h2:hover {
+  opacity: 0.5;
 }
 
 .slideContent .pWrapper {

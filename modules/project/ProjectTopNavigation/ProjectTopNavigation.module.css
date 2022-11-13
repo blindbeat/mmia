@@ -1,7 +1,7 @@
 .content {
   display: flex;
   justify-content: space-between;
-  margin: 0 var(--wrapper-padding-x);
+  margin: 0 var(--wrapper-padding-x) var(--4xl);
 }
 
 .link {

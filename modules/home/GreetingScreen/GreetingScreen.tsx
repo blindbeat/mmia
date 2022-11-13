@@ -26,7 +26,7 @@ const slides = new Array(4).fill({
 
 const images = [image1, image2, image3, image4]
 const baseDelay = 0.3
-const delayBetweenAppears = 0.3
+const delayBetweenAppears = 0.4
 const calcAnimationDelay = (showingOrder: number) =>
   baseDelay + showingOrder * delayBetweenAppears
 const createAnimationDelayStyle = (showingOrder: number) => ({
@@ -38,7 +38,7 @@ function GreetingScreen() {
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div
-        style={createAnimationDelayStyle(4)}
+        style={createAnimationDelayStyle(1)}
         className={classNames(
           styles.allProjectsLinkWrapper,
           utilStyles.textAppear

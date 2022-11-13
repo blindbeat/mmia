@@ -1,0 +1,35 @@
+.button {
+  line-height: 0;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lg);
+  cursor: pointer;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background: white;
+  aspect-ratio: 1/1;
+}
+
+.prev {
+  left: var(--2xl);
+}
+
+.next {
+  right: var(--2xl);
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.arrow {
+  height: calc(1 / 3 * 100%);
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .button {
+    display: none;
+  }
+}

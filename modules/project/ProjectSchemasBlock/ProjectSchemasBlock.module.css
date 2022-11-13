@@ -1,0 +1,67 @@
+.content {
+  position: relative;
+  overflow: hidden;
+  padding: var(--4xl) 0 var(--sm);
+}
+
+.photoWrapper {
+  margin-bottom: var(--4xl);
+}
+
+.blockTitle {
+  width: max-content;
+  margin: auto;
+}
+
+.swiper {
+  margin-top: var(--sm);
+}
+
+.slide {
+  width: min(50vw, 55rem);
+}
+
+.prev {
+}
+
+.next {
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.standaloneImage {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: var(--xl) auto;
+}
+
+.paragraph {
+  max-width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.backgroundSvg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-30deg) scale(1.06);
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .slide {
+    width: 100%;
+    padding: 0 var(--wrapper-padding-x);
+  }
+
+  .standaloneImage {
+    width: 100%;
+  }
+}

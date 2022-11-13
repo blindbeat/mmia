@@ -1,10 +1,12 @@
 import { useRouter } from "next/router"
-import ProjectHeader from "modules/project/ProjectHeader"
+import ProjectHeaderBlock from "modules/project/ProjectHeaderBlock"
 import ProjectTopNavigation from "modules/project/ProjectTopNavigation"
 import styles from "./Project.module.css"
 import ProjectPhotosBlock from "modules/project/ProjectPhotosBlock"
 import blockPhoto1 from "assets/dummyPics/ProjectPhotos/blockPhotos/1.jpg"
 import blockPhoto2 from "assets/dummyPics/instagramPhotos/2.jpg"
+import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSchemasBlock"
+import schemaPhoto from "assets/dummyPics/SchemaPhotos/1.jpg"
 
 export default function Project() {
   const {
@@ -14,8 +16,9 @@ export default function Project() {
   return (
     <div className={styles.content}>
       <ProjectTopNavigation />
-      <ProjectHeader />
-      <ProjectPhotosBlock photos={[blockPhoto1, blockPhoto2]} />.
+      <ProjectHeaderBlock />
+      <ProjectPhotosBlock photos={[blockPhoto1, blockPhoto2]} />
+      <ProjectSchemasBlock schemas={[schemaPhoto, schemaPhoto]} />
     </div>
   )
 }

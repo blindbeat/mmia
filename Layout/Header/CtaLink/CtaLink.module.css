@@ -27,8 +27,8 @@
 .line path {
   transition: stroke-dashoffset ease-in-out 1.5s;
   animation-name: lineDraw;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in;
   animation-iteration-count: infinite;
   animation-direction: reverse;
   stroke-dasharray: 135;

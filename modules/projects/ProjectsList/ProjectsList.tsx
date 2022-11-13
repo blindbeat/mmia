@@ -6,6 +6,7 @@ import { ProjectBrief } from "misc/types"
 import Link from "next/link"
 import classNames from "classnames"
 import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/router"
 
 interface Props {
   projects: ProjectBrief[]
@@ -26,6 +27,7 @@ interface ProjectProps {
 }
 
 function Project({ project: { title, image, tags } }: ProjectProps) {
+  const { pathname } = useRouter()
   const [requiresAnimation, setRequiresAnimation] = useState<boolean>(false)
   const [isTriggered, setIsTriggered] = useState<boolean>(false)
 
@@ -51,7 +53,7 @@ function Project({ project: { title, image, tags } }: ProjectProps) {
   return (
     <Link
       ref={ref}
-      href={title}
+      href={`${pathname}/projectName`}
       style={{
         animationPlayState: isTriggered ? "running" : "paused",
       }}
@@ -60,7 +62,7 @@ function Project({ project: { title, image, tags } }: ProjectProps) {
         requiresAnimation && styles.requiresAnimation
       )}
     >
-      <Image src={image as unknown as any} alt={title} sizes={imageSizes} />
+      <Image src={image} alt={title} sizes={imageSizes} />
       <ProjectPreviewTitle title={title} className={styles.title} />
       <TagList tags={tags} className={styles.tags} />
     </Link>

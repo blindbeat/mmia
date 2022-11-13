@@ -1,4 +1,4 @@
-import styles from "./TagButtons.module.css"
+import styles from "modules/projects/ProjectsTagButtons/ProjectsTagButtons.module.css"
 import { ComponentPropsWithoutRef } from "react"
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   tagSelector: (tag: string | null) => void
 }
 
-function TagButtons({ tagSelector, tags }: Props) {
+function ProjectsTagButtons({ tagSelector, tags }: Props) {
   return (
     <div className={styles.tags}>
       <Tag name="all" key="all" onClick={() => tagSelector(null)} />
@@ -33,4 +33,4 @@ function Tag({ name, ...rest }: TagProps) {
   )
 }
 
-export default TagButtons
+export default ProjectsTagButtons

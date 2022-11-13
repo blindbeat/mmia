@@ -1,20 +1,16 @@
 import styles from "./ProjectPhotosBlock.module.css"
-import Image, { ImageProps } from "next/image"
+import Image from "next/image"
+import { NextImageSrc } from "misc/types"
 
 interface Props {
-  photos: Pick<ImageProps, "src">[]
+  photos: NextImageSrc[]
 }
 
 export default function ProjectPhotosBlock({ photos }: Props) {
   return (
     <div className={styles.content}>
       {photos.map((src, index) => (
-        <Image
-          key={index}
-          className={styles.image}
-          src={src as unknown as any}
-          alt=""
-        />
+        <Image key={index} className={styles.image} src={src} alt="" />
       ))}
     </div>
   )

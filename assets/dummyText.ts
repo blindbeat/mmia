@@ -9,3 +9,6 @@ export const metadata = {
 
 export const projectDescription =
   "Only low tide previously released the footpath, phone der small lighthouse island tossed in the North Sea over to the village. The further way led through the dreaded high moor. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned."
+
+export const dummyParagraph =
+  "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We"
