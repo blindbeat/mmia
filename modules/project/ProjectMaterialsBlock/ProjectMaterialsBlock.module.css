@@ -2,7 +2,10 @@
   display: grid;
   margin: var(--lg) var(--wrapper-padding-x) var(--sm);
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-auto-rows: 1fr;
   column-gap: var(--md-gap);
+  place-items: start;
 }
 
 .content > * {

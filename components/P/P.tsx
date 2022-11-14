@@ -6,7 +6,6 @@ import { inViewOptions } from "misc/utils"
 
 interface Props extends ComponentPropsWithoutRef<"p"> {
   appearImmediately?: boolean
-  children: string
   delay?: number
 }
 

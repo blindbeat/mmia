@@ -1,0 +1,19 @@
+.content {
+  max-width: min(50%, 60em);
+  /*max-width: 50%;*/
+  margin: var(--xl) auto;
+  padding: 0 var(--wrapper-padding-x);
+  text-align: center;
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    max-width: calc(100% * 2 / 3);
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    max-width: 100%;
+  }
+}
