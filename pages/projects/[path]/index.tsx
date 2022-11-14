@@ -8,6 +8,7 @@ import blockPhoto2 from "assets/dummyPics/ProjectPhotos/blockPhotos/2.jpg"
 import blockPhoto3 from "assets/dummyPics/ProjectPhotos/blockPhotos/3.jpg"
 import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSchemasBlock"
 import schemaPhoto from "assets/dummyPics/SchemaPhotos/1.jpg"
+import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/ProjectMaterialsBlock"
 
 export default function Project() {
   const {
@@ -26,6 +27,11 @@ export default function Project() {
       <ProjectPhotosBlock
         photoOrientation="horizontal"
         photos={[blockPhoto3]}
+      />
+      <ProjectMaterialsBlock />
+      <ProjectPhotosBlock
+        photoOrientation="vertical"
+        photos={[blockPhoto1, blockPhoto2]}
       />
     </div>
   )
