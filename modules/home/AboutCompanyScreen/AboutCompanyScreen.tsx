@@ -23,7 +23,7 @@ function AboutCompanyScreen() {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
-    delay: 1000,
+    delay: 5000,
   })
 
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
