@@ -4,11 +4,14 @@
   gap: var(--xl) var(--md-gap);
 }
 
-.requiresAnimation {
-  /*animation: 1.5s ease-out both appear;*/
+/*.requiresAnimation {*/
+/*}*/
+
+.project {
+  transition: opacity 0.1s, transform 3s;
   animation: 0.6s both appear,
     1.5s cubic-bezier(0.03, 0.66, 0.35, 0.96) both elevate;
-  /*animation: 0.5s both appear, 3s both elevate;*/
+  animation-delay: 0.1s;
 }
 
 .project img {
@@ -17,15 +20,9 @@
   margin-bottom: var(--2xs);
 }
 
-.project {
-  transition: opacity 0.1s, transform 3s;
-  animation-delay: 0.1s;
-}
-
 @keyframes appear {
   from {
     opacity: 0;
-    /*transform: translateY(2rem);*/
   }
 }
 

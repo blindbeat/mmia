@@ -5,7 +5,7 @@ import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTi
 import { ProjectBrief } from "misc/types"
 import Link from "next/link"
 import classNames from "classnames"
-import { useEffect, useRef, useState } from "react"
+import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 
 interface Props {
@@ -13,10 +13,22 @@ interface Props {
 }
 
 export default function ProjectsList({ projects }: Props) {
+  const [lastVisibleIndex, setLastVisibleIndex] = useState(0)
+  const [immediateAnimationsEnded, setImmediateAnimationsEnded] =
+    useState(false)
+  console.log(lastVisibleIndex)
   return (
     <div className={styles.content}>
       {projects.map((project, index) => (
-        <Project project={project} key={index} />
+        <Project
+          project={project}
+          key={index}
+          index={index}
+          lastVisibleIndex={lastVisibleIndex}
+          lastVisibleIndexSetter={setLastVisibleIndex}
+          ImmediateAnimationsEndedSetter={setImmediateAnimationsEnded}
+          immediateAnimationsEnded={immediateAnimationsEnded}
+        />
       ))}
     </div>
   )
@@ -24,13 +36,28 @@ export default function ProjectsList({ projects }: Props) {
 
 interface ProjectProps {
   project: ProjectBrief
+  index: number
+  lastVisibleIndex: number
+  lastVisibleIndexSetter: (index: number) => void
+  ImmediateAnimationsEndedSetter: (value: boolean) => void
+  immediateAnimationsEnded: boolean
 }
 
-function Project({ project: { title, image, tags } }: ProjectProps) {
-  const { pathname } = useRouter()
-  const [requiresAnimation, setRequiresAnimation] = useState<boolean>(false)
-  const [isTriggered, setIsTriggered] = useState<boolean>(false)
+const imageSizes = `(max-width: 1024px) 100vw,
+                      50vw`
 
+const baseDelay = 1.6
+function Project({
+  project: { title, image, tags },
+  index,
+  lastVisibleIndex,
+  lastVisibleIndexSetter,
+  ImmediateAnimationsEndedSetter,
+  immediateAnimationsEnded,
+}: ProjectProps) {
+  const { pathname } = useRouter()
+  const [requiresTriggering, setRequiresTriggering] = useState<boolean>(false)
+  const [isTriggered, setIsTriggered] = useState<boolean>(false)
   const ref = useRef<HTMLAnchorElement | null>(null)
 
   useEffect(() => {
@@ -38,29 +65,41 @@ function Project({ project: { title, image, tags } }: ProjectProps) {
     if (!elem) return
     const rect = elem.getBoundingClientRect()
     if (rect.top >= window.innerHeight) {
-      setRequiresAnimation(true)
+      setRequiresTriggering(true)
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) setIsTriggered(true)
       })
       observer.observe(elem)
       return () => observer.unobserve(elem)
+    } else {
+      if (index > lastVisibleIndex) lastVisibleIndexSetter(index)
     }
-  }, [])
+  }, [index, lastVisibleIndex, lastVisibleIndexSetter])
 
-  const imageSizes = `(max-width: 1024px) 100vw,
-                      50vw`
+  const handleEndAnimation: AnimationEventHandler<HTMLAnchorElement> = (e) => {
+    if (index === lastVisibleIndex && e.animationName.includes("appear")) {
+      ImmediateAnimationsEndedSetter(true)
+    }
+  }
+
+  const delayDifference = lastVisibleIndex > 7 ? 0.05 : 0.2
 
   return (
     <Link
       ref={ref}
       href={`${pathname}/projectName`}
       style={{
-        animationPlayState: isTriggered ? "running" : "paused",
+        animationPlayState: requiresTriggering
+          ? isTriggered && immediateAnimationsEnded
+            ? "running"
+            : "paused"
+          : undefined,
+        animationDelay: !requiresTriggering
+          ? `${baseDelay + index * delayDifference}s`
+          : undefined,
       }}
-      className={classNames(
-        styles.project,
-        requiresAnimation && styles.requiresAnimation
-      )}
+      onAnimationEnd={handleEndAnimation}
+      className={classNames(styles.project)}
     >
       <Image src={image} alt={title} sizes={imageSizes} />
       <ProjectPreviewTitle title={title} className={styles.title} />
