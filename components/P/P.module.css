@@ -1,6 +1,6 @@
 .content {
   animation-name: appear;
-  animation-duration: 1.25s;
+  animation-duration: 1.5s;
   animation-play-state: paused;
   animation-fill-mode: both;
 }

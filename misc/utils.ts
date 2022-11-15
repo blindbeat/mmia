@@ -9,3 +9,8 @@ export const inViewOptions: IntersectionOptions = {
   fallbackInView: true,
   triggerOnce: true,
 }
+
+export const calcPathLength = (path: SVGPathElement): number => {
+  const scale = path.getBoundingClientRect().width / path.getBBox().width
+  return path.getTotalLength() * scale
+}

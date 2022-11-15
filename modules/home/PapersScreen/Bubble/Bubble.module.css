@@ -31,13 +31,15 @@
   border-radius: inherit;
 }
 
-.bubble:hover,
-:global(.swiper-slide-active) .bubble,
-:global(.active-bubble) .bubble {
-  border-color: transparent;
+.bubble:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.bubble:hover:after,
+:global(.swiper-slide-active) .bubble,
+:global(.active-bubble) .bubble {
+  border: 1px dashed transparent;
+}
+
 :global(.swiper-slide-active) .bubble:after,
 :global(.active-bubble) .bubble:after {
   border-color: white;

@@ -1,6 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
-import { inViewOptions } from "misc/utils"
+import { calcPathLength, inViewOptions } from "misc/utils"
 
 function useAnimateLine() {
   const [ref, setRef] = useState<SVGSVGElement | null>(null)
@@ -16,11 +16,13 @@ function useAnimateLine() {
     if (!ref) return
     const path = ref.querySelector("path")
     if (!path) return
-    const lineLength = ref.querySelector("path")?.getTotalLength()
+    const lineLength = calcPathLength(path)
     setStyle({
       strokeDasharray: lineLength,
       strokeDashoffset: inView ? 0 : lineLength,
-      transition: inView ? "stroke-dashoffset linear 5s" : undefined,
+      transition: inView
+        ? "stroke-dashoffset cubic-bezier(.18,.64,.78,.98) 7s"
+        : undefined,
     })
   }, [ref, inView])
   return {

@@ -19,13 +19,13 @@
 .slide img {
   width: 100%;
   height: 100%;
-  transition: transform var(--tm);
+  transition: transform var(--tl);
   object-fit: cover;
   object-position: center;
 }
 
 .slide img:hover {
-  transform: scale(1.125);
+  transform: scale(1.1125);
 }
 
 .tags {
