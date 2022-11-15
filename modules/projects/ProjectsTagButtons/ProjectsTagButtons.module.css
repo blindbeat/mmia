@@ -1,5 +1,6 @@
 .tags {
   display: flex;
+  overflow-x: hidden;
   flex-wrap: wrap;
   gap: var(--2xs) var(--sm);
 }
@@ -9,11 +10,14 @@
   font-weight: 300;
   display: inline-flex;
   transition: opacity var(--tm);
+  animation-name: appear;
+  animation-duration: 0.9s;
   letter-spacing: 0.04em;
   text-transform: capitalize;
   opacity: 0.5;
   border: none;
   background: transparent;
+  animation-fill-mode: both;
 }
 
 .tag:hover {
@@ -22,6 +26,13 @@
 
 .tag .amount {
   font-size: var(--sm-font-size);
+}
+
+@keyframes appear {
+  from {
+    transform: translate(-1rem, -100%) rotate(-2deg);
+    opacity: 0;
+  }
 }
 
 @media (max-width: calc(120em - 1px)) {
