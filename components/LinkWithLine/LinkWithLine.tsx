@@ -11,7 +11,7 @@ import Link from "next/link"
 
 interface Props extends ComponentPropsWithoutRef<"a"> {
   color?: string
-  children: ReactNode
+  children?: ReactNode
 }
 
 function LinkWithLine({

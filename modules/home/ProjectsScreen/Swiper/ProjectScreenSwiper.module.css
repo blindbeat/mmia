@@ -5,14 +5,15 @@
 
 .slide {
   display: grid;
-  width: min(50vw, 55rem);
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
+  width: min-content;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
   gap: var(--rowGap) var(--4xs);
 }
 
 .imageContainer {
   overflow: hidden;
+  width: min(45vw, 55rem);
   aspect-ratio: 1 / 0.625;
 }
 

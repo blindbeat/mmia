@@ -1,0 +1,25 @@
+.swiper {
+  margin-bottom: var(--md);
+}
+
+.swiper :global(.swiper-wrapper) {
+  transition-timing-function: linear;
+  /*transition-duration: 5s;*/
+}
+
+.slide {
+  font-size: var(--lg-font-size);
+  font-weight: 300;
+  width: max-content;
+  margin: 0 1rem;
+}
+
+.ctaText {
+  transition: color var(--tm);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+}
+
+.ctaText:hover {
+  color: black;
+}

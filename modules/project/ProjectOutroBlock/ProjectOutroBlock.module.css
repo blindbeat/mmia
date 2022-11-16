@@ -1,0 +1,22 @@
+.content {
+  margin: var(--4xl) 0;
+}
+
+.header {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.paragraphWrapper {
+  margin: 0 var(--link-padding) var(--md);
+}
+
+.paragraph {
+  width: calc(100% / 3);
+  margin: auto;
+  text-align: center;
+}
+
+.link {
+  margin: auto;
+}

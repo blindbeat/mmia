@@ -1,0 +1,33 @@
+.wrapper {
+  display: grid;
+  align-items: center;
+  margin: 0 var(--wrapper-padding-x) var(--sm);
+  --center-image-size: 23%;
+  grid-template-columns:
+    calc(var(--center-image-size) * 0.7) var(--center-image-size)
+    calc(var(--center-image-size) * 0.7);
+  gap: var(--lg);
+  place-content: center;
+}
+
+.swiper {
+  width: 100%;
+  aspect-ratio: 0.8;
+}
+
+.slide {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .wrapper {
+    grid-template-columns: 0 50% 0;
+  }
+}
