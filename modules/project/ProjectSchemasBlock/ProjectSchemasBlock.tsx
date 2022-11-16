@@ -27,7 +27,10 @@ export default function ProjectSchemasBlock({ schemas }: Props) {
         {schemas.length > 1 ? (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            autoplay
+            autoplay={{
+              pauseOnMouseEnter: true,
+              disableOnInteraction: false,
+            }}
             navigation={{
               prevEl: `.${styles.prev}`,
               nextEl: `.${styles.next}`,

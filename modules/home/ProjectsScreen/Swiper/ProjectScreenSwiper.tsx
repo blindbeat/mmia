@@ -28,7 +28,10 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
-      autoplay
+      autoplay={{
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      }}
       navigation={{
         prevEl: `.${styles.prev}`,
         nextEl: `.${styles.next}`,
