@@ -45,6 +45,7 @@ export default function ImagesSwiper({
           images={images}
           modules={[Controller, Autoplay]}
           autoplay
+          allowTouchMove={false}
           controller={{
             control: controlledSwiper1,
           }}
