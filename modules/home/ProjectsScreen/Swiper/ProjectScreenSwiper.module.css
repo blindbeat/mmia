@@ -12,21 +12,13 @@
 }
 
 .imageContainer {
-  overflow: hidden;
   width: min(45vw, 55rem);
   aspect-ratio: 1 / 0.625;
 }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  transition: transform var(--tl);
+.imageContainer img {
   object-fit: cover;
   object-position: center;
-}
-
-.slide img:hover {
-  transform: scale(1.1125);
 }
 
 .tags {
@@ -60,21 +52,21 @@
 
 @media (max-width: calc(64em - 1px)) {
   .slide {
-    width: 60vw;
     gap: unset;
     grid-template-columns: unset;
   }
 
-  .slide .tags {
+  .tags {
     grid-row: 3;
     writing-mode: unset;
   }
 
-  .slide .imageContainer {
+  .imageContainer {
+    width: 60vw;
     margin-bottom: var(--rowGap);
   }
 
-  .slide .title {
+  .title {
     margin-bottom: var(--descriptionMb);
   }
 
@@ -93,6 +85,10 @@
   .slide {
     width: 100%;
     padding: 1rem;
+  }
+
+  .imageContainer {
+    width: 100%;
   }
 
   .swiperPaginationHorizontal {

@@ -14,6 +14,7 @@ import {
   SwiperNavigationPrev,
 } from "components/SwiperComponents"
 import { swiperStyles } from "components/SwiperComponents/SwiperBullets/SwiperBullets"
+import ImageZoomableContainer from "components/ImageZoomableContainer"
 
 const slides = [slide1, slide2, slide3]
 
@@ -63,9 +64,11 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index} className={styles.slide}>
-          <div className={styles.imageContainer}>
+          <ImageZoomableContainer className={styles.imageContainer}>
             <Image src={slide} alt="" sizes={imageSizes} />
-          </div>
+          </ImageZoomableContainer>
+          {/*<div className={styles.imageContainer}>*/}
+          {/*</div>*/}
           <TagList tags={tags} className={styles.tags} />
           <ProjectPreviewTitle title={title} className={styles.title} />
         </SwiperSlide>

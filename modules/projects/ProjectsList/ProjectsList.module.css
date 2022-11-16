@@ -4,9 +4,6 @@
   gap: var(--xl) var(--md-gap);
 }
 
-/*.requiresAnimation {*/
-/*}*/
-
 .project {
   transition: opacity 0.1s, transform 3s;
   animation: 0.6s both appear,
@@ -14,10 +11,13 @@
   animation-delay: 0.1s;
 }
 
-.project img {
+.imageContainer {
+  margin-bottom: var(--2xs);
+}
+
+.image {
   width: 100%;
   height: auto;
-  margin-bottom: var(--2xs);
 }
 
 @keyframes appear {

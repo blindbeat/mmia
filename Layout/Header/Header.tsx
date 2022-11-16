@@ -11,9 +11,9 @@ import useThresholdObserver from "hooks/useThresholdObserver"
 import NavLinkAnimated from "Layout/Header/NavLinkAnimated"
 
 const navLinks: [name: string, url: string][] = [
-  ["projects", "projects"],
-  ["about us", "about"],
-  ["contact", "contact"],
+  ["projects", "/projects"],
+  ["about us", "/about"],
+  ["contact", "/contact"],
 ]
 
 const isScrolled = (scrollY: number) => scrollY !== 0

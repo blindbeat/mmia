@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 400px;
   padding: var(--sm) var(--wrapper-padding-x);
+  cursor: pointer;
   color: white;
   aspect-ratio: 1/0.35;
 }
@@ -31,32 +32,35 @@
   filter: brightness(0.25);
 }
 
-.eyes {
+.eye {
   position: absolute;
   z-index: -1;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: min-content;
-}
-
-.eye {
+  right: 0;
+  bottom: 0;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   backdrop-filter: brightness(4);
 }
 
+.ctaTextContainer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 .ctaText {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  width: max-content;
+  /*top: 50%;*/
+  /*left: 50%;*/
   transform: translate(-50%, -50%);
   text-transform: uppercase;
 }
 
 @media (max-width: calc(64em - 1px)) {
-  .eyes {
+  .eye,
+  .ctaTextContainer {
     display: none;
   }
 }

@@ -70,7 +70,7 @@ const SwiperEntity = ({ images, modules = [], ...rest }: SwiperEntityProps) => (
   <Swiper
     loop
     effect="creative"
-    speed={1200}
+    speed={1800}
     modules={[EffectCreative, ...modules]}
     creativeEffect={{
       prev: {

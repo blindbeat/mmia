@@ -7,6 +7,7 @@ import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
+import ImageZoomableContainer from "components/ImageZoomableContainer"
 
 interface Props {
   projects: ProjectBrief[]
@@ -101,7 +102,14 @@ function Project({
       onAnimationEnd={handleEndAnimation}
       className={classNames(styles.project)}
     >
-      <Image src={image} alt={title} sizes={imageSizes} />
+      <ImageZoomableContainer className={styles.imageContainer}>
+        <Image
+          src={image}
+          alt={title}
+          sizes={imageSizes}
+          className={styles.image}
+        />
+      </ImageZoomableContainer>
       <ProjectPreviewTitle title={title} className={styles.title} />
       <TagList tags={tags} className={styles.tags} />
     </Link>

@@ -17,6 +17,7 @@ function useAnimateLine() {
     const path = ref.querySelector("path")
     if (!path) return
     const lineLength = calcPathLength(path)
+    if (isNaN(lineLength)) return
     setStyle({
       strokeDasharray: lineLength,
       strokeDashoffset: inView ? 0 : lineLength,
