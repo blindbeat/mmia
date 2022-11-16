@@ -2,14 +2,9 @@
   display: grid;
   margin: var(--lg) var(--wrapper-padding-x) var(--sm);
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  grid-auto-rows: 1fr;
+  grid-template-rows: auto 1fr auto;
   column-gap: var(--md-gap);
   place-items: start;
-}
-
-.content > * {
-  /*width: calc(100% * 2 / 3);*/
 }
 
 .header {
@@ -26,8 +21,6 @@
 .imageWrapper {
   position: relative;
   flex-basis: 40%;
-  width: 40%;
-  /*width: 33%;*/
 }
 
 .image {
@@ -66,6 +59,12 @@
   grid-column: 2;
 }
 
+@media (max-width: calc(64em - 1px)) {
+  .descriptions {
+    width: calc(100% * 5 / 6);
+  }
+}
+
 @media (max-width: calc(48em - 1px)) {
   .content {
     grid-template-columns: auto;
@@ -83,8 +82,7 @@
   }
 
   .imageWrapper {
-    flex-basis: 0;
-    flex-grow: 1;
+    flex-basis: 50%;
   }
 
   .paragraph {

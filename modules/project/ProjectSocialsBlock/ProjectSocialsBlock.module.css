@@ -22,3 +22,15 @@
 .link:hover {
   opacity: 1;
 }
+
+@media (max-width: calc(90em - 1px)) {
+  .socials {
+    gap: var(--md);
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .socials {
+    gap: 2rem;
+  }
+}

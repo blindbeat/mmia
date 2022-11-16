@@ -10,10 +10,25 @@ import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSche
 import schemaPhoto from "assets/dummyPics/SchemaPhotos/1.jpg"
 import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/ProjectMaterialsBlock"
 import ProjectParagraphBlock from "modules/project/ProjectParagraphBlock"
-import { dummyParagraphLong } from "assets/dummyText"
+import { dummyParagraph, dummyParagraphLong } from "assets/dummyText"
 import ProjectSocialsBlock from "modules/project/ProjectSocialsBlock"
 import ProjectOutroBlock from "modules/project/ProjectOutroBlock/ProjectOutroBlock"
+import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
+import material1 from "assets/dummyPics/project/materialPhotos/1.jpg"
+import material2 from "assets/dummyPics/project/materialPhotos/2.jpg"
 
+const materials = [
+  {
+    title: "black marble",
+    paragraph: dummyParagraph,
+    image: material1,
+  },
+  {
+    title: "polished wood",
+    paragraph: dummyParagraph,
+    image: material2,
+  },
+]
 export default function Project() {
   const {
     query: { path },
@@ -32,11 +47,13 @@ export default function Project() {
         photoOrientation="horizontal"
         photos={[blockPhoto3]}
       />
-      <ProjectMaterialsBlock />
+      <ProjectMaterialsBlock materials={materials} />
       <ProjectPhotosBlock
         photoOrientation="vertical"
         photos={[blockPhoto1, blockPhoto2]}
       />
+      <ProjectMaterialsBlock materials={[materials[0]]} />
+      <ProjectPhotosBlock photoOrientation="vertical" photos={[blockPhoto1]} />
       <ProjectParagraphBlock>{dummyParagraphLong}</ProjectParagraphBlock>
       <ProjectPhotosBlock
         photoOrientation="horizontal"
@@ -44,6 +61,7 @@ export default function Project() {
       />
       <ProjectSocialsBlock />
       <ProjectOutroBlock />
+      <ProjectNextPreviewBlock />
     </div>
   )
 }

@@ -16,10 +16,11 @@
   --md-gap: 2rem;
   --sm-gap: 0.75rem;
 
-  --ts: 0.3s;
-  --tm: 0.6s;
   --tl: 1s;
+  --tm: 0.6s;
+  --ts: 0.3s;
 
+  --xl-font-size: var(--2xl);
   --lg-font-size: var(--xl);
   --sm-font-size: 0.875rem;
   --project-preview-title-font-size: 1.5rem;
@@ -140,13 +141,8 @@ a {
     --5xl: 6rem;
     --4xl: 5rem;
     --3xl: 4rem;
-    --2xl: 3.5rem;
-    --xl: 3rem;
-    --lg: 2.5rem;
-    --md: 2rem;
-    --sm: 1.5rem;
-    --xs: 1.25rem;
-    --2xs: 1rem;
+
+    --xl-font-size: var(--lg);
 
     --wrapper-padding-x: 1rem;
     --link-padding: 0.5rem;

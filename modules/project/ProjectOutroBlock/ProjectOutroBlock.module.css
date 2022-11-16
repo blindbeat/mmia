@@ -31,3 +31,15 @@
   height: 100%;
   transform: scaleX(1.125);
 }
+
+@media (max-width: calc(64em - 1px)) {
+  .paragraph {
+    width: 50%;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .paragraph {
+    width: 100%;
+  }
+}
