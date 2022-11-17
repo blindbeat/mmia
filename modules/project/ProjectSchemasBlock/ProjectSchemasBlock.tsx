@@ -75,7 +75,9 @@ export default function ProjectSchemasBlock({ schemas }: Props) {
           <Image src={schemas[0]} alt="" className={styles.standaloneImage} />
         )}
       </div>
-      <p className={styles.paragraph}>{dummyParagraph}</p>
+      <div className={styles.paragraphWrapper}>
+        <p className={styles.paragraph}>{dummyParagraph}</p>
+      </div>
       <BackgroundSvg ref={ref} style={style} className={styles.backgroundSvg} />
     </div>
   )

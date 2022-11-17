@@ -39,9 +39,13 @@
   margin: var(--xl) auto;
 }
 
+.paragraphWrapper {
+  margin: 0 var(--wrapper-padding-x);
+}
+
 .paragraph {
   max-width: 50%;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
 }
 
@@ -63,5 +67,9 @@
 
   .standaloneImage {
     width: 100%;
+  }
+
+  .paragraph {
+    max-width: 100%;
   }
 }
