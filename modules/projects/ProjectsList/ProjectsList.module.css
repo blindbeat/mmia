@@ -6,8 +6,8 @@
 
 .project {
   transition: opacity 0.1s, transform 3s;
-  animation: 0.6s both appear,
-    1.5s cubic-bezier(0.03, 0.66, 0.35, 0.96) both elevate;
+  animation: 1.5s both appear;
+  /*1.5s cubic-bezier(0.03, 0.66, 0.35, 0.96) both elevate;*/
   animation-delay: 0.1s;
 }
 
@@ -21,14 +21,15 @@
 }
 
 @keyframes appear {
-  from {
+  0% {
     opacity: 0;
-  }
-}
-
-@keyframes elevate {
-  from {
     transform: translateY(12.5%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
