@@ -7,8 +7,8 @@ import H2 from "components/H2"
 import { title } from "assets/dummyText"
 import { useCallback, useEffect, useRef } from "react"
 
-const defaultStyleLeft = { x: -250, y: -25 }
-const defaultStyleRight = { x: -25, y: -25 }
+const defaultStyleLeft = { x: -200, y: -25 }
+const defaultStyleRight = { x: 0, y: -25 }
 const defaultStyleText = { x: -232.5, y: -125 }
 
 const defaultSpringConfig = {
@@ -37,8 +37,8 @@ export default function ProjectNextPreviewBlock() {
       const rect = ref.current.getBoundingClientRect()
       const relativeX = event.clientX - rect.right
       const relativeY = event.clientY - rect.bottom
-      apiLeft.start({ x: relativeX - 12.5, y: relativeY + 100, delay: 50 })
-      apiRight.start({ x: relativeX + 212.5, y: relativeY + 100, delay: 100 })
+      apiLeft.start({ x: relativeX, y: relativeY + 100, delay: 50 })
+      apiRight.start({ x: relativeX + 200, y: relativeY + 100, delay: 100 })
       apiText.start({ x: relativeX, y: relativeY, delay: 65 })
     },
     [apiLeft, apiRight, apiText]
