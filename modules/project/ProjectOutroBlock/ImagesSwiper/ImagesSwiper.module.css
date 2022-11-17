@@ -15,6 +15,11 @@
   aspect-ratio: 0.8;
 }
 
+.swiper :global(.swiper-wrapper) {
+  transition-timing-function: ease-in-out;
+  /*transition-duration: 5s;*/
+}
+
 .slide {
   line-height: 0;
   overflow: hidden;
