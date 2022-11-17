@@ -33,6 +33,7 @@
 
 @media (max-width: calc(48em - 1px)) {
   .wrapper {
-    --center-image-size: 33%;
+    gap: var(--xs);
+    --center-image-size: 35%;
   }
 }
