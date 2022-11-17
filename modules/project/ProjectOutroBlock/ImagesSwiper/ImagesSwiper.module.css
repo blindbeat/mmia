@@ -33,6 +33,6 @@
 
 @media (max-width: calc(48em - 1px)) {
   .wrapper {
-    grid-template-columns: 0 50% 0;
+    --center-image-size: 33%;
   }
 }
