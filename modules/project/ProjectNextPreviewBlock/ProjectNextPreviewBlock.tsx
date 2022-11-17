@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef } from "react"
 
 const defaultStyleLeft = { x: -200, y: -25 }
 const defaultStyleRight = { x: 0, y: -25 }
-const defaultStyleText = { x: -232.5, y: -125 }
+const defaultStyleText = { x: -200, y: -125 }
 
 const defaultSpringConfig = {
   tension: 100,
