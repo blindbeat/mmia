@@ -12,7 +12,7 @@ export default function WordsSwiper() {
       slidesPerView="auto"
       loop
       allowTouchMove={false}
-      speed={15000}
+      speed={20000}
       autoplay={{
         delay: 1,
         disableOnInteraction: false,
