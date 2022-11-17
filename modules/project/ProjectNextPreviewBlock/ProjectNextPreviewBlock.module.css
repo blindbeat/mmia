@@ -6,7 +6,7 @@
   padding: var(--sm) var(--wrapper-padding-x);
   cursor: pointer;
   color: white;
-  aspect-ratio: 1/0.35;
+  /*aspect-ratio: 1/0.35;*/
 }
 
 .text {
@@ -14,6 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  gap: 15rem;
 }
 
 .title {
