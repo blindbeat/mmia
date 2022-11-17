@@ -38,7 +38,7 @@ export default function ProjectNextPreviewBlock() {
       const relativeX = event.clientX - rect.right
       const relativeY = event.clientY - rect.bottom
       apiLeft.start({ x: relativeX - 12.5, y: relativeY + 100, delay: 50 })
-      apiRight.start({ x: relativeX + 212.5, y: relativeY + 100, delay: 70 })
+      apiRight.start({ x: relativeX + 212.5, y: relativeY + 100, delay: 100 })
       apiText.start({ x: relativeX, y: relativeY, delay: 65 })
     },
     [apiLeft, apiRight, apiText]
