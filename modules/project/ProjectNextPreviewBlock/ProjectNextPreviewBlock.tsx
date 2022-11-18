@@ -6,6 +6,7 @@ import ScreenTitle from "components/ScreenTitle"
 import H2 from "components/H2"
 import { title } from "assets/dummyText"
 import { useCallback, useEffect, useRef } from "react"
+import classNames from "classnames"
 
 const defaultStyleLeft = { x: -200, y: -25 }
 const defaultStyleRight = { x: 0, y: -25 }
@@ -13,8 +14,9 @@ const defaultStyleText = { x: -200, y: -125 }
 
 const defaultSpringConfig = {
   tension: 100,
-  // mass: 2,
 }
+
+const eyeRadius = 100
 
 export default function ProjectNextPreviewBlock() {
   const [styleLeft, apiLeft] = useSpring(
@@ -31,30 +33,63 @@ export default function ProjectNextPreviewBlock() {
   )
   const ref = useRef<null | HTMLDivElement>(null)
 
-  const handleMouseMove = useCallback(
-    (event: MouseEvent) => {
-      if (!ref.current) return
-      const rect = ref.current.getBoundingClientRect()
-      const relativeX = event.clientX - rect.right
-      const relativeY = event.clientY - rect.bottom
-      apiLeft.start({ x: relativeX, y: relativeY + 100, delay: 50 })
-      apiRight.start({ x: relativeX + 200, y: relativeY + 100, delay: 100 })
-      apiText.start({ x: relativeX, y: relativeY, delay: 65 })
+  const parkEyes = useCallback(
+    (elem: HTMLDivElement, immediate = false, withDelay = true) => {
+      const rect = elem.getBoundingClientRect()
+      apiLeft.start({
+        x: rect.width - eyeRadius * 3.5,
+        y: rect.height - eyeRadius * 1.5,
+        delay: withDelay ? 50 : undefined,
+        immediate,
+      })
+      apiRight.start({
+        x: rect.width - eyeRadius * 1.5,
+        y: rect.height - eyeRadius * 1.5,
+        delay: withDelay ? 100 : undefined,
+        immediate,
+      })
+      apiText.start({
+        x: rect.width - eyeRadius * 2.5,
+        y: rect.height - eyeRadius * 1.5,
+        delay: withDelay ? 100 : undefined,
+        immediate,
+      })
     },
     [apiLeft, apiRight, apiText]
   )
 
+  const handleMouseMove = useCallback(
+    (event: MouseEvent) => {
+      if (!ref.current) return
+      const rect = ref.current.getBoundingClientRect()
+      const relativeX = event.clientX - rect.left
+      const relativeY = event.clientY - rect.top
+      apiLeft.start({ x: relativeX - eyeRadius, y: relativeY, delay: 50 })
+      apiRight.start({ x: relativeX + eyeRadius, y: relativeY, delay: 100 })
+      apiText.start({ x: relativeX, y: relativeY, delay: 75 })
+    },
+    [apiLeft, apiRight, apiText]
+  )
+
+  const handleResize = useCallback(() => {
+    if (!ref.current) return
+    console.log("hello")
+    parkEyes(ref.current, true, false)
+  }, [parkEyes])
+
   const handleMouseLeave = useCallback(() => {
-    apiLeft.start(defaultStyleLeft)
-    apiRight.start(defaultStyleRight)
-    apiText.start(defaultStyleText)
-  }, [apiLeft, apiRight, apiText])
+    if (!ref.current) return
+    parkEyes(ref.current)
+  }, [parkEyes])
 
   useEffect(() => {
     if (!ref.current) return
+    parkEyes(ref.current, true)
     ref.current.addEventListener("mousemove", handleMouseMove)
     ref.current.addEventListener("mouseleave", handleMouseLeave)
-  }, [handleMouseLeave, handleMouseMove])
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [handleMouseLeave, handleMouseMove, handleResize, parkEyes])
 
   return (
     <div ref={ref} className={styles.content}>
@@ -62,12 +97,28 @@ export default function ProjectNextPreviewBlock() {
         <ScreenTitle>about company</ScreenTitle>
         <H2 className={styles.title}>{title}</H2>
       </div>
-      <animated.div className={styles.eye} style={styleLeft} />
-      <animated.div className={styles.eye} style={styleRight} />
+      <svg className={styles.svg}>
+        <clipPath id="eyeClip">
+          <animated.circle cx={styleLeft.x} cy={styleLeft.y} r={100} />
+          <animated.circle cx={styleRight.x} cy={styleRight.y} r={100} />
+        </clipPath>
+      </svg>
       <animated.div className={styles.ctaTextContainer} style={styleText}>
         <span className={styles.ctaText}>*click to go*</span>
       </animated.div>
-      <Image src={NextProjectImage} alt="" className={styles.image} />
+      <Image
+        src={NextProjectImage}
+        alt=""
+        className={classNames(styles.image, styles.imageEyesClip)}
+        style={{
+          clipPath: `url(#eyeClip)`,
+        }}
+      />
+      <Image
+        src={NextProjectImage}
+        alt=""
+        className={classNames(styles.image, styles.imageBackground)}
+      />
     </div>
   )
 }
