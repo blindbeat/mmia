@@ -17,7 +17,6 @@ export default function ProjectsList({ projects }: Props) {
   const [lastVisibleIndex, setLastVisibleIndex] = useState(0)
   const [immediateAnimationsEnded, setImmediateAnimationsEnded] =
     useState(false)
-  console.log(lastVisibleIndex)
   return (
     <div className={styles.content}>
       {projects.map((project, index) => (
@@ -65,7 +64,7 @@ function Project({
     const elem = ref.current
     if (!elem) return
     const rect = elem.getBoundingClientRect()
-    if (rect.top >= window.innerHeight) {
+    if (rect.top >= window.innerHeight + rect.height * 0.125) {
       setRequiresTriggering(true)
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) setIsTriggered(true)

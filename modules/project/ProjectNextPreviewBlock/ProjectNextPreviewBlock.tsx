@@ -73,7 +73,6 @@ export default function ProjectNextPreviewBlock() {
 
   const handleResize = useCallback(() => {
     if (!ref.current) return
-    console.log("hello")
     parkEyes(ref.current, true, false)
   }, [parkEyes])
 
