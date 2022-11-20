@@ -5,47 +5,20 @@
   position: relative;
 }
 
-.line {
+.svg {
   position: absolute;
   top: calc(100% + var(--gapToLine));
   left: 0;
+  width: 100%;
   --gapToLine: 6px;
 }
 
-.paused {
-  animation-play-state: paused;
-}
-
-.running {
-  animation-play-state: running;
-}
-
-.line path {
-  animation-play-state: inherit;
-}
-
-.line path {
-  transition: stroke-dashoffset ease-in-out 1.5s;
-  animation-name: lineDraw;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in;
-  animation-iteration-count: infinite;
-  animation-direction: reverse;
-  stroke-dasharray: 135;
-}
-
-@keyframes lineDraw {
-  from {
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: 270;
-  }
+.svg .path {
+  transition: stroke-dashoffset 2s;
 }
 
 @media (max-width: calc(90em - 1px)) {
   .line {
-    --gapToLine: 3px;
+    --gapToLine: 4px;
   }
 }
