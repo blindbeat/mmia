@@ -2,7 +2,6 @@ import Link, { LinkProps } from "next/link"
 import styles from "./CtaLink.module.css"
 import classNames from "classnames"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
-import { calcPathLength } from "misc/utils"
 
 function CtaLink({
   className,
@@ -17,7 +16,7 @@ function CtaLink({
   useEffect(() => {
     const path = pathRef.current
     if (!path) return
-    setLineLength(calcPathLength(path))
+    setLineLength(path.getTotalLength())
   }, [])
 
   return (
