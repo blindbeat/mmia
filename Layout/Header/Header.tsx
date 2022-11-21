@@ -24,7 +24,7 @@ interface Props {
 }
 
 function Header({ adaptiveTransparency }: Props) {
-  const [transparent, setTransparent] = useState(true)
+  const [transparent, setTransparent] = useState(adaptiveTransparency)
   const [hidden, setHidden] = useState(false)
   const extendsThreshold = useThresholdObserver(1024)
   const [headerHeight, setHeaderHeight] = useState<number | null>(null)
@@ -32,7 +32,8 @@ function Header({ adaptiveTransparency }: Props) {
     typeof window !== "undefined" ? window.scrollY : 0
   )
   const transparencyController = () => {
-    setTransparent(!isScrolled(window.scrollY))
+    if (!adaptiveTransparency) setTransparent(false)
+    else setTransparent(!isScrolled(window.scrollY))
   }
 
   const hideController = () => {
@@ -77,7 +78,7 @@ function Header({ adaptiveTransparency }: Props) {
         hideController()
       })
     }
-  }, [])
+  }, [adaptiveTransparency])
 
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
 
@@ -86,7 +87,7 @@ function Header({ adaptiveTransparency }: Props) {
       ref={headerRef}
       className={classNames(
         styles.content,
-        adaptiveTransparency && transparent && styles.transparent,
+        !adaptiveTransparency && styles.staticBg,
         hidden && styles.hidden
       )}
       style={{
