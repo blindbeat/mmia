@@ -6,24 +6,40 @@
   width: 100%;
   padding: calc(var(--xs) - var(--link-padding)) var(--wrapper-padding-x);
   transition: background-color var(--transitionTime),
-    color var(--transitionTime), transform var(--transitionTime);
+    transform var(--transitionTime);
   text-transform: uppercase;
   color: var(--accentColor);
-  background-color: var(--bgColor);
+  /*background-color: var(--bgColor);*/
   justify-items: start;
-  --accentColor: black;
+  --accentColor: white;
   --bgColor: white;
   --transitionTime: var(--ts);
   grid-template-columns: 2fr 4fr 4fr 2fr;
 }
 
+.content > * {
+  mix-blend-mode: difference;
+}
+
+/*.content:after {*/
+/*  position: absolute;*/
+/*  z-index: -1;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  content: "";*/
+/*  background: bisque;*/
+/*  !*clip-path: path("M 0 200 L 0,75 A 5,5 0,0,1 150,75 L 200 200 z");*!*/
+/*  !*clip-path: path("M 0 0 L 10 0 L 10 2 C 6 4 3 4 0 2 Z");*!*/
+/*}*/
+
 .content.hidden {
-  transform: translate(0, -100%);
+  /*transform: translate(0, -100%);*/
 }
 
 .content.transparent {
-  --bgColor: transparent;
-  --accentColor: white;
+  /*--bgColor: transparent;*/
 }
 
 .content nav {
@@ -37,11 +53,6 @@
   transition: opacity var(--transitionTime),
     border-bottom-color var(--transitionTime);
 }
-
-/*.content nav a:hover {*/
-/*  opacity: 1;*/
-/*  border-bottom-color: white;*/
-/*}*/
 
 .logo,
 .burger {
@@ -71,7 +82,7 @@
 .logo path,
 .logo rect,
 .logo mask {
-  transition: fill var(--transitionTime), stroke var(--transitionTime);
+  /*transition: fill var(--transitionTime), stroke var(--transitionTime);*/
   fill: var(--accentColor);
   stroke: var(--accentColor);
 }
@@ -80,7 +91,7 @@
 .burger path,
 .corner path,
 .content nav line {
-  transition: stroke var(--transitionTime);
+  /*transition: stroke var(--transitionTime);*/
   stroke: var(--accentColor);
 }
 
