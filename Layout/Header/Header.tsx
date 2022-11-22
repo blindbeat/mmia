@@ -27,7 +27,9 @@ function Header({ adaptiveTransparency }: Props) {
   const [transparent, setTransparent] = useState(adaptiveTransparency)
   const [hidden, setHidden] = useState(false)
   const extendsThreshold = useThresholdObserver(1024)
-  const [headerHeight, setHeaderHeight] = useState<number | null>(null)
+  const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
+    number | null
+  >(null)
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
@@ -41,22 +43,6 @@ function Header({ adaptiveTransparency }: Props) {
     setHidden(window.scrollY > lastScrollRef.current && window.scrollY > 100)
     lastScrollRef.current = window.scrollY
   }
-
-  const headerRef = useRef<HTMLDivElement | null>(null)
-
-  const calcRect = () => {
-    const header = headerRef.current
-    if (!header) return
-    setHeaderHeight(header.getBoundingClientRect().height / window.innerHeight)
-  }
-
-  useEffect(() => {
-    calcRect()
-    window.addEventListener("resize", calcRect)
-    return () => {
-      window.removeEventListener("resize", calcRect)
-    }
-  }, [])
 
   useEffect(() => {
     transparencyController()
@@ -80,49 +66,70 @@ function Header({ adaptiveTransparency }: Props) {
     }
   }, [adaptiveTransparency])
 
+  const headerRef = useRef<HTMLDivElement | null>(null)
+
+  const calcHeaderRect = () => {
+    const header = headerRef.current
+    if (!header) return
+    setHeaderHeightInPercentage(
+      header.getBoundingClientRect().height / window.innerHeight
+    )
+  }
+
+  useEffect(() => {
+    calcHeaderRect()
+    window.addEventListener("resize", calcHeaderRect)
+    return () => {
+      window.removeEventListener("resize", calcHeaderRect)
+    }
+  }, [])
+
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
 
   return (
-    <header
-      ref={headerRef}
+    <nav
       className={classNames(
         styles.content,
-        !adaptiveTransparency && styles.staticBg,
+        adaptiveTransparency && transparent && styles.transparent,
         hidden && styles.hidden
       )}
       style={{
-        clipPath: !transparent ? `url(#headerBg)` : undefined,
+        clipPath: `url(#headerBg)`,
       }}
     >
-      <button className={classNames(styles.burger, utilStyles.textAppear)}>
-        <Burger />
-      </button>
-      <Link href="/" className={classNames(styles.logo, utilStyles.textAppear)}>
-        <Logo />
-      </Link>
-      <nav>
-        {navLinks.map(([name, url]) => (
-          <NavLinkAnimated
-            key={url}
-            href={url}
-            className={utilStyles.textAppear}
-          >
-            {name}
-          </NavLinkAnimated>
-        ))}
-      </nav>
-      <CornerComponent
-        href="#"
-        className={classNames(styles.corner, utilStyles.textAppear)}
-      />
-      {headerHeight !== null && (
+      <header ref={headerRef}>
+        <button className={classNames(styles.burger, utilStyles.textAppear)}>
+          <Burger />
+        </button>
+        <Link
+          href="/"
+          className={classNames(styles.logo, utilStyles.textAppear)}
+        >
+          <Logo />
+        </Link>
+        <div className={styles.mainLinks}>
+          {navLinks.map(([name, url]) => (
+            <NavLinkAnimated
+              key={url}
+              href={url}
+              className={utilStyles.textAppear}
+            >
+              {name}
+            </NavLinkAnimated>
+          ))}
+        </div>
+        <CornerComponent
+          href="#"
+          className={classNames(styles.corner, utilStyles.textAppear)}
+        />
+      </header>
+      {headerHeightInPercentage !== null && (
         <BackgroundBlinder
-          headerHeightInPercentage={headerHeight * 100}
-          state={hidden ? "transparent" : "header"}
-          color={transparent ? "transparent" : "white"}
+          headerHeightInPercentage={headerHeightInPercentage * 100}
+          state={hidden ? "none" : "header"}
         />
       )}
-    </header>
+    </nav>
   )
 }
 
