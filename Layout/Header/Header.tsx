@@ -19,13 +19,15 @@ const navLinks: [name: string, url: string][] = [
 
 const isScrolled = (scrollY: number) => scrollY !== 0
 
+type navState = "hidden" | "header" | "fullscreen"
+
 interface Props {
   adaptiveTransparency: boolean
 }
 
 function Header({ adaptiveTransparency }: Props) {
   const [transparent, setTransparent] = useState(adaptiveTransparency)
-  const [hidden, setHidden] = useState(false)
+  const [navState, setNavState] = useState<navState>("header")
   const extendsThreshold = useThresholdObserver(1024)
   const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
     number | null
@@ -34,35 +36,36 @@ function Header({ adaptiveTransparency }: Props) {
     typeof window !== "undefined" ? window.scrollY : 0
   )
   const transparencyController = () => {
-    if (!adaptiveTransparency) setTransparent(false)
-    else setTransparent(!isScrolled(window.scrollY))
+    setTransparent(!isScrolled(window.scrollY))
   }
 
-  const hideController = () => {
-    if (window.scrollY === lastScrollRef.current) return
-    setHidden(window.scrollY > lastScrollRef.current && window.scrollY > 100)
+  const navStateController = () => {
+    // if (isButton && navState !== 'fullscreen') setNavState('fullscreen')
+    // if (isButton && navState === 'fullscreen') setNavState('fullscreen')
+    // if (window.scrollY === lastScrollRef.current) return
+    // console.log(window.scrollY, lastScrollRef.current)
+    setNavState(
+      window.scrollY > lastScrollRef.current && window.scrollY > 100
+        ? "hidden"
+        : "header"
+    )
     lastScrollRef.current = window.scrollY
   }
 
   useEffect(() => {
-    transparencyController()
-    hideController()
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        transparencyController()
-        hideController()
-      },
-      {
+    window.addEventListener("scroll", navStateController, {
+      passive: true,
+    })
+    setTransparent(adaptiveTransparency)
+    if (adaptiveTransparency) {
+      window.addEventListener("scroll", transparencyController, {
         passive: true,
-      }
-    )
-    return () => {
-      window.removeEventListener("scroll", () => {
-        transparencyController()
-        hideController()
       })
+    }
+
+    return () => {
+      window.removeEventListener("scroll", navStateController)
+      window.removeEventListener("scroll", transparencyController)
     }
   }, [adaptiveTransparency])
 
@@ -91,7 +94,7 @@ function Header({ adaptiveTransparency }: Props) {
       className={classNames(
         styles.content,
         adaptiveTransparency && transparent && styles.transparent,
-        hidden && styles.hidden
+        navState === "hidden" && styles.hidden
       )}
       style={{
         clipPath: `url(#headerBg)`,
@@ -123,10 +126,11 @@ function Header({ adaptiveTransparency }: Props) {
           className={classNames(styles.corner, utilStyles.textAppear)}
         />
       </header>
+      <div></div>
       {headerHeightInPercentage !== null && (
         <BackgroundBlinder
           headerHeightInPercentage={headerHeightInPercentage * 100}
-          state={hidden ? "none" : "header"}
+          state={navState}
         />
       )}
     </nav>

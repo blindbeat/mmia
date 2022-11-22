@@ -19,7 +19,7 @@ interface RectSize {
 const animationLength = 400
 
 interface Props {
-  state: "none" | "header" | "fullscreen"
+  state: "hidden" | "header" | "fullscreen"
   headerHeightInPercentage: number
 }
 
@@ -88,7 +88,7 @@ export default function BackgroundBlinder({
         }, animationLength / 2),
       ]
     },
-    [state]
+    [headerHeightInPercentage, state]
   )
 
   useEffect(() => {
