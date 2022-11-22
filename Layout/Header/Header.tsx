@@ -10,6 +10,7 @@ import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import NavLinkAnimated from "./NavLinkAnimated"
 import BackgroundBlinder from "Layout/Header/BackgroundBlinder"
+import useAnimateNavigation from "hooks/useAnimateNavigation"
 
 const navLinks: [name: string, url: string][] = [
   ["projects", "/projects"],
@@ -79,6 +80,13 @@ function Header({ adaptiveTransparency }: Props) {
     )
   }
 
+  const path = useAnimateNavigation({
+    state: navState,
+    headerHeightInPercentage: headerHeightInPercentage! * 100,
+  })
+
+  console.log(path)
+
   useEffect(() => {
     calcHeaderRect()
     window.addEventListener("resize", calcHeaderRect)
@@ -96,11 +104,9 @@ function Header({ adaptiveTransparency }: Props) {
         adaptiveTransparency && transparent && styles.transparent,
         navState === "hidden" && styles.hidden
       )}
-      style={
-        {
-          // clipPath: `url(#headerBg)`,
-        }
-      }
+      style={{
+        clipPath: `path("${path}")`,
+      }}
     >
       <header ref={headerRef}>
         <button className={classNames(styles.burger, utilStyles.textAppear)}>
