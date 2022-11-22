@@ -96,9 +96,11 @@ function Header({ adaptiveTransparency }: Props) {
         adaptiveTransparency && transparent && styles.transparent,
         navState === "hidden" && styles.hidden
       )}
-      style={{
-        clipPath: `url(#headerBg)`,
-      }}
+      style={
+        {
+          // clipPath: `url(#headerBg)`,
+        }
+      }
     >
       <header ref={headerRef}>
         <button className={classNames(styles.burger, utilStyles.textAppear)}>
