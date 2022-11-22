@@ -4,7 +4,7 @@ import { Property } from "csstype"
 import TransitionTimingFunction = Property.TransitionTimingFunction
 import TransitionDuration = Property.TransitionDuration
 
-interface Points {
+interface PointsAndAnimation {
   center: number
   side: number
   transitionTimingFunction?: TransitionTimingFunction
@@ -27,7 +27,10 @@ export default function BackgroundBlinder({
   state,
   headerHeightInPercentage,
 }: Props) {
-  const [points, setPoints] = useState<Points>({ center: 0, side: 0 })
+  const [points, setPoints] = useState<PointsAndAnimation>({
+    center: 0,
+    side: 0,
+  })
   const [windowRect, setWindowRect] = useState<RectSize>({
     width: 0,
     height: 0,
@@ -45,7 +48,7 @@ export default function BackgroundBlinder({
     }
   }, [])
 
-  const createPath = (points: Points) => {
+  const createPath = (points: PointsAndAnimation) => {
     return `M 0 0 L ${windowRect.width} 0 L ${windowRect.width} ${
       (points.side / 100) * windowRect.height
     } Q ${windowRect.width / 2} ${
@@ -56,7 +59,9 @@ export default function BackgroundBlinder({
   const morphPath = useCallback(
     (to: number) => {
       const state = points
-      const calcPoints = (animationProgress: Points): Points => {
+      const calcPoints = (
+        animationProgress: PointsAndAnimation
+      ): PointsAndAnimation => {
         return {
           ...animationProgress,
           center:
@@ -105,9 +110,9 @@ export default function BackgroundBlinder({
 
   return (
     <svg
-      preserveAspectRatio="none"
+      // preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
-      // viewBox={`0 0 ${windowRect.width} ${windowRect.height}`}
+      viewBox="0 0 10 10"
       className={styles.content}
     >
       <clipPath id="headerBg">
