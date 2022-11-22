@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { CSSProperties, useCallback, useEffect, useState } from "react"
 import { Property } from "csstype"
 import TransitionTimingFunction = Property.TransitionTimingFunction
 import TransitionDuration = Property.TransitionDuration
@@ -6,6 +6,7 @@ import TransitionDuration = Property.TransitionDuration
 interface Params {
   state: "hidden" | "header" | "fullscreen"
   headerHeightInPercentage: number
+  animationLength: number
 }
 interface RectSize {
   width: number
@@ -19,12 +20,11 @@ interface PointsAndAnimation {
   transitionDuration?: TransitionDuration
 }
 
-const animationLength = 400
-
-export default function useAnimateNavigation({
+const useAnimateNavigation = ({
   state,
   headerHeightInPercentage,
-}: Params) {
+  animationLength,
+}: Params): CSSProperties => {
   const [points, setPoints] = useState<PointsAndAnimation>({
     center: 0,
     side: 0,
@@ -73,7 +73,7 @@ export default function useAnimateNavigation({
       setPoints(
         calcPoints({
           side: 50 / 4,
-          center: 50,
+          center: 75,
           transitionTimingFunction: "linear",
           transitionDuration: `${animationLength / 2}ms`,
         })
@@ -106,5 +106,11 @@ export default function useAnimateNavigation({
     }
   }, [headerHeightInPercentage, morphPath, state])
 
-  return createPath(points)
+  return {
+    clipPath: `path("${createPath(points)}")`,
+    transitionTimingFunction: points.transitionTimingFunction,
+    transitionDuration: points.transitionDuration,
+  }
 }
+
+export default useAnimateNavigation

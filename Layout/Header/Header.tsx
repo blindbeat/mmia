@@ -9,7 +9,6 @@ import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import NavLinkAnimated from "./NavLinkAnimated"
-import BackgroundBlinder from "Layout/Header/BackgroundBlinder"
 import useAnimateNavigation from "hooks/useAnimateNavigation"
 
 const navLinks: [name: string, url: string][] = [
@@ -41,10 +40,6 @@ function Header({ adaptiveTransparency }: Props) {
   }
 
   const navStateController = () => {
-    // if (isButton && navState !== 'fullscreen') setNavState('fullscreen')
-    // if (isButton && navState === 'fullscreen') setNavState('fullscreen')
-    // if (window.scrollY === lastScrollRef.current) return
-    // console.log(window.scrollY, lastScrollRef.current)
     setNavState(
       window.scrollY > lastScrollRef.current && window.scrollY > 100
         ? "hidden"
@@ -76,16 +71,15 @@ function Header({ adaptiveTransparency }: Props) {
     const header = headerRef.current
     if (!header) return
     setHeaderHeightInPercentage(
-      header.getBoundingClientRect().height / window.innerHeight
+      (header.getBoundingClientRect().height / window.innerHeight) * 100
     )
   }
 
-  const path = useAnimateNavigation({
+  const styleAnimation = useAnimateNavigation({
     state: navState,
-    headerHeightInPercentage: headerHeightInPercentage! * 100,
+    headerHeightInPercentage: headerHeightInPercentage ?? 0,
+    animationLength: 200,
   })
-
-  console.log(path)
 
   useEffect(() => {
     calcHeaderRect()
@@ -104,9 +98,7 @@ function Header({ adaptiveTransparency }: Props) {
         adaptiveTransparency && transparent && styles.transparent,
         navState === "hidden" && styles.hidden
       )}
-      style={{
-        clipPath: `path("${path}")`,
-      }}
+      style={styleAnimation}
     >
       <header ref={headerRef}>
         <button className={classNames(styles.burger, utilStyles.textAppear)}>
@@ -135,12 +127,6 @@ function Header({ adaptiveTransparency }: Props) {
         />
       </header>
       <div></div>
-      {headerHeightInPercentage !== null && (
-        <BackgroundBlinder
-          headerHeightInPercentage={headerHeightInPercentage * 100}
-          state={navState}
-        />
-      )}
     </nav>
   )
 }
