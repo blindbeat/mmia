@@ -57,12 +57,14 @@
   align-items: start;
   margin: auto;
   width: max-content;
-  font-size: 6rem;
   font-weight: 300;
-  --linkGapStep: 6rem
+  --linkGapStep: 6rem;
+  color: white;
+
 }
 
 .fullscreenLinkOuter {
+  overflow: visible;
   overflow-y: hidden;
 }
 
@@ -71,9 +73,19 @@
 }
 
 .fullscreenLink {
-  color: white;
+  font-size: 6rem;
   text-transform: capitalize;
   letter-spacing: 0.02em;
+}
+
+.fullscreenLinkIndex {
+  line-height: 300%;
+  font-size: var(--sm-font-size);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  opacity: 0.5;
 }
 
 /*.fullscreenLink:before {*/

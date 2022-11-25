@@ -104,22 +104,20 @@ function Header({ adaptiveTransparency }: Props) {
     }
   }, [navState])
 
-  const defaultVariant = (i: number) => ({
+  const defaultVariant = {
     y: "-100%",
     transition: {
-      delay: (navLinksFullscreen.length - i) * 0.075,
+      ease: "easeIn",
     },
-  })
+  }
   const fullscreenLinkVariants: Variants = {
     header: defaultVariant,
     hidden: defaultVariant,
     transparent: defaultVariant,
-    fullscreen: (i) => ({
+    fullscreen: {
       y: "0",
-      transition: {
-        delay: i * 0.075,
-      },
-    }),
+      transition: {},
+    },
   }
 
   const handleFullscreenButton = () => {
@@ -131,6 +129,7 @@ function Header({ adaptiveTransparency }: Props) {
     <motion.nav
       className={classNames(styles.content)}
       animate={navState}
+      initial={false}
       variants={{
         hidden: {
           clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
@@ -149,44 +148,19 @@ function Header({ adaptiveTransparency }: Props) {
           clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
           transition: {
             duration: 0.6,
+            staggerChildren: 0.075,
             when: "beforeChildren",
+            ease: "easeInOut",
           },
         },
       }}
       transition={{
         duration: 0.6,
+        staggerChildren: 0.075,
         when: "afterChildren",
         ease: "easeInOut",
       }}
     >
-      {/*<motion.div*/}
-      {/*  className={styles.background}*/}
-      {/*  variants={{*/}
-      {/*    hidden: {*/}
-      {/*      backgroundColor: "rgb(255,255,255)",*/}
-      {/*      opacity: 1,*/}
-      {/*    },*/}
-      {/*    transparent: {*/}
-      {/*      backgroundColor: [null, "rgba(0,0,0,0)"],*/}
-      {/*      opacity: 0,*/}
-      {/*    },*/}
-      {/*    header: {*/}
-      {/*      backgroundColor: "rgb(255,255,255)",*/}
-      {/*      opacity: 1,*/}
-      {/*    },*/}
-      {/*    fullscreen: {*/}
-      {/*      backgroundColor: "#171717",*/}
-      {/*      opacity: 1,*/}
-      {/*    },*/}
-      {/*  }}*/}
-      {/*  transition={{*/}
-      {/*    ease: "easeInOut",*/}
-      {/*    opacity: {*/}
-      {/*      duration: 0.2,*/}
-      {/*      backgroundColor: 1.2,*/}
-      {/*    },*/}
-      {/*  }}*/}
-      {/*/>*/}
       <header ref={headerRef}>
         <button
           onClick={handleFullscreenButton}
@@ -218,23 +192,26 @@ function Header({ adaptiveTransparency }: Props) {
       </header>
       <div className={styles.fullscreenLinks}>
         {navLinksFullscreen.map(([name, url], index) => (
-          <div key={url} className={styles.fullscreenLinkOuter}>
+          <div
+            key={url}
+            className={styles.fullscreenLinkOuter}
+            style={{
+              paddingLeft: `calc(var(--linkGapStep) * ${
+                (navLinksFullscreen.length - index + 1) % 5
+              })`,
+            }}
+          >
             <motion.div
               className={styles.fullscreenLinkWrapper}
               variants={fullscreenLinkVariants}
               custom={index}
             >
-              <Link
-                href={url}
-                className={styles.fullscreenLink}
-                style={{
-                  paddingLeft: `calc(var(--linkGapStep) * ${
-                    (navLinksFullscreen.length - index + 1) % 5
-                  })`,
-                }}
-              >
+              <Link href={url} className={styles.fullscreenLink}>
                 {name}
               </Link>
+              <span className={styles.fullscreenLinkIndex}>{`0${
+                index + 1
+              }`}</span>
             </motion.div>
           </div>
         ))}
