@@ -16,19 +16,16 @@ interface RectSize {
 interface PointsAndAnimation {
   center: number
   side: number
-  transitionTimingFunction?: TransitionTimingFunction
-  transitionDuration?: TransitionDuration
 }
 
 const useAnimateNavigation = ({
   state,
   headerHeightInPercentage,
-  animationLength,
-}: Params): CSSProperties => {
-  const [points, setPoints] = useState<PointsAndAnimation>({
-    center: 0,
-    side: 0,
-  })
+}: Params): string => {
+  // const [points, setPoints] = useState<PointsAndAnimation>({
+  //   center: 0,
+  //   side: 0,
+  // })
   const [windowRect, setWindowRect] = useState<RectSize>({
     width: 0,
     height: 0,
@@ -54,63 +51,53 @@ const useAnimateNavigation = ({
     } 0 ${(points.side / 100) * windowRect.height} Z`
   }
 
-  const morphPath = useCallback(
-    (to: number) => {
-      const state = points
-      const calcPoints = (
-        animationProgress: PointsAndAnimation
-      ): PointsAndAnimation => {
-        return {
-          ...animationProgress,
-          center:
-            (to * animationProgress.center) / 100 +
-            state.center * (1 - animationProgress.center / 100),
-          side:
-            (to * animationProgress.side) / 100 +
-            state.side * (1 - animationProgress.side / 100),
-        }
-      }
-      setPoints(
-        calcPoints({
-          side: 50 / 4,
-          center: 75,
-          transitionTimingFunction: "linear",
-          transitionDuration: `${animationLength / 2}ms`,
+  // const morphPath = useCallback(
+  //   (to: number) => {
+  //     const state = points
+  //     const calcPoints = (
+  //       animationProgress: PointsAndAnimation
+  //     ): PointsAndAnimation => {
+  //       return {
+  //         ...animationProgress,
+  //         center:
+  //           (to * animationProgress.center) / 100 +
+  //           state.center * (1 - animationProgress.center / 100),
+  //         side:
+  //           (to * animationProgress.side) / 100 +
+  //           state.side * (1 - animationProgress.side / 100),
+  //       }
+  //     }
+  //     setPoints(
+  //       calcPoints({
+  //         side: 100,
+  //         center: 100,
+  //       })
+  //     )
+  //   },
+  //   [headerHeightInPercentage, state]
+  // )
+
+  // useEffect(() => {
+  //   let timeouts: NodeJS.Timeout[]
+  //   if (state === "header") {
+  //     timeouts = morphPath(headerHeightInPercentage)
+  //   } else {
+  //     timeouts = morphPath(0)
+  //   }
+  //   return () => {
+  //     timeouts.forEach((timeout) => clearTimeout(timeout))
+  //   }
+  // }, [headerHeightInPercentage, morphPath, state])
+
+  const path =
+    state === "header"
+      ? createPath({
+          center: headerHeightInPercentage,
+          side: headerHeightInPercentage,
         })
-      )
-      return [
-        setTimeout(() => {
-          setPoints(
-            calcPoints({
-              side: 100,
-              center: 100,
-              transitionTimingFunction: "linear",
-              transitionDuration: `${animationLength / 2}ms`,
-            })
-          )
-        }, animationLength / 2),
-      ]
-    },
-    [headerHeightInPercentage, state]
-  )
+      : createPath({ center: 0, side: 0 })
 
-  useEffect(() => {
-    let timeouts: NodeJS.Timeout[]
-    if (state === "header") {
-      timeouts = morphPath(headerHeightInPercentage)
-    } else {
-      timeouts = morphPath(0)
-    }
-    return () => {
-      timeouts.forEach((timeout) => clearTimeout(timeout))
-    }
-  }, [headerHeightInPercentage, morphPath, state])
-
-  return {
-    clipPath: `path("${createPath(points)}")`,
-    transitionTimingFunction: points.transitionTimingFunction,
-    transitionDuration: points.transitionDuration,
-  }
+  return `path("${path}")`
 }
 
 export default useAnimateNavigation
