@@ -151,6 +151,9 @@ function Header({ adaptiveTransparency }: Props) {
             staggerChildren: 0.075,
             when: "beforeChildren",
             ease: "easeInOut",
+            backgroundColor: {
+              duration: 0.3,
+            },
           },
         },
       }}
@@ -159,6 +162,9 @@ function Header({ adaptiveTransparency }: Props) {
         staggerChildren: 0.075,
         when: "afterChildren",
         ease: "easeInOut",
+        backgroundColor: {
+          duration: 0.3,
+        },
       }}
     >
       <header ref={headerRef}>
