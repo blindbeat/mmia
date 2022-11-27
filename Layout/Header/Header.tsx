@@ -10,6 +10,8 @@ import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import NavLinkAnimated from "./NavLinkAnimated"
 import { motion, Variants } from "framer-motion"
+import LinkWithLine from "components/LinkWithLine"
+import Socials from "modules/home/GreetingScreen/Socials"
 
 type navLinkTuple = [name: string, url: string]
 
@@ -40,7 +42,6 @@ function Header({ adaptiveTransparency }: Props) {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
-
   const navStateController = useCallback(
     (isFullscreenButton?: boolean | Event) => {
       const calcState = () => {
@@ -146,7 +147,7 @@ function Header({ adaptiveTransparency }: Props) {
           backgroundColor: "#171717",
           clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
           transition: {
-            duration: 0.4,
+            duration: 0.6,
             staggerChildren: 0.075,
             when: "beforeChildren",
             ease: "easeInOut",
@@ -157,7 +158,7 @@ function Header({ adaptiveTransparency }: Props) {
         },
       }}
       transition={{
-        duration: 0.4,
+        duration: 0.6,
         staggerChildren: 0.075,
         when: "afterChildren",
         ease: "easeInOut",
@@ -221,8 +222,12 @@ function Header({ adaptiveTransparency }: Props) {
           </div>
         ))}
       </div>
+      <div className={styles.link}>
+        <LinkWithLine>drop request</LinkWithLine>
+      </div>
       <div className={styles.footer}>
         <motion.a
+          className={styles.email}
           href="mailto:info@aimm-group.com"
           animate={{
             opacity: 0.7,
@@ -234,6 +239,7 @@ function Header({ adaptiveTransparency }: Props) {
           info@aimm-group.com
         </motion.a>
         <motion.a
+          className={styles.phoneNumber}
           href="tel:+48510579590"
           animate={{
             opacity: 0.7,
@@ -244,6 +250,7 @@ function Header({ adaptiveTransparency }: Props) {
         >
           +48 (510) 579 7900
         </motion.a>
+        <Socials className={styles.socials} />
       </div>
     </motion.nav>
   )

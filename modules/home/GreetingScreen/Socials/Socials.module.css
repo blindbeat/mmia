@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
-  margin-right: calc(var(--link-padding) * -1);
-  margin-bottom: calc(var(--link-padding) * -1);
+  margin: calc(var(--link-padding) * -1);
   --disirableGap: var(--sm);
   gap: calc(var(--disirableGap) - var(--link-padding) * 2);
 }
