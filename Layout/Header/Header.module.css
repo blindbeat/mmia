@@ -91,6 +91,10 @@
   stroke: var(--accentColor);
 }
 
+.socialsHeader {
+  justify-self: center;
+}
+
 .fullscreenLinks {
   font-size: 6rem;
   font-weight: 300;
@@ -170,7 +174,8 @@
     grid-template-columns: 1fr auto 1fr;
   }
 
-  .content header .mainLinks {
+  .content header .mainLinks,
+  .socialsHeader {
     display: none;
   }
 

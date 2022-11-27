@@ -180,17 +180,21 @@ function Header({ adaptiveTransparency }: Props) {
         >
           <Logo />
         </Link>
-        <div className={styles.mainLinks}>
-          {navLinksHeader.map(([name, url]) => (
-            <NavLinkAnimated
-              key={url}
-              href={url}
-              className={utilStyles.textAppear}
-            >
-              {name}
-            </NavLinkAnimated>
-          ))}
-        </div>
+        {navState === "fullscreen" ? (
+          <Socials className={styles.socialsHeader} />
+        ) : (
+          <div className={styles.mainLinks}>
+            {navLinksHeader.map(([name, url]) => (
+              <NavLinkAnimated
+                key={url}
+                href={url}
+                className={utilStyles.textAppear}
+              >
+                {name}
+              </NavLinkAnimated>
+            ))}
+          </div>
+        )}
         <CornerComponent
           href="#"
           className={classNames(styles.corner, utilStyles.textAppear)}
