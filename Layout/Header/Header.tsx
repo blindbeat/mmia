@@ -54,9 +54,8 @@ function Header({ adaptiveTransparency }: Props) {
           )
         }
       }
-      if (isFullscreenButton === true) {
-        if (navState !== "fullscreen") setNavState("fullscreen")
-        else calcState()
+      if (isFullscreenButton === true && navState !== "fullscreen") {
+        setNavState("fullscreen")
       } else {
         calcState()
       }
@@ -147,7 +146,7 @@ function Header({ adaptiveTransparency }: Props) {
           backgroundColor: "#171717",
           clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
           transition: {
-            duration: 0.6,
+            duration: 0.4,
             staggerChildren: 0.075,
             when: "beforeChildren",
             ease: "easeInOut",
@@ -158,7 +157,7 @@ function Header({ adaptiveTransparency }: Props) {
         },
       }}
       transition={{
-        duration: 0.6,
+        duration: 0.4,
         staggerChildren: 0.075,
         when: "afterChildren",
         ease: "easeInOut",
@@ -212,15 +211,39 @@ function Header({ adaptiveTransparency }: Props) {
               variants={fullscreenLinkVariants}
               custom={index}
             >
-              <Link href={url} className={styles.fullscreenLink}>
-                {name}
-              </Link>
               <span className={styles.fullscreenLinkIndex}>{`0${
                 index + 1
               }`}</span>
+              <Link href={url} className={styles.fullscreenLink}>
+                {name}
+              </Link>
             </motion.div>
           </div>
         ))}
+      </div>
+      <div className={styles.footer}>
+        <motion.a
+          href="mailto:info@aimm-group.com"
+          animate={{
+            opacity: 0.7,
+          }}
+          whileHover={{
+            opacity: 1,
+          }}
+        >
+          info@aimm-group.com
+        </motion.a>
+        <motion.a
+          href="tel:+48510579590"
+          animate={{
+            opacity: 0.7,
+          }}
+          whileHover={{
+            opacity: 1,
+          }}
+        >
+          +48 (510) 579 7900
+        </motion.a>
       </div>
     </motion.nav>
   )
