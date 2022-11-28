@@ -2,4 +2,5 @@
   display: flex;
   flex-direction: column;
   gap: var(--xl);
+  padding: 0 var(--wrapper-padding-x) var(--5xl);
 }

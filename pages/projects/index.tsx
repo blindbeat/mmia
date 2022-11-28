@@ -1,7 +1,6 @@
 import { useState } from "react"
 import ProjectsTagButtons from "modules/projects/ProjectsTagButtons"
 import styles from "./Projects.module.css"
-import utilStyles from "styles/utils.module.css"
 import classNames from "classnames"
 import { GetStaticProps } from "next"
 import ProjectsList from "modules/projects/ProjectsList"
@@ -34,7 +33,7 @@ const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   return (
-    <div className={classNames(utilStyles.wrapper, styles.projects)}>
+    <div className={classNames(styles.projects)}>
       <ProjectsTagButtons tagSelector={setSelectedTag} tags={tags} />
       <ProjectsList projects={projects} />
     </div>

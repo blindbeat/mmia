@@ -1,6 +1,6 @@
 .tags {
   display: flex;
-  overflow-x: hidden;
+  overflow: hidden;
   flex-wrap: wrap;
   gap: var(--2xs) var(--sm);
 }

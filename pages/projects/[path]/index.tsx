@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import ProjectHeaderBlock from "modules/project/ProjectHeaderBlock"
 import ProjectTopNavigation from "modules/project/ProjectTopNavigation"
-import styles from "./Project.module.css"
 import ProjectPhotosBlock from "modules/project/ProjectPhotosBlock"
 import blockPhoto1 from "assets/dummyPics/project/blockPhotos/1.jpg"
 import blockPhoto2 from "assets/dummyPics/project/blockPhotos/2.jpg"
@@ -16,6 +15,7 @@ import ProjectOutroBlock from "modules/project/ProjectOutroBlock/ProjectOutroBlo
 import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
 import material1 from "assets/dummyPics/project/materialPhotos/1.jpg"
 import material2 from "assets/dummyPics/project/materialPhotos/2.jpg"
+import { NextPageWithLayoutConfig } from "../../_app"
 
 const materials = [
   {
@@ -29,13 +29,13 @@ const materials = [
     image: material2,
   },
 ]
-export default function Project() {
+export const Project: NextPageWithLayoutConfig = () => {
   const {
     query: { path },
   } = useRouter()
 
   return (
-    <div className={styles.content}>
+    <div>
       <ProjectTopNavigation />
       <ProjectHeaderBlock />
       <ProjectPhotosBlock
@@ -69,4 +69,6 @@ export default function Project() {
 Project.layoutConfig = {
   adaptiveHeaderTransparency: false,
   showFooter: false,
+  headerMargin: `calc(var(--link-padding) + 1em + var(--3xl))`,
 }
+export default Project
