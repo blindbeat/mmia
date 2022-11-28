@@ -66,6 +66,7 @@ function Header({ adaptiveTransparency }: Props) {
   )
 
   useEffect(() => {
+    navStateController()
     window.addEventListener("scroll", navStateController, {
       passive: true,
     })
