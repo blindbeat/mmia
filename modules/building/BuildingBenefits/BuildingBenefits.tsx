@@ -39,7 +39,16 @@ const BuildingBenefits = () => {
           </Bubble>
         ))}
       </div>
-      <Swiper className={styles.bubblesSwiper} slidesPerView={3}>
+      <Swiper
+        className={styles.bubblesSwiper}
+        slidesPerView={1.5}
+        centeredSlides
+        breakpoints={{
+          768: {
+            slidesPerView: 3.5,
+          },
+        }}
+      >
         {bubbles.map(({ heading, text }, index) => (
           <SwiperSlide key={index}>
             <Bubble key={index} index={index} className={styles.bubble}>

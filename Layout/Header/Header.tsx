@@ -14,14 +14,15 @@ import LinkWithLine from "components/LinkWithLine"
 import Socials from "modules/home/GreetingScreen/Socials"
 import { useRouter } from "next/router"
 
-type navLinkTuple = [name: string, url: string]
+type navLinkTuple = [name: string, url: string, padding: number]
 
 const navLinksFullscreen: navLinkTuple[] = [
-  ["projects", "/projects"],
-  ["about us", "/about"],
-  ["career", "/career"],
-  ["media", "/media"],
-  ["contact", "/contact"],
+  ["projects", "/projects", 1],
+  ["about us", "/about", 0],
+  ["building", "/building", 2],
+  ["career", "/career", 3],
+  ["media", "/media", 1],
+  ["contact", "/contact", 2],
 ]
 
 const navLinksHeader: navLinkTuple[] = [
@@ -200,14 +201,12 @@ function Header({ adaptiveTransparency }: Props) {
         />
       </header>
       <div className={styles.fullscreenLinks}>
-        {navLinksFullscreen.map(([name, url], index) => (
+        {navLinksFullscreen.map(([name, url, padding], index) => (
           <div
             key={url}
             className={styles.fullscreenLinkOuter}
             style={{
-              paddingLeft: `calc(var(--linkGapStep) * ${
-                (navLinksFullscreen.length - index + 1) % 5
-              })`,
+              paddingLeft: `calc(var(--linkGapStep) * ${padding})`,
             }}
           >
             <motion.div
