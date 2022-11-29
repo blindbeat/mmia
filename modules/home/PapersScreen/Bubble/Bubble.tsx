@@ -51,12 +51,15 @@ function Bubble({ index, children, className, ...rest }: Props) {
   return (
     <div
       ref={ref}
-      className={classNames(styles.bubbleWrapper, className)}
+      className={styles.bubbleWrapper}
       {...rest}
       {...bind()}
       onMouseLeave={() => api.start({ x: 0, y: 0 })}
     >
-      <animated.div className={styles.bubble} style={style}>
+      <animated.div
+        className={classNames(styles.bubble, className)}
+        style={style}
+      >
         <animated.span className={styles.bubbleText} style={style}>
           <span className={styles.bubbleIndex}>{`0${index + 1}.`}</span>
           {children}

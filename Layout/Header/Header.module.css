@@ -48,7 +48,7 @@
 .content header .mainLinks a {
   padding: var(--link-padding);
   transition: opacity var(--transitionTime),
-    border-bottom-color var(--transitionTime);
+  border-bottom-color var(--transitionTime);
 }
 
 .logo,

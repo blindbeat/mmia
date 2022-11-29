@@ -18,7 +18,7 @@ type navLinkTuple = [name: string, url: string]
 const navLinksFullscreen: navLinkTuple[] = [
   ["projects", "/projects"],
   ["about us", "/about"],
-  ["career", "/career"],
+  ["building", "/career"],
   ["media", "/media"],
   ["contact", "/contact"],
 ]

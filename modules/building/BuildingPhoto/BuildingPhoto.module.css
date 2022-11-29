@@ -1,0 +1,7 @@
+.content {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  margin-bottom: var(--3xl);
+  object-fit: cover;
+}

@@ -1,0 +1,5 @@
+.content {
+  font-size: var(--2xl-font-size);
+  max-width: 11em;
+  margin: 0 var(--wrapper-padding-x) var(--lg);
+}

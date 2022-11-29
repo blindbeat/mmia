@@ -8,7 +8,7 @@ import useAnimateLine from "hooks/useAnimateLine"
 
 const ctaText = "Let’s talk about  your project!"
 
-const links = ["services", "projects", "media", "career", "contact"]
+const links = ["services", "projects", "media", "building", "contact"]
 const email = "info@aimm-group.com"
 const number = "+38 (044) 228 91 59"
 

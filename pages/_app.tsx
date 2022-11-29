@@ -10,7 +10,7 @@ import { NextPage } from "next"
 import { LayoutConfig } from "Layout/Layout"
 
 export type NextPageWithLayoutConfig<P = {}, IP = P> = NextPage<P, IP> & {
-  layoutConfig: Partial<LayoutConfig>
+  layoutConfig?: Partial<LayoutConfig>
 }
 
 interface AppPropsWithLayoutConfig extends AppProps {

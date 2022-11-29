@@ -26,16 +26,14 @@
 }
 
 .title {
-  font-size: var(--project-preview-title-font-size);
+  font-size: var(--md-font-size);
   font-weight: 300;
   display: block;
   opacity: 1;
 }
 
 .swiper .swiperButton {
-  top: calc(
-    50% - var(--project-preview-title-font-size) * 1 / 2 - var(--rowGap) * 1 / 2
-  );
+  top: calc(50% - var(--md-font-size) * 1 / 2 - var(--rowGap) * 1 / 2);
 }
 
 .prev {
@@ -72,11 +70,8 @@
 
   .swiper .swiperButton {
     top: calc(
-      50% -
-        (
-          var(--rowGap) + var(--project-preview-title-font-size) +
-            var(--descriptionMb) + 1em
-        ) * 1 / 2
+      50% - (var(--rowGap) + var(--md-font-size) + var(--descriptionMb) + 1em) *
+        1 / 2
     );
   }
 }
