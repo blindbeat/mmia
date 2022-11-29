@@ -13,7 +13,7 @@ import {
   SwiperNavigationNext,
   SwiperNavigationPrev,
 } from "components/SwiperComponents"
-import { swiperStyles } from "components/SwiperComponents/SwiperBullets/SwiperBullets"
+import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
 import ImageZoomableContainer from "components/ImageZoomableContainer"
 
 const slides = [slide1, slide2, slide3]

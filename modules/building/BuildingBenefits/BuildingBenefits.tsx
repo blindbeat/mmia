@@ -4,6 +4,8 @@ import H2 from "components/H2"
 import P from "components/P"
 import Bubble from "components/Bubble"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
+import { Pagination } from "swiper"
 
 const title = "we are the best guarantee of quality for our customers"
 const paragraph =
@@ -43,9 +45,21 @@ const BuildingBenefits = () => {
         className={styles.bubblesSwiper}
         slidesPerView={1.5}
         centeredSlides
+        modules={[Pagination]}
+        pagination={{
+          enabled: true,
+          horizontalClass: swiperStyles.swiperPaginationHorizontal,
+          bulletClass: swiperStyles.bulletClass,
+          bulletActiveClass: swiperStyles.bulletActiveClass,
+        }}
         breakpoints={{
           768: {
             slidesPerView: 3.5,
+          },
+          1024: {
+            pagination: {
+              enabled: false,
+            },
           },
         }}
       >

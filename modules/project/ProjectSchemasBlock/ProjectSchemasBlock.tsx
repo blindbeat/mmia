@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { Autoplay, Navigation, Pagination } from "swiper"
 import BackgroundSvg from "modules/home/AboutCompanyScreen/assets/backgroundLine.svg"
 import useAnimateLine from "hooks/useAnimateLine"
-import { swiperStyles } from "components/SwiperComponents/SwiperBullets/SwiperBullets"
+import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
 import { dummyParagraph } from "assets/dummyText"
 
 interface Props {
