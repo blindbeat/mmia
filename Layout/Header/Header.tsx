@@ -12,13 +12,14 @@ import NavLinkAnimated from "./NavLinkAnimated"
 import { motion, Variants } from "framer-motion"
 import LinkWithLine from "components/LinkWithLine"
 import Socials from "modules/home/GreetingScreen/Socials"
+import { useRouter } from "next/router"
 
 type navLinkTuple = [name: string, url: string]
 
 const navLinksFullscreen: navLinkTuple[] = [
   ["projects", "/projects"],
   ["about us", "/about"],
-  ["building", "/career"],
+  ["career", "/career"],
   ["media", "/media"],
   ["contact", "/contact"],
 ]
@@ -30,40 +31,32 @@ const navLinksHeader: navLinkTuple[] = [
 
 const isScrolled = (scrollY: number) => scrollY !== 0
 
-type navState = "hidden" | "transparent" | "header" | "fullscreen"
+type navState = "hidden" | "transparent" | "header"
 
 interface Props {
   adaptiveTransparency: boolean
 }
 
 function Header({ adaptiveTransparency }: Props) {
-  const [navState, setNavState] = useState<navState>("header")
+  const [navState, setNavState] = useState<navState>("transparent")
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const { pathname } = useRouter()
   const extendsThreshold = useThresholdObserver(1024)
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
-  const navStateController = useCallback(
-    (isFullscreenButton?: boolean | Event) => {
-      const calcState = () => {
-        if (!isScrolled(window.scrollY) && adaptiveTransparency) {
-          setNavState("transparent")
-        } else {
-          setNavState(
-            window.scrollY > lastScrollRef.current && window.scrollY > 100
-              ? "hidden"
-              : "header"
-          )
-        }
-      }
-      if (isFullscreenButton === true && navState !== "fullscreen") {
-        setNavState("fullscreen")
-      } else {
-        calcState()
-      }
-      lastScrollRef.current = window.scrollY
-    },
-    [adaptiveTransparency, navState]
-  )
+  const navStateController = useCallback(() => {
+    if (!isScrolled(window.scrollY) && adaptiveTransparency) {
+      setNavState("transparent")
+    } else {
+      setNavState(
+        window.scrollY > lastScrollRef.current && window.scrollY > 100
+          ? "hidden"
+          : "header"
+      )
+    }
+    lastScrollRef.current = window.scrollY
+  }, [adaptiveTransparency])
 
   useEffect(() => {
     navStateController()
@@ -74,6 +67,10 @@ function Header({ adaptiveTransparency }: Props) {
       window.removeEventListener("scroll", navStateController)
     }
   }, [adaptiveTransparency, navStateController])
+
+  useEffect(() => {
+    setIsFullscreen(false)
+  }, [pathname])
 
   const headerRef = useRef<HTMLDivElement | null>(null)
   const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
@@ -96,14 +93,14 @@ function Header({ adaptiveTransparency }: Props) {
 
   useEffect(() => {
     const body = document.body
-    if (navState === "fullscreen") {
+    if (isFullscreen) {
       body.style.height = `100vh`
       body.style.overflowY = "hidden"
     } else {
       body.style.height = ""
       body.style.overflowY = ""
     }
-  }, [navState])
+  }, [isFullscreen])
 
   const defaultVariant = {
     y: "-100%",
@@ -122,14 +119,15 @@ function Header({ adaptiveTransparency }: Props) {
   }
 
   const handleFullscreenButton = () => {
-    navStateController(true)
+    setIsFullscreen((state) => !state)
+    // navStateController(true)
   }
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
 
   return (
     <motion.nav
       className={classNames(styles.content)}
-      animate={navState}
+      animate={isFullscreen ? "fullscreen" : navState}
       initial={false}
       variants={{
         hidden: {
@@ -181,7 +179,7 @@ function Header({ adaptiveTransparency }: Props) {
         >
           <Logo />
         </Link>
-        {navState === "fullscreen" ? (
+        {isFullscreen ? (
           <Socials className={styles.socialsHeader} />
         ) : (
           <div className={styles.mainLinks}>
