@@ -21,7 +21,7 @@
   --ts: 0.3s;
 
   --2xl-font-size: 6rem;
-  --xl-font-size: 6 var(--2xl);
+  --xl-font-size: var(--2xl);
   --lg-font-size: var(--xl);
   --md-font-size: 1.5rem;
   --sm-font-size: 0.875rem;

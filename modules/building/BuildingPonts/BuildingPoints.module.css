@@ -1,6 +1,6 @@
 .content {
   display: grid;
-  max-width: 120em;
+  /*max-width: 120em;*/
   margin: 0 auto var(--5xl);
   padding: 0 var(--wrapper-padding-x);
   justify-items: center;
@@ -9,7 +9,7 @@
 }
 
 .onePoint {
-  width: calc(100% / 12 * 9);
+  width: min(calc(100% / 12 * 9), 45em);
 }
 
 .icon {

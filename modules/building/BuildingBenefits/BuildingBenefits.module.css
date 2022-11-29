@@ -21,11 +21,13 @@
 
 .bubbles {
   display: flex;
+  justify-content: space-around;
+  margin: calc(var(--2xl) - 0.5rem) -0.5rem calc(var(--5xl) - 0.5rem);
   grid-column: span 2;
 }
 
 .bubbles > * {
-  flex-grow: 1;
+  flex-basis: calc(120rem / 4);
 }
 
 .bubble {
