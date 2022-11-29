@@ -1,12 +1,8 @@
-import styles from "./Bubble.module.css"
+import styles from "components/Bubble/Bubble.module.css"
 import { ComponentPropsWithoutRef, useRef } from "react"
 import { useMove } from "@use-gesture/react"
 import { animated, useSpring } from "react-spring"
 import classNames from "classnames"
-
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  index: number
-}
 
 type CoordsTuple = [x: number, y: number]
 
@@ -33,7 +29,20 @@ function calcPadding(target: HTMLDivElement) {
   ]
 }
 
-function Bubble({ index, children, className, ...rest }: Props) {
+interface Props extends ComponentPropsWithoutRef<"div"> {
+  index: number
+  variant?: "papers" | "default"
+  withIndex?: boolean
+}
+
+function Bubble({
+  index,
+  children,
+  className,
+  variant = "default",
+  withIndex = false,
+  ...rest
+}: Props) {
   const ref = useRef<null | HTMLDivElement>(null)
   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }))
 
@@ -51,7 +60,10 @@ function Bubble({ index, children, className, ...rest }: Props) {
   return (
     <div
       ref={ref}
-      className={styles.bubbleWrapper}
+      className={classNames(
+        styles.bubbleWrapper,
+        variant === "papers" && styles.papers
+      )}
       {...rest}
       {...bind()}
       onMouseLeave={() => api.start({ x: 0, y: 0 })}
@@ -60,10 +72,12 @@ function Bubble({ index, children, className, ...rest }: Props) {
         className={classNames(styles.bubble, className)}
         style={style}
       >
-        <animated.span className={styles.bubbleText} style={style}>
-          <span className={styles.bubbleIndex}>{`0${index + 1}.`}</span>
+        <animated.div className={styles.bubbleText} style={style}>
+          {withIndex && (
+            <span className={styles.bubbleIndex}>{`0${index + 1}.`}</span>
+          )}
           {children}
-        </animated.span>
+        </animated.div>
       </animated.div>
     </div>
   )

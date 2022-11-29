@@ -47,6 +47,10 @@
   margin-bottom: var(--2xl);
 }
 
+.bubbleText {
+  max-width: 11.5em;
+}
+
 .swiper {
   display: none;
 }
@@ -132,6 +136,18 @@
   }
 }
 
+@media (max-width: calc(120em - 1px)) {
+  .bubbleText {
+    max-width: 13.25em;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .bubbleText {
+    max-width: 11.5em;
+  }
+}
+
 @media (max-width: calc(64em - 1px)) {
   .wrapper {
     align-items: stretch;
@@ -179,5 +195,9 @@
   .text {
     width: 100%;
     padding: 0 var(--wrapper-padding-x);
+  }
+
+  .bubbleText {
+    max-width: unset;
   }
 }

@@ -31,3 +31,7 @@
 .bubble {
   color: black;
 }
+
+.bubble h4 {
+  margin-bottom: 1rem;
+}

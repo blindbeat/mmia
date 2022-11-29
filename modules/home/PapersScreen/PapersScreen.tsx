@@ -5,7 +5,7 @@ import Image from "next/image"
 import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
 import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
-import Bubble from "./Bubble"
+import Bubble from "components/Bubble"
 import H2 from "components/H2"
 import P from "components/P"
 import useThresholdObserver from "hooks/useThresholdObserver"
@@ -113,8 +113,10 @@ function PapersScreen() {
                 index={index}
                 className={index === currentPaper ? "active-bubble" : undefined}
                 onClick={() => changePage(index)}
+                variant="papers"
+                withIndex
               >
-                {text}
+                <p className={styles.bubbleText}>{text}</p>
               </Bubble>
             ))}
           </div>
@@ -122,7 +124,9 @@ function PapersScreen() {
           <Swiper slidesPerView={1.75} centeredSlides className={styles.swiper}>
             {bubbleTextArr.map((text, index) => (
               <SwiperSlide key={index}>
-                <Bubble index={index}>{text}</Bubble>
+                <Bubble index={index} variant="papers" withIndex>
+                  {text}
+                </Bubble>
               </SwiperSlide>
             ))}
           </Swiper>
