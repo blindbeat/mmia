@@ -1,6 +1,10 @@
 .content {
-  display: grid;
   margin-bottom: var(--5xl);
+}
+
+.text {
+  display: grid;
+  margin-bottom: var(--2xl);
   padding: 0 var(--wrapper-padding-x);
   grid-template-columns: repeat(2, 1fr);
 }
@@ -22,18 +26,59 @@
 .bubbles {
   display: flex;
   justify-content: space-around;
-  margin: calc(var(--2xl) - 0.5rem) -0.5rem calc(var(--5xl) - 0.5rem);
+  margin: 0 -0.5rem;
+  padding: 0 var(--wrapper-padding-x);
   grid-column: span 2;
+}
+
+.bubblesSwiper {
+  display: none;
 }
 
 .bubbles > * {
   flex-basis: calc(120rem / 4);
 }
 
-.bubble {
-  color: black;
+.bubble.bubble {
+  padding: 1rem;
 }
 
 .bubble h4 {
   margin-bottom: 1rem;
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .text {
+    grid-template-columns: auto;
+  }
+
+  .title {
+    margin-bottom: var(--sm);
+  }
+
+  .heading {
+    max-width: 15em;
+    margin-bottom: var(--xs);
+    grid-row: auto;
+  }
+
+  .paragraph {
+    max-width: 30em;
+    place-self: end start;
+  }
+
+  .bubbles {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .bubbles {
+    display: none;
+  }
+
+  .bubblesSwiper {
+    display: block;
+    width: 100%;
+  }
 }

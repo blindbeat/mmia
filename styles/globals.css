@@ -60,11 +60,22 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 300;
+}
+
 h2 {
   font-size: var(--lg-font-size);
-  font-weight: 300;
   letter-spacing: 0.04em;
   text-transform: capitalize;
+}
+
+h4 {
+  font-size: var(--sm);
 }
 
 p {

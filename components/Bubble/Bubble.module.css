@@ -12,7 +12,6 @@
   cursor: pointer;
   transition: border var(--ts);
   text-align: center;
-  text-transform: uppercase;
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
@@ -45,13 +44,13 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-:global(.swiper-slide-active) .bubble,
-:global(.active-bubble) .bubble {
-  border: 1px dashed transparent;
+:global(.swiper-slide-active) .papers .bubble,
+.papers .bubble:global(.active-bubble) {
+  border-color: transparent;
 }
 
-:global(.swiper-slide-active) .bubble:after,
-:global(.active-bubble) .bubble:after {
+:global(.swiper-slide-active) .papers .bubble:after,
+.papers .bubble:global(.active-bubble):after {
   border-color: white;
 }
 

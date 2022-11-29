@@ -3,6 +3,7 @@ import ScreenTitle from "components/ScreenTitle"
 import H2 from "components/H2"
 import P from "components/P"
 import Bubble from "components/Bubble"
+import { Swiper, SwiperSlide } from "swiper/react"
 
 const title = "we are the best guarantee of quality for our customers"
 const paragraph =
@@ -25,9 +26,11 @@ const bubbles: BubbleContent[] = [...new Array(4)].fill({
 const BuildingBenefits = () => {
   return (
     <div className={styles.content}>
-      <ScreenTitle className={styles.title}>our benefits</ScreenTitle>
-      <H2 className={styles.heading}>{title}</H2>
-      <P className={styles.paragraph}>{paragraph}</P>
+      <div className={styles.text}>
+        <ScreenTitle className={styles.title}>our benefits</ScreenTitle>
+        <H2 className={styles.heading}>{title}</H2>
+        <P className={styles.paragraph}>{paragraph}</P>
+      </div>
       <div className={styles.bubbles}>
         {bubbles.map(({ heading, text }, index) => (
           <Bubble key={index} index={index} className={styles.bubble}>
@@ -36,6 +39,16 @@ const BuildingBenefits = () => {
           </Bubble>
         ))}
       </div>
+      <Swiper className={styles.bubblesSwiper} slidesPerView={3}>
+        {bubbles.map(({ heading, text }, index) => (
+          <SwiperSlide key={index}>
+            <Bubble key={index} index={index} className={styles.bubble}>
+              <h4>{heading}</h4>
+              <p>{text}</p>
+            </Bubble>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   )
 }
