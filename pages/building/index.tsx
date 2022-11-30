@@ -4,6 +4,8 @@ import BuildingPhoto from "modules/building/BuildingPhoto"
 import BuildingPoints from "modules/building/BuildingPonts"
 import BuildingBenefits from "modules/building/BuildingBenefits"
 import BuildingPreparation from "modules/building/BuildingPreparation"
+import BuildingGallery from "modules/building/BuildingGallery"
+import Outro from "modules/blocks/Outro/Outro"
 
 const Building: NextPageWithLayoutConfig = () => {
   return (
@@ -13,6 +15,8 @@ const Building: NextPageWithLayoutConfig = () => {
       <BuildingPoints />
       <BuildingBenefits />
       <BuildingPreparation />
+      <BuildingGallery />
+      <Outro />
     </>
   )
 }

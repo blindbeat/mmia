@@ -1,0 +1,32 @@
+.slide {
+  width: min(50vw, 55rem);
+}
+
+.prev {
+}
+
+.next {
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.standaloneImage {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: var(--xl) auto;
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .slide {
+    width: 100%;
+    padding: 0 var(--wrapper-padding-x);
+  }
+
+  .standaloneImage {
+    width: 100%;
+  }
+}

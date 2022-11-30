@@ -5,38 +5,12 @@
 }
 
 .photoWrapper {
-  margin-bottom: var(--4xl);
+  margin: var(--sm) 0 var(--4xl);
 }
 
 .blockTitle {
   width: max-content;
   margin: auto;
-}
-
-.swiper {
-  margin-top: var(--sm);
-}
-
-.slide {
-  width: min(50vw, 55rem);
-}
-
-.prev {
-}
-
-.next {
-}
-
-.image {
-  width: 100%;
-  height: auto;
-}
-
-.standaloneImage {
-  display: block;
-  width: 75%;
-  height: auto;
-  margin: var(--xl) auto;
 }
 
 .paragraphWrapper {
@@ -60,15 +34,6 @@
 }
 
 @media (max-width: calc(48em - 1px)) {
-  .slide {
-    width: 100%;
-    padding: 0 var(--wrapper-padding-x);
-  }
-
-  .standaloneImage {
-    width: 100%;
-  }
-
   .paragraph {
     max-width: 100%;
   }

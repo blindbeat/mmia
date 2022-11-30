@@ -11,7 +11,7 @@ import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/Project
 import ProjectParagraphBlock from "modules/project/ProjectParagraphBlock"
 import { dummyParagraph, dummyParagraphLong } from "assets/dummyText"
 import ProjectSocialsBlock from "modules/project/ProjectSocialsBlock"
-import ProjectOutroBlock from "modules/project/ProjectOutroBlock/ProjectOutroBlock"
+import Outro from "modules/blocks/Outro/Outro"
 import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
 import material1 from "assets/dummyPics/project/materialPhotos/1.jpg"
 import material2 from "assets/dummyPics/project/materialPhotos/2.jpg"
@@ -60,7 +60,7 @@ export const Project: NextPageWithLayoutConfig = () => {
         photos={[blockPhoto3]}
       />
       <ProjectSocialsBlock />
-      <ProjectOutroBlock />
+      <Outro />
       <ProjectNextPreviewBlock />
     </div>
   )
