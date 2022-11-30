@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
 import { Pagination } from "swiper"
 
-const title = "we are the best guarantee of quality for our customers"
+const heading = "we are the best guarantee of quality for our customers"
 const paragraph =
   "Your work will be intensive, but the tasks will be interesting. You will independently build the process of your work and will be able to directly influence the result."
 
@@ -30,7 +30,7 @@ const BuildingBenefits = () => {
     <div className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle className={styles.title}>our benefits</ScreenTitle>
-        <H2 className={styles.heading}>{title}</H2>
+        <H2 className={styles.heading}>{heading}</H2>
         <P className={styles.paragraph}>{paragraph}</P>
       </div>
       <div className={styles.bubbles}>

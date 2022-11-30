@@ -1,0 +1,39 @@
+.content {
+  margin-bottom: var(--5xl);
+  padding: 0 var(--wrapper-padding-x);
+}
+
+.text {
+  display: grid;
+  margin-bottom: var(--2xl);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.title {
+  margin: var(--2xs) 0;
+  place-self: start;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  padding: var(--xs) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.step h5,
+.step p {
+  grid-column: 2;
+}
+
+.step h5,
+.step p {
+  margin-bottom: var(--xs);
+}
+
+.index {
+  font-size: var(--2xl-font-size);
+  grid-row: span 2;
+}

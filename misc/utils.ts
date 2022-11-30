@@ -14,3 +14,5 @@ export const calcPathLength = (path: SVGPathElement): number => {
   const scale = path.getBoundingClientRect().width / path.getBBox().width
   return path.getTotalLength() * scale
 }
+
+export const formIndexString = (index: number) => `0${index + 1}`
