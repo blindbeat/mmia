@@ -3,9 +3,10 @@ import ScreenTitle from "components/ScreenTitle"
 import { formIndexString } from "misc/utils"
 import { dummyParagraphLong } from "assets/dummyText"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import useAnimateLayering from "hooks/useAnimateLayering"
 import Heading from "components/Heading"
+import useThresholdObserver from "hooks/useThresholdObserver"
 
 const heading = "What documents are required for capital repairs?"
 
@@ -19,21 +20,46 @@ const step: Step = {
 }
 
 const steps: Step[] = new Array(5).fill(step)
-
+const textOffset = 75
 const BuildingPreparation = () => {
+  const [headerHeight, setHeaderHeight] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+  const y = useAnimateLayering(ref, textOffset)
+
+  const extendsThreshold = useThresholdObserver(768)
+
+  useEffect(() => {
+    const elem = ref.current
+    if (!elem) return
+    setHeaderHeight(
+      elem.offsetHeight -
+        (parseFloat(getComputedStyle(elem).paddingBottom) / 3) * 2
+    )
+  }, [])
+
   return (
     <div className={styles.content}>
-      <div className={styles.text}>
+      <motion.div
+        ref={ref}
+        style={{
+          y: extendsThreshold ? y : undefined,
+          zIndex: 0,
+        }}
+        className={styles.text}
+      >
         <ScreenTitle className={styles.title}>preparation</ScreenTitle>
         <Heading as="h3" className={styles.heading}>
           {heading}
         </Heading>
-      </div>
-      <div className={styles.stepContainer}>
-        {steps.map(({ heading, text }, index) => (
-          <Step key={index} heading={heading} index={index} />
-        ))}
-      </div>
+      </motion.div>
+      {steps.map(({ heading, text }, index) => (
+        <Step
+          key={index}
+          heading={heading}
+          index={index}
+          offset={60 * index + headerHeight + textOffset}
+        />
+      ))}
     </div>
   )
 }
@@ -43,25 +69,30 @@ export default BuildingPreparation
 interface StepProps {
   index: number
   heading: string
+  offset: number
 }
 
-const Step = ({ index, heading }: StepProps) => {
+const Step = ({ index, heading, offset }: StepProps) => {
   const ref = useRef<HTMLDivElement>(null)
-  const y = useAnimateLayering(ref, 100 * index + 100)
+  const y = useAnimateLayering(ref, offset)
+  const extendsThreshold = useThresholdObserver(768)
+
   return (
     <motion.div
       className={styles.step}
       style={{
-        y,
+        y: extendsThreshold ? y : undefined,
         zIndex: index,
       }}
       ref={ref}
     >
       <span className={styles.index}>{formIndexString(index)}</span>
       <h5>{heading}</h5>
-      <p>{dummyParagraphLong}</p>
-      <p>{dummyParagraphLong}</p>
-      <p>{dummyParagraphLong}</p>
+      <div className={styles.stepText}>
+        <p>{dummyParagraphLong}</p>
+        <p>{dummyParagraphLong}</p>
+        <p>{dummyParagraphLong}</p>
+      </div>
     </motion.div>
   )
 }
