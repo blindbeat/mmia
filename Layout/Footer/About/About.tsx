@@ -5,6 +5,7 @@ import Link from "next/link"
 import classNames from "classnames"
 import BackgroundSvg from "./assets/backgroundLine.svg"
 import useAnimateLine from "hooks/useAnimateLine"
+import Heading from "components/Heading"
 
 const ctaText = "Let’s talk about  your project!"
 
@@ -18,7 +19,7 @@ function About() {
   return (
     <div className={classNames(styles.content, utilStyles.wrapper)}>
       <div className={styles.ctaBlock}>
-        <h2>{ctaText}</h2>
+        <Heading as="h3">{ctaText}</Heading>
         <LinkWithLine color="black">drop request</LinkWithLine>
       </div>
       <div className={styles.pages}>

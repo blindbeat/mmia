@@ -12,7 +12,7 @@ export default function ProjectOutroBlock() {
   const { ref, style } = useAnimateLine()
   return (
     <div className={styles.content}>
-      <h2 className={styles.header}>{title}</h2>
+      <h3 className={styles.header}>{title}</h3>
       <WordsSwiper />
       <ImagesSwiper />
       <div className={styles.paragraphWrapper}>

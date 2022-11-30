@@ -18,10 +18,7 @@
   transform: translate(350px, -45%);
 }
 
-.ctaBlock {
-}
-
-.ctaBlock h2 {
+.ctaBlock h3 {
   max-width: calc(4 / 6 * 100%);
   margin-bottom: var(--md);
 }
@@ -76,7 +73,7 @@ span.textWithOpacity {
 }
 
 @media (max-width: calc(90em - 1px)) {
-  .ctaBlock h2 {
+  .ctaBlock h3 {
     max-width: calc(5 / 6 * 100%);
   }
 
@@ -120,7 +117,7 @@ span.textWithOpacity {
     grid-column: span 2;
   }
 
-  .ctaBlock h2 {
+  .ctaBlock h3 {
     max-width: unset;
   }
 

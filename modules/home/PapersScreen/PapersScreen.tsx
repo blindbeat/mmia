@@ -6,7 +6,7 @@ import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
 import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
 import Bubble from "components/Bubble"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import P from "components/P"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -52,7 +52,7 @@ function PapersScreen() {
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <div className={styles.text}>
-          <H2>{textHeading}</H2>
+          <Heading as="h3">{textHeading}</Heading>
           <P>{textParagraph}</P>
           <LinkWithLine color="white" className={styles.link}>
             view more
@@ -76,9 +76,9 @@ function PapersScreen() {
                   }}
                 >
                   <div className={styles.paperContentWrapper}>
-                    <h3>{paperTitle}</h3>
+                    <h5>{paperTitle}</h5>
                     {paperText}
-                    <h3>{paper + 1}</h3>
+                    <h5>{paper + 1}</h5>
                   </div>
                 </div>
               ))}
@@ -95,9 +95,9 @@ function PapersScreen() {
                 <div className={styles.paperContentWrapper}>
                   {index === 0 && (
                     <>
-                      <h3>{paperTitle}</h3>
+                      <h5>{paperTitle}</h5>
                       {paperText}
-                      <h3>{currentPaper + 1}</h3>
+                      <h5>{currentPaper + 1}</h5>
                     </>
                   )}
                 </div>

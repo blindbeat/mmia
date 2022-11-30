@@ -1,5 +1,6 @@
 import styles from "./BuildingPoints.module.css"
 import Icon from "assets/dummyPics/dummyIcon.svg"
+import classNames from "classnames"
 
 const title = "The method of major"
 const paragraph =
@@ -21,7 +22,7 @@ const OnePoint = () => {
   return (
     <div className={styles.onePoint}>
       <Icon className={styles.icon} />
-      <h4 className={styles.heading}>{title}</h4>
+      <h5 className={classNames(styles.heading, "h6")}>{title}</h5>
       <p>{paragraph}</p>
     </div>
   )

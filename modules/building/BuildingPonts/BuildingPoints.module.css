@@ -1,6 +1,5 @@
 .content {
   display: grid;
-  /*max-width: 120em;*/
   margin: 0 auto var(--5xl);
   padding: 0 var(--wrapper-padding-x);
   justify-items: center;
@@ -18,8 +17,6 @@
 }
 
 .heading {
-  font-size: var(--md-font-size);
-  font-weight: 300;
   margin-bottom: var(--4xs);
 }
 

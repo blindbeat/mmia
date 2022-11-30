@@ -14,10 +14,6 @@
   place-self: start;
 }
 
-.stepContainer {
-  /*position: relative;*/
-}
-
 .step {
   position: relative;
   display: grid;
@@ -38,6 +34,6 @@
 }
 
 .index {
-  font-size: var(--2xl-font-size);
+  font-size: var(--h1-font-size);
   grid-row: span 2;
 }

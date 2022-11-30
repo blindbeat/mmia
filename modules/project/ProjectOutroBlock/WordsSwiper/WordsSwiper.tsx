@@ -21,19 +21,28 @@ export default function WordsSwiper() {
     >
       {[...new Array(5)].map((_, index) => (
         <Fragment key={index}>
-          <SwiperSlide key={`${index}-1`} className={styles.slide}>
+          <SwiperSlide
+            key={`${index}-1`}
+            className={classNames(styles.slide, "h3")}
+          >
             Let&apos;s discuss yours!
           </SwiperSlide>
-          <SwiperSlide key={`${index}-2`} className={styles.slide}>
+          <SwiperSlide
+            key={`${index}-2`}
+            className={classNames(styles.slide, "h3")}
+          >
             -
           </SwiperSlide>
           <SwiperSlide
             key={`${index}-3`}
-            className={classNames(styles.slide, styles.ctaText)}
+            className={classNames(styles.slide, "h3", styles.ctaText)}
           >
             Click on the button!
           </SwiperSlide>
-          <SwiperSlide key={`${index}-4`} className={styles.slide}>
+          <SwiperSlide
+            key={`${index}-4`}
+            className={classNames(styles.slide, "h3")}
+          >
             -
           </SwiperSlide>
         </Fragment>

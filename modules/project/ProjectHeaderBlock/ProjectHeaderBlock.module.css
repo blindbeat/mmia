@@ -8,11 +8,6 @@
   grid-template-columns: 2fr 1fr;
 }
 
-.title {
-  font-size: var(--2xl-font-size);
-  font-weight: 300;
-}
-
 .tags {
   place-self: end end;
 }

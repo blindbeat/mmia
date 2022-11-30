@@ -3,7 +3,7 @@ import NextProjectImage from "assets/dummyPics/project/blockPhotos/3.jpg"
 import styles from "./ProjectNextPreviewBlock.module.css"
 import { animated, useSpring } from "react-spring"
 import ScreenTitle from "components/ScreenTitle"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import { title } from "assets/dummyText"
 import { useCallback, useEffect, useRef } from "react"
 import classNames from "classnames"
@@ -94,7 +94,9 @@ export default function ProjectNextPreviewBlock() {
     <div ref={ref} className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle>about company</ScreenTitle>
-        <H2 className={styles.title}>{title}</H2>
+        <Heading as="h2" className={styles.title}>
+          {title}
+        </Heading>
       </div>
       <svg className={styles.svg}>
         <clipPath id="eyeClip">

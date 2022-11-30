@@ -1,6 +1,6 @@
 import styles from "./BuildingBenefits.module.css"
 import ScreenTitle from "components/ScreenTitle"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import P from "components/P"
 import Bubble from "components/Bubble"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -30,7 +30,9 @@ const BuildingBenefits = () => {
     <div className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle className={styles.title}>our benefits</ScreenTitle>
-        <H2 className={styles.heading}>{heading}</H2>
+        <Heading as="h3" className={styles.heading}>
+          {heading}
+        </Heading>
         <P className={styles.paragraph}>{paragraph}</P>
       </div>
       <div className={styles.bubbles}>

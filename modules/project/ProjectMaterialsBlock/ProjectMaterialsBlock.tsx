@@ -1,5 +1,5 @@
 import styles from "./ProjectMaterialsBlock.module.css"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import { dummyParagraph } from "assets/dummyText"
 import P from "components/P"
 import Image from "next/image"
@@ -19,7 +19,9 @@ interface Props {
 export default function ProjectMaterialsBlock({ materials }: Props) {
   return (
     <div className={styles.content}>
-      <H2 className={styles.header}>{header}</H2>
+      <Heading as="h3" className={styles.header}>
+        {header}
+      </Heading>
       <div className={styles.images}>
         {materials.map(({ image: src }, index) => (
           <div key={index} className={styles.imageWrapper}>

@@ -8,8 +8,6 @@
 }
 
 .slide {
-  font-size: var(--lg-font-size);
-  font-weight: 300;
   width: max-content;
   margin: 0 1rem;
 }

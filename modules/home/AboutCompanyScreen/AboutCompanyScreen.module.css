@@ -125,7 +125,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .content h2 {
+  .content h3 {
     width: unset;
     text-align: unset;
   }

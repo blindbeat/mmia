@@ -15,7 +15,7 @@ const socialLinks = ["ig", "be", "fb", "yt"]
 export default function Socials() {
   return (
     <div className={classNames(utilStyles.wrapper, styles.content)}>
-      <h2>{heading}</h2>
+      <h3>{heading}</h3>
       <SocialsSwiper className={styles.swiper} />
       <p>{paragraph}</p>
       <Image

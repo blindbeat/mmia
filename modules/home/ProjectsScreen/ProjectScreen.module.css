@@ -20,7 +20,7 @@
   justify-self: start;
 }
 
-.textWrapper h2 {
+.textWrapper h3 {
   overflow: hidden;
   max-height: 3.25em;
   margin-bottom: var(--2xl);
@@ -57,7 +57,7 @@
     margin-bottom: var(--sm);
   }
 
-  .textWrapper h2 {
+  .textWrapper h3 {
     margin-bottom: var(--xs);
   }
 

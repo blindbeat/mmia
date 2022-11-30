@@ -12,7 +12,7 @@ import LinkWithLine from "components/LinkWithLine"
 import Socials from "./Socials"
 import Link from "next/link"
 import P from "components/P"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import { useState } from "react"
 import "swiper/css/effect-fade"
 import { Swiper as SwiperClass } from "swiper/types"
@@ -72,9 +72,13 @@ function GreetingScreen() {
           {slides.map(({ primaryText, secondaryText }, index) => (
             <SwiperSlide className={styles.slide} key={index}>
               <div className={styles.slideContent}>
-                <H2 appearImmediately delay={calcAnimationDelay(1)}>
+                <Heading
+                  as="h2"
+                  appearImmediately
+                  delay={calcAnimationDelay(1)}
+                >
                   {primaryText}
-                </H2>
+                </Heading>
                 <div className={styles.pWrapper}>
                   <P appearImmediately delay={calcAnimationDelay(2)}>
                     {secondaryText}

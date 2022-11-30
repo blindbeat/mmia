@@ -1,9 +1,13 @@
 import styles from "./BuildingHeading.module.css"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 
 const title = "The method of major overhaul"
 
 const BuildingHeading = () => {
-  return <H2 className={styles.content}>{title}</H2>
+  return (
+    <Heading as="h1" className={styles.content}>
+      {title}
+    </Heading>
+  )
 }
 export default BuildingHeading

@@ -1,4 +1,4 @@
-import styles from "modules/projects/ProjectsTagButtons/ProjectsTagButtons.module.css"
+import styles from "./ProjectsTagButtons.module.css"
 import { ComponentPropsWithoutRef } from "react"
 
 interface Props {

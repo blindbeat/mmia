@@ -1,5 +1,5 @@
 import styles from "modules/project/ProjectHeaderBlock/ProjectHeaderBlock.module.css"
-import H2 from "components/H2"
+import Heading from "components/Heading"
 import TagList from "components/TagList/TagList"
 import { metadata, projectDescription, tags, title } from "assets/dummyText"
 import Image from "next/image"
@@ -13,7 +13,9 @@ export default function ProjectHeaderBlock() {
   return (
     <div className={styles.content}>
       <div className={styles.titleWrapper}>
-        <H2 className={styles.title}>{title}</H2>
+        <Heading as="h1" className={styles.title}>
+          {title}
+        </Heading>
         <TagList tags={tags} className={styles.tags} />
       </div>
       <Image src={headerPhoto} alt="" className={styles.image} sizes="100vw" />

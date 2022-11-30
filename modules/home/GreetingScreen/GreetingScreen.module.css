@@ -71,7 +71,6 @@
 }
 
 .slideContent h2 {
-  font-size: var(--xl-font-size);
   margin-bottom: var(--xs);
   transition: color var(--tl), opacity var(--tl);
   opacity: 0.2;
@@ -115,7 +114,7 @@
   padding: var(--link-padding);
   cursor: pointer;
   transition: border-bottom-color ease-in-out var(--ts),
-  color ease-in-out var(--ts);
+    color ease-in-out var(--ts);
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   border-width: 0;

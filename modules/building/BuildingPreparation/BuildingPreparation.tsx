@@ -1,11 +1,11 @@
 import styles from "./BuildingPreparation.module.css"
 import ScreenTitle from "components/ScreenTitle"
-import H2 from "components/H2"
 import { formIndexString } from "misc/utils"
 import { dummyParagraphLong } from "assets/dummyText"
 import { motion } from "framer-motion"
 import { useRef } from "react"
 import useAnimateLayering from "hooks/useAnimateLayering"
+import Heading from "components/Heading"
 
 const heading = "What documents are required for capital repairs?"
 
@@ -25,7 +25,9 @@ const BuildingPreparation = () => {
     <div className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle className={styles.title}>preparation</ScreenTitle>
-        <H2 className={styles.heading}>{heading}</H2>
+        <Heading as="h3" className={styles.heading}>
+          {heading}
+        </Heading>
       </div>
       <div className={styles.stepContainer}>
         {steps.map(({ heading, text }, index) => (
