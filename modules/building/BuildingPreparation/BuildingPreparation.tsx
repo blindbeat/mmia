@@ -3,8 +3,9 @@ import ScreenTitle from "components/ScreenTitle"
 import H2 from "components/H2"
 import { formIndexString } from "misc/utils"
 import { dummyParagraphLong } from "assets/dummyText"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { useRef } from "react"
+import useAnimateLayering from "hooks/useAnimateLayering"
 
 const heading = "What documents are required for capital repairs?"
 
@@ -44,43 +45,15 @@ interface StepProps {
 
 const Step = ({ index, heading }: StepProps) => {
   const ref = useRef<HTMLDivElement>(null)
-
-  const { scrollY } = useScroll()
-  const [topOffset, setTopOffset] = useState(0)
-  const [track, setTrack] = useState(0)
-  const layerOffset = 100 * index + 100
-  const val = useTransform(
-    scrollY,
-    [topOffset - layerOffset, topOffset + track - layerOffset],
-    [0, track]
-  )
-
-  useEffect(() => {
-    const elem = ref.current
-    const parent = elem?.parentElement
-    if (!elem || !parent) return
-    setTopOffset(elem.offsetTop)
-    console.log(elem.offsetTop)
-    console.log(`parent`, parent.offsetTop + parent.offsetHeight)
-    setTrack(
-      parent.offsetTop +
-        parent.offsetHeight -
-        elem.offsetTop -
-        elem.offsetHeight
-    )
-  }, [])
-
+  const y = useAnimateLayering(ref, 100 * index + 100)
   return (
     <motion.div
       className={styles.step}
       style={{
-        y: val,
+        y,
         zIndex: index,
       }}
       ref={ref}
-      transition={{
-        duration: 0,
-      }}
     >
       <span className={styles.index}>{formIndexString(index)}</span>
       <h5>{heading}</h5>
