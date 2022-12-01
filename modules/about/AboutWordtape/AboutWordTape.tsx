@@ -1,9 +1,11 @@
 import styles from "./AboutWordTape.module.css"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { dummyParagraph } from "assets/dummyText"
+import P from "components/P"
 
 const tape =
-  "We see architecture as a unique product, created at the intersection of the zeitgeist, "
+  "We see architecture as a unique product, created at the intersection, "
 
 const AboutWordTape = () => {
   const ref = useRef(null)
@@ -25,6 +27,7 @@ const AboutWordTape = () => {
   return (
     <div ref={ref} className={styles.content}>
       <motion.div
+        className="h1"
         style={{
           x: firstY,
         }}
@@ -32,12 +35,14 @@ const AboutWordTape = () => {
         {tape}
       </motion.div>
       <motion.div
+        className="h1"
         style={{
           x: secondY,
         }}
       >
         {tape}
       </motion.div>
+      <P>{dummyParagraph}</P>
     </div>
   )
 }
