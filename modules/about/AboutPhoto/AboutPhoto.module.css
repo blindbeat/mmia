@@ -1,0 +1,24 @@
+.content {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  margin: var(--4xl) 0 var(--lg);
+  background: black;
+}
+
+.imageWrapper {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    height: 50vh;
+    margin: var(--4xl) 0;
+  }
+}
