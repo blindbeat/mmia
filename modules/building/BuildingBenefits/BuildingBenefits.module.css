@@ -23,29 +23,6 @@
   place-self: end start;
 }
 
-.bubbles {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 calc(var(--wrapper-padding-x) - 0.5rem);
-  grid-column: span 2;
-}
-
-.bubblesSwiper {
-  display: none;
-}
-
-.bubbles > * {
-  flex-basis: calc(120rem / 4);
-}
-
-.bubble.bubble {
-  padding: 1rem;
-}
-
-.bubble h4 {
-  margin-bottom: 1rem;
-}
-
 @media (max-width: calc(90em - 1px)) {
   .text {
     grid-template-columns: auto;
@@ -64,21 +41,6 @@
   .paragraph {
     max-width: 30em;
     place-self: end start;
-  }
-
-  .bubbles {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: calc(64em - 1px)) {
-  .bubbles {
-    display: none;
-  }
-
-  .bubblesSwiper {
-    display: block;
-    width: 100%;
   }
 }
 

@@ -17,3 +17,12 @@ export const dummyParagraphLong =
   "Only low tide previously released the footpath, phone der small lighthouse island tossed in the North Sea over to the village. The further way led through the dreaded high moor. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned."
 
 export const dummyTitleLong = `The method of major overhaul is more than renewal of the resource with a partial replacement for the necessary structural elements`
+
+const bubbleTitle = "Climate"
+const bubbleText =
+  "Your work will be intensive, but the tasks will be interesting. You will independently "
+
+export const bubbles = [...new Array(4)].fill({
+  title: bubbleTitle,
+  text: bubbleText,
+})
