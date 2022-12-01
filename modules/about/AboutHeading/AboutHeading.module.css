@@ -1,0 +1,14 @@
+.wrapper {
+  margin-bottom: var(--lg);
+  padding: 0 var(--wrapper-padding-x);
+}
+
+.content {
+  max-width: 85%;
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    max-width: unset;
+  }
+}

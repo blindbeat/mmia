@@ -1,0 +1,65 @@
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 120em;
+  margin: var(--4xl) auto;
+}
+
+.quoteMark {
+  font-size: 5rem;
+  margin-bottom: -0.25em;
+}
+
+.quote {
+  width: 66%;
+  margin-bottom: var(--sm);
+  text-align: center;
+}
+
+.name {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .quoteMark {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .quote {
+    width: 80%;
+  }
+
+  .quoteMark {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    margin: var(--3xl) auto;
+  }
+
+  .quote {
+    width: unset;
+  }
+
+  .quoteMark {
+    font-size: 3.5rem;
+    margin-bottom: -0.15em;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    margin: var(--4xl) auto;
+  }
+
+  .quoteMark {
+    font-size: 3rem;
+  }
+}
