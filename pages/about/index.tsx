@@ -5,6 +5,7 @@ import AboutQuote from "modules/about/AboutQuote"
 import AboutBubbles from "modules/about/AboutBubbles"
 import AboutPhoto from "modules/about/AboutPhoto"
 import AboutPhilosophy from "modules/about/AboutPhilosophy"
+import AboutWordTape from "modules/about/AboutWordtape"
 
 const About: NextPageWithLayoutConfig = () => {
   return (
@@ -15,6 +16,7 @@ const About: NextPageWithLayoutConfig = () => {
       <AboutBubbles />
       <AboutPhoto />
       <AboutPhilosophy />
+      <AboutWordTape />
     </>
   )
 }

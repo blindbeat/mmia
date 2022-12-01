@@ -7,7 +7,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 const height = 200
 
 const AboutPhoto = () => {
-  console.log(`-${(height - 100) / height}%`)
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
