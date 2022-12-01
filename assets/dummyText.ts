@@ -1,3 +1,5 @@
+import { Vacancy } from "misc/types"
+
 export const title = "Cardiovascular Hospital in Briukhovychi"
 export const tags = ["interior", "Architecture"]
 
@@ -28,4 +30,11 @@ const bubbleText =
 export const bubbles = [...new Array(4)].fill({
   title: bubbleTitle,
   text: bubbleText,
+})
+
+export const dummyVacancies: Vacancy[] = [...new Array(4)].fill({
+  name: "project manager",
+  country: "Ukraine",
+  city: "Kyiv",
+  employmentTime: "Full-Time",
 })

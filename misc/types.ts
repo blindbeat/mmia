@@ -7,3 +7,10 @@ export type ProjectBrief = {
 }
 
 export type NextImageSrc = string | StaticImageData
+
+export interface Vacancy {
+  name: string
+  country: string
+  city: string
+  employmentTime: "Full-Time" | "Part-Time"
+}
