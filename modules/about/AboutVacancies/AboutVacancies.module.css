@@ -1,28 +1,33 @@
 .content {
+  position: relative;
   display: block;
-  height: 100vh;
+  margin: calc(var(--cardWidth) * 0.5 / var(--cardAspectRatio))
+    calc(var(--cardWidth) * 0.5);
+  aspect-ratio: 2.5;
+  --cardWidth: 450px;
+  --cardAspectRatio: 1.95;
 }
 
 .cardWrapper {
+  position: absolute;
+  width: min-content;
   margin: 30px;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.08));
 }
 
 .card {
-  position: relative;
   display: grid;
-  width: 450px;
+  width: var(--cardWidth);
   padding: 0.75em 1em;
-  background: #f8f8f8;
   --clipTriangleHeight: 15px;
   clip-path: polygon(
-          0 0,
-          100% 0,
-          100% calc(100% - var(--clipTriangleHeight)),
-          calc(100% - var(--clipTriangleHeight)) 100%,
-          0 100%
+    0 0,
+    100% 0,
+    100% calc(100% - var(--clipTriangleHeight)),
+    calc(100% - var(--clipTriangleHeight)) 100%,
+    0 100%
   );
-  aspect-ratio: 1.95;
+  aspect-ratio: var(--cardAspectRatio);
   grid-template-columns: 40% auto;
   grid-template-rows: 1fr auto 1fr;
 }
@@ -35,7 +40,8 @@
   height: var(--size);
   margin: 0.75em 1em;
   content: "";
-  background: black;
+  background: inherit;
+  filter: invert(1);
   --size: 8px;
 }
 
@@ -70,8 +76,32 @@
 
 .vacancyDropRequest {
   display: block;
+  width: max-content;
   text-transform: uppercase;
   grid-row: 3;
   grid-column: 1;
   place-self: end start;
+}
+
+.vacancyDropRequest svg {
+}
+
+@media (max-width: calc(120em - 1px)) {
+  .content {
+    --cardWidth: 340px;
+  }
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .content {
+    aspect-ratio: 2;
+    --cardWidth: 260px;
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .content {
+    aspect-ratio: 1.25;
+    --cardWidth: 260px;
+  }
 }

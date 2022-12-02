@@ -32,7 +32,7 @@ export const bubbles = [...new Array(4)].fill({
   text: bubbleText,
 })
 
-export const dummyVacancies: Vacancy[] = [...new Array(4)].fill({
+export const dummyVacancies: Vacancy[] = [...new Array(6)].fill({
   name: "project manager",
   country: "Ukraine",
   city: "Kyiv",
