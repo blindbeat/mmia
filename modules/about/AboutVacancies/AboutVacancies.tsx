@@ -3,6 +3,9 @@ import { Vacancy } from "misc/types"
 import { dummyVacancies } from "assets/dummyText"
 import classNames from "classnames"
 import { motion } from "framer-motion"
+import Tilt from "react-parallax-tilt"
+import { ComponentPropsWithoutRef, useState } from "react"
+import useThresholdObserver from "hooks/useThresholdObserver"
 
 interface Position {
   top: number
@@ -19,6 +22,7 @@ const positions: Position[] = [
   { top: 15, left: 10, rotate: 1.5 },
 ]
 const AboutVacancies = () => {
+  const [lastHoveredCard, setLastHoveredCard] = useState<number | null>(null)
   return (
     <div className={styles.content}>
       {dummyVacancies.map((vacancy, index) => (
@@ -26,6 +30,8 @@ const AboutVacancies = () => {
           key={index}
           vacancy={vacancy}
           position={positions[index]}
+          onMouseEnter={() => setLastHoveredCard(index)}
+          isFirstPlan={lastHoveredCard === index}
         />
       ))}
     </div>
@@ -36,107 +42,118 @@ export default AboutVacancies
 
 const duration = 0.2
 
-interface VacancyProps {
+interface VacancyProps extends ComponentPropsWithoutRef<"div"> {
   vacancy: Vacancy
   position: Position
+  isFirstPlan: boolean
 }
-const VacancyElem = ({ vacancy, position }: VacancyProps) => {
-  return (
-    <motion.div
-      className={styles.cardWrapper}
-      animate="default"
-      whileHover="hover"
-      style={{
+const VacancyElem = ({
+  vacancy,
+  position,
+  onMouseEnter,
+  isFirstPlan,
+}: VacancyProps) => {
+  const extendsThreshold = useThresholdObserver(768)
+  const style = extendsThreshold
+    ? {
         top: `${position.top}%`,
         left: `${position.left}%`,
         rotate: position.rotate,
         x: `-50%`,
         y: `-50%`,
-      }}
-      variants={{
-        hover: {
-          zIndex: 1,
-        },
+      }
+    : {}
+  return (
+    <motion.div
+      className={styles.cardWrapper}
+      onMouseEnter={onMouseEnter}
+      style={{
+        ...style,
+        zIndex: isFirstPlan ? 1 : undefined,
       }}
     >
-      <motion.a
-        href="https://google.com"
-        className={styles.card}
-        variants={{
-          default: {
-            backgroundColor: "#f8f8f8",
-            color: "#000",
-          },
-          hover: {
-            backgroundColor: `#171717`,
-            color: "#fff",
-          },
-        }}
-        transition={{
-          duration,
-        }}
-      >
-        <div className={classNames("h6", styles.vacancyName)}>
-          {vacancy.name}
-        </div>
-        <div className={styles.vacancyLocation}>
-          <span>{vacancy.country}</span>
-          <svg
-            viewBox="0 0 3 1"
-            className={styles.vacancyLine}
-            preserveAspectRatio="none"
-          >
-            <motion.line
-              x1={0}
-              y1={0}
-              x2={3}
-              y2={0}
-              variants={{
-                default: {
-                  stroke: "#000",
-                },
-                hover: {
-                  stroke: "#fff",
-                },
-              }}
-              transition={{
-                duration,
-              }}
-              vectorEffect="non-scaling-stroke"
-            ></motion.line>
-          </svg>
-          <span>{vacancy.city}</span>
-        </div>
-        <div className={styles.vacancyEmploymentTime}>
-          {vacancy.employmentTime}
-        </div>
-        <div className={styles.vacancyDropRequest}>
-          drop request
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 119 6"
-            fill="none"
-            preserveAspectRatio="none"
-          >
-            <motion.path
-              opacity="0.2"
-              d="M0.697266 1.31641C33.5171 6.80892 75.8591 3.58474 118.644 4.87593"
-              variants={{
-                default: {
-                  stroke: "#000",
-                },
-                hover: {
-                  stroke: "#fff",
-                },
-              }}
-              transition={{
-                duration,
-              }}
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
-        </div>
-      </motion.a>
+      <Tilt>
+        <motion.a
+          href="https://google.com"
+          className={styles.card}
+          animate="default"
+          whileHover="hover"
+          variants={{
+            default: {
+              backgroundColor: "#f8f8f8",
+              color: "#000",
+            },
+            hover: {
+              backgroundColor: `#171717`,
+              color: "#fff",
+            },
+          }}
+          transition={{
+            duration,
+          }}
+        >
+          <div className={classNames("h6", styles.vacancyName)}>
+            {vacancy.name}
+          </div>
+          <div className={styles.vacancyLocation}>
+            <span>{vacancy.country}</span>
+            <svg
+              viewBox="0 0 3 1"
+              className={styles.vacancyLine}
+              preserveAspectRatio="none"
+            >
+              <motion.line
+                x1={0}
+                y1={0}
+                x2={3}
+                y2={0}
+                variants={{
+                  default: {
+                    stroke: "#000",
+                  },
+                  hover: {
+                    stroke: "#fff",
+                  },
+                }}
+                transition={{
+                  duration,
+                }}
+                vectorEffect="non-scaling-stroke"
+              ></motion.line>
+            </svg>
+            <span>{vacancy.city}</span>
+          </div>
+          <div className={styles.vacancyEmploymentTime}>
+            {vacancy.employmentTime}
+          </div>
+          <div className={styles.vacancyDropRequest}>
+            drop request
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 119 6"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <motion.path
+                opacity="0.2"
+                d="M0.697266 1.31641C33.5171 6.80892 75.8591 3.58474 118.644 4.87593"
+                variants={{
+                  default: {
+                    stroke: "#000",
+                  },
+                  hover: {
+                    stroke: "#fff",
+                  },
+                }}
+                transition={{
+                  duration,
+                }}
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+          </div>
+        </motion.a>
+      </Tilt>
     </motion.div>
   )
 }

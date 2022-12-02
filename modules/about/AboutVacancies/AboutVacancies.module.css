@@ -10,8 +10,6 @@
 
 .cardWrapper {
   position: absolute;
-  width: min-content;
-  margin: 30px;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.08));
 }
 
@@ -103,5 +101,22 @@
   .content {
     aspect-ratio: 1.25;
     --cardWidth: 260px;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: var(--4xl) var(--wrapper-padding-x) var(--2xl);
+    gap: var(--md);
+  }
+
+  .cardWrapper {
+    position: static;
+  }
+
+  .card {
+    width: auto;
   }
 }
