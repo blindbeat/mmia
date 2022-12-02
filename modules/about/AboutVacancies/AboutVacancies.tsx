@@ -104,9 +104,9 @@ const VacancyElem = ({
             >
               <motion.line
                 x1={0}
-                y1={0}
+                y1={1}
                 x2={3}
-                y2={0}
+                y2={1}
                 variants={{
                   default: {
                     stroke: "#000",
