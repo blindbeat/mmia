@@ -87,7 +87,7 @@
 }
 
 .fullscreenLinkOuter {
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .fullscreenLinkWrapper {

@@ -7,7 +7,13 @@ import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import NavLinkAnimated from "./NavLinkAnimated"
-import { AnimatePresence, motion, MotionProps, Variants } from "framer-motion"
+import {
+  AnimatePresence,
+  motion,
+  MotionProps,
+  Transition,
+  Variants,
+} from "framer-motion"
 import LinkWithLine from "components/LinkWithLine"
 import Socials from "modules/blocks/Socials"
 import { useRouter } from "next/router"
@@ -62,22 +68,6 @@ const headerNavAnimation: MotionProps = {
   },
 }
 
-const defaultVariant = {
-  y: "-100%",
-  transition: {
-    ease: "easeIn",
-  },
-}
-const fullscreenLinkVariants: Variants = {
-  header: defaultVariant,
-  hidden: defaultVariant,
-  transparent: defaultVariant,
-  fullscreen: {
-    y: "0",
-    transition: {},
-  },
-}
-
 interface Props {
   adaptiveTransparency: boolean
 }
@@ -92,7 +82,8 @@ function Header({ adaptiveTransparency }: Props) {
 
   const [navState, setNavState] = useState<navState | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
-
+  const [fullscreenNavShouldBeVisible, setFullscreenNavShouldBeVisible] =
+    useState(false)
   const headerRef = useRef<HTMLDivElement | null>(null)
   const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
     number | null
@@ -153,12 +144,63 @@ function Header({ adaptiveTransparency }: Props) {
     }
   }, [isFullscreen])
 
-  const handleFullscreenButton = () => {
-    setIsFullscreen((state) => !state)
+  const handleHeaderAnimationEnd = (definition: string) => {
+    if (definition === "fullscreen") {
+      setFullscreenNavShouldBeVisible(true)
+    }
   }
-  const handleFullscreenLinkClick = () => setIsFullscreen(false)
+
+  const handleFullscreenButton = () => {
+    if (!isFullscreen) {
+      setIsFullscreen(true)
+    } else {
+      setFullscreenNavShouldBeVisible(false)
+    }
+  }
+  const handleFullscreenLinkClick = () => setFullscreenNavShouldBeVisible(false)
+  const handleFullscreenNavClosed = () => {
+    console.log("test")
+    setIsFullscreen(false)
+  }
+
+  const contentVariants: Variants = {
+    hidden: {
+      clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
+      backgroundColor: "rgba(255,255,255, 1)",
+    },
+    transparent: {
+      clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
+      backgroundColor: "rgba(0,0,0,0)",
+    },
+    header: {
+      clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
+      backgroundColor: "rgba(255,255,255, 1)",
+    },
+    fullscreen: {
+      clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
+      backgroundColor: "rgba(23, 23, 23, 1)",
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.075,
+        when: "beforeChildren",
+        ease: "easeInOut",
+        backgroundColor: {
+          duration: 0.3,
+        },
+      },
+    },
+  }
+  const contentTransition: Transition = {
+    duration: 0.6,
+    staggerChildren: 0.075,
+    when: "afterChildren",
+    ease: "easeInOut",
+    backgroundColor: {
+      duration: 0.3,
+    },
+  }
   const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
-  console.log(navState)
+
   return (
     <motion.nav
       className={classNames(styles.content)}
@@ -167,42 +209,9 @@ function Header({ adaptiveTransparency }: Props) {
         clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
         backgroundColor: "rgba(0,0,0,0)",
       }}
-      variants={{
-        hidden: {
-          clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
-          backgroundColor: "rgba(255,255,255, 1)",
-        },
-        transparent: {
-          clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
-          backgroundColor: "rgba(0,0,0,0)",
-        },
-        header: {
-          clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
-          backgroundColor: "rgba(255,255,255, 1)",
-        },
-        fullscreen: {
-          clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
-          backgroundColor: "rgba(23, 23, 23, 1)",
-          transition: {
-            duration: 0.6,
-            staggerChildren: 0.075,
-            when: "beforeChildren",
-            ease: "easeInOut",
-            backgroundColor: {
-              duration: 0.3,
-            },
-          },
-        },
-      }}
-      transition={{
-        duration: 0.6,
-        staggerChildren: 0.075,
-        when: "afterChildren",
-        ease: "easeInOut",
-        backgroundColor: {
-          duration: 0.3,
-        },
-      }}
+      variants={contentVariants}
+      transition={contentTransition}
+      onAnimationComplete={handleHeaderAnimationEnd}
     >
       <header ref={headerRef}>
         <button
@@ -263,32 +272,51 @@ function Header({ adaptiveTransparency }: Props) {
         <CornerComponent href="#" className={classNames(styles.corner)} />
       </header>
       <div className={styles.fullscreenLinks}>
-        {navLinksFullscreen.map(([name, url, padding], index) => (
-          <div
-            key={url}
-            className={styles.fullscreenLinkOuter}
-            style={{
-              paddingLeft: `calc(var(--linkGapStep) * ${padding})`,
-            }}
-          >
-            <motion.div
-              className={styles.fullscreenLinkWrapper}
-              variants={fullscreenLinkVariants}
-              custom={index}
-            >
-              <span className={styles.fullscreenLinkIndex}>{`0${
-                index + 1
-              }`}</span>
-              <Link
-                href={url}
-                className={styles.fullscreenLink}
-                onClick={handleFullscreenLinkClick}
+        <AnimatePresence onExitComplete={handleFullscreenNavClosed}>
+          {fullscreenNavShouldBeVisible &&
+            navLinksFullscreen.map(([name, url, padding], index) => (
+              <div
+                key={url}
+                className={styles.fullscreenLinkOuter}
+                style={{
+                  paddingLeft: `calc(var(--linkGapStep) * ${padding})`,
+                }}
               >
-                {name}
-              </Link>
-            </motion.div>
-          </div>
-        ))}
+                <motion.div
+                  className={styles.fullscreenLinkWrapper}
+                  initial={{ y: `-125%`, x: `-2rem`, rotate: -5 }}
+                  animate={{ y: `0%`, x: `0rem`, rotate: 0 }}
+                  exit={{
+                    y: `150%`,
+                    x: `2rem`,
+                    rotate: 5,
+                    transition: {
+                      ease: "easeIn",
+                      duration: 0.6,
+                      delay: index * 0.1,
+                    },
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  custom={index}
+                >
+                  <span className={styles.fullscreenLinkIndex}>{`0${
+                    index + 1
+                  }`}</span>
+                  <Link
+                    href={url}
+                    className={styles.fullscreenLink}
+                    onClick={handleFullscreenLinkClick}
+                  >
+                    {name}
+                  </Link>
+                </motion.div>
+              </div>
+            ))}
+        </AnimatePresence>
       </div>
       <div className={styles.link}>
         <LinkWithLine>drop request</LinkWithLine>
