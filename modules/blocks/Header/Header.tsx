@@ -16,7 +16,6 @@ import {
 } from "framer-motion"
 import LinkWithLine from "components/LinkWithLine"
 import Socials from "modules/blocks/Socials"
-import { useRouter } from "next/router"
 
 type navLinkTuple = [name: string, url: string, padding: number]
 
@@ -74,8 +73,6 @@ interface Props {
 
 const MotionSocials = motion(Socials) as typeof motion.div
 function Header({ adaptiveTransparency }: Props) {
-  const { pathname } = useRouter()
-
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
@@ -130,10 +127,6 @@ function Header({ adaptiveTransparency }: Props) {
   }, [])
 
   useEffect(() => {
-    setIsFullscreen(false)
-  }, [pathname])
-
-  useEffect(() => {
     const body = document.body
     if (isFullscreen) {
       body.style.height = `100vh`
@@ -157,7 +150,7 @@ function Header({ adaptiveTransparency }: Props) {
       setFullscreenNavShouldBeVisible(false)
     }
   }
-  const handleFullscreenLinkClick = () => setFullscreenNavShouldBeVisible(false)
+  const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const handleFullscreenNavClosed = () => {
     console.log("test")
     setIsFullscreen(false)
@@ -244,7 +237,11 @@ function Header({ adaptiveTransparency }: Props) {
             </AnimatePresence>
           </svg>
         </button>
-        <Link href="/" className={classNames(styles.logo)}>
+        <Link
+          href="/"
+          className={classNames(styles.logo)}
+          onClick={startFullscreenCollapse}
+        >
           <Logo />
         </Link>
         <AnimatePresence mode="wait">
@@ -292,7 +289,7 @@ function Header({ adaptiveTransparency }: Props) {
                     rotate: 5,
                     transition: {
                       ease: "easeIn",
-                      duration: 0.6,
+                      duration: 0.4,
                       delay: index * 0.1,
                     },
                   }}
@@ -309,7 +306,7 @@ function Header({ adaptiveTransparency }: Props) {
                   <Link
                     href={url}
                     className={styles.fullscreenLink}
-                    onClick={handleFullscreenLinkClick}
+                    onClick={startFullscreenCollapse}
                   >
                     {name}
                   </Link>
