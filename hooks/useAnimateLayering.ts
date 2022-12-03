@@ -1,4 +1,4 @@
-import { useScroll, useTransform } from "framer-motion"
+import { useScroll, useSpring, useTransform } from "framer-motion"
 import { RefObject, useCallback, useEffect, useState } from "react"
 
 const useAnimateLayering = (
@@ -8,10 +8,18 @@ const useAnimateLayering = (
   const { scrollY } = useScroll()
   const [topOffset, setTopOffset] = useState(0)
   const [track, setTrack] = useState(0)
+  const scrollYSmoothed = useSpring(scrollY, {
+    damping: 15,
+    mass: 0.05,
+    stiffness: 500,
+  })
   const y = useTransform(
-    scrollY,
+    scrollYSmoothed,
     [topOffset - layerOffset, topOffset + track - layerOffset],
-    [0, track]
+    [0, track],
+    {
+      ease: (num) => num,
+    }
   )
 
   const setOffsetAndTrack = useCallback(() => {
