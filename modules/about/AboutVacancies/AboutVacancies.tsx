@@ -72,7 +72,7 @@ const VacancyElem = ({
         zIndex: isFirstPlan ? 1 : undefined,
       }}
     >
-      <Tilt>
+      <Tilt tiltEnable={extendsThreshold}>
         <motion.a
           href="https://google.com"
           className={styles.card}
