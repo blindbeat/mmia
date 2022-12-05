@@ -130,13 +130,13 @@ const VacancyElem = ({
             drop request
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 119 6"
+              viewBox="0 0 76 4"
               fill="none"
               preserveAspectRatio="none"
             >
               <motion.path
                 opacity="0.2"
-                d="M0.697266 1.31641C33.5171 6.80892 75.8591 3.58474 118.644 4.87593"
+                d="M1.03955 1.07422C21.7174 5.56788 48.1964 1.05979 75.0396 1.05156"
                 variants={{
                   default: {
                     stroke: "#000",
