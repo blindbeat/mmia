@@ -2,7 +2,7 @@ import styles from "./BuildingBenefits.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import Heading from "components/Heading"
 import P from "components/P"
-import Bubbles from "modules/blocks/Bubbles "
+import Bubbles from "modules/blocks/Bubbles"
 import { bubbles } from "assets/dummyText"
 
 const heading = "we are the best guarantee of quality for our customers"

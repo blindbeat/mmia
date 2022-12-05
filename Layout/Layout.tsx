@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ComponentPropsWithoutRef } from "react"
 import Header from "../modules/blocks/Header"
 import Footer from "../modules/blocks/Footer"
 import styles from "./Layout.module.css"
@@ -10,13 +10,13 @@ export interface LayoutConfig {
   headerMargin: null | undefined | string
 }
 
-interface Props {
-  children: ReactNode
+interface Props extends ComponentPropsWithoutRef<"main"> {
   config?: Partial<LayoutConfig>
 }
 
 function Layout({
   children,
+  className,
   config: {
     showFooter = true,
     adaptiveHeaderTransparency = true,
@@ -29,7 +29,8 @@ function Layout({
       <main
         className={classNames(
           styles.content,
-          headerMargin === undefined && styles.defaultPaddingTop
+          headerMargin === undefined && styles.defaultPaddingTop,
+          className
         )}
         style={{
           paddingTop: headerMargin ?? undefined,

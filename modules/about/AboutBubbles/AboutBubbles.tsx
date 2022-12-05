@@ -1,4 +1,4 @@
-import Bubbles from "modules/blocks/Bubbles "
+import Bubbles from "modules/blocks/Bubbles"
 import { bubbles } from "assets/dummyText"
 import styles from "./AboutBubbles.module.css"
 
