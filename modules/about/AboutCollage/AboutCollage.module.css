@@ -1,4 +1,5 @@
 .content {
+  position: relative;
   display: grid;
   margin: var(--lg) 0 var(--2xl);
   padding: 0 var(--wrapper-padding-x);
@@ -39,10 +40,31 @@
   font-size: var(--sm-font-size);
   align-self: end;
   margin-right: var(--5xs);
+  transform: rotate(180deg);
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0.7;
   writing-mode: vertical-lr;
+}
+
+.backgroundSvgWrapper {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  display: flex;
+  overflow-x: clip;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundSvg {
+  flex-shrink: 0;
+  width: 112%;
+  height: 200%;
+  transform: translateY(-10%);
 }
 
 @media (max-width: calc(90em - 1px)) {
@@ -80,5 +102,9 @@
   .founderImage {
     grid-row: 1;
     grid-column: auto;
+  }
+
+  .backgroundSvgWrapper {
+    display: none;
   }
 }
