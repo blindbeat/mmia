@@ -60,6 +60,10 @@
   gap: 10px;
 }
 
+.vacancyLine {
+  height: min-content;
+}
+
 .vacancyLocation svg {
   flex-grow: 1;
   height: 1px;
