@@ -34,9 +34,7 @@ const Contact: NextPageWithLayoutConfig = () => {
   const mapElem = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    return () => {
-      setMapElemState(mapElem.current as HTMLDivElement)
-    }
+    setMapElemState(mapElem.current as HTMLDivElement)
   }, [])
 
   return (
