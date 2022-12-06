@@ -144,12 +144,12 @@ const MarkerAnimated = ({
                       opacity: 0,
                       transition: {
                         ease: "circIn",
-                        duration: 0.3,
+                        duration: 0.2,
                       },
                     }}
                     transition={{
-                      ease: "circOut",
-                      duration: 0.6,
+                      ease: "easeOut",
+                      duration: 0.3,
                     }}
                     className={styles.imageWrapper}
                   >
