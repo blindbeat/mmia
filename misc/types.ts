@@ -14,3 +14,9 @@ export interface Vacancy {
   city: string
   employmentTime: "Full-Time" | "Part-Time"
 }
+
+export interface Contact {
+  city: string
+  address: string
+  phone: number
+}

@@ -16,8 +16,10 @@ import Link from "next/link"
 import { createPortal } from "react-dom"
 import Image from "next/image"
 import projectImage from "assets/dummyPics/instagramPhotos/1.jpg"
+import { Contact } from "misc/types"
+import Socials from "modules/blocks/Socials"
 
-const projection = geoAitoff().scale(220).center([45, 30])
+const projection = geoAitoff().scale(200).center([45, 35])
 const points: [number, number][] = [
   [30.006, 50.7128],
   [10, 20],
@@ -27,6 +29,19 @@ const points: [number, number][] = [
   [140.033484, 35.788226],
   [150.98, -34.07],
   [-73.959089, 40.627087],
+]
+
+const contacts: Contact[] = [
+  {
+    city: "Miami",
+    address: "5555 Biscayne Blvd, 4th Floor Space 2 Miami, FL 33137 / USA",
+    phone: 48510579790,
+  },
+  {
+    city: "Miami",
+    address: "5555 Biscayne Blvd, 4th Floor Space 2 Miami, FL 33137 / USA",
+    phone: 48510579790,
+  },
 ]
 
 const Contact: NextPageWithLayoutConfig = () => {
@@ -39,15 +54,8 @@ const Contact: NextPageWithLayoutConfig = () => {
 
   return (
     <div className={styles.content} ref={mapElem} id="map">
-      <ComposableMap
-        projection={projection}
-        // projectionConfig={{
-        //   center: [0, 25],
-        //   scale: 180,
-        // }}
-        className={styles.map}
-      >
-        <Geographies geography={map}>
+      <ComposableMap projection={projection} className={styles.map}>
+        <Geographies geography={map} style={{ width: `100%` }}>
           {({ geographies }) =>
             geographies.map((geo) => (
               <Geography
@@ -70,6 +78,44 @@ const Contact: NextPageWithLayoutConfig = () => {
             />
           ))}
       </ComposableMap>
+      <div className={styles.text}>
+        <div className={styles.contacts}>
+          {contacts.map((contact, index) => (
+            <div key={index} className={styles.contact}>
+              <h5>{contact.city}</h5>
+              <p>{contact.address}</p>
+              <motion.a
+                initial={false}
+                animate={{
+                  opacity: 0.7,
+                }}
+                whileHover={{
+                  opacity: 1,
+                }}
+                href={`tel:+${contact.phone}`}
+              >
+                +48 (510) 579 790
+              </motion.a>
+            </div>
+          ))}
+        </div>
+        <div className={styles.footer}>
+          <motion.a
+            className={styles.email}
+            initial={false}
+            animate={{
+              opacity: 0.7,
+            }}
+            whileHover={{
+              opacity: 1,
+            }}
+            href="Info@aimm-group.com"
+          >
+            Info@aimm-group.com
+          </motion.a>
+          <Socials />
+        </div>
+      </div>
     </div>
   )
 }
@@ -93,6 +139,19 @@ const MarkerAnimated = ({
   const [hovered, setHovered] = useState(false)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const markerRef = useRef<null | SVGPathElement>(null)
+  const [count, setCount] = useState(0)
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCount(count + 1)
+  //   }, 3000)
+  // }, [])
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCount((state) => state + 1)
+  //   }, delay * 1000)
+  // }, [])
 
   const positionSetter = useCallback(() => {
     const elem = markerRef.current
@@ -173,29 +232,31 @@ const MarkerAnimated = ({
             fill: [null, "#aaa", "#666"],
             r: [null, 3.5, 2.5],
           }}
+          onAnimationComplete={() => setCount((state) => state + 1)}
           transition={{
             delay,
             duration: 1.5,
             type: "spring",
           }}
         />
-        {[...new Array(3)].map((_, index) => (
-          <motion.circle
-            key={index}
-            className={styles.animationCircleWave}
-            animate={{
-              opacity: [0, 0.6, 0.2, 0],
-              fill: "white",
-              r: [2.5, 2.5, 10, 35],
-            }}
-            transition={{
-              times: [0, 0.1, 0.3, 1],
-              ease: "linear",
-              delay: delay + index / 1.5,
-              duration: 1.5,
-            }}
-          />
-        ))}
+        {count > 0 &&
+          [...new Array(3)].map((_, index) => (
+            <motion.circle
+              key={`${count}_${index}`}
+              className={styles.animationCircleWave}
+              animate={{
+                opacity: [0, 0.6, 0.2, 0],
+                fill: "white",
+                r: [2.5, 2.5, 10, 35],
+              }}
+              transition={{
+                times: [0, 0.1, 0.3, 1],
+                ease: "linear",
+                delay: index / 1.5,
+                duration: 1.5,
+              }}
+            />
+          ))}
       </Marker>
     </>
   )
