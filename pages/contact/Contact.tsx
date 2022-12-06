@@ -81,8 +81,6 @@ interface MarkerAnimatedProps extends MarkerProps {
 }
 
 const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
-  console.log("test")
-
   const [hovered, setHovered] = useState(false)
   const [mapElem, setMapElem] = useState<HTMLElement | null>(null)
   const [position, setPosition] = useState<[number, number] | null>(null)
@@ -103,6 +101,8 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
       setMapElem(document.getElementById("map"))
     }
   }, [])
+
+  console.log(mapElem)
 
   return (
     <>
