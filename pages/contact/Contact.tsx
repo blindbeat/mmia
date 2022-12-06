@@ -43,9 +43,9 @@ const Contact: NextPageWithLayoutConfig = () => {
               <Geography
                 key={geo.rsmKey}
                 geography={geo}
-                fill="rgba(255,255,255,0.1)"
+                fill="#292929"
                 stroke="rgba(23, 23, 23, 1)"
-                strokeWidth="0.5px"
+                strokeWidth="0.75px"
                 style={{
                   pressed: {
                     fill: "rgba(255,255,255,0.2)",
@@ -57,7 +57,7 @@ const Contact: NextPageWithLayoutConfig = () => {
         </Geographies>
         {points.map((point, index) => (
           <MarkerAnimated
-            delay={index}
+            delay={index / 1.5}
             key={point.join()}
             coordinates={point}
           />
@@ -82,11 +82,13 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
     <Marker {...rest}>
       <motion.circle
         initial={{
-          fill: "rgba(23, 23, 23, 1)",
+          fill: "#292929",
           r: 2,
+          opacity: 0,
         }}
         animate={{
-          fill: ["rgba(23, 23, 23, 0)", "#aaa", "#666"],
+          opacity: [null, 1, 1],
+          fill: [null, "#aaa", "#666"],
           r: [null, 3.5, 2.5],
         }}
         transition={{
@@ -105,7 +107,7 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
             r: [2.5, 2.5, 10, 35],
           }}
           transition={{
-            times: [0, 0, 0.3, 1],
+            times: [0, 0.1, 0.3, 1],
             ease: "linear",
             delay: delay + index / 1.5,
             duration: 1.5,
