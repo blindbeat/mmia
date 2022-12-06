@@ -33,20 +33,33 @@
   overflow: hidden;
   width: 9rem;
   transform: translate(-50%, calc(-100% - 1rem));
-  aspect-ratio: 0.75;
+  aspect-ratio: 1 / 1.41421356237;
+}
+
+.svgLines {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.svgLines path {
+
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
   object-fit: cover;
 }
 

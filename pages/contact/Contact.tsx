@@ -192,6 +192,42 @@ const MarkerAnimated = ({
             <AnimatePresence>
               {hovered && (
                 <motion.div className={styles.animatedElementsWrapper}>
+                  <svg
+                    viewBox="0 0 100 146"
+                    className={styles.svgLines}
+                    preserveAspectRatio="none"
+                  >
+                    {[
+                      "M 50 146 Q 50 141 45 141 L 5 141 L 5 5 L 50 5",
+                      "M 50 146 Q 50 141 55 141 L 95 141 L 95 5 L 50 5",
+                    ].map((path) => (
+                      <motion.path
+                        key={path}
+                        initial={{
+                          pathLength: 0,
+                        }}
+                        animate={{
+                          pathLength: 1,
+                        }}
+                        exit={{
+                          pathLength: 0,
+                          transition: {
+                            duration: 0.6,
+                            ease: [0.67, 0.2, 0.15, 0.99],
+                          },
+                        }}
+                        stroke="white"
+                        strokeWidth={1}
+                        transition={{
+                          duration: 1.5,
+                          ease: [0.67, 0.2, 0.15, 0.99],
+                        }}
+                        strokeDasharray={5}
+                        fill="none"
+                        d={path}
+                      />
+                    ))}
+                  </svg>
                   <motion.div
                     initial={{ y: `100%`, opacity: 0 }}
                     animate={{
