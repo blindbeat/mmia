@@ -81,6 +81,8 @@ interface MarkerAnimatedProps extends MarkerProps {
 }
 
 const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
+  console.log("test")
+
   const [hovered, setHovered] = useState(false)
   const [mapElem, setMapElem] = useState<HTMLElement | null>(null)
   const [position, setPosition] = useState<[number, number] | null>(null)
@@ -109,7 +111,7 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
         createPortal(
           <Link
             key={position.join("-")}
-            href=""
+            href="/projects/1"
             style={{
               top: position[1],
               left: position[0],
