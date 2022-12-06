@@ -1,5 +1,5 @@
 import { NextPageWithLayoutConfig } from "pages/_app"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import {
   ComposableMap,
   Geographies,
@@ -93,7 +93,8 @@ const MarkerAnimated = ({
   const [hovered, setHovered] = useState(false)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const markerRef = useRef<null | SVGPathElement>(null)
-  useEffect(() => {
+
+  const positionSetter = useCallback(() => {
     const elem = markerRef.current
     const parentElem = elem?.closest(`.${styles.content}`)
     if (!elem || !parentElem) return
@@ -103,6 +104,14 @@ const MarkerAnimated = ({
     const y = rect.y + rect.height / 2 - parentRect.y
     setPosition([x, y])
   }, [])
+
+  useEffect(() => {
+    positionSetter()
+    window.addEventListener("resize", positionSetter)
+    return () => {
+      window.removeEventListener("resize", positionSetter)
+    }
+  }, [positionSetter])
 
   return (
     <>
