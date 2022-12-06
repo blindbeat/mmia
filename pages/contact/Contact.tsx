@@ -56,11 +56,6 @@ const Contact: NextPageWithLayoutConfig = () => {
                 fill="#292929"
                 stroke="rgba(23, 23, 23, 1)"
                 strokeWidth="0.75px"
-                // style={{
-                //   hover: {
-                //     fill: "rgba(255,255,255,0.2)",
-                //   },
-                // }}
               />
             ))
           }
@@ -109,8 +104,6 @@ const MarkerAnimated = ({
     setPosition([x, y])
   }, [])
 
-  console.log(portalTarget)
-
   return (
     <>
       {portalTarget &&
@@ -118,7 +111,7 @@ const MarkerAnimated = ({
         createPortal(
           <Link
             key={position.join("-")}
-            href="/projects/1"
+            href="/projects/projectName"
             style={{
               top: position[1],
               left: position[0],
@@ -160,7 +153,6 @@ const MarkerAnimated = ({
           portalTarget
         )}
       <Marker {...rest} ref={markerRef} className={styles.marker}>
-        {/*<Link href="/">*/}
         <motion.circle
           initial={{
             fill: "#292929",
@@ -178,35 +170,6 @@ const MarkerAnimated = ({
             type: "spring",
           }}
         />
-        {/*<motion.image*/}
-        {/*  href={projectPhoto.src}*/}
-        {/*  width={60}*/}
-        {/*  height={90}*/}
-        {/*  x={-30}*/}
-        {/*  initial={false}*/}
-        {/*  animate={*/}
-        {/*    hovered*/}
-        {/*      ? {*/}
-        {/*          y: -100,*/}
-        {/*          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",*/}
-        {/*        }*/}
-        {/*      : {*/}
-        {/*          y: -10,*/}
-        {/*          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",*/}
-        {/*        }*/}
-        {/*  }*/}
-        {/*  transition={{*/}
-        {/*    bounce: 0,*/}
-        {/*  }}*/}
-        {/*/>*/}
-        <circle
-          r={8}
-          fill="black"
-          opacity={0}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        />
-        {/*</Link>*/}
         {[...new Array(3)].map((_, index) => (
           <motion.circle
             key={index}
@@ -225,9 +188,6 @@ const MarkerAnimated = ({
           />
         ))}
       </Marker>
-      {/*{position && (*/}
-
-      {/*)}*/}
     </>
   )
 }
