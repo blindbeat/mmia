@@ -30,8 +30,17 @@ const points: [number, number][] = [
 ]
 
 const Contact: NextPageWithLayoutConfig = () => {
+  const [mapElemState, setMapElemState] = useState<HTMLDivElement | null>(null)
+  const mapElem = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    return () => {
+      setMapElemState(mapElem.current as HTMLDivElement)
+    }
+  }, [])
+
   return (
-    <div className={styles.content} id="map">
+    <div className={styles.content} ref={mapElem} id="map">
       <ComposableMap
         projection={projection}
         // projectionConfig={{
@@ -58,13 +67,15 @@ const Contact: NextPageWithLayoutConfig = () => {
             ))
           }
         </Geographies>
-        {points.map((point, index) => (
-          <MarkerAnimated
-            delay={index / 1.5}
-            key={point.join()}
-            coordinates={point}
-          />
-        ))}
+        {mapElemState &&
+          points.map((point, index) => (
+            <MarkerAnimated
+              portalTarget={mapElemState}
+              delay={index / 1.5}
+              key={point.join()}
+              coordinates={point}
+            />
+          ))}
       </ComposableMap>
     </div>
   )
@@ -78,11 +89,15 @@ export default Contact
 
 interface MarkerAnimatedProps extends MarkerProps {
   delay: number
+  portalTarget: HTMLDivElement
 }
 
-const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
+const MarkerAnimated = ({
+  delay,
+  portalTarget,
+  ...rest
+}: MarkerAnimatedProps) => {
   const [hovered, setHovered] = useState(false)
-  const [mapElem, setMapElem] = useState<HTMLElement | null>(null)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const markerRef = useRef<null | SVGPathElement>(null)
   useEffect(() => {
@@ -96,17 +111,11 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
     setPosition([x, y])
   }, [])
 
-  useEffect(() => {
-    return () => {
-      setMapElem(document.getElementById("map"))
-    }
-  }, [])
-
-  console.log(mapElem)
+  console.log(portalTarget)
 
   return (
     <>
-      {mapElem &&
+      {portalTarget &&
         position &&
         createPortal(
           <Link
@@ -150,7 +159,7 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
               )}
             </AnimatePresence>
           </Link>,
-          mapElem
+          portalTarget
         )}
       <Marker {...rest} ref={markerRef} className={styles.marker}>
         {/*<Link href="/">*/}
