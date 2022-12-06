@@ -96,8 +96,6 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
     setPosition([x, y])
   }, [])
 
-  console.log(position)
-
   useEffect(() => {
     return () => {
       setMapElem(document.getElementById("map"))
@@ -110,6 +108,7 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
         position &&
         createPortal(
           <Link
+            key={position.join("-")}
             href=""
             style={{
               top: position[1],
@@ -131,6 +130,7 @@ const MarkerAnimated = ({ delay, ...rest }: MarkerAnimatedProps) => {
                     }}
                     exit={{
                       y: `100%`,
+                      opacity: 0,
                       transition: {
                         ease: "circIn",
                         duration: 0.3,
