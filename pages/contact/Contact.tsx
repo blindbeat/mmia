@@ -142,18 +142,6 @@ const MarkerAnimated = ({
   // counter used with keys to force rerendering of waves
   const [count, setCount] = useState(0)
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCount(count + 1)
-  //   }, 3000)
-  // }, [])
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCount((state) => state + 1)
-  //   }, delay * 1000)
-  // }, [])
-
   const positionSetter = useCallback(() => {
     const elem = markerRef.current
     const parentElem = elem?.closest(`.${styles.content}`)
@@ -250,7 +238,6 @@ const MarkerAnimated = ({
                           duration: 1,
                           ease: [0.67, 0.2, 0.15, 0.99],
                         }}
-                        strokeDasharray={5}
                         fill="none"
                         d={path}
                         clipPath="url(#cut-off-bottom)"
