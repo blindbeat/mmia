@@ -228,28 +228,34 @@ const MarkerAnimated = ({
                       />
                     ))}
                   </svg>
-                  <motion.div
-                    initial={{ y: `100%`, opacity: 0 }}
-                    animate={{
-                      y: `0%`,
-                      opacity: 1,
-                    }}
-                    exit={{
-                      y: `100%`,
-                      opacity: 0,
-                      transition: {
-                        ease: "circIn",
-                        duration: 0.2,
-                      },
-                    }}
-                    transition={{
-                      ease: "easeOut",
-                      duration: 0.3,
-                    }}
-                    className={styles.imageWrapper}
-                  >
-                    <Image src={projectImage} alt="" className={styles.image} />
-                  </motion.div>
+                  <div className={styles.imageClipper}>
+                    <motion.div
+                      initial={{ y: `100%`, opacity: 0 }}
+                      animate={{
+                        y: `0%`,
+                        opacity: 1,
+                      }}
+                      exit={{
+                        y: `100%`,
+                        opacity: 0,
+                        transition: {
+                          ease: [0.67, 0.2, 0.15, 0.99],
+                          duration: 0.6,
+                        },
+                      }}
+                      transition={{
+                        ease: [0.67, 0.2, 0.15, 0.99],
+                        duration: 0.8,
+                      }}
+                      className={styles.imageWrapper}
+                    >
+                      <Image
+                        src={projectImage}
+                        alt=""
+                        className={styles.image}
+                      />
+                    </motion.div>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
