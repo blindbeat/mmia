@@ -72,7 +72,7 @@ const Contact: NextPageWithLayoutConfig = () => {
           points.map((point, index) => (
             <MarkerAnimated
               portalTarget={mapElemState}
-              delay={index / 1.5}
+              delay={index / 5}
               key={point.join()}
               coordinates={point}
             />
@@ -139,6 +139,7 @@ const MarkerAnimated = ({
   const [hovered, setHovered] = useState(false)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const markerRef = useRef<null | SVGPathElement>(null)
+  // counter used with keys to force rerendering of waves
   const [count, setCount] = useState(0)
 
   // useEffect(() => {
@@ -197,6 +198,33 @@ const MarkerAnimated = ({
                     className={styles.svgLines}
                     preserveAspectRatio="none"
                   >
+                    {/*Mask is the only option to animate line drawing with dashes.*/}
+                    <defs>
+                      <clipPath id="cut-off-bottom">
+                        {[
+                          [...new Array(9)].map((_, index) => (
+                            <rect
+                              key={index}
+                              x={7.5 + index * 10}
+                              y={0}
+                              width={5}
+                              height={143}
+                            />
+                          )),
+                        ]}
+                        {[
+                          [...new Array(13)].map((_, index) => (
+                            <rect
+                              key={index}
+                              x={0}
+                              y={8 + index * 10.4}
+                              width={100}
+                              height={5.2}
+                            />
+                          )),
+                        ]}
+                      </clipPath>
+                    </defs>
                     {[
                       "M 50 146 Q 50 141 45 141 L 5 141 L 5 5 L 50 5",
                       "M 50 146 Q 50 141 55 141 L 95 141 L 95 5 L 50 5",
@@ -216,8 +244,8 @@ const MarkerAnimated = ({
                             ease: [0.67, 0.2, 0.15, 0.99],
                           },
                         }}
-                        stroke="white"
-                        strokeWidth={1}
+                        stroke="rgba(255,255,255, 0.7)"
+                        strokeWidth={0.5}
                         transition={{
                           duration: 1,
                           ease: [0.67, 0.2, 0.15, 0.99],
@@ -225,6 +253,7 @@ const MarkerAnimated = ({
                         strokeDasharray={5}
                         fill="none"
                         d={path}
+                        clipPath="url(#cut-off-bottom)"
                       />
                     ))}
                   </svg>
