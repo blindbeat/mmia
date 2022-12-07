@@ -244,8 +244,8 @@ const MarkerAnimated = ({
                             ease: [0.67, 0.2, 0.15, 0.99],
                           },
                         }}
-                        stroke="rgba(255,255,255, 0.7)"
-                        strokeWidth={0.5}
+                        stroke="rgba(255,255,255, 0.6)"
+                        strokeWidth={0.75}
                         transition={{
                           duration: 1,
                           ease: [0.67, 0.2, 0.15, 0.99],
