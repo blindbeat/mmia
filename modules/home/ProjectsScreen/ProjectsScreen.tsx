@@ -5,7 +5,7 @@ import ProjectScreenSwiper from "./Swiper"
 import LinkWithLine from "components/LinkWithLine"
 import classNames from "classnames"
 import Heading from "components/Heading"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 
 const title =
   "Through the last years we worked on more than 100 projects located all"
@@ -18,7 +18,7 @@ function ProjectsScreen() {
       <div className={styles.textWrapper}>
         <ScreenTitle className={styles.screenTitle}>our projects</ScreenTitle>
         <Heading as="h3">{title}</Heading>
-        <P>{paragraph}</P>
+        <Paragraph>{paragraph}</Paragraph>
       </div>
       <ProjectScreenSwiper className={styles.swiper} />
       <LinkWithLine color="black" className={styles.link}>

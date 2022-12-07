@@ -1,7 +1,7 @@
 import styles from "./ProjectMaterialsBlock.module.css"
 import Heading from "components/Heading"
 import { dummyParagraph } from "assets/dummyText"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import Image from "next/image"
 import { NextImageSrc } from "misc/types"
 
@@ -34,11 +34,13 @@ export default function ProjectMaterialsBlock({ materials }: Props) {
         {materials.map(({ title, paragraph }, index) => (
           <div key={index}>
             <div className={styles.descriptionTitle}>{title}</div>
-            <P className={styles.descriptionParagraph}>{paragraph}</P>
+            <Paragraph className={styles.descriptionParagraph}>
+              {paragraph}
+            </Paragraph>
           </div>
         ))}
       </div>
-      <P className={styles.paragraph}>{dummyParagraph}</P>
+      <Paragraph className={styles.paragraph}>{dummyParagraph}</Paragraph>
     </div>
   )
 }

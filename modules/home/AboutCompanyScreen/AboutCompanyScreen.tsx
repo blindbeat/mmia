@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
 import ScreenTitle from "components/ScreenTitle"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import useAnimateLine from "hooks/useAnimateLine"
 import Heading from "components/Heading"
 
@@ -37,7 +37,7 @@ function AboutCompanyScreen() {
         </Heading>
         <div ref={ref} className={styles.text}>
           {paragraph.map((text, index) => (
-            <P key={index}>{text}</P>
+            <Paragraph key={index}>{text}</Paragraph>
           ))}
           <LinkWithLine color="black" className={styles.link}>
             view more

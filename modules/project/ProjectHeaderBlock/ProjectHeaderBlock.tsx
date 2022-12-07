@@ -7,7 +7,7 @@ import headerPhoto from "assets/dummyPics/project/headerPhoto.jpg"
 import Calendar from "./assets/calendar.svg"
 import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 
 export default function ProjectHeaderBlock() {
   return (
@@ -37,7 +37,9 @@ export default function ProjectHeaderBlock() {
             {metadata.position}
           </span>
         </div>
-        <P className={styles.description}>{projectDescription}</P>
+        <Paragraph className={styles.description}>
+          {projectDescription}
+        </Paragraph>
       </div>
     </div>
   )

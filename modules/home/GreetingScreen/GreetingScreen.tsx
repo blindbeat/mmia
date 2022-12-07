@@ -9,9 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Controller, EffectFade, Pagination } from "swiper"
 import classNames from "classnames"
 import LinkWithLine from "components/LinkWithLine"
-import Socials from "../../blocks/Socials"
+import Socials from "modules/blocks/Socials"
 import Link from "next/link"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import Heading from "components/Heading"
 import { useState } from "react"
 import "swiper/css/effect-fade"
@@ -80,9 +80,9 @@ function GreetingScreen() {
                   {primaryText}
                 </Heading>
                 <div className={styles.pWrapper}>
-                  <P appearImmediately delay={calcAnimationDelay(2)}>
+                  <Paragraph appearImmediately delay={calcAnimationDelay(2)}>
                     {secondaryText}
-                  </P>
+                  </Paragraph>
                 </div>
                 <div
                   style={createAnimationDelayStyle(3)}

@@ -2,7 +2,7 @@ import styles from "modules/blocks/Outro/Outro.module.css"
 import WordsSwiper from "modules/blocks/Outro/WordsSwiper"
 import ImagesSwiper from "modules/blocks/Outro/ImagesSwiper"
 import { dummyParagraph } from "assets/dummyText"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import LinkWithLine from "components/LinkWithLine"
 import BackgroundImage from "modules/blocks/Outro/assets/backgroundLine.svg"
 import useAnimateLine from "hooks/useAnimateLine"
@@ -16,7 +16,7 @@ export default function Outro() {
       <WordsSwiper />
       <ImagesSwiper />
       <div className={styles.paragraphWrapper}>
-        <P className={styles.paragraph}>{dummyParagraph}</P>
+        <Paragraph className={styles.paragraph}>{dummyParagraph}</Paragraph>
       </div>
       <LinkWithLine color="black" className={styles.link}>
         drop request

@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react"
-import styles from "./P.module.css"
+import styles from "./Paragraph.module.css"
 import classNames from "classnames"
 import { useInView } from "react-intersection-observer"
 import { inViewOptions } from "misc/utils"
@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<"p"> {
   delay?: number
 }
 
-function P({
+function Paragraph({
   children,
   className,
   appearImmediately = false,
@@ -36,4 +36,4 @@ function P({
   )
 }
 
-export default P
+export default Paragraph

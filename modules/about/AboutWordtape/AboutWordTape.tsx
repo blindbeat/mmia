@@ -2,7 +2,7 @@ import styles from "./AboutWordTape.module.css"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { dummyParagraph } from "assets/dummyText"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 
 const tape =
   "We see architecture as a unique product, created at the intersection, "
@@ -42,7 +42,7 @@ const AboutWordTape = () => {
       >
         {tape}
       </motion.div>
-      <P>{dummyParagraph}</P>
+      <Paragraph>{dummyParagraph}</Paragraph>
     </div>
   )
 }

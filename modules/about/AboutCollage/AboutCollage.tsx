@@ -1,6 +1,6 @@
 import styles from "./AboutCollage.module.css"
 import { dummyParagraph } from "assets/dummyText"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import Image from "next/image"
 import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
 import officeImage from "assets/dummyPics/backdropPhoto.jpg"
@@ -10,8 +10,8 @@ const AboutCollage = () => {
   return (
     <div className={styles.content}>
       <div className={styles.text}>
-        <P>{dummyParagraph}</P>
-        <P>{dummyParagraph}</P>
+        <Paragraph>{dummyParagraph}</Paragraph>
+        <Paragraph>{dummyParagraph}</Paragraph>
       </div>
       <Image src={founderPhoto} alt="" className={styles.founderImage} />
       <div className={styles.office}>

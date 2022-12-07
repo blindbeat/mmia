@@ -1,4 +1,4 @@
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import { ComponentPropsWithoutRef } from "react"
 import classNames from "classnames"
 import styles from "./ProjectParagraphBlock.module.css"
@@ -9,8 +9,8 @@ export default function ProjectParagraphBlock({
   ...rest
 }: ComponentPropsWithoutRef<"p">) {
   return (
-    <P className={classNames(styles.content, className)} {...rest}>
+    <Paragraph className={classNames(styles.content, className)} {...rest}>
       {children}
-    </P>
+    </Paragraph>
   )
 }

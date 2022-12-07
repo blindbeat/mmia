@@ -1,7 +1,7 @@
 import styles from "./BuildingBenefits.module.css"
 import ScreenTitle from "components/ScreenTitle"
 import Heading from "components/Heading"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import Bubbles from "modules/blocks/Bubbles"
 import { bubbles } from "assets/dummyText"
 
@@ -17,7 +17,7 @@ const BuildingBenefits = () => {
         <Heading as="h3" className={styles.heading}>
           {heading}
         </Heading>
-        <P className={styles.paragraph}>{paragraph}</P>
+        <Paragraph className={styles.paragraph}>{paragraph}</Paragraph>
       </div>
       <Bubbles bubbles={bubbles} />
     </div>

@@ -7,7 +7,7 @@ import LinkWithLine from "components/LinkWithLine"
 import { useRef, useState } from "react"
 import Bubble from "components/Bubble"
 import Heading from "components/Heading"
-import P from "components/P"
+import Paragraph from "components/Paragraph"
 import useThresholdObserver from "hooks/useThresholdObserver"
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -53,7 +53,7 @@ function PapersScreen() {
       <div className={styles.content}>
         <div className={styles.text}>
           <Heading as="h3">{textHeading}</Heading>
-          <P>{textParagraph}</P>
+          <Paragraph>{textParagraph}</Paragraph>
           <LinkWithLine color="white" className={styles.link}>
             view more
           </LinkWithLine>
