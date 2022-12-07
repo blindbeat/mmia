@@ -19,7 +19,7 @@ import projectImage from "assets/dummyPics/instagramPhotos/1.jpg"
 import { Contact } from "misc/types"
 import Socials from "modules/blocks/Socials"
 
-const projection = geoAitoff().scale(200).center([45, 35])
+const projection = geoAitoff().scale(200).center([45, 25])
 const points: [number, number][] = [
   [30.006, 50.7128],
   [10, 20],
