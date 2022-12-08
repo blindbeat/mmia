@@ -214,8 +214,8 @@ const MarkerAnimated = ({
                       </clipPath>
                     </defs>
                     {[
-                      "M 50 146 Q 50 141 45 141 L 5 141 L 5 5 L 50.1 5",
-                      "M 50 146 Q 50 141 55 141 L 95 141 L 95 5 L 49.9 5",
+                      "M 50 146 Q 50 141 45 141 L 5 141 L 5 5 L 51 5",
+                      "M 50 146 Q 50 141 55 141 L 95 141 L 95 5 L 49 5",
                     ].map((path) => (
                       <motion.path
                         key={path}
@@ -232,7 +232,7 @@ const MarkerAnimated = ({
                             ease: [0.67, 0.2, 0.15, 0.99],
                           },
                         }}
-                        stroke="rgba(255,255,255, 0.6)"
+                        stroke="rgb(162,162,162)"
                         strokeWidth={0.75}
                         transition={{
                           duration: 1,
