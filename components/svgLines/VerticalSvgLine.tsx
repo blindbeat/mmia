@@ -1,10 +1,19 @@
+import { motion } from "framer-motion"
 import styles from "./SvgLine.module.css"
 
 interface Props {
   column: number
   rowsAmount: number
+  lineProgress: number
+  delay: number
 }
-export const VerticalSvgLine = ({ column, rowsAmount }: Props) => {
+export const VerticalSvgLine = ({
+  column,
+  rowsAmount,
+  lineProgress,
+  delay,
+}: Props) => {
+  console.log(lineProgress)
   return (
     <svg
       preserveAspectRatio="none"
@@ -15,15 +24,25 @@ export const VerticalSvgLine = ({ column, rowsAmount }: Props) => {
       }}
       className={styles.verticalSvg}
     >
-      <line
-        vectorEffect="non-scaling-stroke"
+      <motion.line
+        initial={{
+          pathLength: 0,
+        }}
+        animate={{
+          pathLength: lineProgress,
+        }}
+        transition={{
+          duration: 1.5,
+          delay,
+        }}
+        // vectorEffect="non-scaling-stroke"
         x={0}
         y={0}
         x2={0}
         y2={100}
         strokeWidth={1}
         stroke="rgb(200,200,200)"
-      ></line>
+      ></motion.line>
     </svg>
   )
 }

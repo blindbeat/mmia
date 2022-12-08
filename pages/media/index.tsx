@@ -33,7 +33,7 @@ const mediaArr: Media[] = [
 export const getStaticProps: GetStaticProps<Props> = () => {
   return {
     props: {
-      mediaArr: [...new Array(5).fill(mediaArr).flat()],
+      mediaArr: [...new Array(4).fill(mediaArr).flat()],
     },
   }
 }

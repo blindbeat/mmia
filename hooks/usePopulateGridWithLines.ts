@@ -1,7 +1,13 @@
 import { CSSProperties } from "react"
 
+type ColumnParams = [
+  columnNumber: number,
+  columnHeight: number,
+  columnProgress: number
+]
 export const usePopulateGridWithLines = (
   gridElementsAmount: number,
+  lastVisibleCardIndex: number,
   columns: number
 ) => {
   const fullRowsAmount = Math.floor(gridElementsAmount / columns)
@@ -12,14 +18,28 @@ export const usePopulateGridWithLines = (
     rowsArray.push(1 + i * 2)
   }
 
-  const columnsParams: [number, number][] = []
-  for (let i = 0; i < columns - 1; i++) {
-    columnsParams.push([
-      (i + 1) * 2,
+  const lastVisibleRow = Math.ceil(
+    lastVisibleCardIndex > 0 ? (lastVisibleCardIndex + 1) / columns : 0
+  )
+
+  const calcColumnParams = (i: number): ColumnParams => {
+    const columnNumber = (i + 1) * 2
+    const columnHeight =
       i < lastRowLength
         ? (fullRowsAmount + 1) * 2
-        : (fullRowsAmount + 1) * 2 - 1,
-    ])
+        : (fullRowsAmount + 1) * 2 - 1
+    const columnHeightWithoutRowLines =
+      i < lastRowLength ? fullRowsAmount + 1 : fullRowsAmount
+    const columnProgress = Math.min(
+      lastVisibleRow / columnHeightWithoutRowLines,
+      1
+    )
+    return [columnNumber, columnHeight, columnProgress]
+  }
+
+  const columnsParams: ColumnParams[] = []
+  for (let i = 0; i < columns - 1; i++) {
+    columnsParams.push(calcColumnParams(i))
   }
 
   const containerStyle: CSSProperties = {

@@ -15,6 +15,7 @@ export const MediaCards = ({ mediaArr }: Props) => {
   const [lastVisibleCard, setLastVisibleCard] = useState(0)
   const { columnsParams, rowsArray, containerStyle } = usePopulateGridWithLines(
     mediaArr.length,
+    lastVisibleCard,
     3
   )
 
@@ -22,15 +23,15 @@ export const MediaCards = ({ mediaArr }: Props) => {
     if (inView && lastVisibleCard < index) setLastVisibleCard(index)
   }
 
-  console.log(lastVisibleCard)
-
   return (
     <div ref={containerRef} style={containerStyle} className={styles.content}>
-      {columnsParams.map(([column, columnHeight]) => (
+      {columnsParams.map(([column, columnHeight, lineProgress], index) => (
         <VerticalSvgLine
+          lineProgress={lineProgress}
           key={column}
           column={column}
           rowsAmount={columnHeight}
+          delay={index * 0.2}
         />
       ))}
       {rowsArray.map((row) => (
@@ -55,6 +56,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
   const ref = useRef(null)
   const inView = useInView(ref, {
     once: true,
+    amount: "all",
   })
 
   useEffect(() => {
