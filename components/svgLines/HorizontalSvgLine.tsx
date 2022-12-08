@@ -32,7 +32,7 @@ export const HorizontalSvgLine = ({ row, delay }: Props) => {
           },
         }}
         transition={{
-          duration: 2,
+          duration: 1.5,
           delay,
         }}
         x={0}

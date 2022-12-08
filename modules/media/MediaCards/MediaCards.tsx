@@ -2,7 +2,7 @@ import { Media } from "misc/types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
 import { useEffect, useRef, useState } from "react"
-import { usePopulateGridWithLines } from "hooks/usePopulateGridWithLines"
+import { useControMediaGrid } from "hooks/useControMediaGrid"
 import { HorizontalSvgLine, VerticalSvgLine } from "components/svgLines"
 import { useInView } from "framer-motion"
 
@@ -13,7 +13,7 @@ interface Props {
 export const MediaCards = ({ mediaArr }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [lastVisibleCard, setLastVisibleCard] = useState(0)
-  const { columnsParams, rowsArray, containerStyle } = usePopulateGridWithLines(
+  const { columnsParams, rowsArray, containerStyle } = useControMediaGrid(
     mediaArr.length,
     lastVisibleCard,
     3
@@ -60,7 +60,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
   const ref = useRef(null)
   const inView = useInView(ref, {
     once: true,
-    amount: "all",
+    amount: 0.3,
   })
 
   useEffect(() => {

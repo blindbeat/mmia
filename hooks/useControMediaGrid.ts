@@ -5,7 +5,7 @@ type ColumnParams = [
   columnHeight: number,
   columnProgress: number
 ]
-export const usePopulateGridWithLines = (
+export const useControMediaGrid = (
   gridElementsAmount: number,
   lastVisibleCardIndex: number,
   columns: number
