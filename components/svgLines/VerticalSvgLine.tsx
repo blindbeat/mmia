@@ -13,7 +13,6 @@ export const VerticalSvgLine = ({
   lineProgress,
   delay,
 }: Props) => {
-  console.log(lineProgress)
   return (
     <svg
       preserveAspectRatio="none"

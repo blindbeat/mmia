@@ -34,8 +34,12 @@ export const MediaCards = ({ mediaArr }: Props) => {
           delay={index * 0.2}
         />
       ))}
-      {rowsArray.map((row) => (
-        <HorizontalSvgLine key={row} row={row} />
+      {rowsArray.map((row, index) => (
+        <HorizontalSvgLine
+          delay={(Math.cbrt(index + 1) - 1) / 2}
+          key={row}
+          row={row}
+        />
       ))}
       {mediaArr.map((media, index) => (
         <Card

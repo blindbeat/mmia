@@ -3,8 +3,10 @@ import styles from "./SvgLine.module.css"
 
 interface Props {
   row: number
+  delay: number
 }
-export const HorizontalSvgLine = ({ row }: Props) => {
+export const HorizontalSvgLine = ({ row, delay }: Props) => {
+  console.log(delay)
   return (
     <motion.svg
       preserveAspectRatio="none"
@@ -31,6 +33,7 @@ export const HorizontalSvgLine = ({ row }: Props) => {
         }}
         transition={{
           duration: 2,
+          delay,
         }}
         x={0}
         y={0}
