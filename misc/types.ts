@@ -20,3 +20,9 @@ export interface Contact {
   address: string
   phone: number
 }
+
+export interface Media {
+  logo: NextImageSrc
+  hoverImage: NextImageSrc
+  link: string
+}
