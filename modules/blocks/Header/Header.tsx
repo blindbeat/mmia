@@ -280,7 +280,7 @@ function Header({ adaptiveTransparency }: Props) {
               >
                 <motion.div
                   className={styles.fullscreenLinkWrapper}
-                  initial={{ y: `-125%`, x: `-2rem`, rotate: -5 }}
+                  initial={{ y: `-150%`, x: `-2rem`, rotate: -5 }}
                   animate={{ y: `0%`, x: `0rem`, rotate: 0 }}
                   exit={{
                     y: `150%`,
