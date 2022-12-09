@@ -6,7 +6,6 @@ interface Props {
   delay: number
 }
 export const HorizontalSvgLine = ({ row, delay }: Props) => {
-  console.log(delay)
   return (
     <motion.svg
       preserveAspectRatio="none"

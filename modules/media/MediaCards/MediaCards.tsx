@@ -1,10 +1,17 @@
 import { Media } from "misc/types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
-import { useEffect, useRef, useState } from "react"
+import { MouseEvent, useEffect, useRef, useState } from "react"
 import { useControMediaGrid } from "hooks/useControMediaGrid"
 import { HorizontalSvgLine, VerticalSvgLine } from "components/svgLines"
-import { useInView } from "framer-motion"
+import {
+  motion,
+  useInView,
+  useSpring,
+  useTransform,
+  useVelocity,
+} from "framer-motion"
+import { SpringOptions } from "popmotion"
 
 interface Props {
   mediaArr: Media[]
@@ -63,12 +70,77 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
     amount: 0.3,
   })
 
+  const springOptions: SpringOptions = {
+    stiffness: 75,
+    mass: 0.02,
+  }
+
+  const x = useSpring(0, springOptions)
+  const y = useSpring(0, springOptions)
+  const xVelocity = useVelocity(x)
+  const xTransformed = useTransform(x, (latest) => `calc(${latest}px - 50%)`)
+  const yTransformed = useTransform(y, (latest) => `calc(${latest}px - 50%)`)
+  const rotate = useTransform(xVelocity, [-200, 0, 200], [-1, 0, 1], {
+    clamp: false,
+  })
+
   useEffect(() => {
     handleInViewChange(inView)
   }, [inView])
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    x.set(event.clientX - rect.left)
+    y.set(event.clientY - rect.top)
+  }
+
+  // useEffect(() => {
+  //   return () => {
+  //     effect
+  //   }
+  // }, [input])
+
   return (
-    <div ref={ref} className={styles.card}>
-      <Image src={media.logo} alt="" className={styles.image} />
-    </div>
+    <motion.div
+      onMouseMove={handleMouseMove}
+      animate="hidden"
+      whileHover="visible"
+      ref={ref}
+      className={styles.card}
+    >
+      <Image src={media.logo} alt="" className={styles.logo} />
+      <motion.div
+        initial={{
+          scaleY: `0%`,
+        }}
+        variants={{
+          visible: {
+            scaleY: `100%`,
+            transition: {
+              duration: 0.3,
+            },
+          },
+          hidden: {
+            scaleY: `0%`,
+            transition: {
+              duration: 0.15,
+            },
+          },
+        }}
+        style={{
+          x: xTransformed,
+          y: yTransformed,
+          rotate,
+        }}
+        transition={{
+          scaleY: {
+            type: "tween",
+          },
+        }}
+        className={styles.hoverImageContainer}
+      >
+        <Image src={media.hoverImage} alt="" className={styles.hoverImage} />
+      </motion.div>
+    </motion.div>
   )
 }

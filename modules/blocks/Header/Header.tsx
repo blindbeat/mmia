@@ -152,7 +152,6 @@ function Header({ adaptiveTransparency }: Props) {
   }
   const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const handleFullscreenNavClosed = () => {
-    console.log("test")
     setIsFullscreen(false)
   }
 
