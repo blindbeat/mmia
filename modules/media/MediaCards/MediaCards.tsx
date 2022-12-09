@@ -17,12 +17,19 @@ interface Props {
   mediaArr: Media[]
 }
 
-const calcColumnNumber = () => Math.min(Math.floor(window.innerWidth / 400), 5)
+const calcColumnNumber = () => {
+  const min = 1
+  const max = 5
+  const result = Math.floor(window.innerWidth / 400)
+  if (result < min) return min
+  if (result > max) return max
+  return result
+}
 
 export const MediaCards = ({ mediaArr }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [lastVisibleCard, setLastVisibleCard] = useState(0)
-  const [columnNumber, setColumnNumber] = useState(3)
+  const [columnNumber, setColumnNumber] = useState<null | number>(null)
   const { columnsParams, rowsArray, containerStyle } = useControMediaGrid(
     mediaArr.length,
     lastVisibleCard,
@@ -32,8 +39,6 @@ export const MediaCards = ({ mediaArr }: Props) => {
   const columnNumberSetter = useCallback(() => {
     setColumnNumber(calcColumnNumber())
   }, [])
-
-  console.log(containerStyle)
 
   useEffect(() => {
     columnNumberSetter()

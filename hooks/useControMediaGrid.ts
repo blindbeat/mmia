@@ -8,8 +8,13 @@ type ColumnParams = [
 export const useControMediaGrid = (
   gridElementsAmount: number,
   lastVisibleCardIndex: number,
-  columns: number
+  columns: null | number
 ) => {
+  let isPrerender = false
+  if (columns === null) {
+    columns = 1
+    isPrerender = true
+  }
   const fullRowsAmount = Math.floor(gridElementsAmount / columns)
   const lastRowLength = gridElementsAmount % columns
 
@@ -41,10 +46,11 @@ export const useControMediaGrid = (
   for (let i = 0; i < columns - 1; i++) {
     columnsParams.push(calcColumnParams(i))
   }
-
+  console.log(isPrerender)
   const containerStyle: CSSProperties = {
     gridTemplateColumns:
       columns > 1 ? `repeat(${columns - 1}, 1fr 1px) 1fr` : `1fr`,
+    visibility: isPrerender ? "hidden" : "unset",
   }
 
   return {
