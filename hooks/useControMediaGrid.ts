@@ -43,7 +43,8 @@ export const useControMediaGrid = (
   }
 
   const containerStyle: CSSProperties = {
-    gridTemplateColumns: `repeat(${columns - 1}, 1fr 1px) 1fr`,
+    gridTemplateColumns:
+      columns > 1 ? `repeat(${columns - 1}, 1fr 1px) 1fr` : `1fr`,
   }
 
   return {

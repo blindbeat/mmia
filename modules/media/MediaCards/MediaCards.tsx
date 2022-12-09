@@ -1,7 +1,7 @@
 import { Media } from "misc/types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
-import { MouseEvent, useEffect, useRef, useState } from "react"
+import { MouseEvent, useCallback, useEffect, useRef, useState } from "react"
 import { useControMediaGrid } from "hooks/useControMediaGrid"
 import { HorizontalSvgLine, VerticalSvgLine } from "components/svgLines"
 import {
@@ -17,14 +17,31 @@ interface Props {
   mediaArr: Media[]
 }
 
+const calcColumnNumber = () => Math.min(Math.floor(window.innerWidth / 400), 5)
+
 export const MediaCards = ({ mediaArr }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [lastVisibleCard, setLastVisibleCard] = useState(0)
+  const [columnNumber, setColumnNumber] = useState(3)
   const { columnsParams, rowsArray, containerStyle } = useControMediaGrid(
     mediaArr.length,
     lastVisibleCard,
-    3
+    columnNumber
   )
+
+  const columnNumberSetter = useCallback(() => {
+    setColumnNumber(calcColumnNumber())
+  }, [])
+
+  console.log(containerStyle)
+
+  useEffect(() => {
+    columnNumberSetter()
+    window.addEventListener("resize", columnNumberSetter)
+    return () => {
+      window.removeEventListener("resize", columnNumberSetter)
+    }
+  }, [])
 
   const handleInViewChange = (inView: boolean, index: number) => {
     if (inView && lastVisibleCard < index) setLastVisibleCard(index)
@@ -111,17 +128,20 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
       <Image src={media.logo} alt="" className={styles.logo} />
       <motion.div
         initial={{
-          scaleY: `0%`,
+          opacity: 0,
+          clipPath: `inset(80% 20% 20% 20%)`,
         }}
         variants={{
           visible: {
-            scaleY: `100%`,
+            opacity: 1,
+            clipPath: `inset(0% 0% 0% 0%)`,
             transition: {
               duration: 0.3,
             },
           },
           hidden: {
-            scaleY: `0%`,
+            opacity: 0,
+            clipPath: `inset(80% 20% 20% 20%)`,
             transition: {
               duration: 0.15,
             },

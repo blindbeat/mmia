@@ -1,9 +1,7 @@
 .content {
   display: grid;
-  width: auto;
-  margin: 2rem;
-  /*grid-template-columns: repeat(2, 1fr 5px) 1fr;*/
-  /*grid-template-rows: repeat(10, auto);*/
+  overflow-x: clip;
+  width: 100%;
 }
 
 .card {
