@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "next/link"
-import styles from "modules/blocks/Header/CtaLink/CtaLink.module.css"
+import styles from "modules/blocks/Navigation/CtaLink/CtaLink.module.css"
 import classNames from "classnames"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
 

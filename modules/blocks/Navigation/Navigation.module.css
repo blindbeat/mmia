@@ -15,6 +15,7 @@
 .content header {
   display: grid;
   align-items: center;
+  height: var(--headerHeight);
   padding: calc(var(--xs) - var(--link-padding)) 0;
   text-transform: uppercase;
   justify-items: start;

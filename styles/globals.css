@@ -30,6 +30,8 @@
   --tl: 1s;
   --tm: 0.6s;
   --ts: 0.3s;
+
+  --headerHeight: 6rem;
 }
 
 * {
@@ -145,6 +147,8 @@ a {
 
     --sm-gap: 0.625rem;
     --sm-font-size: 0.625rem;
+
+    --headerHeight: 5rem;
   }
 
   body {
@@ -177,6 +181,8 @@ a {
     --link-padding: 0.75rem;
 
     --md-gap: 1.5rem;
+
+    --headerHeight: 4rem;
   }
 }
 

@@ -1,6 +1,10 @@
 .content {
 }
 
-.defaultPaddingTop {
-  padding-top: calc(var(--link-padding) + 1em + var(--5xl));
+.headerHeightPadding {
+  padding-top: var(--headerHeight);
+}
+
+.defaultMainPadding {
+  padding-top: var(--4xl);
 }

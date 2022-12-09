@@ -1,7 +1,7 @@
-import styles from "modules/blocks/Header/Header.module.css"
-import Logo from "modules/blocks/Header/assets/logo.svg"
+import styles from "modules/blocks/Navigation/Navigation.module.css"
+import Logo from "modules/blocks/Navigation/assets/logo.svg"
 import Link from "next/link"
-import CtaLink from "modules/blocks/Header/CtaLink"
+import CtaLink from "modules/blocks/Navigation/CtaLink"
 import { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
@@ -72,7 +72,7 @@ interface Props {
 }
 
 const MotionSocials = motion(Socials) as typeof motion.div
-function Header({ adaptiveTransparency }: Props) {
+function Navigation({ adaptiveTransparency }: Props) {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
@@ -91,9 +91,8 @@ function Header({ adaptiveTransparency }: Props) {
   const calcHeaderRect = () => {
     const header = headerRef.current
     if (!header) return
-    setHeaderHeightInPercentage(
-      (header.getBoundingClientRect().height / window.innerHeight) * 100
-    )
+    const height = header.getBoundingClientRect().height
+    setHeaderHeightInPercentage((height / window.innerHeight) * 100)
   }
   const navStateController = () => {
     if (!isScrolled(window.scrollY) && adaptiveTransparency) {
@@ -348,4 +347,4 @@ function Header({ adaptiveTransparency }: Props) {
   )
 }
 
-export default Header
+export default Navigation

@@ -69,6 +69,6 @@ export const Project: NextPageWithLayoutConfig = () => {
 Project.layoutConfig = {
   adaptiveHeaderTransparency: false,
   showFooter: false,
-  headerMargin: `calc(var(--link-padding) + 1em + var(--3xl))`,
+  headerMargin: `var(--2xl)`,
 }
 export default Project

@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react"
-import Header from "../modules/blocks/Header"
+import Navigation from "../modules/blocks/Navigation"
 import Footer from "../modules/blocks/Footer"
 import styles from "./Layout.module.css"
 import classNames from "classnames"
@@ -23,21 +23,41 @@ function Layout({
     headerMargin,
   } = {},
 }: Props) {
+  // let mainPaddingTop
+  // switch (headerMargin) {
+  //   case null: {
+  //     mainPaddingTop = undefined
+  //     break
+  //   }
+  //   case undefined: {
+  //     mainPaddingTop = `calc(${headerHeight}px + ${headerMargin})`
+  //     break
+  //   }
+  //   default: {
+  //     mainPaddingTop = `calc(${headerHeight}px + var(--5xl))`
+  //   }
+  // }
   return (
     <>
-      <Header adaptiveTransparency={adaptiveHeaderTransparency} />
-      <main
+      <Navigation adaptiveTransparency={adaptiveHeaderTransparency} />
+      <div
         className={classNames(
-          styles.content,
-          headerMargin === undefined && styles.defaultPaddingTop,
-          className
+          headerMargin !== null && styles.headerHeightPadding
         )}
-        style={{
-          paddingTop: headerMargin ?? undefined,
-        }}
       >
-        {children}
-      </main>
+        <main
+          className={classNames(
+            styles.content,
+            headerMargin !== null && styles.defaultMainPadding,
+            className
+          )}
+          style={{
+            paddingTop: headerMargin ?? undefined,
+          }}
+        >
+          {children}
+        </main>
+      </div>
       {showFooter && <Footer />}
     </>
   )

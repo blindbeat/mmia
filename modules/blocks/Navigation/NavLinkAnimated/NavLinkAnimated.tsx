@@ -1,7 +1,7 @@
 import Link, { LinkProps } from "next/link"
 import { ComponentPropsWithoutRef, useRef, useState } from "react"
 import classNames from "classnames"
-import styles from "modules/blocks/Header/NavLinkAnimated/NavLinkAnimated.module.css"
+import styles from "modules/blocks/Navigation/NavLinkAnimated/NavLinkAnimated.module.css"
 
 type AnimationState = "appearing" | "appeared" | "hiding" | "hidden"
 type AnimationName = "appear" | "hide"
