@@ -80,7 +80,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
   const xVelocity = useVelocity(x)
   const xTransformed = useTransform(x, (latest) => `calc(${latest}px - 50%)`)
   const yTransformed = useTransform(y, (latest) => `calc(${latest}px - 50%)`)
-  const rotate = useTransform(xVelocity, [-200, 0, 200], [-1, 0, 1], {
+  const rotate = useTransform(xVelocity, [-100, 0, 100], [1, 0, -1], {
     clamp: false,
   })
 
