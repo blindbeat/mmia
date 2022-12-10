@@ -82,8 +82,6 @@ function Navigation({ adaptiveTransparency, adaptiveHiding }: Props) {
     !!adaptiveHiding
   )
 
-  console.log(adaptiveHidingState)
-
   const [navState, setNavState] = useState<navState | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [fullscreenNavShouldBeVisible, setFullscreenNavShouldBeVisible] =
