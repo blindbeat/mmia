@@ -109,6 +109,11 @@ h5,
   text-transform: unset;
 }
 
+.a1 {
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
 p {
   line-height: 148%;
   letter-spacing: unset;

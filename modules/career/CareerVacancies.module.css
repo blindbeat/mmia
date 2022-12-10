@@ -1,0 +1,141 @@
+.content,
+.content * {
+  border-width: 0;
+  border-style: solid;
+  border-color: rgb(204, 204, 204);
+}
+
+.vacancy {
+  position: sticky;
+  display: grid;
+  padding: 0 var(--wrapper-padding-x);
+  background: white;
+  grid-template-columns: repeat(2, 1fr);
+  --stepGap: calc(var(--xs) + 1em + var(--5xs));
+}
+
+.vacancy:first-child {
+  border-top-width: 1px;
+}
+
+.illustrationBlock {
+  display: grid;
+  border-right-width: 1px;
+}
+
+.illustrationIndex {
+  padding: var(--xs) var(--xs) var(--xs) 0;
+  border-top-width: 1px;
+  place-self: start end;
+}
+
+.illustrationImage {
+  width: 50%;
+  height: auto;
+  margin: var(--xs) 0;
+  place-self: end start;
+}
+
+.vacancyDescription {
+  padding-left: var(--md-gap);
+  border-top-width: 1px;
+}
+
+.vacancy:first-child .illustrationIndex,
+.vacancy:first-child .vacancyDescription {
+  border-top-width: 0;
+}
+
+.vacancyHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--xs) 0;
+  gap: var(--md-gap);
+}
+
+.square {
+  width: var(--size);
+  height: var(--size);
+  background: black;
+  --size: 10px;
+}
+
+.link {
+  margin: var(--md) 0;
+}
+
+@media (max-width: calc(90em - 1px)) {
+  .vacancy {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .illustrationImage {
+    width: calc(100% * 3.5 / 5);
+  }
+}
+
+@media (max-width: calc(64em - 1px)) {
+  .vacancy {
+    position: unset;
+  }
+
+  .vacancy:first-child {
+    border-top-width: 0;
+  }
+
+  .vacancy:first-child .vacancyDescription,
+  .illustrationBlock {
+    border-top-width: 1px;
+  }
+
+  .illustrationIndex {
+    display: none;
+  }
+
+  .illustrationImage {
+    width: calc(100% * 5 / 6);
+    margin: var(--4xs) 0;
+    place-self: start;
+  }
+
+  .vacancyHeader {
+    padding: var(--4xs);
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .content {
+    border-top-width: 1px;
+  }
+
+  .content * {
+    border: none;
+  }
+
+  .vacancy {
+    margin-bottom: var(--4xl);
+    grid-template-columns: unset;
+  }
+
+  .illustrationImage {
+    width: 75%;
+    margin: var(--sm) 0 var(--md);
+    place-self: center;
+  }
+
+  .vacancyDescription {
+    padding: 0;
+  }
+
+  .vacancyHeader {
+    padding: 0 0 var(--sm);
+  }
+
+  .square {
+    display: none;
+  }
+
+  .link {
+    margin-bottom: 0;
+  }
+}

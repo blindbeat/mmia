@@ -6,6 +6,7 @@ import classNames from "classnames"
 
 export interface LayoutConfig {
   adaptiveHeaderTransparency: boolean
+  adaptiveHeaderHiding: boolean | number
   showFooter: boolean
   headerMargin: null | undefined | string
 }
@@ -20,6 +21,7 @@ function Layout({
   config: {
     showFooter = true,
     adaptiveHeaderTransparency = true,
+    adaptiveHeaderHiding = true,
     headerMargin,
   } = {},
 }: Props) {
@@ -39,7 +41,10 @@ function Layout({
   // }
   return (
     <>
-      <Navigation adaptiveTransparency={adaptiveHeaderTransparency} />
+      <Navigation
+        adaptiveTransparency={adaptiveHeaderTransparency}
+        adaptiveHiding={adaptiveHeaderHiding}
+      />
       <div
         className={classNames(
           headerMargin !== null && styles.headerHeightPadding

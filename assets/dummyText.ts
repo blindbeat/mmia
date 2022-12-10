@@ -37,4 +37,5 @@ export const dummyVacancies: Vacancy[] = [...new Array(6)].fill({
   country: "Ukraine",
   city: "Kyiv",
   employmentTime: "Full-Time",
+  description: dummyParagraphLong.repeat(4),
 })

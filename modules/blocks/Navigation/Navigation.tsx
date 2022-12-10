@@ -2,7 +2,7 @@ import styles from "modules/blocks/Navigation/Navigation.module.css"
 import Logo from "modules/blocks/Navigation/assets/logo.svg"
 import Link from "next/link"
 import CtaLink from "modules/blocks/Navigation/CtaLink"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import LanguageChangeButton from "components/LanguageChangeButton"
 import useThresholdObserver from "hooks/useThresholdObserver"
@@ -69,13 +69,20 @@ const headerNavAnimation: MotionProps = {
 
 interface Props {
   adaptiveTransparency: boolean
+  adaptiveHiding: boolean | number
 }
 
 const MotionSocials = motion(Socials) as typeof motion.div
-function Navigation({ adaptiveTransparency }: Props) {
+function Navigation({ adaptiveTransparency, adaptiveHiding }: Props) {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
+
+  const [adaptiveHidingState, setAdaptiveHidingState] = useState<boolean>(
+    !!adaptiveHiding
+  )
+
+  console.log(adaptiveHidingState)
 
   const [navState, setNavState] = useState<navState | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -88,6 +95,22 @@ function Navigation({ adaptiveTransparency }: Props) {
 
   const extendsThreshold = useThresholdObserver(1024)
 
+  const adaptiveHidingController = useCallback(() => {
+    if (typeof adaptiveHiding === "boolean") return
+    setAdaptiveHidingState(window.innerWidth < adaptiveHiding)
+  }, [adaptiveHiding])
+
+  useEffect(() => {
+    if (typeof adaptiveHiding === "boolean")
+      setAdaptiveHidingState(adaptiveHiding)
+    else {
+      adaptiveHidingController()
+      window.addEventListener("resize", adaptiveHidingController)
+      return () =>
+        window.removeEventListener("resize", adaptiveHidingController)
+    }
+  }, [adaptiveHiding])
+
   const calcHeaderRect = () => {
     const header = headerRef.current
     if (!header) return
@@ -99,7 +122,9 @@ function Navigation({ adaptiveTransparency }: Props) {
       setNavState("transparent")
     } else {
       setNavState(
-        window.scrollY > lastScrollRef.current && window.scrollY > 100
+        adaptiveHidingState &&
+          window.scrollY > lastScrollRef.current &&
+          window.scrollY > 100
           ? "hidden"
           : "header"
       )
@@ -115,7 +140,7 @@ function Navigation({ adaptiveTransparency }: Props) {
     return () => {
       window.removeEventListener("scroll", navStateController)
     }
-  }, [adaptiveTransparency])
+  }, [adaptiveTransparency, adaptiveHidingState])
 
   useEffect(() => {
     calcHeaderRect()
