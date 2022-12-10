@@ -8,6 +8,7 @@ import Layout from "Layout"
 import { NextPage } from "next"
 import { LayoutConfig } from "Layout/Layout"
 import localFont from "@next/font/local"
+import Head from "next/head"
 
 const Helvetica = localFont({
   src: [
@@ -37,8 +38,13 @@ export default function MyApp({
   pageProps,
 }: AppPropsWithLayoutConfig) {
   return (
-    <Layout config={Component.layoutConfig} className={Helvetica.className}>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <title>MMIA</title>
+      </Head>
+      <Layout config={Component.layoutConfig} className={Helvetica.className}>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }
