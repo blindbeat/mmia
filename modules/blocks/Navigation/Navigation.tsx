@@ -4,8 +4,7 @@ import Link from "next/link"
 import CtaLink from "modules/blocks/Navigation/CtaLink"
 import { useCallback, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
-import LanguageChangeButton from "components/LanguageChangeButton"
-import useThresholdObserver from "hooks/useThresholdObserver"
+import { LanguageChangeButton, LinkWithLine } from "components"
 import NavLinkAnimated from "./NavLinkAnimated"
 import {
   AnimatePresence,
@@ -14,8 +13,8 @@ import {
   Transition,
   Variants,
 } from "framer-motion"
-import LinkWithLine from "components/LinkWithLine"
 import Socials from "modules/blocks/Socials"
+import { useThresholdObserver } from "hooks"
 
 type navLinkTuple = [name: string, url: string, padding: number]
 

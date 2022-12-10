@@ -1,1 +1,1 @@
-export { default } from "./ImageZoomableContainer"
+export * from "./ImageZoomableContainer"

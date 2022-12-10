@@ -8,15 +8,17 @@ import image4 from "assets/dummyPics/greetiongPhotos/4.jpg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Controller, EffectFade, Pagination } from "swiper"
 import classNames from "classnames"
-import LinkWithLine from "components/LinkWithLine"
+import {
+  Heading,
+  LanguageChangeButton,
+  LinkWithLine,
+  Paragraph,
+} from "components"
 import Socials from "modules/blocks/Socials"
 import Link from "next/link"
-import Paragraph from "components/Paragraph"
-import Heading from "components/Heading"
 import { useState } from "react"
 import "swiper/css/effect-fade"
 import { Swiper as SwiperClass } from "swiper/types"
-import LanguageChangeButton from "components/LanguageChangeButton"
 
 const slides = new Array(4).fill({
   primaryText: "we create impressive architecture and modern interiors",

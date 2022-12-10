@@ -2,8 +2,8 @@ import { Media } from "misc/types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react"
-import { useControMediaGrid } from "hooks/useControMediaGrid"
-import { HorizontalSvgLine, VerticalSvgLine } from "components/svgLines"
+import { useControlMediaGrid } from "hooks"
+import { HorizontalSvgLine, VerticalSvgLine } from "components"
 import {
   motion,
   useInView,
@@ -18,11 +18,12 @@ interface Props {
 }
 
 const calcColumnNumber = () => {
-  const min = 1
-  const max = 5
-  const result = Math.floor(window.innerWidth / 400)
-  if (result < min) return min
-  if (result > max) return max
+  const minCardWidth = 400
+  const minColumns = 1
+  const maxColumns = 5
+  const result = Math.floor(window.innerWidth / minCardWidth)
+  if (result < minColumns) return minColumns
+  if (result > maxColumns) return maxColumns
   return result
 }
 
@@ -30,7 +31,7 @@ export const MediaCards = ({ mediaArr }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [lastVisibleCard, setLastVisibleCard] = useState(0)
   const [columnNumber, setColumnNumber] = useState<null | number>(null)
-  const { columnsParams, rowsArray, containerStyle } = useControMediaGrid(
+  const { columnsParams, rowsArray, containerStyle } = useControlMediaGrid(
     mediaArr.length,
     lastVisibleCard,
     columnNumber
@@ -46,7 +47,7 @@ export const MediaCards = ({ mediaArr }: Props) => {
     return () => {
       window.removeEventListener("resize", columnNumberSetter)
     }
-  }, [])
+  }, [columnNumberSetter])
 
   const handleInViewChange = (inView: boolean, index: number) => {
     if (inView && lastVisibleCard < index) setLastVisibleCard(index)
@@ -108,19 +109,13 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
 
   useEffect(() => {
     handleInViewChange(inView)
-  }, [inView])
+  }, [handleInViewChange, inView])
 
   const handleMouseMove = (event: MouseEvent) => {
     const rect = event.currentTarget.getBoundingClientRect()
     x.set(event.clientX - rect.left)
     y.set(event.clientY - rect.top)
   }
-
-  // useEffect(() => {
-  //   return () => {
-  //     effect
-  //   }
-  // }, [input])
 
   return (
     <motion.div

@@ -1,4 +1,4 @@
-import Paragraph from "components/Paragraph"
+import { Paragraph } from "components"
 import { ComponentPropsWithoutRef } from "react"
 import classNames from "classnames"
 import styles from "./ProjectParagraphBlock.module.css"

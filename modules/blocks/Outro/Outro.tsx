@@ -2,10 +2,9 @@ import styles from "modules/blocks/Outro/Outro.module.css"
 import WordsSwiper from "modules/blocks/Outro/WordsSwiper"
 import ImagesSwiper from "modules/blocks/Outro/ImagesSwiper"
 import { dummyParagraph } from "assets/dummyText"
-import Paragraph from "components/Paragraph"
-import LinkWithLine from "components/LinkWithLine"
+import { LinkWithLine, Paragraph } from "components"
 import BackgroundImage from "modules/blocks/Outro/assets/backgroundLine.svg"
-import useAnimateLine from "hooks/useAnimateLine"
+import { useAnimateLine } from "hooks"
 
 const title = "Did you like this project?"
 export default function Outro() {

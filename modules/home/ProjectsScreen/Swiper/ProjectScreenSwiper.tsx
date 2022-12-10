@@ -6,15 +6,17 @@ import slide3 from "assets/dummyPics/ourProjects/3.jpg"
 import Image from "next/image"
 import { Autoplay, Navigation, Pagination } from "swiper"
 import classNames from "classnames"
-import TagList from "components/TagList/TagList"
-import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTitle"
 import { tags, title } from "assets/dummyText"
 import {
   SwiperNavigationNext,
   SwiperNavigationPrev,
-} from "components/SwiperComponents"
-import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
-import ImageZoomableContainer from "components/ImageZoomableContainer"
+} from "components/swiperComponents"
+import { swiperStyles } from "components/swiperComponents/SwiperBullets"
+import {
+  ImageZoomableContainer,
+  ProjectPreviewTitle,
+  TagList,
+} from "components"
 
 const slides = [slide1, slide2, slide3]
 

@@ -1,12 +1,9 @@
 import styles from "./BuildingPreparation.module.css"
-import ScreenTitle from "components/ScreenTitle"
+import { Heading, ScreenTitle } from "components"
 import { formIndexString } from "misc/utils"
-import { dummyParagraphLong } from "assets/dummyText"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
-import useAnimateLayering from "hooks/useAnimateLayering"
-import Heading from "components/Heading"
-import useThresholdObserver from "hooks/useThresholdObserver"
+import { useAnimateLayering, useThresholdObserver } from "hooks"
 
 const heading = "What documents are required for capital repairs?"
 
@@ -52,10 +49,10 @@ const BuildingPreparation = () => {
           {heading}
         </Heading>
       </motion.div>
-      {steps.map(({ heading, text }, index) => (
+      {steps.map((step, index) => (
         <Step
           key={index}
-          heading={heading}
+          step={step}
           index={index}
           offset={60 * index + headerHeight + textOffset}
         />
@@ -68,11 +65,11 @@ export default BuildingPreparation
 
 interface StepProps {
   index: number
-  heading: string
+  step: Step
   offset: number
 }
 
-const Step = ({ index, heading, offset }: StepProps) => {
+const Step = ({ index, step, offset }: StepProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const y = useAnimateLayering(ref, offset)
   const extendsThreshold = useThresholdObserver(768)
@@ -87,11 +84,11 @@ const Step = ({ index, heading, offset }: StepProps) => {
       ref={ref}
     >
       <span className={styles.index}>{formIndexString(index)}</span>
-      <h5>{heading}</h5>
+      <h5>{step.heading}</h5>
       <div className={styles.stepText}>
-        <p>{dummyParagraphLong}</p>
-        <p>{dummyParagraphLong}</p>
-        <p>{dummyParagraphLong}</p>
+        <p>{step.text}</p>
+        <p>{step.text}</p>
+        <p>{step.text}</p>
       </div>
     </motion.div>
   )

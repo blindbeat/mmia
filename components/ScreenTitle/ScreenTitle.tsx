@@ -2,11 +2,11 @@ import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
 import styles from "./ScreenTitle.module.css"
 import classNames from "classnames"
 
-function ScreenTitle({
+export const ScreenTitle = ({
   children,
   className,
   ...rest
-}: ComponentPropsWithoutRef<"span">) {
+}: ComponentPropsWithoutRef<"span">) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [squareColor, setSquareColor] = useState<string | undefined>(undefined)
   useEffect(() => {
@@ -28,5 +28,3 @@ function ScreenTitle({
     </div>
   )
 }
-
-export default ScreenTitle

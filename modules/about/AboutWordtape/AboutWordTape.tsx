@@ -2,7 +2,7 @@ import styles from "./AboutWordTape.module.css"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { dummyParagraph } from "assets/dummyText"
-import Paragraph from "components/Paragraph"
+import { Paragraph } from "components"
 
 const tape =
   "We see architecture as a unique product, created at the intersection, "

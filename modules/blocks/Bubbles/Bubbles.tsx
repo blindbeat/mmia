@@ -2,8 +2,8 @@ import { ComponentPropsWithoutRef } from "react"
 import styles from "./Bubbles.module.css"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
-import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
-import Bubble from "components/Bubble"
+import { swiperStyles } from "components/swiperComponents/SwiperBullets"
+import { Bubble } from "components"
 
 interface Bubble {
   title: string

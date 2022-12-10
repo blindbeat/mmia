@@ -14,14 +14,14 @@ interface Props extends ComponentPropsWithoutRef<"h2"> {
   as: ElemTag
 }
 
-function Heading({
+export const Heading = ({
   children,
   className,
   delay = 0,
   appearImmediately = false,
   as = "h2",
   ...rest
-}: Props) {
+}: Props) => {
   const ref = useRef<HTMLElement | null>(null)
 
   const Component = as !== "h6" ? as : "h5"
@@ -62,5 +62,3 @@ function Heading({
     </Component>
   )
 }
-
-export default Heading

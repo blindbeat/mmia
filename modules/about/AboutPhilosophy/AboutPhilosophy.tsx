@@ -1,5 +1,5 @@
 import styles from "./AboutPhilosophy.module.css"
-import ScreenTitle from "components/ScreenTitle"
+import { ScreenTitle } from "components"
 import { dummyPhilosophy } from "assets/dummyText"
 
 const AboutPhilosophy = () => {

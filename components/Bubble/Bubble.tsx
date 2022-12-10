@@ -1,8 +1,8 @@
-import styles from "components/Bubble/Bubble.module.css"
-import { ComponentPropsWithoutRef, useRef } from "react"
-import { useMove } from "@use-gesture/react"
-import { animated, useSpring } from "react-spring"
+import styles from "./Bubble.module.css"
+import { ComponentPropsWithoutRef, MouseEvent } from "react"
 import classNames from "classnames"
+import { motion, useSpring } from "framer-motion"
+import { SpringOptions } from "popmotion"
 
 type CoordsTuple = [x: number, y: number]
 
@@ -20,7 +20,6 @@ function calcRelativeOffset(pointer: CoordsTuple, target: HTMLDivElement) {
   const y = (pointer[1] - rect.y) / rect.height - 0.5
   return [x, y]
 }
-
 function calcPadding(target: HTMLDivElement) {
   const styles = window.getComputedStyle(target)
   return [
@@ -29,28 +28,41 @@ function calcPadding(target: HTMLDivElement) {
   ]
 }
 
+const springOptions: SpringOptions = {
+  stiffness: 75,
+  mass: 0.02,
+}
+
 interface Props extends ComponentPropsWithoutRef<"div"> {
   index: number
   variant?: "papers" | "default"
   withIndex?: boolean
 }
 
-function Bubble({
+export const Bubble = ({
   index,
   children,
   className,
   variant = "default",
   withIndex = false,
   ...rest
-}: Props) {
-  const ref = useRef<null | HTMLDivElement>(null)
-  const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }))
+}: Props) => {
+  const x = useSpring(0, springOptions)
+  const y = useSpring(0, springOptions)
 
-  const bind = useMove((state) => {
-    if (!ref.current) return
-    const [x, y] = calcOffset(state.xy, ref.current)
-    api.start({ x, y })
-  })
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const [xOffset, yOffset] = calcOffset(
+      [event.clientX, event.clientY],
+      event.currentTarget
+    )
+    x.set(xOffset)
+    y.set(yOffset)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
 
   const style = {
     x,
@@ -59,28 +71,25 @@ function Bubble({
 
   return (
     <div
-      ref={ref}
       className={classNames(
         styles.bubbleWrapper,
         variant === "papers" && styles.papers
       )}
+      onMouseMove={handleMouseMove}
       {...rest}
-      {...bind()}
-      onMouseLeave={() => api.start({ x: 0, y: 0 })}
+      onMouseLeave={handleMouseLeave}
     >
-      <animated.div
+      <motion.div
         className={classNames(styles.bubble, className)}
         style={style}
       >
-        <animated.div className={styles.bubbleText} style={style}>
+        <motion.div className={styles.bubbleText} style={style}>
           {withIndex && (
             <span className={styles.bubbleIndex}>{`0${index + 1}.`}</span>
           )}
           {children}
-        </animated.div>
-      </animated.div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
-
-export default Bubble

@@ -5,6 +5,6 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   title: string
 }
 
-export default function ProjectPreviewTitle({ title, className }: Props) {
+export const ProjectPreviewTitle = ({ title, className }: Props) => {
   return <div className={classNames("h6", className)}>{title}</div>
 }

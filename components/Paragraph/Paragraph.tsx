@@ -9,13 +9,13 @@ interface Props extends ComponentPropsWithoutRef<"p"> {
   delay?: number
 }
 
-function Paragraph({
+export const Paragraph = ({
   children,
   className,
   appearImmediately = false,
   delay,
   ...rest
-}: Props) {
+}: Props) => {
   const { ref, inView } = useInView(inViewOptions)
 
   return (
@@ -35,5 +35,3 @@ function Paragraph({
     </p>
   )
 }
-
-export default Paragraph

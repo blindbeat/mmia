@@ -1,4 +1,4 @@
-import Heading from "components/Heading"
+import { Heading } from "components"
 import styles from "./AboutHeading.module.css"
 
 const heading =

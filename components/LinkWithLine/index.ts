@@ -1,1 +1,1 @@
-export { default } from "components/LinkWithLine/LinkWithLine"
+export * from "./LinkWithLine"

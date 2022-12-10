@@ -6,7 +6,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   tags: string[]
 }
 
-export default function TagList({ tags, className }: Props) {
+export const TagList = ({ tags, className }: Props) => {
   return (
     <div className={classNames(styles.tags, className)}>
       {tags.map((tag) => (

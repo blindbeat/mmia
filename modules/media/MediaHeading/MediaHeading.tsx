@@ -1,4 +1,4 @@
-import Heading from "components/Heading"
+import { Heading } from "components"
 import { dummyParagraph } from "assets/dummyText"
 import styles from "./MediaHeading.module.css"
 

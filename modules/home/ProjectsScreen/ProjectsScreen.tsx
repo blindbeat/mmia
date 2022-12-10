@@ -1,11 +1,8 @@
 import utilStyles from "styles/utils.module.css"
 import styles from "./ProjectScreen.module.css"
-import ScreenTitle from "components/ScreenTitle"
+import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
 import ProjectScreenSwiper from "./Swiper"
-import LinkWithLine from "components/LinkWithLine"
 import classNames from "classnames"
-import Heading from "components/Heading"
-import Paragraph from "components/Paragraph"
 
 const title =
   "Through the last years we worked on more than 100 projects located all"

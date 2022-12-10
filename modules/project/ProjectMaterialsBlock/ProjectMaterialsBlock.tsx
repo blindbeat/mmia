@@ -1,7 +1,6 @@
 import styles from "./ProjectMaterialsBlock.module.css"
-import Heading from "components/Heading"
+import { Heading, Paragraph } from "components"
 import { dummyParagraph } from "assets/dummyText"
-import Paragraph from "components/Paragraph"
 import Image from "next/image"
 import { NextImageSrc } from "misc/types"
 

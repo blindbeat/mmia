@@ -1,4 +1,4 @@
-import Gallery from "components/Gallery"
+import { Gallery } from "components"
 import image from "assets/dummyPics/building/photo.png"
 import styles from "./BuildingGallery.module.css"
 

@@ -1,7 +1,6 @@
-import { CSSProperties, useCallback, useEffect, useState } from "react"
-import { Property } from "csstype"
-import TransitionTimingFunction = Property.TransitionTimingFunction
-import TransitionDuration = Property.TransitionDuration
+//DEPRECATED
+
+import { useEffect, useState } from "react"
 
 interface Params {
   state: "hidden" | "header" | "fullscreen"
@@ -18,7 +17,7 @@ interface PointsAndAnimation {
   side: number
 }
 
-const useAnimateNavigation = ({
+export const useAnimateNavigation = ({
   state,
   headerHeightInPercentage,
 }: Params): string => {
@@ -99,5 +98,3 @@ const useAnimateNavigation = ({
 
   return `path("${path}")`
 }
-
-export default useAnimateNavigation

@@ -1,13 +1,11 @@
 import styles from "modules/project/ProjectHeaderBlock/ProjectHeaderBlock.module.css"
-import Heading from "components/Heading"
-import TagList from "components/TagList/TagList"
+import { Heading, Paragraph, TagList } from "components"
 import { metadata, projectDescription, tags, title } from "assets/dummyText"
 import Image from "next/image"
 import headerPhoto from "assets/dummyPics/project/headerPhoto.jpg"
 import Calendar from "./assets/calendar.svg"
 import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
-import Paragraph from "components/Paragraph"
 
 export default function ProjectHeaderBlock() {
   return (

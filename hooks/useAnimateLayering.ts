@@ -1,7 +1,7 @@
 import { useScroll, useTransform } from "framer-motion"
 import { RefObject, useCallback, useEffect, useState } from "react"
 
-const useAnimateLayering = (
+export const useAnimateLayering = (
   ref: RefObject<HTMLDivElement | null>,
   layerOffset: number
 ) => {
@@ -40,4 +40,3 @@ const useAnimateLayering = (
 
   return y
 }
-export default useAnimateLayering

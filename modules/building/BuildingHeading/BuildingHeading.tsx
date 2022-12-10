@@ -1,5 +1,5 @@
 import styles from "./BuildingHeading.module.css"
-import Heading from "components/Heading"
+import { Heading } from "components"
 
 const title = "The method of major overhaul"
 

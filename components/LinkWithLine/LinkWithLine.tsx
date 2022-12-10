@@ -14,12 +14,12 @@ interface Props extends ComponentPropsWithoutRef<"a"> {
   children?: ReactNode
 }
 
-function LinkWithLine({
+export const LinkWithLine = ({
   color = "white",
   className,
   children,
   ...rest
-}: Props) {
+}: Props) => {
   const [hovered, setHovered] = useState(false)
 
   const pathRef = useRef<SVGPathElement | null>(null)
@@ -70,5 +70,3 @@ function LinkWithLine({
     </Link>
   )
 }
-
-export default LinkWithLine

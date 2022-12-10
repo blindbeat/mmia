@@ -1,11 +1,10 @@
-import styles from "modules/blocks/Footer/About/About.module.css"
+import styles from "./About.module.css"
 import utilStyles from "styles/utils.module.css"
-import LinkWithLine from "components/LinkWithLine"
+import { Heading, LinkWithLine } from "components"
 import Link from "next/link"
 import classNames from "classnames"
-import BackgroundSvg from "modules/blocks/Footer/About/assets/backgroundLine.svg"
-import useAnimateLine from "hooks/useAnimateLine"
-import Heading from "components/Heading"
+import BackgroundSvg from "./assets/backgroundLine.svg"
+import { useAnimateLine } from "hooks"
 
 const ctaText = "Let’s talk about  your project!"
 

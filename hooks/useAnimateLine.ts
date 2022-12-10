@@ -2,7 +2,7 @@ import { CSSProperties, useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { calcPathLength, inViewOptions } from "misc/utils"
 
-function useAnimateLine() {
+export const useAnimateLine = () => {
   const [ref, setRef] = useState<SVGSVGElement | null>(null)
   const { ref: observerRef, inView } = useInView(inViewOptions)
   const [style, setStyle] = useState<CSSProperties>({})
@@ -31,5 +31,3 @@ function useAnimateLine() {
     style,
   }
 }
-
-export default useAnimateLine

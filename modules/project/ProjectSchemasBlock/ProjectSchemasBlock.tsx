@@ -1,10 +1,9 @@
-import ScreenTitle from "components/ScreenTitle"
+import { Gallery, ScreenTitle } from "components"
 import styles from "./ProjectSchemasBlock.module.css"
 import { NextImageSrc } from "misc/types"
 import BackgroundSvg from "modules/home/AboutCompanyScreen/assets/backgroundLine.svg"
-import useAnimateLine from "hooks/useAnimateLine"
+import { useAnimateLine } from "hooks"
 import { dummyParagraph } from "assets/dummyText"
-import Gallery from "components/Gallery"
 
 interface Props {
   schemas: NextImageSrc[]

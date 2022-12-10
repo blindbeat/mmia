@@ -2,7 +2,7 @@ import styles from "./CareerVacancies.module.css"
 import { dummyVacancies } from "assets/dummyText"
 import vacancyIllustration from "assets/dummyPics/career/vacancy.png"
 import Image from "next/image"
-import LinkWithLine from "components/LinkWithLine"
+import { LinkWithLine } from "components"
 import classNames from "classnames"
 
 export const CareerVacancies = () => {

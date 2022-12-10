@@ -1,5 +1,5 @@
 import styles from "./AboutCompanyScreen.module.css"
-import LinkWithLine from "components/LinkWithLine"
+import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
 import Image from "next/image"
 import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
 import backdropPhoto from "assets/dummyPics/backdropPhoto.jpg"
@@ -7,10 +7,7 @@ import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
-import ScreenTitle from "components/ScreenTitle"
-import Paragraph from "components/Paragraph"
-import useAnimateLine from "hooks/useAnimateLine"
-import Heading from "components/Heading"
+import { useAnimateLine } from "hooks"
 
 const title = "about company"
 const heading =

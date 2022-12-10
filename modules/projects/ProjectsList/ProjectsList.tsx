@@ -1,13 +1,15 @@
 import styles from "./ProjectsList.module.css"
 import Image from "next/image"
-import TagList from "components/TagList/TagList"
-import ProjectPreviewTitle from "components/ProjectPreviewTitle/ProjectPreviewTitle"
+import {
+  ImageZoomableContainer,
+  ProjectPreviewTitle,
+  TagList,
+} from "components"
 import { ProjectBrief } from "misc/types"
 import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
-import ImageZoomableContainer from "components/ImageZoomableContainer"
 
 interface Props {
   projects: ProjectBrief[]

@@ -1,7 +1,5 @@
 import styles from "./BuildingBenefits.module.css"
-import ScreenTitle from "components/ScreenTitle"
-import Heading from "components/Heading"
-import Paragraph from "components/Paragraph"
+import { Heading, Paragraph, ScreenTitle } from "components"
 import Bubbles from "modules/blocks/Bubbles"
 import { bubbles } from "assets/dummyText"
 

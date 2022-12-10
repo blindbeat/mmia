@@ -1,6 +1,6 @@
 import styles from "modules/project/ProjectSocialsBlock/ProjectSocialsBlock.module.css"
 import Link from "next/link"
-import useThresholdObserver from "hooks/useThresholdObserver"
+import { useThresholdObserver } from "hooks"
 
 interface Social {
   name: string

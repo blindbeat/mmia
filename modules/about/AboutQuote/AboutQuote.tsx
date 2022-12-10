@@ -1,5 +1,5 @@
 import styles from "./AboutQuote.module.css"
-import Heading from "components/Heading"
+import { Heading } from "components"
 import { dummyTitleLong } from "assets/dummyText"
 
 const name = "Vasily Prikhotko"

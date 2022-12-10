@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function useThresholdObserver(threshold: number) {
+export const useThresholdObserver = (threshold: number) => {
   const [extendsThreshold, setExtendsThreshold] = useState(false)
 
   const thresholdController = (e: MediaQueryListEvent) => {
@@ -16,5 +16,3 @@ function useThresholdObserver(threshold: number) {
 
   return extendsThreshold
 }
-
-export default useThresholdObserver

@@ -5,7 +5,7 @@ import classNames from "classnames"
 import { motion } from "framer-motion"
 import Tilt from "react-parallax-tilt"
 import { ComponentPropsWithoutRef, useState } from "react"
-import useThresholdObserver from "hooks/useThresholdObserver"
+import { useThresholdObserver } from "hooks"
 
 interface Position {
   top: number

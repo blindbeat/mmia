@@ -1,12 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Navigation, Pagination } from "swiper"
 import styles from "./Gallery.module.css"
-import { swiperStyles } from "components/SwiperComponents/SwiperBullets"
+import { swiperStyles } from "components/swiperComponents/SwiperBullets"
 import Image from "next/image"
 import {
   SwiperNavigationNext,
   SwiperNavigationPrev,
-} from "components/SwiperComponents"
+} from "components/swiperComponents"
 import classNames from "classnames"
 import { NextImageSrc } from "misc/types"
 import { ComponentPropsWithoutRef } from "react"
@@ -15,7 +15,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   images: NextImageSrc[] | NextImageSrc
 }
 
-const Gallery = ({ images, className }: Props) => {
+export const Gallery = ({ images, className }: Props) => {
   return (
     <div className={className}>
       {Array.isArray(images) && images.length > 1 ? (
@@ -75,4 +75,3 @@ const Gallery = ({ images, className }: Props) => {
     </div>
   )
 }
-export default Gallery

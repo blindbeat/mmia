@@ -1,1 +1,1 @@
-export { default } from "./ScreenTitle"
+export * from "./ScreenTitle"
