@@ -5,7 +5,7 @@ import { Media } from "misc/types"
 import logo1 from "assets/dummyPics/media/logos/1.png"
 import logo2 from "assets/dummyPics/media/logos/2.png"
 import logo3 from "assets/dummyPics/media/logos/3.png"
-import hoverImage from "assets/dummyPics/greetiongPhotos/1.jpg"
+import hoverImage from "assets/dummyPics/media/backgroundPhoto.jpeg"
 import { GetStaticProps } from "next"
 
 const mediaArr: Media[] = [

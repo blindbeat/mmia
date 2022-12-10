@@ -86,17 +86,17 @@ interface CardProps {
   media: Media
   handleInViewChange: (inView: boolean) => void
 }
+
+const springOptions: SpringOptions = {
+  stiffness: 75,
+  mass: 0.02,
+}
 const Card = ({ media, handleInViewChange }: CardProps) => {
   const ref = useRef(null)
   const inView = useInView(ref, {
     once: true,
     amount: 0.3,
   })
-
-  const springOptions: SpringOptions = {
-    stiffness: 75,
-    mass: 0.02,
-  }
 
   const x = useSpring(0, springOptions)
   const y = useSpring(0, springOptions)
@@ -118,7 +118,8 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
   }
 
   return (
-    <motion.div
+    <motion.a
+      href=""
       onMouseMove={handleMouseMove}
       animate="hidden"
       whileHover="visible"
@@ -161,6 +162,6 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
       >
         <Image src={media.hoverImage} alt="" className={styles.hoverImage} />
       </motion.div>
-    </motion.div>
+    </motion.a>
   )
 }
