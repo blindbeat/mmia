@@ -1,4 +1,4 @@
-import photo from "assets/dummyPics/building/1.png"
+import photo from "assets/dummyPics/building/buildingPhoto/parallax.png"
 import styles from "./BuildingPhoto.module.css"
 import { ImageWithParallax } from "components/ImageWithParallax"
 

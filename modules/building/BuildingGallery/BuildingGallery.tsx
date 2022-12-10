@@ -1,5 +1,5 @@
 import { Gallery } from "components"
-import image from "assets/dummyPics/building/photo.png"
+import image from "assets/dummyPics/building/buildingGallery/galleryPhoto.png"
 import styles from "./BuildingGallery.module.css"
 
 const images = new Array(3).fill(image)

@@ -2,8 +2,8 @@ import styles from "./AboutCollage.module.css"
 import { dummyParagraph } from "assets/dummyText"
 import { Paragraph } from "components"
 import Image from "next/image"
-import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
-import officeImage from "assets/dummyPics/backdropPhoto.jpg"
+import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
+import officeImage from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
 import { motion } from "framer-motion"
 
 const AboutCollage = () => {

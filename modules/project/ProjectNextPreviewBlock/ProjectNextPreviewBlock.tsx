@@ -1,5 +1,5 @@
 import Image from "next/image"
-import NextProjectImage from "assets/dummyPics/project/blockPhotos/3.jpg"
+import NextProjectImage from "assets/dummyPics/project/projectBlock/3.jpg"
 import styles from "./ProjectNextPreviewBlock.module.css"
 import { animated, useSpring } from "react-spring"
 import { Heading, ScreenTitle } from "components"

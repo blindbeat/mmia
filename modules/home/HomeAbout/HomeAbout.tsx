@@ -1,8 +1,8 @@
-import styles from "./AboutCompanyScreen.module.css"
+import styles from "./HomeAbout.module.css"
 import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
 import Image from "next/image"
-import founderPhoto from "assets/dummyPics/founderPhoto.jpg"
-import backdropPhoto from "assets/dummyPics/backdropPhoto.jpg"
+import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
+import backdropPhoto from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
 import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
@@ -16,7 +16,7 @@ const paragraph = new Array(2).fill(
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular"
 )
 
-function AboutCompanyScreen() {
+function HomeAbout() {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -67,4 +67,4 @@ function AboutCompanyScreen() {
   )
 }
 
-export default AboutCompanyScreen
+export default HomeAbout

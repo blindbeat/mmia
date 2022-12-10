@@ -2,7 +2,7 @@ import styles from "modules/project/ProjectHeaderBlock/ProjectHeaderBlock.module
 import { Heading, Paragraph, TagList } from "components"
 import { metadata, projectDescription, tags, title } from "assets/dummyText"
 import Image from "next/image"
-import headerPhoto from "assets/dummyPics/project/headerPhoto.jpg"
+import headerPhoto from "assets/dummyPics/project/projectHeader.jpg"
 import Calendar from "./assets/calendar.svg"
 import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"

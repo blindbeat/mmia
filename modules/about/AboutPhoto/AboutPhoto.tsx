@@ -1,5 +1,5 @@
 import styles from "./AboutPhoto.module.css"
-import photo from "assets/dummyPics/greetiongPhotos/3.jpg"
+import photo from "assets/dummyPics/home/homeLanding/3.jpg"
 import { ImageWithParallax } from "components/ImageWithParallax"
 
 const AboutPhoto = () => {

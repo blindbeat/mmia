@@ -1,5 +1,5 @@
 import styles from "./BuildingPoints.module.css"
-import Icon from "assets/dummyPics/dummyIcon.svg"
+import Icon from "assets/dummyPics/building/buildingPoints/dummyIcon.svg"
 import classNames from "classnames"
 
 const title = "The method of major"

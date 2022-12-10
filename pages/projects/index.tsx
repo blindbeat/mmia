@@ -5,7 +5,7 @@ import classNames from "classnames"
 import { GetStaticProps } from "next"
 import ProjectsList from "modules/projects/ProjectsList"
 import { ProjectBrief } from "misc/types"
-import projectPhoto1 from "assets/dummyPics/ourProjects/1.jpg"
+import projectPhoto1 from "assets/dummyPics/home/homeProjects/1.jpg"
 import { NextPageWithLayoutConfig } from "pages/_app"
 import { tags, title } from "assets/dummyText"
 

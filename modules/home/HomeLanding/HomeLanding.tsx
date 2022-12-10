@@ -1,10 +1,10 @@
-import styles from "./GreetingScreen.module.css"
+import styles from "./HomeLanding.module.css"
 import utilStyles from "styles/utils.module.css"
 import Image from "next/image"
-import image1 from "assets/dummyPics/greetiongPhotos/1.jpg"
-import image2 from "assets/dummyPics/greetiongPhotos/2.jpg"
-import image3 from "assets/dummyPics/greetiongPhotos/3.jpg"
-import image4 from "assets/dummyPics/greetiongPhotos/4.jpg"
+import image1 from "assets/dummyPics/home/homeLanding/1.jpg"
+import image2 from "assets/dummyPics/home/homeLanding/2.jpg"
+import image3 from "assets/dummyPics/home/homeLanding/3.jpg"
+import image4 from "assets/dummyPics/home/homeLanding/4.jpg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Controller, EffectFade, Pagination } from "swiper"
 import classNames from "classnames"
@@ -35,7 +35,7 @@ const createAnimationDelayStyle = (showingOrder: number) => ({
   animationDelay: `${calcAnimationDelay(showingOrder)}s`,
 })
 
-function GreetingScreen() {
+function HomeLanding() {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
@@ -143,4 +143,4 @@ function GreetingScreen() {
   )
 }
 
-export default GreetingScreen
+export default HomeLanding

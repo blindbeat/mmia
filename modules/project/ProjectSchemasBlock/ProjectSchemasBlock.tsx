@@ -1,7 +1,7 @@
 import { Gallery, ScreenTitle } from "components"
 import styles from "./ProjectSchemasBlock.module.css"
 import { NextImageSrc } from "misc/types"
-import BackgroundSvg from "modules/home/AboutCompanyScreen/assets/backgroundLine.svg"
+import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useAnimateLine } from "hooks"
 import { dummyParagraph } from "assets/dummyText"
 

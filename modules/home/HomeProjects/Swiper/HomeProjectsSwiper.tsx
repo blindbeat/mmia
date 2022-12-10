@@ -1,8 +1,8 @@
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react"
-import styles from "./ProjectScreenSwiper.module.css"
-import slide1 from "assets/dummyPics/ourProjects/1.jpg"
-import slide2 from "assets/dummyPics/ourProjects/2.jpg"
-import slide3 from "assets/dummyPics/ourProjects/3.jpg"
+import styles from "./HomeProjectsSwiper.module.css"
+import slide1 from "assets/dummyPics/home/homeProjects/1.jpg"
+import slide2 from "assets/dummyPics/home/homeProjects/2.jpg"
+import slide3 from "assets/dummyPics/home/homeProjects/3.jpg"
 import Image from "next/image"
 import { Autoplay, Navigation, Pagination } from "swiper"
 import classNames from "classnames"
@@ -26,7 +26,7 @@ const imageSizes = `
                    50vw,
   `
 
-function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
+function HomeProjectsSwiper({ className, ...rest }: SwiperProps) {
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -88,4 +88,4 @@ function ProjectScreenSwiper({ className, ...rest }: SwiperProps) {
   )
 }
 
-export default ProjectScreenSwiper
+export default HomeProjectsSwiper

@@ -1,16 +1,16 @@
-import GreetingScreen from "modules/home/GreetingScreen"
-import AboutCompanyScreen from "modules/home/AboutCompanyScreen"
-import PapersScreen from "modules/home/PapersScreen"
-import ProjectsScreen from "modules/home/ProjectsScreen"
+import HomeLanding from "modules/home/HomeLanding"
+import HomeAbout from "modules/home/HomeAbout"
+import HomePapers from "modules/home/HomePapers"
+import HomeProjects from "modules/home/HomeProjects"
 import { NextPageWithLayoutConfig } from "./_app"
 
 const Home: NextPageWithLayoutConfig = () => {
   return (
     <>
-      <GreetingScreen />
-      <AboutCompanyScreen />
-      <PapersScreen />
-      <ProjectsScreen />
+      <HomeLanding />
+      <HomeAbout />
+      <HomePapers />
+      <HomeProjects />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import utilStyles from "styles/utils.module.css"
-import styles from "./ProjectScreen.module.css"
+import styles from "./HomeProjects.module.css"
 import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
-import ProjectScreenSwiper from "./Swiper"
+import HomeProjectsSwiper from "./Swiper"
 import classNames from "classnames"
 
 const title =
@@ -9,7 +9,7 @@ const title =
 const paragraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 
-function ProjectsScreen() {
+function HomeProjects() {
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.textWrapper}>
@@ -17,7 +17,7 @@ function ProjectsScreen() {
         <Heading as="h3">{title}</Heading>
         <Paragraph>{paragraph}</Paragraph>
       </div>
-      <ProjectScreenSwiper className={styles.swiper} />
+      <HomeProjectsSwiper className={styles.swiper} />
       <LinkWithLine color="black" className={styles.link}>
         view more
       </LinkWithLine>
@@ -25,4 +25,4 @@ function ProjectsScreen() {
   )
 }
 
-export default ProjectsScreen
+export default HomeProjects

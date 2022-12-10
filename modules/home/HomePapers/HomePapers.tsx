@@ -1,8 +1,8 @@
 import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
-import styles from "./PapersScreen.module.css"
+import styles from "./HomePapers.module.css"
 import Image from "next/image"
-import backgroundImage from "assets/dummyPics/backgrounds/scaffolding.jpg"
+import backgroundImage from "assets/dummyPics/home/homePapers/scaffolding.jpg"
 import { Bubble, Heading, LinkWithLine, Paragraph } from "components"
 import { useRef, useState } from "react"
 import { useThresholdObserver } from "hooks"
@@ -26,7 +26,7 @@ const movePapers = (papersArr: number[]) => {
 
 type AnimationName = "toLeft" | "toRight"
 
-function PapersScreen() {
+function HomePapers() {
   const [papers, setPapers] = useState([1, 2, 3, 4])
   const [currentPaper, setCurrentPaper] = useState(0)
   const [flyingPapers, setFlyingPapers] = useState<[number, AnimationName][]>(
@@ -139,4 +139,4 @@ function PapersScreen() {
   )
 }
 
-export default PapersScreen
+export default HomePapers
