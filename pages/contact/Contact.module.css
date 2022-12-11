@@ -33,13 +33,12 @@
   overflow: hidden;
   width: 9rem;
   padding: 1rem;
-  transform: translate(-50%, calc(-100% - 1rem));
+  transform: translate(-50%, calc(-100% - 0.5rem));
   aspect-ratio: 1 / 1.41421356237;
 }
 
 .svgLines {
   position: absolute;
-  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;

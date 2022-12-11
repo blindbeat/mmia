@@ -182,40 +182,65 @@ const MarkerAnimated = ({
               {hovered && (
                 <motion.div className={styles.animatedElementsWrapper}>
                   <svg
-                    viewBox="0 0 100 146"
+                    viewBox="0 0 85 118"
                     className={styles.svgLines}
                     preserveAspectRatio="none"
                   >
-                    {/*Mask is the only option to animate line drawing with dashes.*/}
+                    Mask is the only option to animate line drawing with dashes.
                     <defs>
                       <clipPath id="cut-off-bottom">
                         {[
-                          [...new Array(9)].map((_, index) => (
+                          [...new Array(7)].map((_, index) => (
                             <rect
                               key={index}
-                              x={7.5 + index * 10}
+                              x={10 + index * 10}
                               y={0}
                               width={5}
-                              height={143}
+                              height={118}
                             />
                           )),
                         ]}
                         {[
-                          [...new Array(13)].map((_, index) => (
+                          [...new Array(10)].map((_, index) => (
                             <rect
                               key={index}
                               x={0}
-                              y={8 + index * 10.4}
-                              width={100}
+                              y={8 + index * 10.8}
+                              width={85}
                               height={5.2}
                             />
                           )),
                         ]}
                       </clipPath>
                     </defs>
+                    <motion.path
+                      initial={{
+                        stroke: "rgba(23, 23, 23, 0)",
+                        d: "M 42.5 118 L 38 113 L 5 113 L 5 113 L 80 113 L 80 113 L 47 113 L 42.5 118 Z",
+                      }}
+                      animate={{
+                        stroke: "rgba(23, 23, 23, 1)",
+                        d: "M 42.5 118 L 38 113 L 5 113 L 5 5 L 80 5 L 80 113 L 47 113 L 42.5 118 Z",
+                      }}
+                      exit={{
+                        stroke: "rgba(23, 23, 23, 0)",
+                        d: "M 42.5 113 L 38 113 L 5 113 L 5 113 L 80 113 L 80 113 L 47 113 L 42.5 113 Z",
+                        transition: {
+                          ease: [0.67, 0.2, 0.15, 0.99],
+                          duration: 0.6,
+                        },
+                      }}
+                      fill="rgba(23, 23, 23, 1)"
+                      transition={{
+                        ease: [0.67, 0.2, 0.15, 0.99],
+                        duration: 0.8,
+                      }}
+                      strokeWidth="1px"
+                      stroke="rgba(23, 23, 23, 1)"
+                    />
                     {[
-                      "M 50 146 Q 50 141 45 141 L 5 141 L 5 5 L 51 5",
-                      "M 50 146 Q 50 141 55 141 L 95 141 L 95 5 L 49 5",
+                      "M 42.5 118 L 38 113 L 5 113 L 5 5 L 44 5",
+                      "M 42.5 118 L 47 113 L 80 113 L 80 5 L 41 5",
                     ].map((path) => (
                       <motion.path
                         key={path}
