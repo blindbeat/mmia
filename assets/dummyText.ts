@@ -12,6 +12,7 @@ export const metadata = {
 export const projectDescription =
   "Only low tide previously released the footpath, phone der small lighthouse island tossed in the North Sea over to the village. The further way led through the dreaded high moor. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned."
 
+export const dummyParagraphShort = "AIMM is the team that implements"
 export const dummyParagraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We see"
 
@@ -21,6 +22,8 @@ export const dummyPhilosophy =
 export const dummyParagraphLong =
   "Only low tide previously released the footpath, phone der small lighthouse island tossed in the North Sea over to the village. The further way led through the dreaded high moor. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned. Over swaying oak planks blackened by heavy storm surges. The wave-washed boardwalk, sea-picked countless times. Likewise  carpenter's hands repaired, saved and, eventually, abandoned."
 
+export const dummyParagraphLong2 =
+  "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating AIMM is the team that implements project ideas into reality. We see architecture as a unique product, "
 export const dummyTitleLong = `The method of major overhaul is more than renewal of the resource with a partial replacement for the necessary structural elements`
 
 const bubbleTitle = "Climate"

@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper"
-import styles from "modules/blocks/Outro/WordsSwiper/WordsSwiper.module.css"
+import styles from "./WordsSwiper.module.css"
 import classNames from "classnames"
 import { Fragment } from "react"
 
-export default function WordsSwiper() {
+const WordsSwiper = () => {
   return (
     <Swiper
       slidesPerGroup={4}
@@ -50,3 +50,5 @@ export default function WordsSwiper() {
     </Swiper>
   )
 }
+
+export default WordsSwiper

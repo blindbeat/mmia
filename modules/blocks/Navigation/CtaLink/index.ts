@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Navigation/CtaLink/CtaLink"
+export { default } from "./CtaLink"

@@ -1,4 +1,4 @@
-import styles from "./About.module.css"
+import styles from "./FooterAbout.module.css"
 import utilStyles from "styles/utils.module.css"
 import { Heading, LinkWithLine } from "components"
 import Link from "next/link"
@@ -12,7 +12,7 @@ const links = ["services", "projects", "media", "building", "contact"]
 const email = "info@aimm-group.com"
 const number = "+38 (044) 228 91 59"
 
-function About() {
+const FooterAbout = () => {
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
 
   return (
@@ -59,4 +59,4 @@ function About() {
   )
 }
 
-export default About
+export default FooterAbout

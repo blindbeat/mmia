@@ -1,1 +1,1 @@
-export * from "modules/blocks/Outro/Outro"
+export * from "./Outro"

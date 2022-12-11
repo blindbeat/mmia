@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, forwardRef } from "react"
 import classNames from "classnames"
-import styles from "modules/blocks/Socials/Socials.module.css"
+import styles from "./Socials.module.css"
 
 const links = ["ig", "be", "fb", "yt"]
 

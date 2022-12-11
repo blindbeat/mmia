@@ -1,16 +1,16 @@
 import Link, { LinkProps } from "next/link"
 import { ComponentPropsWithoutRef, useRef, useState } from "react"
 import classNames from "classnames"
-import styles from "modules/blocks/Navigation/NavLinkAnimated/NavLinkAnimated.module.css"
+import styles from "./NavLinkAnimated.module.css"
 
 type AnimationState = "appearing" | "appeared" | "hiding" | "hidden"
 type AnimationName = "appear" | "hide"
 
-export default function NavLinkAnimated({
+const NavLinkAnimated = ({
   className,
   children,
   ...rest
-}: ComponentPropsWithoutRef<"a"> & LinkProps) {
+}: ComponentPropsWithoutRef<"a"> & LinkProps) => {
   const [animation, setAnimation] = useState<AnimationName | null>(null)
   const animationStateRef = useRef<AnimationState>("hidden")
   const hoveredRef = useRef<boolean>(false)
@@ -83,3 +83,5 @@ export default function NavLinkAnimated({
     </Link>
   )
 }
+
+export default NavLinkAnimated

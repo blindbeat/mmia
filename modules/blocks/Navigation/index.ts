@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Navigation/Navigation"
+export { default } from "./Navigation"

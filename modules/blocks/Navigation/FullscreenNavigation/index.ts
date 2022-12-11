@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Navigation/FullscreenNavigation/FullscreenNavigation"
+export { default } from "./FullscreenNavigation"

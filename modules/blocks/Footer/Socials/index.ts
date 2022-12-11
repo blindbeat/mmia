@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Footer/Socials/Socials"
+export { default } from "./FooterSocials"

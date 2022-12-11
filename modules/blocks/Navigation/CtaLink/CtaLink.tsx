@@ -1,12 +1,12 @@
 import Link, { LinkProps } from "next/link"
-import styles from "modules/blocks/Navigation/CtaLink/CtaLink.module.css"
+import styles from "./CtaLink.module.css"
 import classNames from "classnames"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
 
-function CtaLink({
+const CtaLink = ({
   className,
   ...rest
-}: ComponentPropsWithoutRef<"a"> & LinkProps) {
+}: ComponentPropsWithoutRef<"a"> & LinkProps) => {
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false)
 
   const pathRef = useRef<SVGPathElement | null>(null)

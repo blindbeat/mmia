@@ -1,1 +1,1 @@
-export * from "./CareerVacancies"
+export { default } from "./CareerVacancies"

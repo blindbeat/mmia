@@ -9,7 +9,7 @@ const title =
 const paragraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 
-function HomeProjects() {
+const HomeProjects = () => {
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.textWrapper}>

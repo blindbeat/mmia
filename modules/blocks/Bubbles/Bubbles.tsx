@@ -14,7 +14,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   bubbles: Bubble[]
 }
 
-export const Bubbles = ({ bubbles, className }: Props) => {
+const Bubbles = ({ bubbles, className }: Props) => {
   return (
     <div className={className}>
       <div className={styles.bubbles}>

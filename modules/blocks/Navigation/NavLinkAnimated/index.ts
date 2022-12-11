@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Navigation/NavLinkAnimated/NavLinkAnimated"
+export { default } from "./NavLinkAnimated"

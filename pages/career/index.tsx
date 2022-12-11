@@ -1,5 +1,5 @@
 import { NextPageWithLayoutConfig } from "pages/_app"
-import { CareerVacancies } from "modules/career/CareerVacancies"
+import CareerVacancies from "modules/career/CareerVacancies"
 
 const Career: NextPageWithLayoutConfig = () => {
   return <CareerVacancies />

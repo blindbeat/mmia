@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Footer/About/About"
+export { default } from "./FooterAbout"

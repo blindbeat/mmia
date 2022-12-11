@@ -35,7 +35,7 @@ const createAnimationDelayStyle = (showingOrder: number) => ({
   animationDelay: `${calcAnimationDelay(showingOrder)}s`,
 })
 
-function HomeLanding() {
+const HomeLanding = () => {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>

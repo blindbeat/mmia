@@ -16,7 +16,7 @@ const paragraph = new Array(2).fill(
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular"
 )
 
-function HomeAbout() {
+const HomeAbout = () => {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,

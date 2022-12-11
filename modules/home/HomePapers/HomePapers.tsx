@@ -7,17 +7,15 @@ import { Bubble, Heading, LinkWithLine, Paragraph } from "components"
 import { useRef, useState } from "react"
 import { useThresholdObserver } from "hooks"
 import { Swiper, SwiperSlide } from "swiper/react"
+import {
+  dummyParagraph,
+  dummyParagraphLong2,
+  dummyParagraphShort,
+} from "assets/dummyText"
 
 const textHeading = "We improve the world around us and create an"
-const textParagraph =
-  "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 
-const bubbleText = "AIMM is the team that implements"
-const bubbleTextArr = new Array(3).fill(bubbleText)
-
-const paperTitle = "AIMM is the team that implements"
-const paperText =
-  "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating AIMM is the team that implements project ideas into reality. We see architecture as a unique product, "
+const bubbleTextArr = new Array(3).fill(dummyParagraphShort)
 
 const movePapers = (papersArr: number[]) => {
   const [firstPaper, ...rest] = papersArr
@@ -26,7 +24,7 @@ const movePapers = (papersArr: number[]) => {
 
 type AnimationName = "toLeft" | "toRight"
 
-function HomePapers() {
+const HomePapers = () => {
   const [papers, setPapers] = useState([1, 2, 3, 4])
   const [currentPaper, setCurrentPaper] = useState(0)
   const [flyingPapers, setFlyingPapers] = useState<[number, AnimationName][]>(
@@ -50,7 +48,7 @@ function HomePapers() {
       <div className={styles.content}>
         <div className={styles.text}>
           <Heading as="h3">{textHeading}</Heading>
-          <Paragraph>{textParagraph}</Paragraph>
+          <Paragraph>{dummyParagraph}</Paragraph>
           <LinkWithLine color="white" className={styles.link}>
             view more
           </LinkWithLine>
@@ -73,8 +71,8 @@ function HomePapers() {
                   }}
                 >
                   <div className={styles.paperContentWrapper}>
-                    <h5>{paperTitle}</h5>
-                    {paperText}
+                    <h5>{dummyParagraphShort}</h5>
+                    {dummyParagraphLong2}
                     <h5>{paper + 1}</h5>
                   </div>
                 </div>
@@ -92,8 +90,8 @@ function HomePapers() {
                 <div className={styles.paperContentWrapper}>
                   {index === 0 && (
                     <>
-                      <h5>{paperTitle}</h5>
-                      {paperText}
+                      <h5>{dummyParagraphShort}</h5>
+                      {dummyParagraphLong2}
                       <h5>{currentPaper + 1}</h5>
                     </>
                   )}

@@ -5,14 +5,12 @@ import image1 from "assets/dummyPics/project/projectSwiper/1.jpg"
 import image2 from "assets/dummyPics/project/projectSwiper/2.png"
 import image3 from "assets/dummyPics/project/projectSwiper/3.jpg"
 import Image from "next/image"
-import styles from "modules/blocks/Outro/ImagesSwiper/ImagesSwiper.module.css"
+import styles from "./ImagesSwiper.module.css"
 import { Autoplay, Controller, EffectCreative } from "swiper"
 import { Swiper as SwiperClass } from "swiper/types"
 import { NextImageSrc } from "misc/types"
 
-export default function ImagesSwiper({
-  className,
-}: ComponentPropsWithoutRef<"div">) {
+const ImagesSwiper = ({ className }: ComponentPropsWithoutRef<"div">) => {
   const [controlledSwiper1, setControlledSwiper1] = useState<
     SwiperClass | undefined
   >(undefined)
@@ -61,6 +59,8 @@ export default function ImagesSwiper({
     </div>
   )
 }
+
+export default ImagesSwiper
 
 interface SwiperEntityProps extends SwiperProps {
   images: NextImageSrc[]

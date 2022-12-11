@@ -1,5 +1,7 @@
-import styles from "modules/blocks/Navigation/FullscreenNavigation/FullscreenNavigation.module.css"
+import styles from "./FullscreenNavigation.module.css"
 
-export default function FullscreenNavigation() {
+const FullscreenNavigation = () => {
   return <div className={styles.content}></div>
 }
+
+export default FullscreenNavigation

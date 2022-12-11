@@ -1,7 +1,7 @@
-import styles from "modules/blocks/Navigation/Navigation.module.css"
-import Logo from "modules/blocks/Navigation/assets/logo.svg"
+import styles from "./Navigation.module.css"
+import Logo from "./assets/logo.svg"
 import Link from "next/link"
-import CtaLink from "modules/blocks/Navigation/CtaLink"
+import CtaLink from "./CtaLink"
 import { useCallback, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { LanguageChangeButton, LinkWithLine } from "components"
@@ -72,7 +72,7 @@ interface Props {
 }
 
 const MotionSocials = motion(Socials) as typeof motion.div
-function Navigation({ adaptiveTransparency, adaptiveHiding }: Props) {
+const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )

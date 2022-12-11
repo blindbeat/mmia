@@ -1,11 +1,11 @@
-import Socials from "modules/blocks/Footer/Socials"
-import About from "modules/blocks/Footer/About"
+import FooterSocials from "./Socials"
+import FooterAbout from "./About"
 
-function Footer() {
+const Footer = () => {
   return (
     <>
-      <Socials />
-      <About />
+      <FooterSocials />
+      <FooterAbout />
     </>
   )
 }

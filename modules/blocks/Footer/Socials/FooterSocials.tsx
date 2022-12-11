@@ -1,8 +1,8 @@
-import styles from "modules/blocks/Footer/Socials/Socials.module.css"
+import styles from "./FooterSocials.module.css"
 import utilStyles from "styles/utils.module.css"
 import Image from "next/image"
 import backgroundImage from "assets/dummyPics/home/homeLanding/4.jpg"
-import SocialsSwiper from "modules/blocks/Footer/Socials/Swiper"
+import SocialsSwiper from "./Swiper"
 import Link from "next/link"
 import classNames from "classnames"
 
@@ -12,7 +12,7 @@ const paragraph =
 
 const socialLinks = ["ig", "be", "fb", "yt"]
 
-export default function Socials() {
+const FooterSocials = () => {
   return (
     <div className={classNames(utilStyles.wrapper, styles.content)}>
       <h3>{heading}</h3>
@@ -29,7 +29,7 @@ export default function Socials() {
       />
       <div className={styles.socialLinks}>
         {socialLinks.map((link) => (
-          <Link key={link} href="modules/blocks/Footer/Socials/Socials#">
+          <Link key={link} href="modules/blocks/Footer/Socials/FooterSocials#">
             <span>{link}</span>
           </Link>
         ))}
@@ -37,3 +37,5 @@ export default function Socials() {
     </div>
   )
 }
+
+export default FooterSocials

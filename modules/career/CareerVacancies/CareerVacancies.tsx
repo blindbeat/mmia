@@ -5,7 +5,7 @@ import Image from "next/image"
 import { LinkWithLine } from "components"
 import classNames from "classnames"
 
-export const CareerVacancies = () => {
+const CareerVacancies = () => {
   return (
     <div className={styles.content}>
       {dummyVacancies.map((vacancy, index) => (
@@ -41,3 +41,5 @@ export const CareerVacancies = () => {
     </div>
   )
 }
+
+export default CareerVacancies

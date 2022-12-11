@@ -1,1 +1,1 @@
-export { default } from "modules/blocks/Outro/WordsSwiper/WordsSwiper"
+export { default } from "./WordsSwiper"
