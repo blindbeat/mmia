@@ -4,6 +4,8 @@
 }
 
 .text {
+  position: sticky;
+  top: var(--headerHeight);
   display: grid;
   padding-bottom: var(--2xl);
   grid-template-columns: repeat(2, 1fr);
@@ -15,7 +17,7 @@
 }
 
 .step {
-  position: relative;
+  position: sticky;
   display: grid;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   background: white;
@@ -63,11 +65,16 @@
 }
 
 @media (max-width: calc(48em - 1px)) {
+  .text {
+    position: unset;
+  }
+
   .text h3 {
     max-width: unset;
   }
 
   .step {
+    position: unset;
     border-top: none;
     grid-template-columns: 3.5rem 1fr;
     column-gap: 1rem;

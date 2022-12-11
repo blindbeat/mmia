@@ -1,9 +1,7 @@
 import styles from "./BuildingPreparation.module.css"
 import { Heading, ScreenTitle } from "components"
 import { formIndexString } from "misc/utils"
-import { motion } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
-import { useAnimateLayering, useThresholdObserver } from "hooks"
+import { useCalcElementHeight } from "hooks"
 
 const heading = "What documents are required for capital repairs?"
 
@@ -17,45 +15,19 @@ const step: Step = {
 }
 
 const steps: Step[] = new Array(5).fill(step)
-const textOffset = 75
 const BuildingPreparation = () => {
-  const [headerHeight, setHeaderHeight] = useState(0)
-  const ref = useRef<HTMLDivElement>(null)
-  const y = useAnimateLayering(ref, textOffset)
-
-  const extendsThreshold = useThresholdObserver(768)
-
-  useEffect(() => {
-    const elem = ref.current
-    if (!elem) return
-    setHeaderHeight(
-      elem.offsetHeight -
-        (parseFloat(getComputedStyle(elem).paddingBottom) / 3) * 2
-    )
-  }, [])
+  const { ref, height } = useCalcElementHeight()
 
   return (
     <div className={styles.content}>
-      <motion.div
-        ref={ref}
-        style={{
-          y: extendsThreshold ? y : undefined,
-          zIndex: 0,
-        }}
-        className={styles.text}
-      >
+      <div ref={ref} style={{}} className={styles.text}>
         <ScreenTitle className={styles.title}>preparation</ScreenTitle>
         <Heading as="h3" className={styles.heading}>
           {heading}
         </Heading>
-      </motion.div>
+      </div>
       {steps.map((step, index) => (
-        <Step
-          key={index}
-          step={step}
-          index={index}
-          offset={60 * index + headerHeight + textOffset}
-        />
+        <Step key={index} index={index} step={step} offset={height} />
       ))}
     </div>
   )
@@ -70,26 +42,22 @@ interface StepProps {
 }
 
 const Step = ({ index, step, offset }: StepProps) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const y = useAnimateLayering(ref, offset)
-  const extendsThreshold = useThresholdObserver(768)
+  const { ref, height } = useCalcElementHeight()
 
   return (
-    <motion.div
+    <div
       className={styles.step}
       style={{
-        y: extendsThreshold ? y : undefined,
-        zIndex: index,
+        top: `calc(${offset + index * height}px + var(--headerHeight)`,
       }}
-      ref={ref}
     >
       <span className={styles.index}>{formIndexString(index)}</span>
-      <h5>{step.heading}</h5>
+      <h5 ref={ref}>{step.heading}</h5>
       <div className={styles.stepText}>
         <p>{step.text}</p>
         <p>{step.text}</p>
         <p>{step.text}</p>
       </div>
-    </motion.div>
+    </div>
   )
 }

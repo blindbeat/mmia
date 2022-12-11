@@ -298,7 +298,7 @@ const MarkerAnimated = ({
           }}
         />
         {count > 0 &&
-          [...new Array(3)].map((_, index) => (
+          [...new Array(2)].map((_, index) => (
             <motion.circle
               key={`${count}_${index}`}
               className={styles.animationCircleWave}
