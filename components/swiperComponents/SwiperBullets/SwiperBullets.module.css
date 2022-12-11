@@ -16,9 +16,3 @@
 .swiperPaginationBulletActive {
   opacity: 0.75;
 }
-
-@media (min-width: calc(48em - 1px)) {
-  .swiperPaginationHorizontal {
-    display: none;
-  }
-}

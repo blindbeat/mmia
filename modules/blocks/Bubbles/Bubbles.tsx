@@ -27,7 +27,7 @@ const Bubbles = ({ bubbles, className }: Props) => {
       </div>
       <Swiper
         className={styles.bubblesSwiper}
-        slidesPerView={1.5}
+        slidesPerView="auto"
         centeredSlides
         modules={[Pagination]}
         pagination={{
@@ -36,16 +36,7 @@ const Bubbles = ({ bubbles, className }: Props) => {
           bulletClass: swiperStyles.bulletClass,
           bulletActiveClass: swiperStyles.bulletActiveClass,
         }}
-        breakpoints={{
-          768: {
-            slidesPerView: 3.5,
-          },
-          1024: {
-            pagination: {
-              enabled: false,
-            },
-          },
-        }}
+        loop
       >
         {bubbles.map(({ title, text }, index) => (
           <SwiperSlide key={index}>

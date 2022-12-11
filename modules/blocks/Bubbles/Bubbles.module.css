@@ -30,4 +30,8 @@
     display: block;
     width: 100%;
   }
+
+  .bubblesSwiper :global(.swiper-slide) {
+    width: 250px;
+  }
 }

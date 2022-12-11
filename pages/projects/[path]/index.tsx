@@ -29,7 +29,7 @@ const materials = [
     image: material2,
   },
 ]
-export const Project: NextPageWithLayoutConfig = () => {
+const Project: NextPageWithLayoutConfig = () => {
   const {
     query: { path },
   } = useRouter()
