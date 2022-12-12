@@ -76,7 +76,7 @@ const Contact: NextPageWithLayoutConfig = () => {
   }, [])
 
   useEffect(() => {
-    if (!lastWaveEnded) return
+    if (!lastWaveEnded || points.length < 3) return
     increaseRandomAnimationIndex()
     const interval = setInterval(increaseRandomAnimationIndex, 1000)
     return () => clearInterval(interval)
