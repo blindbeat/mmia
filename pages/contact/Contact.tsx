@@ -68,8 +68,6 @@ const Contact: NextPageWithLayoutConfig = () => {
 
     lastIndexAnimated.current = randomIndexInArray
 
-    console.log(randomIndexInArray)
-
     setWaveTriggeringCountingArray((state) => {
       const newState = [...state]
       newState[randomIndexInArray] = state[randomIndexInArray] + 1
