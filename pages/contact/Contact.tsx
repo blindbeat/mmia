@@ -47,10 +47,42 @@ const contacts: Contact[] = [
 const Contact: NextPageWithLayoutConfig = () => {
   const [mapElemState, setMapElemState] = useState<HTMLDivElement | null>(null)
   const mapElem = useRef<HTMLDivElement | null>(null)
+  const [lastWaveEnded, setLastWaveEnded] = useState(false)
+  const [waveTriggeringCountingArray, setWaveTriggeringCountingArray] =
+    useState([...new Array(points.length).fill(0)])
 
   useEffect(() => {
     setMapElemState(mapElem.current as HTMLDivElement)
   }, [])
+
+  const lastIndexAnimated = useRef<null | number>(null)
+
+  const increaseRandomAnimationIndex = useCallback(() => {
+    let randomIndexInArray = Math.floor(Math.random() * points.length)
+    while (
+      lastIndexAnimated.current !== null &&
+      lastIndexAnimated.current == randomIndexInArray
+    ) {
+      randomIndexInArray = Math.floor(Math.random() * points.length)
+    }
+
+    lastIndexAnimated.current = randomIndexInArray
+
+    console.log(randomIndexInArray)
+
+    setWaveTriggeringCountingArray((state) => {
+      const newState = [...state]
+      newState[randomIndexInArray] = state[randomIndexInArray] + 1
+      return newState
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!lastWaveEnded) return
+    increaseRandomAnimationIndex()
+    const interval = setInterval(increaseRandomAnimationIndex, 1000)
+    return () => clearInterval(interval)
+  }, [increaseRandomAnimationIndex, lastWaveEnded])
 
   return (
     <div className={styles.content} ref={mapElem} id="map">
@@ -71,10 +103,14 @@ const Contact: NextPageWithLayoutConfig = () => {
         {mapElemState &&
           points.map((point, index) => (
             <MarkerAnimated
-              portalTarget={mapElemState}
-              delay={index / 5}
               key={point.join()}
+              delay={index / 5}
               coordinates={point}
+              portalTarget={mapElemState}
+              animationTriggeringNumber={waveTriggeringCountingArray[index]}
+              setLastWaveEnded={
+                index === points.length - 1 ? setLastWaveEnded : undefined
+              }
             />
           ))}
       </ComposableMap>
@@ -129,18 +165,21 @@ export default Contact
 interface MarkerAnimatedProps extends MarkerProps {
   delay: number
   portalTarget: HTMLDivElement
+  animationTriggeringNumber: number
+  setLastWaveEnded?: (isEnded: boolean) => void
 }
 
 const MarkerAnimated = ({
   delay,
   portalTarget,
+  animationTriggeringNumber,
+  setLastWaveEnded,
   ...rest
 }: MarkerAnimatedProps) => {
   const [hovered, setHovered] = useState(false)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const markerRef = useRef<null | SVGPathElement>(null)
-  // counter used with keys to force rerendering of waves
-  const [count, setCount] = useState(0)
+  const [animationComplete, setAnimationComplete] = useState(false)
 
   const positionSetter = useCallback(() => {
     const elem = markerRef.current
@@ -152,7 +191,6 @@ const MarkerAnimated = ({
     const y = rect.y + rect.height / 2 - parentRect.y
     setPosition([x, y])
   }, [])
-
   useEffect(() => {
     positionSetter()
     window.addEventListener("resize", positionSetter)
@@ -315,22 +353,26 @@ const MarkerAnimated = ({
             fill: [null, "#aaa", "#666"],
             r: [null, 3.5, 2.5],
           }}
-          onAnimationComplete={() => setCount((state) => state + 1)}
+          onAnimationComplete={() => setAnimationComplete(true)}
           transition={{
             delay,
             duration: 1.5,
             type: "spring",
           }}
         />
-        {count > 0 &&
+        {/*counter used with keys to force rerendering of waves*/}
+        {animationComplete &&
           [...new Array(2)].map((_, index) => (
             <motion.circle
-              key={`${count}_${index}`}
+              key={`${animationTriggeringNumber}_${index}`}
               className={styles.animationCircleWave}
               animate={{
                 opacity: [0, 0.6, 0.2, 0],
                 fill: "white",
                 r: [2.5, 2.5, 10, 35],
+              }}
+              onAnimationComplete={() => {
+                if (setLastWaveEnded && index === 1) setLastWaveEnded(true)
               }}
               transition={{
                 times: [0, 0.1, 0.3, 1],
