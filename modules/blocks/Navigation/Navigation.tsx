@@ -4,7 +4,7 @@ import Link from "next/link"
 import CtaLink from "./CtaLink"
 import { useCallback, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
-import { LanguageChangeButton, LinkWithLine } from "components"
+import { ComponentWithLineAdornment, LanguageChangeButton } from "components"
 import NavLinkAnimated from "./NavLinkAnimated"
 import {
   AnimatePresence,
@@ -212,7 +212,6 @@ const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
       duration: 0.3,
     },
   }
-  const CornerComponent = extendsThreshold ? CtaLink : LanguageChangeButton
 
   return (
     <motion.nav
@@ -285,8 +284,17 @@ const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <CornerComponent href="#" className={classNames(styles.corner)} />
+        {extendsThreshold ? (
+          <CtaLink
+            handleCLick={startFullscreenCollapse}
+            className={classNames(styles.corner)}
+          />
+        ) : (
+          <LanguageChangeButton
+            href="#"
+            className={classNames(styles.corner)}
+          />
+        )}
       </header>
       <div className={styles.fullscreenLinks}>
         <AnimatePresence onExitComplete={handleFullscreenNavClosed}>
@@ -336,7 +344,9 @@ const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
         </AnimatePresence>
       </div>
       <div className={styles.link}>
-        <LinkWithLine>drop request</LinkWithLine>
+        <ComponentWithLineAdornment as="button">
+          drop request
+        </ComponentWithLineAdornment>
       </div>
       <div className={styles.footer}>
         <motion.a

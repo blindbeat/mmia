@@ -9,9 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Controller, EffectFade, Pagination } from "swiper"
 import classNames from "classnames"
 import {
+  ComponentWithLineAdornment,
   Heading,
   LanguageChangeButton,
-  LinkWithLine,
   Paragraph,
 } from "components"
 import Socials from "modules/blocks/Socials"
@@ -90,9 +90,13 @@ const HomeLanding = () => {
                   style={createAnimationDelayStyle(3)}
                   className={utilStyles.textAppear}
                 >
-                  <LinkWithLine className={classNames(styles.linkWithLine)}>
+                  <ComponentWithLineAdornment
+                    as="Link"
+                    href=""
+                    className={classNames(styles.linkWithLine)}
+                  >
                     view more
-                  </LinkWithLine>
+                  </ComponentWithLineAdornment>
                 </div>
               </div>
             </SwiperSlide>

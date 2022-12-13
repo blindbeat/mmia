@@ -2,7 +2,7 @@ import styles from "./Outro.module.css"
 import WordsSwiper from "./WordsSwiper"
 import ImagesSwiper from "./ImagesSwiper"
 import { dummyParagraph } from "assets/dummyText"
-import { LinkWithLine, Paragraph } from "components"
+import { ComponentWithLineAdornment, Paragraph } from "components"
 import BackgroundImage from "./assets/backgroundLine.svg"
 import { useAnimateLine } from "hooks"
 
@@ -17,9 +17,13 @@ const Outro = () => {
       <div className={styles.paragraphWrapper}>
         <Paragraph className={styles.paragraph}>{dummyParagraph}</Paragraph>
       </div>
-      <LinkWithLine color="black" className={styles.link}>
+      <ComponentWithLineAdornment
+        as="button"
+        color="black"
+        className={styles.CTA}
+      >
         drop request
-      </LinkWithLine>
+      </ComponentWithLineAdornment>
       <BackgroundImage
         ref={ref}
         style={style}

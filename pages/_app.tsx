@@ -9,6 +9,10 @@ import { NextPage } from "next"
 import { LayoutConfig } from "Layout/Layout"
 import localFont from "@next/font/local"
 import Head from "next/head"
+import RequestModal from "modules/blocks/RequestModal"
+import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
+import { RequestOpenerContext } from "contexts"
 
 const Helvetica = localFont({
   src: [
@@ -37,14 +41,19 @@ export default function MyApp({
   Component,
   pageProps,
 }: AppPropsWithLayoutConfig) {
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false)
+
   return (
-    <>
+    <RequestOpenerContext.Provider value={setIsRequestModalOpen}>
       <Head>
         <title>MMIA</title>
       </Head>
       <Layout config={Component.layoutConfig} className={Helvetica.className}>
+        <AnimatePresence>
+          {isRequestModalOpen && <RequestModal />}
+        </AnimatePresence>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </RequestOpenerContext.Provider>
   )
 }

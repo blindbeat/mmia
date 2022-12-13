@@ -1,13 +1,15 @@
-import Link, { LinkProps } from "next/link"
 import styles from "./CtaLink.module.css"
 import classNames from "classnames"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
+import { useRequestOpener } from "hooks"
 
-const CtaLink = ({
-  className,
-  ...rest
-}: ComponentPropsWithoutRef<"a"> & LinkProps) => {
+interface Props extends ComponentPropsWithoutRef<"button"> {
+  handleCLick?: () => void
+}
+const CtaLink = ({ className, handleCLick, ...rest }: Props) => {
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false)
+
+  const openRequest = useRequestOpener()
 
   const pathRef = useRef<SVGPathElement | null>(null)
   const [lineLength, setLineLength] = useState(0)
@@ -19,15 +21,21 @@ const CtaLink = ({
     setLineLength(path.getTotalLength())
   }, [])
 
+  const handleClick = () => {
+    handleCLick?.()
+    openRequest()
+  }
+
   return (
-    <Link
-      className={classNames(styles.content, className)}
+    <button
       onMouseEnter={() => {
         if (isAnimationPlaying) return
         setIteration(iteration + 1)
         setIsAnimationPlaying(true)
       }}
       onTransitionEnd={() => setIsAnimationPlaying(false)}
+      onClick={handleClick}
+      className={classNames(styles.content, className)}
       {...rest}
     >
       <span>
@@ -51,7 +59,7 @@ const CtaLink = ({
           />
         </svg>
       </span>
-    </Link>
+    </button>
   )
 }
 export default CtaLink

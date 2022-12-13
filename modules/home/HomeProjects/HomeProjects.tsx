@@ -1,6 +1,11 @@
 import utilStyles from "styles/utils.module.css"
 import styles from "./HomeProjects.module.css"
-import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
+import {
+  ComponentWithLineAdornment,
+  Heading,
+  Paragraph,
+  ScreenTitle,
+} from "components"
 import HomeProjectsSwiper from "./Swiper"
 import classNames from "classnames"
 
@@ -18,9 +23,13 @@ const HomeProjects = () => {
         <Paragraph>{paragraph}</Paragraph>
       </div>
       <HomeProjectsSwiper className={styles.swiper} />
-      <LinkWithLine color="black" className={styles.link}>
+      <ComponentWithLineAdornment
+        href="projects"
+        color="black"
+        className={styles.link}
+      >
         view more
-      </LinkWithLine>
+      </ComponentWithLineAdornment>
     </div>
   )
 }

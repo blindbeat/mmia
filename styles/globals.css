@@ -47,6 +47,10 @@ body {
   letter-spacing: 0.04em;
 }
 
+body {
+  overflow: overlay;
+}
+
 button {
   padding: 0;
   cursor: pointer;
@@ -122,6 +126,16 @@ p {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-weight: 200 !important;
+}
+
+button {
+  text-transform: uppercase;
   color: inherit;
 }
 

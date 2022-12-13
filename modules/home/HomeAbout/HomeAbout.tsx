@@ -1,5 +1,10 @@
 import styles from "./HomeAbout.module.css"
-import { Heading, LinkWithLine, Paragraph, ScreenTitle } from "components"
+import {
+  ComponentWithLineAdornment,
+  Heading,
+  Paragraph,
+  ScreenTitle,
+} from "components"
 import Image from "next/image"
 import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
 import backdropPhoto from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
@@ -36,9 +41,14 @@ const HomeAbout = () => {
           {paragraph.map((text, index) => (
             <Paragraph key={index}>{text}</Paragraph>
           ))}
-          <LinkWithLine color="black" className={styles.link}>
+          <ComponentWithLineAdornment
+            as="Link"
+            href=""
+            color="black"
+            className={styles.link}
+          >
             view more
-          </LinkWithLine>
+          </ComponentWithLineAdornment>
         </div>
         <div className={styles.imageWrapper}>
           <Image

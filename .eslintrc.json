@@ -24,6 +24,7 @@
       "error",
       { "props": "never", "children": "never" }
     ],
+    "react/no-unescaped-entities": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off"
   }

@@ -1,6 +1,6 @@
 import styles from "./FooterAbout.module.css"
 import utilStyles from "styles/utils.module.css"
-import { Heading, LinkWithLine } from "components"
+import { ComponentWithLineAdornment, Heading } from "components"
 import Link from "next/link"
 import classNames from "classnames"
 import BackgroundSvg from "./assets/backgroundLine.svg"
@@ -19,7 +19,9 @@ const FooterAbout = () => {
     <div className={classNames(styles.content, utilStyles.wrapper)}>
       <div className={styles.ctaBlock}>
         <Heading as="h3">{ctaText}</Heading>
-        <LinkWithLine color="black">drop request</LinkWithLine>
+        <ComponentWithLineAdornment as="button" color="black">
+          drop request
+        </ComponentWithLineAdornment>
       </div>
       <div className={styles.pages}>
         <span className={styles.blockTitle}>pages</span>

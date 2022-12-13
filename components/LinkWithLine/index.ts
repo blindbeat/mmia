@@ -1,1 +1,1 @@
-export * from "./LinkWithLine"
+export * from "components/LinkWithLine/ComponentWithLineAdornment"

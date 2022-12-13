@@ -1,5 +1,6 @@
 import {
   ComponentPropsWithoutRef,
+  ElementType,
   ReactNode,
   useEffect,
   useRef,
@@ -7,23 +8,34 @@ import {
 } from "react"
 import styles from "components/LinkWithLine/LinkWithLine.module.css"
 import classNames from "classnames"
-import Link from "next/link"
+import Link, { LinkProps } from "next/link"
+import { useRequestOpener } from "hooks"
 
-interface Props extends ComponentPropsWithoutRef<"a"> {
+type AllowedType = "button" | "a" | "Link"
+
+type Props<T extends AllowedType> = {
   color?: string
   children?: ReactNode
-}
+  as?: T
+} & (T extends "button"
+  ? ComponentPropsWithoutRef<"button">
+  : ComponentPropsWithoutRef<"a"> & LinkProps)
 
-export const LinkWithLine = ({
+export const ComponentWithLineAdornment = <T extends AllowedType = "Link">({
+  as,
   color = "white",
   className,
   children,
+  onClick,
   ...rest
-}: Props) => {
+}: Props<T>) => {
+  const Component =
+    as === "Link" || as === undefined ? Link : (as as ElementType)
   const [hovered, setHovered] = useState(false)
 
   const pathRef = useRef<SVGPathElement | null>(null)
   const pathLengthRef = useRef<number | null>(null)
+  const openRequest = useRequestOpener()
 
   useEffect(() => {
     if (!pathRef.current) return
@@ -31,11 +43,11 @@ export const LinkWithLine = ({
   }, [])
 
   return (
-    <Link
-      href="#"
+    <Component
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={classNames(styles.content, className)}
+      onClick={onClick ?? as === "button" ? openRequest : undefined}
       {...rest}
     >
       <span
@@ -67,6 +79,6 @@ export const LinkWithLine = ({
           }}
         />
       </svg>
-    </Link>
+    </Component>
   )
 }

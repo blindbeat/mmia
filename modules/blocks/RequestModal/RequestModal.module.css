@@ -1,0 +1,113 @@
+.wrapper {
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  backdrop-filter: brightness(0.6);
+  place-items: center;
+}
+
+.requestWindow {
+  position: relative;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 55em;
+  color: white;
+  background: rgba(23, 23, 23, 1);
+}
+
+.requestWindowContent {
+  padding: var(--sm) 12.5%;
+}
+
+.header,
+.paragraph {
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  max-width: 9.5em;
+  margin-bottom: var(--2xs);
+}
+
+.paragraph {
+  max-width: 25em;
+  margin-bottom: var(--xl);
+}
+
+.formLinks {
+  display: grid;
+  margin-bottom: var(--lg);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--md-gap) var(--sm);
+}
+
+.form input:-webkit-autofill,
+.form textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgba(23, 23, 23, 1) inset;
+  -webkit-text-fill-color: white;
+}
+
+.message {
+  grid-column: 1 / -1;
+}
+
+.message *::-webkit-scrollbar {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  background: transparent;
+}
+
+.message *::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #999;
+}
+
+.form button {
+  margin: auto;
+}
+
+.crossButton {
+  position: absolute;
+  top: 1.25em;
+  right: 1.25em;
+  width: 2.25em;
+  height: 2.25em;
+  padding: 0.5em;
+}
+
+.crossButton svg path {
+  transition: opacity var(--ts);
+  opacity: 0.7;
+}
+
+.crossButton:hover svg path {
+  opacity: 1;
+}
+
+@media (max-width: 50em) {
+  .requestWindow {
+    width: 35em;
+  }
+
+  .formLinks {
+    grid-template-columns: auto;
+  }
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .requestWindow {
+    width: 100%;
+    height: 100%;
+  }
+
+  .requestWindowContent {
+    padding: var(--sm) var(--wrapper-padding-x);
+  }
+}

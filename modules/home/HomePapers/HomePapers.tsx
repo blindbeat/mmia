@@ -3,7 +3,12 @@ import utilStyles from "styles/utils.module.css"
 import styles from "./HomePapers.module.css"
 import Image from "next/image"
 import backgroundImage from "assets/dummyPics/home/homePapers/scaffolding.jpg"
-import { Bubble, Heading, LinkWithLine, Paragraph } from "components"
+import {
+  Bubble,
+  ComponentWithLineAdornment,
+  Heading,
+  Paragraph,
+} from "components"
 import { useRef, useState } from "react"
 import { useThresholdObserver } from "hooks"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -49,9 +54,13 @@ const HomePapers = () => {
         <div className={styles.text}>
           <Heading as="h3">{textHeading}</Heading>
           <Paragraph>{dummyParagraph}</Paragraph>
-          <LinkWithLine color="white" className={styles.link}>
+          <ComponentWithLineAdornment
+            href=""
+            color="white"
+            className={styles.link}
+          >
             view more
-          </LinkWithLine>
+          </ComponentWithLineAdornment>
         </div>
         <div className={styles.papersWrapper}>
           <div className={styles.papers}>
