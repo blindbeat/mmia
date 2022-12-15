@@ -27,7 +27,7 @@ const BuildingPreparation = () => {
         </Heading>
       </div>
       {steps.map((step, index) => (
-        <Step key={index} index={index} step={step} offset={height} />
+        <Step key={index} index={index} step={step} offset={height / 4} />
       ))}
     </div>
   )
