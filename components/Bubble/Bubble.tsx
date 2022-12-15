@@ -2,7 +2,6 @@ import styles from "./Bubble.module.css"
 import { ComponentPropsWithoutRef, MouseEvent } from "react"
 import classNames from "classnames"
 import { motion, useSpring } from "framer-motion"
-import { SpringOptions } from "popmotion"
 
 type CoordsTuple = [x: number, y: number]
 
@@ -28,7 +27,7 @@ function calcPadding(target: HTMLDivElement) {
   ]
 }
 
-const springOptions: SpringOptions = {
+const springOptions = {
   stiffness: 75,
   mass: 0.02,
 }
