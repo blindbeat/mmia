@@ -11,7 +11,6 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion"
-import { SpringOptions } from "popmotion"
 
 interface Props {
   mediaArr: Media[]
@@ -87,7 +86,7 @@ interface CardProps {
   handleInViewChange: (inView: boolean) => void
 }
 
-const springOptions: SpringOptions = {
+const springOptions = {
   stiffness: 75,
   mass: 0.02,
 }
