@@ -41,7 +41,7 @@ const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
 }
 
 Projects.layoutConfig = {
-  adaptiveHeaderTransparency: false,
+  HeaderAdaptiveTransparency: false,
 }
 
 export default Projects

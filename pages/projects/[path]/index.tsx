@@ -67,7 +67,7 @@ const Project: NextPageWithLayoutConfig = () => {
 }
 
 Project.layoutConfig = {
-  adaptiveHeaderTransparency: false,
+  HeaderAdaptiveTransparency: false,
   showFooter: false,
   headerMargin: `var(--2xl)`,
 }

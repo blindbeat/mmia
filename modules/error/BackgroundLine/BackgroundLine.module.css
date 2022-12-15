@@ -1,0 +1,6 @@
+.backgroundLine {
+  position: absolute;
+  z-index: -1;
+  width: auto;
+  height: 100%;
+}

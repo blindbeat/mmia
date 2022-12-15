@@ -5,8 +5,9 @@ import styles from "./Layout.module.css"
 import classNames from "classnames"
 
 export interface LayoutConfig {
-  adaptiveHeaderTransparency: boolean
-  adaptiveHeaderHiding: boolean | number
+  showHeader: boolean
+  HeaderAdaptiveTransparency: boolean
+  HeaderAdaptiveHidingBreakpoint: boolean | number
   showFooter: boolean
   headerMargin: null | undefined | string
 }
@@ -19,32 +20,21 @@ function Layout({
   children,
   className,
   config: {
+    showHeader = true,
     showFooter = true,
-    adaptiveHeaderTransparency = true,
-    adaptiveHeaderHiding = true,
+    HeaderAdaptiveTransparency = true,
+    HeaderAdaptiveHidingBreakpoint = true,
     headerMargin,
   } = {},
 }: Props) {
-  // let mainPaddingTop
-  // switch (headerMargin) {
-  //   case null: {
-  //     mainPaddingTop = undefined
-  //     break
-  //   }
-  //   case undefined: {
-  //     mainPaddingTop = `calc(${headerHeight}px + ${headerMargin})`
-  //     break
-  //   }
-  //   default: {
-  //     mainPaddingTop = `calc(${headerHeight}px + var(--5xl))`
-  //   }
-  // }
   return (
     <>
-      <Navigation
-        adaptiveTransparency={adaptiveHeaderTransparency}
-        adaptiveHiding={adaptiveHeaderHiding}
-      />
+      {showHeader && (
+        <Navigation
+          adaptiveTransparency={HeaderAdaptiveTransparency}
+          adaptiveHidingBreakpoint={HeaderAdaptiveHidingBreakpoint}
+        />
+      )}
       <div
         className={classNames(
           headerMargin !== null && styles.headerHeightPadding

@@ -6,8 +6,8 @@ const Career: NextPageWithLayoutConfig = () => {
 }
 
 Career.layoutConfig = {
-  adaptiveHeaderTransparency: false,
-  adaptiveHeaderHiding: 1024,
+  HeaderAdaptiveTransparency: false,
+  HeaderAdaptiveHidingBreakpoint: 1024,
   showFooter: false,
   headerMargin: "0",
 }

@@ -68,17 +68,20 @@ const headerNavAnimation: MotionProps = {
 
 interface Props {
   adaptiveTransparency: boolean
-  adaptiveHiding: boolean | number
+  adaptiveHidingBreakpoint: boolean | number
 }
 
 const MotionSocials = motion(Socials) as typeof motion.div
-const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
+const Navigation = ({
+  adaptiveTransparency,
+  adaptiveHidingBreakpoint,
+}: Props) => {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
 
   const [adaptiveHidingState, setAdaptiveHidingState] = useState<boolean>(
-    !!adaptiveHiding
+    !!adaptiveHidingBreakpoint
   )
 
   const [navState, setNavState] = useState<navState | null>(null)
@@ -93,20 +96,20 @@ const Navigation = ({ adaptiveTransparency, adaptiveHiding }: Props) => {
   const extendsThreshold = useThresholdObserver(1024)
 
   const adaptiveHidingController = useCallback(() => {
-    if (typeof adaptiveHiding === "boolean") return
-    setAdaptiveHidingState(window.innerWidth < adaptiveHiding)
-  }, [adaptiveHiding])
+    if (typeof adaptiveHidingBreakpoint === "boolean") return
+    setAdaptiveHidingState(window.innerWidth < adaptiveHidingBreakpoint)
+  }, [adaptiveHidingBreakpoint])
 
   useEffect(() => {
-    if (typeof adaptiveHiding === "boolean")
-      setAdaptiveHidingState(adaptiveHiding)
+    if (typeof adaptiveHidingBreakpoint === "boolean")
+      setAdaptiveHidingState(adaptiveHidingBreakpoint)
     else {
       adaptiveHidingController()
       window.addEventListener("resize", adaptiveHidingController)
       return () =>
         window.removeEventListener("resize", adaptiveHidingController)
     }
-  }, [adaptiveHiding])
+  }, [adaptiveHidingBreakpoint])
 
   const calcHeaderRect = () => {
     const header = headerRef.current

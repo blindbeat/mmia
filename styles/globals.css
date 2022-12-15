@@ -32,6 +32,7 @@
   --ts: 0.3s;
 
   --headerHeight: 6rem;
+  --darkColor: rgba(23, 23, 23, 1);
 }
 
 * {

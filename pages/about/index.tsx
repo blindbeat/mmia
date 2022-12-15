@@ -26,5 +26,5 @@ const About: NextPageWithLayoutConfig = () => {
 export default About
 
 About.layoutConfig = {
-  adaptiveHeaderTransparency: false,
+  HeaderAdaptiveTransparency: false,
 }

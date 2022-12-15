@@ -51,7 +51,7 @@ const Media: NextPageWithLayoutConfig<Props> = ({ mediaArr }) => {
 }
 
 Media.layoutConfig = {
-  adaptiveHeaderTransparency: false,
+  HeaderAdaptiveTransparency: false,
 }
 
 export default Media

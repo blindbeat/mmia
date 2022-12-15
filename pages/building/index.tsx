@@ -22,7 +22,7 @@ const Building: NextPageWithLayoutConfig = () => {
 }
 
 Building.layoutConfig = {
-  adaptiveHeaderTransparency: false,
+  HeaderAdaptiveTransparency: false,
 }
 
 export default Building
