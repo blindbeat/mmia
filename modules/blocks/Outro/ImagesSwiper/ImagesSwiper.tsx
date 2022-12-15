@@ -66,6 +66,9 @@ interface SwiperEntityProps extends SwiperProps {
   images: NextImageSrc[]
 }
 
+const sizes = `(max-width: 1024px) 50vw,
+               25vw,
+              `
 const SwiperEntity = ({ images, modules = [], ...rest }: SwiperEntityProps) => (
   <Swiper
     loop
@@ -87,7 +90,7 @@ const SwiperEntity = ({ images, modules = [], ...rest }: SwiperEntityProps) => (
   >
     {images.map((src, index) => (
       <SwiperSlide key={index} className={styles.slide}>
-        <Image src={src} alt="" className={styles.image} />
+        <Image src={src} alt="" sizes={sizes} className={styles.image} />
       </SwiperSlide>
     ))}
   </Swiper>

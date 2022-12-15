@@ -7,6 +7,7 @@ import BackgroundImage from "./assets/backgroundLine.svg"
 import { useAnimateLine } from "hooks"
 
 const title = "Did you like this project?"
+
 const Outro = () => {
   const { ref, style } = useAnimateLine()
   return (

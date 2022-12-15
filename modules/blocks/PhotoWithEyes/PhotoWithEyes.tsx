@@ -122,11 +122,12 @@ export const PhotoWithEyes = ({
       <Image
         src={image}
         alt=""
-        className={classNames(styles.image, styles.imageEyesClip)}
+        sizes="100vw"
         style={{
           visibility: visible ? "visible" : "hidden",
           clipPath: `url(#eyeClip)`,
         }}
+        className={classNames(styles.image, styles.imageEyesClip)}
       />
     </div>
   )

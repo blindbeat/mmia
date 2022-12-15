@@ -19,6 +19,7 @@ export default function ProjectNextPreviewBlock() {
       <Image
         src={NextProjectImage}
         alt=""
+        sizes="100vw"
         className={classNames(styles.image, styles.imageBackground)}
       />
     </div>

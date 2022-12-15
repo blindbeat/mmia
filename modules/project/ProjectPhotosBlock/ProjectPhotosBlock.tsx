@@ -14,7 +14,14 @@ export default function ProjectPhotosBlock({
   photos,
   photoOrientation,
 }: Props) {
-  // photos = [photos[0]]
+  const sizes =
+    photoOrientation === "vertical"
+      ? `(max-width: 1024px) 100vw,
+         50vw,
+         `
+      : `100vw
+        `
+
   return (
     <div
       className={classNames(
@@ -24,7 +31,7 @@ export default function ProjectPhotosBlock({
     >
       {photos.map((src, index) => (
         <div key={index} className={styles.imageWrapper}>
-          <Image className={styles.image} src={src} alt="" />
+          <Image className={styles.image} src={src} alt="" sizes={sizes} />
         </div>
       ))}
     </div>

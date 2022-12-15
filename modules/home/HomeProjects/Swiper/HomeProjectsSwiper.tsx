@@ -24,7 +24,7 @@ const imageSizes = `
                    (max-width: calc(48em - 1px)) 100vw,
                    (max-width: calc(64em - 1px)) 60vw,
                    50vw,
-  `
+                   `
 
 function HomeProjectsSwiper({ className, ...rest }: SwiperProps) {
   return (

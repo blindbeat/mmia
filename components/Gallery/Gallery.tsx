@@ -15,6 +15,12 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   images: NextImageSrc[] | NextImageSrc
 }
 
+const imageSizes = `
+                   (max-width: calc(48em - 1px)) 100vw,
+                   (max-width: calc(64em - 1px)) 60vw,
+                   50vw,
+                   `
+
 export const Gallery = ({ images, className }: Props) => {
   return (
     <div className={className}>
@@ -59,7 +65,12 @@ export const Gallery = ({ images, className }: Props) => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={index} className={styles.slide}>
-              <Image src={src} className={styles.image} alt="" />
+              <Image
+                src={src}
+                alt=""
+                sizes={imageSizes}
+                className={styles.image}
+              />
             </SwiperSlide>
           ))}
           <SwiperNavigationNext className={classNames(styles.next)} />

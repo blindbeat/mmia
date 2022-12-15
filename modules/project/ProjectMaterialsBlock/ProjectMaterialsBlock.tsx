@@ -15,6 +15,10 @@ interface Props {
   materials: description[]
 }
 
+const sizes = `(max-width: 1024px) 50vw,
+               25vw,
+              `
+
 export default function ProjectMaterialsBlock({ materials }: Props) {
   return (
     <div className={styles.content}>
@@ -25,7 +29,7 @@ export default function ProjectMaterialsBlock({ materials }: Props) {
         {materials.map(({ image: src }, index) => (
           <div key={index} className={styles.imageWrapper}>
             <span className={styles.imageIndex}>{`0${index + 1}.`}</span>
-            <Image src={src} alt="" className={styles.image} />
+            <Image src={src} alt="" sizes={sizes} className={styles.image} />
           </div>
         ))}
       </div>
