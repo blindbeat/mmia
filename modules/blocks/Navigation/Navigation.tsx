@@ -62,6 +62,7 @@ const headerNavAnimation: MotionProps = {
     opacity: 0,
   },
   transition: {
+    duration: 0.3,
     type: "tween",
   },
 }
@@ -162,14 +163,14 @@ const Navigation = ({
     }
   }
 
+  const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const handleFullscreenButton = () => {
     if (!isFullscreen) {
       setIsFullscreen(true)
     } else {
-      setFullscreenNavShouldBeVisible(false)
+      startFullscreenCollapse()
     }
   }
-  const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const handleFullscreenNavClosed = () => {
     setIsFullscreen(false)
   }
@@ -261,7 +262,7 @@ const Navigation = ({
           <Logo />
         </Link>
         <AnimatePresence mode="wait">
-          {isFullscreen ? (
+          {isFullscreen || fullscreenNavShouldBeVisible ? (
             <MotionSocials
               key="socialsModule"
               {...headerNavAnimation}
