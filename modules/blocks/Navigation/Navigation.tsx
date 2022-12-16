@@ -175,11 +175,11 @@ const Navigation = ({
   }
 
   const springValueHard = useSpring(10, {
-    damping: 20,
+    damping: 25,
     stiffness: 150,
   })
   const springValueSoft = useSpring(10, {
-    damping: 20,
+    damping: 25,
   })
 
   const springValueTransformed = useTransform(
