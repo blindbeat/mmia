@@ -17,8 +17,8 @@ import {
   AnimatePresence,
   motion,
   MotionProps,
-  Transition,
-  Variants,
+  useSpring,
+  useTransform,
 } from "framer-motion"
 import Socials from "modules/blocks/Socials"
 import { useThresholdObserver } from "hooks"
@@ -80,6 +80,11 @@ interface Props {
   navFullscreenSetter: Dispatch<SetStateAction<boolean>>
 }
 
+interface RectSize {
+  width: number
+  height: number
+}
+
 const MotionSocials = motion(Socials) as typeof motion.div
 
 const Navigation = ({
@@ -100,9 +105,25 @@ const Navigation = ({
     useState(false)
 
   const headerRef = useRef<HTMLDivElement>(null)
-  const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
-    number | null
-  >(null)
+  const [windowRect, setWindowRect] = useState<RectSize>({
+    width: 0,
+    height: 0,
+  })
+  const [headerHeight, setHeaderHeight] = useState(0)
+
+  const rectSetter = useCallback(() => {
+    if (!headerRef.current) throw new Error(`header not found`)
+    setHeaderHeight(headerRef.current.getBoundingClientRect().height)
+    setWindowRect({ width: window.innerWidth, height: window.innerHeight })
+  }, [])
+
+  useEffect(() => {
+    rectSetter()
+    window.addEventListener("resize", rectSetter)
+    return () => {
+      window.removeEventListener("resize", rectSetter)
+    }
+  }, [rectSetter])
 
   const extendsThreshold = useThresholdObserver(1024)
 
@@ -121,19 +142,6 @@ const Navigation = ({
     }
   }, [adaptiveHidingBreakpoint, adaptiveHidingController])
 
-  const calcHeaderRect = useCallback(() => {
-    const header = headerRef.current
-    if (!header) return
-    const height = header.getBoundingClientRect().height
-    setHeaderHeightInPercentage((height / window.innerHeight) * 100)
-  }, [])
-  useEffect(() => {
-    calcHeaderRect()
-    window.addEventListener("resize", calcHeaderRect)
-    return () => {
-      window.removeEventListener("resize", calcHeaderRect)
-    }
-  }, [calcHeaderRect])
   const navStateController = useCallback(() => {
     if (!isScrolled(window.scrollY) && adaptiveTransparency) {
       setNavState("transparent")
@@ -166,6 +174,42 @@ const Navigation = ({
     }
   }
 
+  const springValueHard = useSpring(10, {
+    damping: 20,
+    stiffness: 150,
+  })
+  const springValueSoft = useSpring(10, {
+    damping: 20,
+  })
+
+  const springValueTransformed = useTransform(
+    [springValueHard, springValueSoft],
+    ([springValueHard, springValueSoft]) =>
+      `path('M 0 0 L ${windowRect.width} 0 L ${
+        windowRect.width
+      } ${springValueSoft} Q ${
+        windowRect.width / 2
+      } ${springValueHard} 0 ${springValueSoft} Z')`
+  )
+
+  useEffect(() => {
+    const value = isFullscreen
+      ? windowRect.height
+      : navState === "header" || navState === "transparent"
+      ? headerHeight
+      : 0
+
+    springValueHard.set(value)
+    springValueSoft.set(value)
+  }, [
+    headerHeight,
+    isFullscreen,
+    navState,
+    springValueHard,
+    springValueSoft,
+    windowRect.height,
+  ])
+
   const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const startParallelFullscreenCollapse = () => {
     setFullscreenNavShouldBeVisible(false)
@@ -182,53 +226,34 @@ const Navigation = ({
     setIsFullscreen(false)
   }
 
-  const contentVariants: Variants = {
-    hidden: {
-      clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
-      backgroundColor: "rgba(255,255,255, 1)",
-    },
-    transparent: {
-      clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
-      backgroundColor: "rgba(0,0,0,0)",
-    },
-    header: {
-      clipPath: `polygon(0 0, 100% 0, 100% ${headerHeightInPercentage}%, 0 ${headerHeightInPercentage}%)`,
-      backgroundColor: "rgba(255,255,255, 1)",
-    },
-    fullscreen: {
-      clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`,
-      backgroundColor: "rgba(23, 23, 23, 1)",
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.075,
-        when: "beforeChildren",
-        ease: "easeInOut",
-        backgroundColor: {
-          duration: 0.3,
-        },
-      },
-    },
-  }
-  const contentTransition: Transition = {
-    duration: 0.6,
-    staggerChildren: 0.075,
-    when: "afterChildren",
-    ease: "easeInOut",
-    backgroundColor: {
-      duration: 0.3,
-    },
-  }
-
   return (
     <motion.nav
       className={classNames(styles.content)}
       animate={isFullscreen ? "fullscreen" : navState ?? undefined}
       initial={{
-        clipPath: `polygon(0 0, 100% 0, 100% 0%, 0 0%)`,
         backgroundColor: "rgba(0,0,0,0)",
       }}
-      variants={contentVariants}
-      transition={contentTransition}
+      style={{
+        clipPath: springValueTransformed,
+      }}
+      variants={{
+        hidden: {
+          backgroundColor: "rgba(255,255,255, 1)",
+        },
+        transparent: {
+          backgroundColor: "rgba(0,0,0,0)",
+        },
+        header: {
+          backgroundColor: "rgba(255,255,255, 1)",
+        },
+        fullscreen: {
+          backgroundColor: "rgba(23, 23, 23, 1)",
+        },
+      }}
+      transition={{
+        delay: 0.1,
+        duration: 0.4,
+      }}
       onAnimationComplete={handleHeaderAnimationEnd}
     >
       <header ref={headerRef}>
