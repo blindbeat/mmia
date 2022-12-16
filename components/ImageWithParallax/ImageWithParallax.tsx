@@ -6,6 +6,7 @@ import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 const height = 200
+
 export const ImageWithParallax = ({ className, ...rest }: ImageProps) => {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({

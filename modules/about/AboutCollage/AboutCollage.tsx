@@ -6,6 +6,16 @@ import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
 import officeImage from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
 import { motion } from "framer-motion"
 
+const founderImageSizes = `
+                   (max-width: calc(48em - 1px)) 100vw,
+                   (max-width: calc(64em - 1px)) 50vw,
+                   700px,
+                   `
+
+const officeImageSizes = `
+                         (max-width: calc(64em - 1px)) 30vw,
+                         550px,
+                         `
 const AboutCollage = () => {
   return (
     <div className={styles.content}>
@@ -13,10 +23,20 @@ const AboutCollage = () => {
         <Paragraph>{dummyParagraph}</Paragraph>
         <Paragraph>{dummyParagraph}</Paragraph>
       </div>
-      <Image src={founderPhoto} alt="" className={styles.founderImage} />
+      <Image
+        src={founderPhoto}
+        alt=""
+        sizes={founderImageSizes}
+        className={styles.founderImage}
+      />
       <div className={styles.office}>
         <span className={styles.officeTitle}>our office in Kyiv</span>
-        <Image src={officeImage} alt="" className={styles.officeImage} />
+        <Image
+          src={officeImage}
+          alt=""
+          sizes={officeImageSizes}
+          className={styles.officeImage}
+        />
       </div>
       <div className={styles.backgroundSvgWrapper}>
         <svg

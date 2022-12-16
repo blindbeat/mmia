@@ -16,6 +16,7 @@
 
 .founderImage {
   width: 100%;
+  max-width: 700px;
   height: auto;
   grid-column: 3;
   grid-row: span 2;
@@ -24,7 +25,9 @@
 .office {
   display: grid;
   align-self: start;
+  max-width: 550px;
   margin-right: calc(-33% - var(--md-gap));
+  place-self: start end;
   grid-template-columns: auto 1fr;
   grid-column: 2;
 }

@@ -125,7 +125,12 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
       ref={ref}
       className={styles.card}
     >
-      <Image src={media.logo} alt="" className={styles.logo} />
+      <Image
+        src={media.logo}
+        alt=""
+        sizes="max(200px, 10vw)"
+        className={styles.logo}
+      />
       <motion.div
         initial={{
           opacity: 0,
@@ -159,7 +164,12 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
         }}
         className={styles.hoverImageContainer}
       >
-        <Image src={media.hoverImage} alt="" className={styles.hoverImage} />
+        <Image
+          src={media.hoverImage}
+          alt=""
+          sizes="max(400px, 20vw)"
+          className={styles.hoverImage}
+        />
       </motion.div>
     </motion.a>
   )
