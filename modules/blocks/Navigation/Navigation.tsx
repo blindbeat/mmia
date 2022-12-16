@@ -176,7 +176,7 @@ const Navigation = ({
 
   const springValueHard = useSpring(10, {
     damping: 25,
-    stiffness: 150,
+    stiffness: extendsThreshold ? 150 : 115,
   })
   const springValueSoft = useSpring(10, {
     damping: 25,
@@ -251,7 +251,6 @@ const Navigation = ({
         },
       }}
       transition={{
-        delay: 0.1,
         duration: 0.4,
       }}
       onAnimationComplete={handleHeaderAnimationEnd}
