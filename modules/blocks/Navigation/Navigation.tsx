@@ -185,16 +185,16 @@ const Navigation = ({
   const springValueTransformed = useTransform(
     [springValueHard, springValueSoft],
     ([springValueHard, springValueSoft]) =>
-      `path('M 0 0 L ${windowRect.width} 0 L ${
+      `path('M -5 -5 L ${windowRect.width} -5 L ${
         windowRect.width
       } ${springValueSoft} Q ${
         windowRect.width / 2
-      } ${springValueHard} 0 ${springValueSoft} Z')`
+      } ${springValueHard} -5 ${springValueSoft} Z')`
   )
 
   useEffect(() => {
     const value = isFullscreen
-      ? windowRect.height
+      ? windowRect.height + 10
       : navState === "header" || navState === "transparent"
       ? headerHeight
       : 0
