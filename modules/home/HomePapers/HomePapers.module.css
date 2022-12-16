@@ -39,6 +39,10 @@
   margin-left: -0.5rem;
 }
 
+.bubblesWrapper > * {
+  flex-grow: 1;
+}
+
 .bubblesWrapper > *:first-child {
   margin-bottom: var(--md);
 }

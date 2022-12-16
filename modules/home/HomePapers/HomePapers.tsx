@@ -12,6 +12,8 @@ import {
   dummyParagraphLong2,
   dummyParagraphShort,
 } from "assets/dummyText"
+import Link from "next/link"
+import { generatePreparationIndex } from "modules/building/BuildingPreparation/BuildingPreparation"
 
 const textHeading = "We improve the world around us and create an"
 
@@ -107,25 +109,30 @@ const HomePapers = () => {
         {extendsThreshold ? (
           <div className={styles.bubblesWrapper}>
             {bubbleTextArr.map((text, index) => (
-              <Bubble
-                key={index}
-                index={index}
-                className={index === currentPaper ? "active-bubble" : undefined}
-                onClick={() => changePage(index)}
-                variant="papers"
-                withIndex
-              >
-                <p className={styles.bubbleText}>{text}</p>
-              </Bubble>
+              <Link key={index} href={`building#${generatePreparationIndex()}`}>
+                <Bubble
+                  index={index}
+                  className={
+                    index === currentPaper ? "active-bubble" : undefined
+                  }
+                  onClick={() => changePage(index)}
+                  variant="papers"
+                  withIndex
+                >
+                  <p className={styles.bubbleText}>{text}</p>
+                </Bubble>
+              </Link>
             ))}
           </div>
         ) : (
           <Swiper slidesPerView={1.75} centeredSlides className={styles.swiper}>
             {bubbleTextArr.map((text, index) => (
               <SwiperSlide key={index}>
-                <Bubble index={index} variant="papers" withIndex>
-                  {text}
-                </Bubble>
+                <Link href={`building#${generatePreparationIndex(index + 1)}`}>
+                  <Bubble index={index} variant="papers" withIndex>
+                    {text}
+                  </Bubble>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>

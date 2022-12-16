@@ -14,13 +14,21 @@ const step: Step = {
   text: "The method of major overhaul is more than renewal of the resource with a partial replacement for the necessary structural elements, including load-bearing and fenced structures of objects, as well as systems of engineering possession, improvement of their operational indicators",
 }
 
+export const generatePreparationIndex = (index?: number) =>
+  index === undefined ? `building-preparation` : `building-preparation-${index}`
+
 const steps: Step[] = new Array(5).fill(step)
 const BuildingPreparation = () => {
   const { ref, height } = useCalcElementHeight()
 
   return (
     <div className={styles.content}>
-      <div ref={ref} style={{}} className={styles.text}>
+      <div
+        ref={ref}
+        style={{}}
+        id={generatePreparationIndex()}
+        className={styles.text}
+      >
         <ScreenTitle className={styles.title}>preparation</ScreenTitle>
         <Heading as="h3" className={styles.heading}>
           {heading}
@@ -46,6 +54,7 @@ const Step = ({ index, step, offset }: StepProps) => {
 
   return (
     <div
+      id={generatePreparationIndex(index + 1)}
       className={styles.step}
       style={{
         top: `calc(${offset + index * height}px + var(--headerHeight)`,
