@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react"
+import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react"
 import Navigation from "../modules/blocks/Navigation"
 import Footer from "../modules/blocks/Footer"
 import styles from "./Layout.module.css"
@@ -14,10 +14,12 @@ export interface LayoutConfig {
 
 interface Props extends ComponentPropsWithoutRef<"main"> {
   config?: Partial<LayoutConfig>
+  navFullscreenSetter: Dispatch<SetStateAction<boolean>>
 }
 
 function Layout({
   children,
+  navFullscreenSetter,
   className,
   config: {
     showHeader = true,
@@ -31,6 +33,7 @@ function Layout({
     <>
       {showHeader && (
         <Navigation
+          navFullscreenSetter={navFullscreenSetter}
           adaptiveTransparency={HeaderAdaptiveTransparency}
           adaptiveHidingBreakpoint={HeaderAdaptiveHidingBreakpoint}
         />

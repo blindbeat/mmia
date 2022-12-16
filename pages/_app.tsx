@@ -10,7 +10,7 @@ import { LayoutConfig } from "Layout/Layout"
 import localFont from "@next/font/local"
 import Head from "next/head"
 import RequestModal from "modules/blocks/RequestModal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AnimatePresence } from "framer-motion"
 import { RequestOpenerContext } from "contexts"
 
@@ -42,13 +42,29 @@ export default function MyApp({
   pageProps,
 }: AppPropsWithLayoutConfig) {
   const [isRequestModalOpen, setIsRequestModalOpen] = useState(false)
+  const [navIsFullscreen, setNavIsFullscreen] = useState(false)
+
+  useEffect(() => {
+    const body = document.body
+    if (navIsFullscreen || isRequestModalOpen) {
+      body.style.height = `100vh`
+      body.style.overflowY = "hidden"
+    } else {
+      body.style.height = ""
+      body.style.overflowY = ""
+    }
+  }, [navIsFullscreen, isRequestModalOpen])
 
   return (
     <RequestOpenerContext.Provider value={setIsRequestModalOpen}>
       <Head>
         <title>MMIA</title>
       </Head>
-      <Layout config={Component.layoutConfig} className={Helvetica.className}>
+      <Layout
+        config={Component.layoutConfig}
+        navFullscreenSetter={setNavIsFullscreen}
+        className={Helvetica.className}
+      >
         <AnimatePresence>
           {isRequestModalOpen && <RequestModal />}
         </AnimatePresence>

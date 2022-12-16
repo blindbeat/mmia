@@ -5,7 +5,6 @@ import {
   MouseEvent,
   SetStateAction,
   useContext,
-  useEffect,
   useRef,
 } from "react"
 import { TextField, ThemeProvider } from "@mui/material"
@@ -21,16 +20,6 @@ const RequestModal = () => {
     SetStateAction<boolean>
   >
 
-  useEffect(() => {
-    const body = document.body
-    body.style.height = `100vh`
-    body.style.overflowY = "hidden"
-
-    return () => {
-      body.style.height = ""
-      body.style.overflowY = ""
-    }
-  }, [])
   const closeModal = () => setIsRequestModalOpen(false)
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     if (

@@ -77,18 +77,24 @@
   justify-self: center;
 }
 
+.fullscreenContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .fullscreenLinks {
-  font-size: 6rem;
-  font-weight: 300;
   display: flex;
   align-self: center;
   flex-direction: column;
   gap: 0.75rem;
-  --linkGapStep: 2em;
 }
 
 .fullscreenLinkOuter {
+  font-size: 6rem;
+  font-weight: 300;
   overflow: hidden;
+  --linkGapStep: 2em;
 }
 
 .fullscreenLinkWrapper {
@@ -109,7 +115,7 @@
 
 .link {
   display: none;
-  margin-bottom: var(--3xl);
+  overflow: hidden;
 }
 
 .footer {
@@ -130,7 +136,7 @@
 }
 
 @media (max-width: calc(120em - 1px)) {
-  .fullscreenLinks {
+  .fullscreenLinkOuter {
     font-size: 4.5rem;
     gap: var(--5xs);
   }
@@ -146,7 +152,7 @@
     justify-self: center;
   }
 
-  .fullscreenLinks {
+  .fullscreenLinkOuter {
     font-size: 4rem;
   }
 }
@@ -166,12 +172,18 @@
     justify-self: center;
   }
 
-  .fullscreenLinks {
-    font-size: 3.5rem;
-    align-self: stretch;
+  .fullscreenContent {
     flex-grow: 1;
-    margin: calc(var(--4xl) - var(--link-padding)) 0;
+    margin: calc(var(--4xl) - var(--link-padding)) 0 var(--3xl);
+  }
+
+  .fullscreenLinks {
+    align-self: stretch;
     gap: var(--4xs);
+  }
+
+  .fullscreenLinkOuter {
+    font-size: 3.5rem;
     --linkGapStep: 0;
   }
 
@@ -195,14 +207,21 @@
 }
 
 @media (max-width: calc(48em - 1px)) {
-  .fullscreenLinks {
-    font-size: 2.5rem;
-    flex-grow: 0;
+  .fullscreenContent {
+    justify-content: start;
     margin: calc(var(--2xl) - var(--link-padding)) 0 var(--md);
   }
 
+  .fullscreenLinks {
+    flex-grow: 0;
+  }
+
+  .fullscreenLinkOuter {
+    font-size: 2.5rem;
+  }
+
   .link {
-    flex-grow: 1;
+    margin: var(--md) 0;
   }
 
   .footer {

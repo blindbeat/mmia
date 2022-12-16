@@ -2,7 +2,14 @@ import styles from "./Navigation.module.css"
 import Logo from "./assets/logo.svg"
 import Link from "next/link"
 import CtaLink from "./CtaLink"
-import { useCallback, useEffect, useRef, useState } from "react"
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import classNames from "classnames"
 import { ComponentWithLineAdornment, LanguageChangeButton } from "components"
 import NavLinkAnimated from "./NavLinkAnimated"
@@ -70,12 +77,15 @@ const headerNavAnimation: MotionProps = {
 interface Props {
   adaptiveTransparency: boolean
   adaptiveHidingBreakpoint: boolean | number
+  navFullscreenSetter: Dispatch<SetStateAction<boolean>>
 }
 
 const MotionSocials = motion(Socials) as typeof motion.div
+
 const Navigation = ({
   adaptiveTransparency,
   adaptiveHidingBreakpoint,
+  navFullscreenSetter,
 }: Props) => {
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
@@ -147,15 +157,8 @@ const Navigation = ({
   }, [adaptiveTransparency, adaptiveHidingState, navStateController])
 
   useEffect(() => {
-    const body = document.body
-    if (isFullscreen) {
-      body.style.height = `100vh`
-      body.style.overflowY = "hidden"
-    } else {
-      body.style.height = ""
-      body.style.overflowY = ""
-    }
-  }, [isFullscreen])
+    navFullscreenSetter(isFullscreen)
+  }, [isFullscreen, navFullscreenSetter])
 
   const handleHeaderAnimationEnd = (definition: string) => {
     if (definition === "fullscreen") {
@@ -164,6 +167,10 @@ const Navigation = ({
   }
 
   const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
+  const startParallelFullscreenCollapse = () => {
+    setFullscreenNavShouldBeVisible(false)
+    setIsFullscreen(false)
+  }
   const handleFullscreenButton = () => {
     if (!isFullscreen) {
       setIsFullscreen(true)
@@ -284,7 +291,7 @@ const Navigation = ({
         </AnimatePresence>
         {extendsThreshold ? (
           <CtaLink
-            handleCLick={startFullscreenCollapse}
+            handleCLick={startParallelFullscreenCollapse}
             className={classNames(styles.corner)}
           />
         ) : (
@@ -294,20 +301,60 @@ const Navigation = ({
           />
         )}
       </header>
-      <div className={styles.fullscreenLinks}>
+      <div className={styles.fullscreenContent}>
         <AnimatePresence onExitComplete={handleFullscreenNavClosed}>
-          {fullscreenNavShouldBeVisible &&
-            navLinksFullscreen.map(([name, url, padding], index) => (
+          {fullscreenNavShouldBeVisible && (
+            <>
+              <div className={styles.fullscreenLinks}>
+                {navLinksFullscreen.map(([name, url, padding], index) => (
+                  <div
+                    key={url}
+                    className={styles.fullscreenLinkOuter}
+                    style={{
+                      paddingLeft: `calc(var(--linkGapStep) * ${padding})`,
+                    }}
+                  >
+                    <motion.div
+                      className={styles.fullscreenLinkWrapper}
+                      initial={{ y: `-150%`, x: `-2rem`, rotate: -5 }}
+                      animate={{ y: `0%`, x: `0rem`, rotate: 0 }}
+                      exit={{
+                        y: `150%`,
+                        x: `2rem`,
+                        rotate: 5,
+                        transition: {
+                          ease: "easeIn",
+                          duration: 0.4,
+                          delay: index * 0.1,
+                        },
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.1,
+                        ease: "easeOut",
+                      }}
+                    >
+                      <span className={styles.fullscreenLinkIndex}>{`0${
+                        index + 1
+                      }`}</span>
+                      <Link
+                        href={url}
+                        className={styles.fullscreenLink}
+                        onClick={startFullscreenCollapse}
+                      >
+                        {name}
+                      </Link>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
               <div
-                key={url}
-                className={styles.fullscreenLinkOuter}
-                style={{
-                  paddingLeft: `calc(var(--linkGapStep) * ${padding})`,
-                }}
+                key="link"
+                onClick={startFullscreenCollapse}
+                className={styles.link}
               >
                 <motion.div
-                  className={styles.fullscreenLinkWrapper}
-                  initial={{ y: `-150%`, x: `-2rem`, rotate: -5 }}
+                  initial={{ y: `-175%`, x: `-2rem`, rotate: -5 }}
                   animate={{ y: `0%`, x: `0rem`, rotate: 0 }}
                   exit={{
                     y: `150%`,
@@ -316,36 +363,25 @@ const Navigation = ({
                     transition: {
                       ease: "easeIn",
                       duration: 0.4,
-                      delay: index * 0.1,
+                      delay: (navLinksFullscreen.length + 1) * 0.1,
                     },
                   }}
                   transition={{
                     duration: 0.6,
-                    delay: index * 0.1,
+                    delay: (navLinksFullscreen.length + 1) * 0.1,
                     ease: "easeOut",
                   }}
-                  custom={index}
                 >
-                  <span className={styles.fullscreenLinkIndex}>{`0${
-                    index + 1
-                  }`}</span>
-                  <Link
-                    href={url}
-                    className={styles.fullscreenLink}
-                    onClick={startFullscreenCollapse}
-                  >
-                    {name}
-                  </Link>
+                  <ComponentWithLineAdornment as="button">
+                    drop request
+                  </ComponentWithLineAdornment>
                 </motion.div>
               </div>
-            ))}
+            </>
+          )}
         </AnimatePresence>
       </div>
-      <div className={styles.link}>
-        <ComponentWithLineAdornment as="button">
-          drop request
-        </ComponentWithLineAdornment>
-      </div>
+
       <div className={styles.footer}>
         <motion.a
           className={styles.email}
