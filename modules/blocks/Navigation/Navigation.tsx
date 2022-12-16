@@ -83,12 +83,12 @@ const Navigation = ({
   const [adaptiveHidingState, setAdaptiveHidingState] = useState<boolean>(
     !!adaptiveHidingBreakpoint
   )
-
   const [navState, setNavState] = useState<navState | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [fullscreenNavShouldBeVisible, setFullscreenNavShouldBeVisible] =
     useState(false)
-  const headerRef = useRef<HTMLDivElement | null>(null)
+
+  const headerRef = useRef<HTMLDivElement>(null)
   const [headerHeightInPercentage, setHeaderHeightInPercentage] = useState<
     number | null
   >(null)
@@ -99,7 +99,6 @@ const Navigation = ({
     if (typeof adaptiveHidingBreakpoint === "boolean") return
     setAdaptiveHidingState(window.innerWidth < adaptiveHidingBreakpoint)
   }, [adaptiveHidingBreakpoint])
-
   useEffect(() => {
     if (typeof adaptiveHidingBreakpoint === "boolean")
       setAdaptiveHidingState(adaptiveHidingBreakpoint)
@@ -109,15 +108,22 @@ const Navigation = ({
       return () =>
         window.removeEventListener("resize", adaptiveHidingController)
     }
-  }, [adaptiveHidingBreakpoint])
+  }, [adaptiveHidingBreakpoint, adaptiveHidingController])
 
-  const calcHeaderRect = () => {
+  const calcHeaderRect = useCallback(() => {
     const header = headerRef.current
     if (!header) return
     const height = header.getBoundingClientRect().height
     setHeaderHeightInPercentage((height / window.innerHeight) * 100)
-  }
-  const navStateController = () => {
+  }, [])
+  useEffect(() => {
+    calcHeaderRect()
+    window.addEventListener("resize", calcHeaderRect)
+    return () => {
+      window.removeEventListener("resize", calcHeaderRect)
+    }
+  }, [calcHeaderRect])
+  const navStateController = useCallback(() => {
     if (!isScrolled(window.scrollY) && adaptiveTransparency) {
       setNavState("transparent")
     } else {
@@ -130,25 +136,14 @@ const Navigation = ({
       )
     }
     lastScrollRef.current = window.scrollY
-  }
-
+  }, [adaptiveHidingState, adaptiveTransparency])
   useEffect(() => {
     navStateController()
-    window.addEventListener("scroll", navStateController, {
-      passive: true,
-    })
+    window.addEventListener("scroll", navStateController)
     return () => {
       window.removeEventListener("scroll", navStateController)
     }
-  }, [adaptiveTransparency, adaptiveHidingState])
-
-  useEffect(() => {
-    calcHeaderRect()
-    window.addEventListener("resize", calcHeaderRect)
-    return () => {
-      window.removeEventListener("resize", calcHeaderRect)
-    }
-  }, [])
+  }, [adaptiveTransparency, adaptiveHidingState, navStateController])
 
   useEffect(() => {
     const body = document.body
