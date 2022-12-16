@@ -1,8 +1,12 @@
-import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react"
+import { ComponentPropsWithoutRef, useEffect, useState } from "react"
 import Navigation from "../modules/blocks/Navigation"
 import Footer from "../modules/blocks/Footer"
 import styles from "./Layout.module.css"
 import classNames from "classnames"
+import { FooterHeightContext, RequestOpenerContext } from "contexts"
+import { AnimatePresence } from "framer-motion"
+import RequestModal from "modules/blocks/RequestModal"
+import FooterSocials from "modules/blocks/Footer/Socials"
 
 export interface LayoutConfig {
   showHeader: boolean
@@ -14,12 +18,10 @@ export interface LayoutConfig {
 
 interface Props extends ComponentPropsWithoutRef<"main"> {
   config?: Partial<LayoutConfig>
-  navFullscreenSetter: Dispatch<SetStateAction<boolean>>
 }
 
 function Layout({
   children,
-  navFullscreenSetter,
   className,
   config: {
     showHeader = true,
@@ -29,35 +31,54 @@ function Layout({
     headerMargin,
   } = {},
 }: Props) {
+  const [footerHeight, setFooterHeight] = useState<number | null>(null)
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false)
+  const [navIsFullscreen, setNavIsFullscreen] = useState(false)
+
+  useEffect(() => {
+    const body = document.body
+    if (navIsFullscreen || isRequestModalOpen) {
+      body.style.overflowY = "hidden"
+    } else {
+      body.style.overflowY = ""
+    }
+  }, [navIsFullscreen, isRequestModalOpen])
   return (
-    <>
-      {showHeader && (
-        <Navigation
-          navFullscreenSetter={navFullscreenSetter}
-          adaptiveTransparency={HeaderAdaptiveTransparency}
-          adaptiveHidingBreakpoint={HeaderAdaptiveHidingBreakpoint}
-        />
-      )}
-      <div
-        className={classNames(
-          headerMargin !== null && styles.headerHeightPadding
+    <RequestOpenerContext.Provider value={setIsRequestModalOpen}>
+      <FooterHeightContext.Provider value={setFooterHeight}>
+        {showHeader && (
+          <Navigation
+            navFullscreenSetter={setNavIsFullscreen}
+            adaptiveTransparency={HeaderAdaptiveTransparency}
+            adaptiveHidingBreakpoint={HeaderAdaptiveHidingBreakpoint}
+          />
         )}
-      >
-        <main
+        <AnimatePresence>
+          {isRequestModalOpen && <RequestModal />}
+        </AnimatePresence>
+        <div
           className={classNames(
-            styles.content,
-            headerMargin !== null && styles.defaultMainPadding,
-            className
+            headerMargin !== null && styles.headerHeightPadding
           )}
-          style={{
-            paddingTop: headerMargin ?? undefined,
-          }}
         >
-          {children}
-        </main>
-      </div>
-      {showFooter && <Footer />}
-    </>
+          <main
+            className={classNames(
+              styles.content,
+              headerMargin !== null && styles.defaultMainPadding,
+              className
+            )}
+            style={{
+              paddingTop: headerMargin ?? undefined,
+              marginBottom: showFooter ? `${footerHeight}px` : undefined,
+            }}
+          >
+            {children}
+            {showFooter && <FooterSocials />}
+          </main>
+          {showFooter && <Footer />}
+        </div>
+      </FooterHeightContext.Provider>
+    </RequestOpenerContext.Provider>
   )
 }
 

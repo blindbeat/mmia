@@ -21,7 +21,7 @@ import {
   useTransform,
 } from "framer-motion"
 import Socials from "modules/blocks/Socials"
-import { useThresholdObserver } from "hooks"
+import { useCalcElementHeight, useThresholdObserver } from "hooks"
 
 type navLinkTuple = [name: string, url: string, padding: number]
 
@@ -104,16 +104,14 @@ const Navigation = ({
   const [fullscreenNavShouldBeVisible, setFullscreenNavShouldBeVisible] =
     useState(false)
 
-  const headerRef = useRef<HTMLDivElement>(null)
   const [windowRect, setWindowRect] = useState<RectSize>({
     width: 0,
     height: 0,
   })
-  const [headerHeight, setHeaderHeight] = useState(0)
+
+  const { ref: headerRef, height: headerHeight } = useCalcElementHeight()
 
   const rectSetter = useCallback(() => {
-    if (!headerRef.current) throw new Error(`header not found`)
-    setHeaderHeight(headerRef.current.getBoundingClientRect().height)
     setWindowRect({ width: window.innerWidth, height: window.innerHeight })
   }, [])
 

@@ -2,12 +2,12 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 export const useCalcElementHeight = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const [headerHeight, setHeaderHeight] = useState(0)
+  const [height, setHeight] = useState(0)
 
   const headerHeightSetter = useCallback(() => {
     const elem = ref.current
     if (!elem) return
-    setHeaderHeight(elem.offsetHeight)
+    setHeight(elem.offsetHeight)
   }, [])
 
   useEffect(() => {
@@ -17,6 +17,6 @@ export const useCalcElementHeight = () => {
   }, [headerHeightSetter])
   return {
     ref,
-    height: headerHeight,
+    height,
   }
 }

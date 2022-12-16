@@ -4,7 +4,9 @@ import { ComponentWithLineAdornment, Heading } from "components"
 import Link from "next/link"
 import classNames from "classnames"
 import BackgroundSvg from "./assets/backgroundLine.svg"
-import { useAnimateLine } from "hooks"
+import { useAnimateLine, useCalcElementHeight } from "hooks"
+import { useContext, useEffect } from "react"
+import { FooterHeightContext } from "contexts"
 
 const ctaText = "Let’s talk about  your project!"
 
@@ -14,9 +16,15 @@ const number = "+38 (044) 228 91 59"
 
 const FooterAbout = () => {
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
+  const { ref, height } = useCalcElementHeight()
+  const footerHeightContext = useContext(FooterHeightContext)
+
+  useEffect(() => {
+    footerHeightContext?.(height)
+  }, [footerHeightContext, height])
 
   return (
-    <div className={classNames(styles.content, utilStyles.wrapper)}>
+    <div ref={ref} className={classNames(styles.content, utilStyles.wrapper)}>
       <div className={styles.ctaBlock}>
         <Heading as="h3">{ctaText}</Heading>
         <ComponentWithLineAdornment as="button" color="black">
