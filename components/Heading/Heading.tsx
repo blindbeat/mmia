@@ -7,7 +7,7 @@ import { inViewOptions } from "misc/utils"
 
 type ElemTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
-interface Props extends ComponentPropsWithoutRef<"h2"> {
+interface Props extends ComponentPropsWithoutRef<"h1"> {
   children: string
   appearImmediately?: boolean
   delay?: number

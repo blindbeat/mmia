@@ -109,19 +109,16 @@ const HomePapers = () => {
         {extendsThreshold ? (
           <div className={styles.bubblesWrapper}>
             {bubbleTextArr.map((text, index) => (
-              <Link key={index} href={`building#${generatePreparationIndex()}`}>
-                <Bubble
-                  index={index}
-                  className={
-                    index === currentPaper ? "active-bubble" : undefined
-                  }
-                  onClick={() => changePage(index)}
-                  variant="papers"
-                  withIndex
-                >
-                  <p className={styles.bubbleText}>{text}</p>
-                </Bubble>
-              </Link>
+              <Bubble
+                key={index}
+                index={index}
+                className={index === currentPaper ? "active-bubble" : undefined}
+                onClick={() => changePage(index)}
+                variant="papers"
+                withIndex
+              >
+                <p className={styles.bubbleText}>{text}</p>
+              </Bubble>
             ))}
           </div>
         ) : (
