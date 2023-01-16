@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    domains: ["api.mmmia.black-fire.work"],
   },
   webpack(config) {
     config.module.rules.push({

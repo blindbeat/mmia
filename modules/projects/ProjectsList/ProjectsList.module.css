@@ -11,12 +11,14 @@
 }
 
 .imageContainer {
+  position: relative;
+  width: 100%;
   margin-bottom: var(--2xs);
+  aspect-ratio: 1.6;
 }
 
 .image {
-  width: 100%;
-  height: auto;
+  object-fit: cover;
 }
 
 @keyframes appear {

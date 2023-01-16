@@ -5,14 +5,14 @@ import {
   ProjectPreviewTitle,
   TagList,
 } from "components"
-import { ProjectBrief } from "misc/types"
+import { Project } from "misc/types"
 import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 
 interface Props {
-  projects: ProjectBrief[]
+  projects: Project[]
 }
 
 export default function ProjectsList({ projects }: Props) {
@@ -24,7 +24,7 @@ export default function ProjectsList({ projects }: Props) {
       {projects.map((project, index) => (
         <Project
           project={project}
-          key={index}
+          key={project.id}
           index={index}
           lastVisibleIndex={lastVisibleIndex}
           lastVisibleIndexSetter={setLastVisibleIndex}
@@ -37,7 +37,7 @@ export default function ProjectsList({ projects }: Props) {
 }
 
 interface ProjectProps {
-  project: ProjectBrief
+  project: Project
   index: number
   lastVisibleIndex: number
   lastVisibleIndexSetter: (index: number) => void
@@ -50,7 +50,7 @@ const imageSizes = `(max-width: 1024px) 100vw,
 
 const baseDelay = 1.6
 function Project({
-  project: { title, image, tags },
+  project: { heading, image, categories: tags },
   index,
   lastVisibleIndex,
   lastVisibleIndexSetter,
@@ -106,12 +106,15 @@ function Project({
       <ImageZoomableContainer className={styles.imageContainer}>
         <Image
           src={image}
-          alt={title}
+          fill
+          alt={heading}
           sizes={imageSizes}
           className={styles.image}
         />
       </ImageZoomableContainer>
-      <ProjectPreviewTitle title={title} className={styles.title} />
+      <ProjectPreviewTitle className={styles.title}>
+        {heading}
+      </ProjectPreviewTitle>
       <TagList tags={tags} className={styles.tags} />
     </Link>
   )

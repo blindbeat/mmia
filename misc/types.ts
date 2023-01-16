@@ -1,11 +1,5 @@
 import { StaticImageData } from "next/image"
 
-export type ProjectBrief = {
-  title: string
-  image: NextImageSrc
-  tags: string[]
-}
-
 export type NextImageSrc = string | StaticImageData
 
 export interface Vacancy {
@@ -26,4 +20,34 @@ export interface Media {
   logo: NextImageSrc
   hoverImage: NextImageSrc
   link: string
+}
+
+export interface ProjectFetched {
+  area: string
+  city: string
+  categories: Tag[]
+  content: []
+  description: string
+  heading: string
+  id: number
+  image: string
+  slug: string
+  status: number
+  year: string
+}
+
+export interface Project
+  extends Omit<ProjectFetched, `year` | "description" | "heading"> {
+  description: string
+  heading: string
+  year: number
+}
+
+export interface Tag {
+  id: number
+  name: string
+}
+
+export interface TagWithCount extends Tag {
+  projects_count: number
 }
