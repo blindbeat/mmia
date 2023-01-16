@@ -43,6 +43,10 @@ export interface Project
   year: number
 }
 
+export interface ProjectWithImageDimensions extends Omit<Project, "image"> {
+  image: ImageWithDimensions
+}
+
 export interface Tag {
   id: number
   name: string
@@ -50,4 +54,10 @@ export interface Tag {
 
 export interface TagWithCount extends Tag {
   projects_count: number
+}
+
+export interface ImageWithDimensions {
+  src: string
+  width: number
+  height: number
 }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import ProjectsTagButtons from "modules/projects/ProjectsTagButtons"
 import styles from "./Projects.module.css"
 import classNames from "classnames"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import ProjectsList from "modules/projects/ProjectsList"
 import { Project, TagWithCount } from "misc/types"
 import { NextPageWithLayoutConfig } from "pages/_app"
@@ -14,7 +14,7 @@ interface Props {
   tags: TagWithCount[]
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const projects = (await fetchProjects()).data
   const tags = await fetchCategories()
   return {

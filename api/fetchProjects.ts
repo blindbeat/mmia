@@ -1,6 +1,6 @@
 import baseUrl from "api/baseUrl"
-import { Project, ProjectFetched } from "misc/types"
-import { constructImageUrl } from "api/constructImageUrl"
+import { Project } from "misc/types"
+import { sanitizeProject } from "misc/utils"
 
 interface Params {
   page: number
@@ -15,14 +15,6 @@ const createPath = (params?: Params) => {
   return url
 }
 
-const sanitizeProject = (projects: ProjectFetched[]): Project[] => {
-  return projects.map((project) => ({
-    ...project,
-    year: parseInt(project.year),
-    image: constructImageUrl(project.image),
-  }))
-}
-
 export const fetchProjects = async (params?: Params) => {
   const response = await fetch(createPath(params), {
     headers: {
@@ -32,7 +24,7 @@ export const fetchProjects = async (params?: Params) => {
   if (!response.ok) throw new Error()
   const responseData = await response.json()
   return {
-    data: sanitizeProject(responseData),
+    data: responseData.map(sanitizeProject) as Project[],
     lastPage: params
       ? params.page === parseInt(responseData.last_page)
       : undefined,

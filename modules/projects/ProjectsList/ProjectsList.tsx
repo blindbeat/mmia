@@ -50,7 +50,7 @@ const imageSizes = `(max-width: 1024px) 100vw,
 
 const baseDelay = 1.6
 function Project({
-  project: { heading, image, categories: tags },
+  project: { heading, image, categories: tags, slug },
   index,
   lastVisibleIndex,
   lastVisibleIndexSetter,
@@ -89,7 +89,7 @@ function Project({
   return (
     <Link
       ref={ref}
-      href={`${pathname}/projectName`}
+      href={`${pathname}/${slug}`}
       style={{
         animationPlayState: requiresTriggering
           ? isTriggered && immediateAnimationsEnded

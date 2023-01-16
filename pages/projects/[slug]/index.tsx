@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import ProjectHeaderBlock from "modules/project/ProjectHeaderBlock"
 import ProjectTopNavigation from "modules/project/ProjectTopNavigation"
 import ProjectPhotosBlock from "modules/project/ProjectPhotosBlock"
@@ -16,6 +15,9 @@ import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
 import material1 from "assets/dummyPics/project/projectMaterial/1.jpg"
 import material2 from "assets/dummyPics/project/projectMaterial/2.jpg"
 import { NextPageWithLayoutConfig } from "../../_app"
+import { GetServerSideProps } from "next"
+import { fetchProject } from "api/fetchProject"
+import { ProjectWithImageDimensions } from "misc/types"
 
 const materials = [
   {
@@ -29,15 +31,26 @@ const materials = [
     image: material2,
   },
 ]
-const Project: NextPageWithLayoutConfig = () => {
-  const {
-    query: { path },
-  } = useRouter()
 
+interface Props {
+  project: ProjectWithImageDimensions
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
+  const project = await fetchProject(context.params!.slug as string)
+  return {
+    props: {
+      project,
+    },
+  }
+}
+const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
   return (
     <div>
       <ProjectTopNavigation />
-      <ProjectHeaderBlock />
+      <ProjectHeaderBlock project={project} />
       <ProjectPhotosBlock
         photoOrientation="vertical"
         photos={[blockPhoto1, blockPhoto2]}

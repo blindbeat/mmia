@@ -18,6 +18,9 @@ const nextConfig = {
       },
     })
 
+    // FS used for image dimensions populating in SSR
+    config.resolve.fallback = { fs: false }
+
     return config
   },
 }
