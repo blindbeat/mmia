@@ -74,7 +74,7 @@ function HomeProjectsSwiper({ className, ...rest }: SwiperProps) {
           </ImageZoomableContainer>
           {/*<div className={styles.imageContainer}>*/}
           {/*</div>*/}
-          <TagList tags={tags} className={styles.tags} />
+          <TagList tags={tags as unknown as any} className={styles.tags} />
           <ProjectPreviewTitle title={title} className={styles.title} />
         </SwiperSlide>
       ))}
