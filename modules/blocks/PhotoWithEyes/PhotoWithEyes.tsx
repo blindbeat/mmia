@@ -122,6 +122,7 @@ export const PhotoWithEyes = ({
       <Image
         src={image}
         alt=""
+        fill
         sizes="100vw"
         style={{
           visibility: visible ? "visible" : "hidden",

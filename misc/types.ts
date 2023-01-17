@@ -121,6 +121,7 @@ export interface Project {
   status: number
   year: string
   next: {
+    image: string
     slug: string
   }
 }

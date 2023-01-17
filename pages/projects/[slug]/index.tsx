@@ -107,7 +107,7 @@ const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
       {contentNodes}
       <ProjectSocialsBlock />
       <Outro />
-      <ProjectNextPreviewBlock />
+      <ProjectNextPreviewBlock image={project.next.image} />
     </div>
   )
 }

@@ -24,6 +24,9 @@ export const saturateImageSrcs = <K extends Project | ProjectBrief>(
   project: K
 ): K => {
   const image = constructImageUrl(project.image)
+  if ("next" in project) {
+    project.next.image = constructImageUrl(project.next.image)
+  }
   const content =
     project.content?.map((content) => {
       switch (content.layout) {
