@@ -13,9 +13,10 @@ import { useRouter } from "next/router"
 
 interface Props {
   projects: ProjectBrief[]
+  withDelay: boolean
 }
 
-export default function ProjectsList({ projects }: Props) {
+export default function ProjectsList({ projects, withDelay }: Props) {
   const [lastVisibleIndex, setLastVisibleIndex] = useState(0)
   const [immediateAnimationsEnded, setImmediateAnimationsEnded] =
     useState(false)
@@ -26,10 +27,11 @@ export default function ProjectsList({ projects }: Props) {
           project={project}
           key={project.id}
           index={index}
+          withDelay={withDelay}
           lastVisibleIndex={lastVisibleIndex}
           lastVisibleIndexSetter={setLastVisibleIndex}
-          ImmediateAnimationsEndedSetter={setImmediateAnimationsEnded}
           immediateAnimationsEnded={immediateAnimationsEnded}
+          ImmediateAnimationsEndedSetter={setImmediateAnimationsEnded}
         />
       ))}
     </div>
@@ -41,21 +43,23 @@ interface ProjectProps {
   index: number
   lastVisibleIndex: number
   lastVisibleIndexSetter: (index: number) => void
-  ImmediateAnimationsEndedSetter: (value: boolean) => void
   immediateAnimationsEnded: boolean
+  ImmediateAnimationsEndedSetter: (value: boolean) => void
+  withDelay: boolean
 }
 
 const imageSizes = `(max-width: 1024px) 100vw,
                       50vw`
 
-const baseDelay = 1.6
+const baseDelay = 1.3
 function Project({
   project: { heading, image, categories: tags, slug },
   index,
   lastVisibleIndex,
   lastVisibleIndexSetter,
-  ImmediateAnimationsEndedSetter,
   immediateAnimationsEnded,
+  ImmediateAnimationsEndedSetter,
+  withDelay,
 }: ProjectProps) {
   const { pathname } = useRouter()
   const [requiresTriggering, setRequiresTriggering] = useState<boolean>(false)
@@ -97,7 +101,7 @@ function Project({
             : "paused"
           : undefined,
         animationDelay: !requiresTriggering
-          ? `${baseDelay + index * delayDifference}s`
+          ? `${baseDelay * Number(withDelay) + index * delayDifference}s`
           : undefined,
       }}
       onAnimationEnd={handleEndAnimation}

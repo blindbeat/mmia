@@ -27,10 +27,31 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
 const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
   const [selectedTag, setSelectedTag] = useState<number | null>(null)
+  const [initialProjectsDelay, setInitialProjectsDelay] = useState(true)
+
+  const handleSelectedTag = (tag: number | null) => {
+    setInitialProjectsDelay(false)
+    setSelectedTag(tag)
+  }
+
+  if (selectedTag !== null) {
+    projects = projects.filter((project) =>
+      project.categories.some((category) => category.id === selectedTag)
+    )
+  }
+
   return (
     <div className={classNames(styles.projects)}>
-      <ProjectsTagButtons tagSelector={setSelectedTag} tags={tags} />
-      <ProjectsList projects={projects} />
+      <ProjectsTagButtons
+        tagSelector={handleSelectedTag}
+        tags={tags}
+        projectsAmount={projects.length}
+      />
+      <ProjectsList
+        projects={projects}
+        withDelay={initialProjectsDelay}
+        key={selectedTag}
+      />
     </div>
   )
 }

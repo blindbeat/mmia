@@ -9,23 +9,28 @@
   font-size: var(--h3-font-size);
   font-weight: 300;
   display: inline-flex;
-  transition: opacity var(--tm);
   animation-name: appear;
   animation-duration: 0.9s;
   letter-spacing: 0.04em;
   text-transform: capitalize;
-  opacity: 0.5;
   border: none;
   background: transparent;
   animation-fill-mode: both;
 }
 
-.tag:hover {
-  opacity: 1;
-}
-
 .tag .amount {
   font-size: var(--sm-font-size);
+}
+
+.name,
+.amount {
+  transition: opacity var(--tm);
+  opacity: 0.5;
+}
+
+.tag:hover .name,
+.tag:hover .amount {
+  opacity: 1;
 }
 
 @keyframes appear {

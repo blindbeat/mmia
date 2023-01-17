@@ -5,21 +5,18 @@ import { TagWithCount } from "misc/types"
 interface Props {
   tags: TagWithCount[]
   tagSelector: (tag: number | null) => void
+  projectsAmount: number
 }
 
 const animationDelayBase = 0.7
 const animationDelayDifference = 0.1
 
-function ProjectsTagButtons({ tagSelector, tags }: Props) {
-  const allProjectsCount = tags.reduce(
-    (acc, current) => acc + current.projects_count,
-    0
-  )
+function ProjectsTagButtons({ tagSelector, tags, projectsAmount }: Props) {
   return (
     <div className={styles.tags}>
       <Tag
         name="all"
-        amount={allProjectsCount}
+        amount={projectsAmount}
         key="all"
         onClick={() => tagSelector(null)}
         style={{
@@ -50,7 +47,7 @@ interface TagProps extends ComponentPropsWithoutRef<"button"> {
 function Tag({ name, amount, ...rest }: TagProps) {
   return (
     <button className={styles.tag} {...rest}>
-      {name}
+      <span className={styles.name}>{name}</span>
       <span className={styles.amount}>({amount})</span>
     </button>
   )
