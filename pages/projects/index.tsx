@@ -4,13 +4,13 @@ import styles from "./Projects.module.css"
 import classNames from "classnames"
 import { GetServerSideProps } from "next"
 import ProjectsList from "modules/projects/ProjectsList"
-import { Project, TagWithCount } from "misc/types"
+import { ProjectBrief, TagWithCount } from "misc/types"
 import { NextPageWithLayoutConfig } from "pages/_app"
 import { fetchProjects } from "api/fetchProjects"
 import { fetchCategories } from "api"
 
 interface Props {
-  projects: Project[]
+  projects: ProjectBrief[]
   tags: TagWithCount[]
 }
 

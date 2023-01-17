@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
   return (
     <div>
-      <ProjectTopNavigation />
+      <ProjectTopNavigation nextLink={project.next.slug} />
       <ProjectHeaderBlock project={project} />
       <ProjectPhotosBlock
         photoOrientation="vertical"

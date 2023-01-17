@@ -5,14 +5,14 @@ import {
   ProjectPreviewTitle,
   TagList,
 } from "components"
-import { Project } from "misc/types"
+import { ProjectBrief } from "misc/types"
 import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 
 interface Props {
-  projects: Project[]
+  projects: ProjectBrief[]
 }
 
 export default function ProjectsList({ projects }: Props) {
@@ -37,7 +37,7 @@ export default function ProjectsList({ projects }: Props) {
 }
 
 interface ProjectProps {
-  project: Project
+  project: ProjectBrief
   index: number
   lastVisibleIndex: number
   lastVisibleIndexSetter: (index: number) => void

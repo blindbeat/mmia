@@ -1,6 +1,6 @@
 import baseUrl from "api/baseUrl"
-import { Project } from "misc/types"
-import { sanitizeProject } from "misc/utils"
+import { ProjectBrief } from "misc/types"
+import { saturateImageSrcs } from "misc/utils"
 
 interface Params {
   page: number
@@ -24,7 +24,7 @@ export const fetchProjects = async (params?: Params) => {
   if (!response.ok) throw new Error()
   const responseData = await response.json()
   return {
-    data: responseData.map(sanitizeProject) as Project[],
+    data: responseData.map(saturateImageSrcs) as ProjectBrief[],
     lastPage: params
       ? params.page === parseInt(responseData.last_page)
       : undefined,

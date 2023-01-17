@@ -10,7 +10,6 @@ interface Props {
   project: ProjectWithImageDimensions
 }
 export default function ProjectHeaderBlock({ project }: Props) {
-  console.log(project.image)
   return (
     <div className={styles.content}>
       <div className={styles.titleWrapper}>

@@ -1,6 +1,10 @@
 import baseUrl from "api/baseUrl"
-import { ProjectFetched, ProjectWithImageDimensions } from "misc/types"
-import { populateImageWithDimensions, sanitizeProject } from "misc/utils"
+import {
+  Project,
+  ProjectContentTypeWithDimensions,
+  ProjectWithImageDimensions,
+} from "misc/types"
+import { populateImageWithDimensions, saturateImageSrcs } from "misc/utils"
 
 export const fetchProject = async (
   slug: string
@@ -12,10 +16,46 @@ export const fetchProject = async (
     },
   })
   if (!response.ok) throw new Error()
-  const fetchedProject = (await response.json()) as ProjectFetched
-  const sanitizedProject = sanitizeProject(fetchedProject)
+  const fetchedProject = (await response.json()) as Project
+  const sanitizedProject = saturateImageSrcs(fetchedProject)
+
+  const contentWithDimensions: ProjectContentTypeWithDimensions[] =
+    await Promise.all(
+      sanitizedProject.content.map(async (content) => {
+        switch (content.layout) {
+          case "horizontal_photo":
+            return {
+              ...content,
+              attributes: {
+                image: await populateImageWithDimensions(
+                  content.attributes.image
+                ),
+              },
+            }
+          case "vertical_photo":
+            return {
+              ...content,
+              attributes: {
+                image1: await populateImageWithDimensions(
+                  content.attributes.image1
+                ),
+                image2:
+                  content.attributes.image2 === null
+                    ? null
+                    : await populateImageWithDimensions(
+                        content.attributes.image2
+                      ),
+              },
+            }
+          default: {
+            return content
+          }
+        }
+      })
+    )
   return {
     ...sanitizedProject,
+    content: contentWithDimensions,
     image: await populateImageWithDimensions(sanitizedProject.image),
   }
 }

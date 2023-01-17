@@ -22,11 +22,83 @@ export interface Media {
   link: string
 }
 
-export interface ProjectFetched {
+interface ProjectHorizontalPhoto {
+  layout: "horizontal_photo"
+  attributes: {
+    image: string
+  }
+}
+
+interface ProjectHorizontalPhotoWithDimensions
+  extends Omit<ProjectHorizontalPhoto, "attributes"> {
+  attributes: {
+    image: ImageWithDimensions
+  }
+}
+
+interface ProjectVerticalPhotos {
+  layout: "vertical_photo"
+  attributes: {
+    image1: string
+    image2: string | null
+  }
+}
+
+interface ProjectVerticalPhotosWithDimensions
+  extends Omit<ProjectVerticalPhotos, "attributes"> {
+  attributes: {
+    image1: ImageWithDimensions
+    image2: ImageWithDimensions | null
+  }
+}
+
+interface ProjectArchitecture {
+  layout: "photo_architecture"
+  attributes: {
+    images: string[]
+  }
+}
+
+interface ProjectMaterials {
+  layout: "block2"
+  attributes: {
+    heading: string
+    sub_block: [
+      {
+        heading: string
+        description: string
+      }[]
+    ]
+    description: string
+    image: string[]
+  }
+}
+
+interface ProjectText {
+  layout: "text_block"
+  attributes: {
+    text: string
+  }
+}
+
+export type ProjectContentType =
+  | ProjectHorizontalPhoto
+  | ProjectVerticalPhotos
+  | ProjectArchitecture
+  | ProjectMaterials
+  | ProjectText
+export type ProjectContentTypeWithDimensions =
+  | ProjectHorizontalPhotoWithDimensions
+  | ProjectVerticalPhotosWithDimensions
+  | ProjectArchitecture
+  | ProjectMaterials
+  | ProjectText
+
+export interface Project {
   area: string
   city: string
   categories: Tag[]
-  content: []
+  content: ProjectContentType[]
   description: string
   heading: string
   id: number
@@ -34,17 +106,17 @@ export interface ProjectFetched {
   slug: string
   status: number
   year: string
+  next: {
+    slug: string
+  }
 }
 
-export interface Project
-  extends Omit<ProjectFetched, `year` | "description" | "heading"> {
-  description: string
-  heading: string
-  year: number
-}
+export type ProjectBrief = Omit<Project, "next">
 
-export interface ProjectWithImageDimensions extends Omit<Project, "image"> {
+export interface ProjectWithImageDimensions
+  extends Omit<Project, "image" | "content"> {
   image: ImageWithDimensions
+  content: ProjectContentTypeWithDimensions[]
 }
 
 export interface Tag {
