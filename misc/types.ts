@@ -24,6 +24,7 @@ export interface Media {
 
 interface ProjectHorizontalPhoto {
   layout: "horizontal_photo"
+  key: string
   attributes: {
     image: string
   }
@@ -38,6 +39,8 @@ interface ProjectHorizontalPhotoWithDimensions
 
 interface ProjectVerticalPhotos {
   layout: "vertical_photo"
+  key: string
+
   attributes: {
     image1: string
     image2: string | null
@@ -54,21 +57,30 @@ interface ProjectVerticalPhotosWithDimensions
 
 interface ProjectArchitecture {
   layout: "photo_architecture"
+  key: string
+
   attributes: {
     images: string[]
   }
 }
 
+interface ProjectArchitectureWithDimensions
+  extends Omit<ProjectArchitecture, "attributes"> {
+  attributes: {
+    images: ImageWithDimensions[]
+  }
+}
+
 interface ProjectMaterials {
   layout: "block2"
+  key: string
+
   attributes: {
     heading: string
-    sub_block: [
-      {
-        heading: string
-        description: string
-      }[]
-    ]
+    sub_block: {
+      heading: string
+      description: string
+    }[]
     description: string
     image: string[]
   }
@@ -76,6 +88,8 @@ interface ProjectMaterials {
 
 interface ProjectText {
   layout: "text_block"
+  key: string
+
   attributes: {
     text: string
   }
@@ -90,7 +104,7 @@ export type ProjectContentType =
 export type ProjectContentTypeWithDimensions =
   | ProjectHorizontalPhotoWithDimensions
   | ProjectVerticalPhotosWithDimensions
-  | ProjectArchitecture
+  | ProjectArchitectureWithDimensions
   | ProjectMaterials
   | ProjectText
 

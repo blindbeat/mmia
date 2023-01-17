@@ -1,14 +1,10 @@
 import ProjectHeaderBlock from "modules/project/ProjectHeaderBlock"
 import ProjectTopNavigation from "modules/project/ProjectTopNavigation"
 import ProjectPhotosBlock from "modules/project/ProjectPhotosBlock"
-import blockPhoto1 from "assets/dummyPics/project/projectBlock/1.jpg"
-import blockPhoto2 from "assets/dummyPics/project/projectBlock/2.jpg"
-import blockPhoto3 from "assets/dummyPics/project/projectBlock/3.jpg"
 import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSchemasBlock"
-import schemaPhoto from "assets/dummyPics/project/projectSchema/1.jpg"
 import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/ProjectMaterialsBlock"
 import ProjectParagraphBlock from "modules/project/ProjectParagraphBlock"
-import { dummyParagraph, dummyParagraphLong } from "assets/dummyText"
+import { dummyParagraph } from "assets/dummyText"
 import ProjectSocialsBlock from "modules/project/ProjectSocialsBlock"
 import Outro from "modules/blocks/Outro/Outro"
 import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
@@ -47,31 +43,68 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   }
 }
 const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
+  const contentNodes = project.content.map((content) => {
+    switch (content.layout) {
+      case "horizontal_photo": {
+        return (
+          <ProjectPhotosBlock
+            key={content.key}
+            photoOrientation="horizontal"
+            photos={[content.attributes.image]}
+          />
+        )
+      }
+      case "vertical_photo": {
+        const photos = [content.attributes.image1]
+        if (content.attributes.image2) photos.push(content.attributes.image2)
+        return (
+          <ProjectPhotosBlock
+            photoOrientation="vertical"
+            key={content.key}
+            photos={photos}
+          />
+        )
+      }
+      case "text_block": {
+        return (
+          <ProjectParagraphBlock key={content.key}>
+            {content.attributes.text}
+          </ProjectParagraphBlock>
+        )
+      }
+      case "photo_architecture": {
+        return (
+          <ProjectSchemasBlock
+            key={content.key}
+            schemas={content.attributes.images}
+          />
+        )
+      }
+      case "block2": {
+        const materials = content.attributes.sub_block.map(
+          (material, index) => ({
+            ...material,
+            image: content.attributes.image[index],
+          })
+        )
+        return (
+          <ProjectMaterialsBlock
+            key={content.key}
+            heading={content.attributes.heading}
+            materials={materials}
+          />
+        )
+      }
+      default: {
+        return null
+      }
+    }
+  })
   return (
     <div>
       <ProjectTopNavigation nextLink={project.next.slug} />
       <ProjectHeaderBlock project={project} />
-      <ProjectPhotosBlock
-        photoOrientation="vertical"
-        photos={[blockPhoto1, blockPhoto2]}
-      />
-      <ProjectSchemasBlock schemas={[schemaPhoto, schemaPhoto]} />
-      <ProjectPhotosBlock
-        photoOrientation="horizontal"
-        photos={[blockPhoto3]}
-      />
-      <ProjectMaterialsBlock materials={materials} />
-      <ProjectPhotosBlock
-        photoOrientation="vertical"
-        photos={[blockPhoto1, blockPhoto2]}
-      />
-      <ProjectMaterialsBlock materials={[materials[0]]} />
-      <ProjectPhotosBlock photoOrientation="vertical" photos={[blockPhoto1]} />
-      <ProjectParagraphBlock>{dummyParagraphLong}</ProjectParagraphBlock>
-      <ProjectPhotosBlock
-        photoOrientation="horizontal"
-        photos={[blockPhoto3]}
-      />
+      {contentNodes}
       <ProjectSocialsBlock />
       <Outro />
       <ProjectNextPreviewBlock />

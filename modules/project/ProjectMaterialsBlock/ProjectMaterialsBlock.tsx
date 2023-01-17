@@ -4,14 +4,14 @@ import { dummyParagraph } from "assets/dummyText"
 import Image from "next/image"
 import { NextImageSrc } from "misc/types"
 
-const header = "materials used in project"
 interface description {
-  title: string
-  paragraph: string
+  heading: string
+  description: string
   image: NextImageSrc
 }
 
 interface Props {
+  heading: string
   materials: description[]
 }
 
@@ -19,26 +19,32 @@ const sizes = `(max-width: 1024px) 50vw,
                25vw,
               `
 
-export default function ProjectMaterialsBlock({ materials }: Props) {
+export default function ProjectMaterialsBlock({ materials, heading }: Props) {
   return (
     <div className={styles.content}>
       <Heading as="h3" className={styles.header}>
-        {header}
+        {heading}
       </Heading>
       <div className={styles.images}>
         {materials.map(({ image: src }, index) => (
           <div key={index} className={styles.imageWrapper}>
             <span className={styles.imageIndex}>{`0${index + 1}.`}</span>
-            <Image src={src} alt="" sizes={sizes} className={styles.image} />
+            <Image
+              src={src}
+              alt=""
+              sizes={sizes}
+              fill
+              className={styles.image}
+            />
           </div>
         ))}
       </div>
       <div className={styles.descriptions}>
-        {materials.map(({ title, paragraph }, index) => (
+        {materials.map(({ heading, description }, index) => (
           <div key={index}>
-            <div className={styles.descriptionTitle}>{title}</div>
+            <div className={styles.descriptionTitle}>{heading}</div>
             <Paragraph className={styles.descriptionParagraph}>
-              {paragraph}
+              {description}
             </Paragraph>
           </div>
         ))}

@@ -47,6 +47,18 @@ export const fetchProject = async (
                       ),
               },
             }
+          case "photo_architecture": {
+            return {
+              ...content,
+              attributes: {
+                images: await Promise.all(
+                  content.attributes.images.map((src) =>
+                    populateImageWithDimensions(src)
+                  )
+                ),
+              },
+            }
+          }
           default: {
             return content
           }

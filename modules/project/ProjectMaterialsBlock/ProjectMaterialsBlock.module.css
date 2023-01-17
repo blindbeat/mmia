@@ -15,6 +15,7 @@
 .images {
   display: flex;
   align-self: start;
+  width: 100%;
   grid-row: span 2;
   gap: 1rem;
 }
@@ -22,13 +23,11 @@
 .imageWrapper {
   position: relative;
   flex-basis: 40%;
+  aspect-ratio: 1/1;
 }
 
 .image {
-  width: 100%;
-  height: auto;
   border-radius: 50%;
-  aspect-ratio: 1/1;
 }
 
 .imageIndex {

@@ -1,12 +1,12 @@
 import styles from "./ProjectPhotosBlock.module.css"
 import Image from "next/image"
-import { NextImageSrc } from "misc/types"
+import { ImageWithDimensions } from "misc/types"
 import classNames from "classnames"
 
 type PhotoOrientation = "vertical" | "horizontal"
 
 interface Props {
-  photos: NextImageSrc[]
+  photos: ImageWithDimensions[]
   photoOrientation: PhotoOrientation
 }
 
@@ -29,9 +29,16 @@ export default function ProjectPhotosBlock({
         photoOrientation === "vertical" ? styles.vertical : styles.horizontal
       )}
     >
-      {photos.map((src, index) => (
+      {photos.map((image, index) => (
         <div key={index} className={styles.imageWrapper}>
-          <Image className={styles.image} src={src} alt="" sizes={sizes} />
+          <Image
+            className={styles.image}
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt=""
+            sizes={sizes}
+          />
         </div>
       ))}
     </div>

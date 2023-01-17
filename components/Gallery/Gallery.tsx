@@ -8,11 +8,11 @@ import {
   SwiperNavigationPrev,
 } from "components/swiperComponents"
 import classNames from "classnames"
-import { NextImageSrc } from "misc/types"
+import { ImageWithDimensions } from "misc/types"
 import { ComponentPropsWithoutRef } from "react"
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
-  images: NextImageSrc[] | NextImageSrc
+  images: ImageWithDimensions | ImageWithDimensions[]
 }
 
 const imageSizes = `
@@ -63,11 +63,13 @@ export const Gallery = ({ images, className }: Props) => {
           loop
           className={styles.swiper}
         >
-          {images.map((src, index) => (
+          {images.map((image, index) => (
             <SwiperSlide key={index} className={styles.slide}>
               <Image
-                src={src}
+                src={image.src}
                 alt=""
+                width={image.width}
+                height={image.height}
                 sizes={imageSizes}
                 className={styles.image}
               />
@@ -78,7 +80,9 @@ export const Gallery = ({ images, className }: Props) => {
         </Swiper>
       ) : (
         <Image
-          src={Array.isArray(images) ? images[0] : images}
+          src={Array.isArray(images) ? images[0].src : images.src}
+          width={Array.isArray(images) ? images[0].width : images.width}
+          height={Array.isArray(images) ? images[0].height : images.height}
           alt=""
           className={styles.standaloneImage}
         />
