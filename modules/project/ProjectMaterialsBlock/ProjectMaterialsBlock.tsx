@@ -2,12 +2,12 @@ import styles from "./ProjectMaterialsBlock.module.css"
 import { Heading, Paragraph } from "components"
 import { dummyParagraph } from "assets/dummyText"
 import Image from "next/image"
-import { ImageWithDimensions } from "misc/types"
+import { NextImageSrc } from "misc/types"
 
 interface description {
   heading: string
   description: string
-  image: ImageWithDimensions
+  image: NextImageSrc
 }
 
 interface Props {

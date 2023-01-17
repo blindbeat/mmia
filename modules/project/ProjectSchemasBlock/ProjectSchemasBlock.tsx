@@ -1,12 +1,12 @@
 import { Gallery, ScreenTitle } from "components"
 import styles from "./ProjectSchemasBlock.module.css"
-import { NextImageSrc } from "misc/types"
+import { ImageWithDimensions } from "misc/types"
 import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useAnimateLine } from "hooks"
 import { dummyParagraph } from "assets/dummyText"
 
 interface Props {
-  schemas: NextImageSrc[]
+  schemas: ImageWithDimensions[]
 }
 
 export default function ProjectSchemasBlock({ schemas }: Props) {
