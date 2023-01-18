@@ -35,11 +35,17 @@ interface Props {
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
-  const project = await fetchProject(context.params!.slug as string)
-  return {
-    props: {
-      project,
-    },
+  try {
+    const project = await fetchProject(context.params!.slug as string)
+    return {
+      props: {
+        project,
+      },
+    }
+  } catch {
+    return {
+      notFound: true,
+    }
   }
 }
 const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
