@@ -34,6 +34,8 @@ const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
     setSelectedTag(tag)
   }
 
+  const projectsAmount = projects.length
+
   if (selectedTag !== null) {
     projects = projects.filter((project) =>
       project.categories.some((category) => category.id === selectedTag)
@@ -45,7 +47,7 @@ const Projects: NextPageWithLayoutConfig<Props> = ({ tags, projects }) => {
       <ProjectsTagButtons
         tagSelector={handleSelectedTag}
         tags={tags}
-        projectsAmount={projects.length}
+        projectsAmount={projectsAmount}
       />
       <ProjectsList
         projects={projects}
