@@ -5,13 +5,15 @@ import { title } from "assets/dummyText"
 import classNames from "classnames"
 import { PhotoWithEyes } from "modules/blocks/PhotoWithEyes"
 import { NextImageSrc } from "misc/types"
+import Link from "next/link"
 
 interface Props {
   image: NextImageSrc
+  slug: string
 }
-export default function ProjectNextPreviewBlock({ image }: Props) {
+export default function ProjectNextPreviewBlock({ image, slug }: Props) {
   return (
-    <div className={styles.content}>
+    <Link href={`/projects/${slug}`} className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle>about company</ScreenTitle>
         <Heading as="h2" className={styles.title}>
@@ -26,6 +28,6 @@ export default function ProjectNextPreviewBlock({ image }: Props) {
         sizes="100vw"
         className={classNames(styles.image, styles.imageBackground)}
       />
-    </div>
+    </Link>
   )
 }
