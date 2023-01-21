@@ -1,10 +1,7 @@
 import styles from "./HomeLanding.module.css"
 import utilStyles from "styles/utils.module.css"
 import Image from "next/image"
-import image1 from "assets/dummyPics/home/homeLanding/1.jpg"
-import image2 from "assets/dummyPics/home/homeLanding/2.jpg"
-import image3 from "assets/dummyPics/home/homeLanding/3.jpg"
-import image4 from "assets/dummyPics/home/homeLanding/4.jpg"
+
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Controller, EffectFade, Pagination } from "swiper"
 import classNames from "classnames"
@@ -19,14 +16,8 @@ import Link from "next/link"
 import { useState } from "react"
 import "swiper/css/effect-fade"
 import { Swiper as SwiperClass } from "swiper/types"
+import { HomeLandingContent } from "types"
 
-const slides = new Array(4).fill({
-  primaryText: "we create impressive architecture and modern interiors",
-  secondaryText:
-    "Perfect architecture and stunning nature. Country cottage town in the Kyiv region is on an area of about 60 hectares",
-})
-
-const images = [image1, image2, image3, image4]
 const baseDelay = 0.3
 const delayBetweenAppears = 0.4
 const calcAnimationDelay = (showingOrder: number) =>
@@ -34,8 +25,7 @@ const calcAnimationDelay = (showingOrder: number) =>
 const createAnimationDelayStyle = (showingOrder: number) => ({
   animationDelay: `${calcAnimationDelay(showingOrder)}s`,
 })
-
-const HomeLanding = () => {
+const HomeLanding = ({ projects }: HomeLandingContent) => {
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
@@ -71,7 +61,7 @@ const HomeLanding = () => {
           speed={1000}
           className={styles.swiper}
         >
-          {slides.map(({ primaryText, secondaryText }, index) => (
+          {projects.map(({ heading, description, slug }, index) => (
             <SwiperSlide className={styles.slide} key={index}>
               <div className={styles.slideContent}>
                 <Heading
@@ -79,11 +69,11 @@ const HomeLanding = () => {
                   appearImmediately
                   delay={calcAnimationDelay(1)}
                 >
-                  {primaryText}
+                  {heading}
                 </Heading>
                 <div className={styles.pWrapper}>
                   <Paragraph appearImmediately delay={calcAnimationDelay(2)}>
-                    {secondaryText}
+                    {description}
                   </Paragraph>
                 </div>
                 <div
@@ -92,7 +82,7 @@ const HomeLanding = () => {
                 >
                   <ComponentWithLineAdornment
                     as="Link"
-                    href=""
+                    href={`projects/${slug}`}
                     className={classNames(styles.linkWithLine)}
                   >
                     view more
@@ -131,7 +121,7 @@ const HomeLanding = () => {
         effect="fade"
         modules={[EffectFade]}
       >
-        {images.map((image, index) => (
+        {projects.map(({ image }, index) => (
           <SwiperSlide key={index}>
             <Image
               className={utilStyles.backgroundImage}

@@ -5,7 +5,7 @@ import {
   ProjectPreviewTitle,
   TagList,
 } from "components"
-import { ProjectBrief } from "misc/types"
+import { ProjectBrief } from "types"
 import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"

@@ -1,4 +1,4 @@
-import { Vacancy } from "misc/types"
+import { Vacancy } from "types"
 
 export const title = "Cardiovascular Hospital in Briukhovychi"
 export const tags = ["interior", "Architecture"]

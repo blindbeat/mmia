@@ -4,7 +4,7 @@ import { Heading, ScreenTitle } from "components"
 import { title } from "assets/dummyText"
 import classNames from "classnames"
 import { PhotoWithEyes } from "modules/blocks/PhotoWithEyes"
-import { NextImageSrc } from "misc/types"
+import { NextImageSrc } from "types"
 import Link from "next/link"
 
 interface Props {

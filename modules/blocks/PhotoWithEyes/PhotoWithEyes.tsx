@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { NextImageSrc } from "misc/types"
+import { NextImageSrc } from "types"
 
 const defaultStyleLeft = { x: -200, y: -25 }
 const defaultStyleRight = { x: 0, y: -25 }

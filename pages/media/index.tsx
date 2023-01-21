@@ -1,7 +1,7 @@
 import { NextPageWithLayoutConfig } from "pages/_app"
 import { MediaHeading } from "modules/media/MediaHeading"
 import { MediaCards } from "modules/media/MediaCards"
-import { Media } from "misc/types"
+import { Media } from "types"
 import logo1 from "assets/dummyPics/media/logos/1.png"
 import logo2 from "assets/dummyPics/media/logos/2.png"
 import logo3 from "assets/dummyPics/media/logos/3.png"

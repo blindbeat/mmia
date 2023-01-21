@@ -8,7 +8,7 @@ import Image from "next/image"
 import styles from "./ImagesSwiper.module.css"
 import { Autoplay, Controller, EffectCreative } from "swiper"
 import { Swiper as SwiperClass } from "swiper/types"
-import { NextImageSrc } from "misc/types"
+import { NextImageSrc } from "types"
 
 const ImagesSwiper = ({ className }: ComponentPropsWithoutRef<"div">) => {
   const [controlledSwiper1, setControlledSwiper1] = useState<

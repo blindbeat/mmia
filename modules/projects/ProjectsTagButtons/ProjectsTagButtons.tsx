@@ -1,6 +1,6 @@
 import styles from "./ProjectsTagButtons.module.css"
 import { ComponentPropsWithoutRef } from "react"
-import { TagWithCount } from "misc/types"
+import { TagWithCount } from "types"
 
 interface Props {
   tags: TagWithCount[]

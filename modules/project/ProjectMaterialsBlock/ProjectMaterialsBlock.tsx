@@ -2,7 +2,7 @@ import styles from "./ProjectMaterialsBlock.module.css"
 import { Heading, Paragraph } from "components"
 import { dummyParagraph } from "assets/dummyText"
 import Image from "next/image"
-import { NextImageSrc } from "misc/types"
+import { NextImageSrc } from "types/miscTypes"
 
 interface description {
   heading: string

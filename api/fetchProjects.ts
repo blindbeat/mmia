@@ -1,5 +1,5 @@
 import baseUrl from "api/baseUrl"
-import { ProjectBrief } from "misc/types"
+import { ProjectBrief } from "types"
 import { saturateImageSrcs } from "misc/utils"
 
 interface Params {

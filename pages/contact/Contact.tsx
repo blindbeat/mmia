@@ -16,7 +16,7 @@ import Link from "next/link"
 import { createPortal } from "react-dom"
 import Image from "next/image"
 import projectImage from "assets/dummyPics/instagramPhotos/1.jpg"
-import { Contact } from "misc/types"
+import { Contact } from "types"
 import Socials from "modules/blocks/Socials"
 
 const projection = geoAitoff().scale(200).center([45, 25])

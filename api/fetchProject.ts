@@ -3,7 +3,7 @@ import {
   Project,
   ProjectContentTypeWithDimensions,
   ProjectWithImageDimensions,
-} from "misc/types"
+} from "types"
 import { populateImageWithDimensions, saturateImageSrcs } from "misc/utils"
 
 export const fetchProject = async (

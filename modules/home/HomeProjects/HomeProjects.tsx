@@ -8,13 +8,14 @@ import {
 } from "components"
 import HomeProjectsSwiper from "./Swiper"
 import classNames from "classnames"
+import { HomeProjectsContent } from "types"
 
 const title =
   "Through the last years we worked on more than 100 projects located all"
 const paragraph =
   "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular objects, creating "
 
-const HomeProjects = () => {
+const HomeProjects = ({ projects }: HomeProjectsContent) => {
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.textWrapper}>
@@ -22,7 +23,7 @@ const HomeProjects = () => {
         <Heading as="h3">{title}</Heading>
         <Paragraph>{paragraph}</Paragraph>
       </div>
-      <HomeProjectsSwiper className={styles.swiper} />
+      <HomeProjectsSwiper projects={projects} className={styles.swiper} />
       <ComponentWithLineAdornment
         href="projects"
         color="black"

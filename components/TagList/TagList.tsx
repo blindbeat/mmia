@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from "react"
 import styles from "./TagList.module.css"
 import classNames from "classnames"
-import { Tag } from "misc/types"
+import { Tag } from "types"
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   tags: Tag[]

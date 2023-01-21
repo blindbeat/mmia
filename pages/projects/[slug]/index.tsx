@@ -4,29 +4,13 @@ import ProjectPhotosBlock from "modules/project/ProjectPhotosBlock"
 import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSchemasBlock"
 import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/ProjectMaterialsBlock"
 import ProjectParagraphBlock from "modules/project/ProjectParagraphBlock"
-import { dummyParagraph } from "assets/dummyText"
 import ProjectSocialsBlock from "modules/project/ProjectSocialsBlock"
 import Outro from "modules/blocks/Outro/Outro"
 import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
-import material1 from "assets/dummyPics/project/projectMaterial/1.jpg"
-import material2 from "assets/dummyPics/project/projectMaterial/2.jpg"
 import { NextPageWithLayoutConfig } from "../../_app"
 import { GetServerSideProps } from "next"
 import { fetchProject } from "api/fetchProject"
-import { ProjectWithImageDimensions } from "misc/types"
-
-const materials = [
-  {
-    title: "black marble",
-    paragraph: dummyParagraph,
-    image: material1,
-  },
-  {
-    title: "polished wood",
-    paragraph: dummyParagraph,
-    image: material2,
-  },
-]
+import { ProjectWithImageDimensions } from "types"
 
 interface Props {
   project: ProjectWithImageDimensions

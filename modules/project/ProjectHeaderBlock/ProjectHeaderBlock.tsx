@@ -4,7 +4,7 @@ import Image from "next/image"
 import Calendar from "./assets/calendar.svg"
 import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
-import { ProjectWithImageDimensions } from "misc/types"
+import { ProjectWithImageDimensions } from "types"
 
 interface Props {
   project: ProjectWithImageDimensions

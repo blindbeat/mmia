@@ -1,5 +1,5 @@
 import { IntersectionOptions } from "react-intersection-observer"
-import { ImageWithDimensions, Project, ProjectBrief } from "misc/types"
+import { ImageWithDimensions, Project, ProjectBrief } from "types"
 import { constructImageUrl } from "api"
 import probe from "probe-image-size"
 

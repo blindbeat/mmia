@@ -4,14 +4,18 @@
 }
 
 .slide {
-  display: grid;
   width: min-content;
+}
+
+.link {
+  display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: 1fr auto;
   gap: var(--rowGap) var(--4xs);
 }
 
 .imageContainer {
+  position: relative;
   width: min(45vw, 55rem);
   aspect-ratio: 1 / 0.625;
 }
@@ -41,13 +45,13 @@
 }
 
 @media (max-width: calc(90em - 1px)) {
-  .slide {
+  .link {
     column-gap: 0.625rem;
   }
 }
 
 @media (max-width: calc(64em - 1px)) {
-  .slide {
+  .link {
     gap: unset;
     grid-template-columns: unset;
   }

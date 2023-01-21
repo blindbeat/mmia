@@ -1,12 +1,8 @@
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react"
 import styles from "./HomeProjectsSwiper.module.css"
-import slide1 from "assets/dummyPics/home/homeProjects/1.jpg"
-import slide2 from "assets/dummyPics/home/homeProjects/2.jpg"
-import slide3 from "assets/dummyPics/home/homeProjects/3.jpg"
 import Image from "next/image"
 import { Autoplay, Navigation, Pagination } from "swiper"
 import classNames from "classnames"
-import { tags, title } from "assets/dummyText"
 import {
   SwiperNavigationNext,
   SwiperNavigationPrev,
@@ -17,8 +13,8 @@ import {
   ProjectPreviewTitle,
   TagList,
 } from "components"
-
-const slides = [slide1, slide2, slide3]
+import { HomeProjectsSwiperContent } from "types"
+import Link from "next/link"
 
 const imageSizes = `
                    (max-width: calc(48em - 1px)) 100vw,
@@ -26,7 +22,8 @@ const imageSizes = `
                    50vw,
                    `
 
-function HomeProjectsSwiper({ className, ...rest }: SwiperProps) {
+type Props = SwiperProps & HomeProjectsSwiperContent
+function HomeProjectsSwiper({ className, projects, ...rest }: Props) {
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -67,15 +64,20 @@ function HomeProjectsSwiper({ className, ...rest }: SwiperProps) {
       className={classNames(styles.swiper, className)}
       {...rest}
     >
-      {slides.map((slide, index) => (
-        <SwiperSlide key={index} className={styles.slide}>
-          <ImageZoomableContainer className={styles.imageContainer}>
-            <Image src={slide} alt="" sizes={imageSizes} />
-          </ImageZoomableContainer>
-          {/*<div className={styles.imageContainer}>*/}
-          {/*</div>*/}
-          <TagList tags={tags as unknown as any} className={styles.tags} />
-          <ProjectPreviewTitle title={title} className={styles.title} />
+      {projects.map(({ heading, image, slug, id, categories: tags }) => (
+        <SwiperSlide key={id} className={styles.slide}>
+          <Link
+            href={`/projects/${encodeURIComponent(slug)}`}
+            className={styles.link}
+          >
+            <ImageZoomableContainer className={styles.imageContainer}>
+              <Image src={image} alt="" fill sizes={imageSizes} />
+            </ImageZoomableContainer>
+            <TagList tags={tags} className={styles.tags} />
+            <ProjectPreviewTitle className={styles.title}>
+              {heading}
+            </ProjectPreviewTitle>
+          </Link>
         </SwiperSlide>
       ))}
       <SwiperNavigationNext

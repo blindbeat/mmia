@@ -1,5 +1,5 @@
 import styles from "./AboutVacancies.module.css"
-import { Vacancy } from "misc/types"
+import { Vacancy } from "types"
 import { dummyVacancies } from "assets/dummyText"
 import classNames from "classnames"
 import { motion } from "framer-motion"

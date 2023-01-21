@@ -8,7 +8,7 @@ import {
   SwiperNavigationPrev,
 } from "components/swiperComponents"
 import classNames from "classnames"
-import { ImageWithDimensions } from "misc/types"
+import { ImageWithDimensions } from "types/miscTypes"
 import { ComponentPropsWithoutRef } from "react"
 
 interface Props extends ComponentPropsWithoutRef<"div"> {

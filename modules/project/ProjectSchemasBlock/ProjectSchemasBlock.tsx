@@ -1,6 +1,6 @@
 import { Gallery, ScreenTitle } from "components"
 import styles from "./ProjectSchemasBlock.module.css"
-import { ImageWithDimensions } from "misc/types"
+import { ImageWithDimensions } from "types"
 import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useAnimateLine } from "hooks"
 import { dummyParagraph } from "assets/dummyText"

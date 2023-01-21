@@ -1,6 +1,6 @@
 import styles from "./ProjectPhotosBlock.module.css"
 import Image from "next/image"
-import { ImageWithDimensions } from "misc/types"
+import { ImageWithDimensions } from "types"
 import classNames from "classnames"
 
 type PhotoOrientation = "vertical" | "horizontal"

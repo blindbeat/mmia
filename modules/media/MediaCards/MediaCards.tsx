@@ -1,4 +1,4 @@
-import { Media } from "misc/types"
+import { Media } from "types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react"
