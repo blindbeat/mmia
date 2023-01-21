@@ -66,10 +66,7 @@ function HomeProjectsSwiper({ className, projects, ...rest }: Props) {
     >
       {projects.map(({ heading, image, slug, id, categories: tags }) => (
         <SwiperSlide key={id} className={styles.slide}>
-          <Link
-            href={`/projects/${encodeURIComponent(slug)}`}
-            className={styles.link}
-          >
+          <Link href={`/projects/${slug}`} className={styles.link}>
             <ImageZoomableContainer className={styles.imageContainer}>
               <Image src={image} alt="" fill sizes={imageSizes} />
             </ImageZoomableContainer>
