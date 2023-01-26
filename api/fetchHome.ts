@@ -4,10 +4,10 @@ import { constructImageUrl } from "api/constructImageUrl"
 
 const url = new URL(`api/main_page`, baseUrl)
 
-export const fetchHome = async (): Promise<HomeFetch> => {
+export const fetchHome = async (locale: string): Promise<HomeFetch> => {
   const response = await fetch(url, {
     headers: {
-      "Accept-Language": "en",
+      "Accept-Language": locale,
     },
   })
   if (!response.ok) throw new Error()
@@ -15,6 +15,5 @@ export const fetchHome = async (): Promise<HomeFetch> => {
   result.projects.forEach(
     (project) => (project.image = constructImageUrl(project.image))
   )
-  console.log(result)
   return result as HomeFetch
 }

@@ -111,7 +111,7 @@ function Project({
         <Image
           src={image}
           fill
-          alt={heading}
+          alt={heading || ""}
           sizes={imageSizes}
           className={styles.image}
         />

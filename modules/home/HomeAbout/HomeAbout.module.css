@@ -73,6 +73,8 @@
   display: block;
   width: min(28vw, 35rem);
   height: auto;
+  aspect-ratio: 0.77;
+  object-fit: cover;
 }
 
 .backdropPhoto {

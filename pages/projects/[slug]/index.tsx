@@ -16,11 +16,13 @@ interface Props {
   project: ProjectWithImageDimensions
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  params,
+  locale,
+}) => {
+  locale ||= "en"
   try {
-    const project = await fetchProject(context.params!.slug as string)
+    const project = await fetchProject(params!.slug as string, locale)
     return {
       props: {
         project,

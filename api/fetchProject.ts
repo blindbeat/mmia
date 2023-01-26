@@ -7,12 +7,13 @@ import {
 import { populateImageWithDimensions, saturateImageSrcs } from "misc/utils"
 
 export const fetchProject = async (
-  slug: string
+  slug: string,
+  locale: string
 ): Promise<ProjectWithImageDimensions> => {
   const url = new URL(`api/project/${slug}`, baseUrl)
   const response = await fetch(url, {
     headers: {
-      "Accept-Language": "en",
+      "Accept-Language": locale,
     },
   })
   if (!response.ok) throw new Error()

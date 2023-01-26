@@ -14,9 +14,12 @@ interface Props {
   tags: TagWithCount[]
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const projects = (await fetchProjects()).data
-  const tags = await fetchCategories()
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  locale,
+}) => {
+  locale ||= "en"
+  const projects = (await fetchProjects(locale)).data
+  const tags = await fetchCategories(locale)
   return {
     props: {
       projects,

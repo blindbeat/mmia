@@ -6,6 +6,10 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
     domains: ["api.mmmia.black-fire.work"],
   },
+  i18n: {
+    locales: ["en", "uk"],
+    defaultLocale: "en",
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

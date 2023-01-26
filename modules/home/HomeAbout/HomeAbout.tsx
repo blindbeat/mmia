@@ -6,22 +6,14 @@ import {
   ScreenTitle,
 } from "components"
 import Image from "next/image"
-import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
-import backdropPhoto from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
 import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useInView } from "react-intersection-observer"
 import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
 import { useAnimateLine } from "hooks"
+import { HomeAboutContent } from "types"
 
-const title = "about company"
-const heading =
-  "We improve the world around us and create an impressive architecture using innovative solutions and We"
-const paragraph = new Array(2).fill(
-  "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We design spectacular"
-)
-
-const HomeAbout = () => {
+const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -33,12 +25,12 @@ const HomeAbout = () => {
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
-        <ScreenTitle className={styles.screenTitle}>{title}</ScreenTitle>
+        <ScreenTitle className={styles.screenTitle}>about company</ScreenTitle>
         <Heading as="h3" className={styles.title}>
-          {heading}
+          {title}
         </Heading>
         <div ref={ref} className={styles.text}>
-          {paragraph.map((text, index) => (
+          {[text, text].map((text, index) => (
             <Paragraph key={index}>{text}</Paragraph>
           ))}
           <ComponentWithLineAdornment
@@ -52,7 +44,9 @@ const HomeAbout = () => {
         </div>
         <div className={styles.imageWrapper}>
           <Image
-            src={founderPhoto}
+            src={image1.src}
+            width={image1.width}
+            height={image1.height}
             alt=""
             className={styles.founderPhoto}
             sizes="100vw"
@@ -62,7 +56,9 @@ const HomeAbout = () => {
               styles.backdropPhoto,
               !inView && styles.hiding
             )}
-            src={backdropPhoto}
+            src={image2.src}
+            width={image2.width}
+            height={image2.height}
             alt=""
           />
         </div>
