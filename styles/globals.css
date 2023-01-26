@@ -140,6 +140,16 @@ button {
   color: inherit;
 }
 
+ul {
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+ul li {
+  margin-bottom: var(--5xs);
+  color: rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: calc(120em - 1px)) {
   :root {
     --5xl: 9.25rem;

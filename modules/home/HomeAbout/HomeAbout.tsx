@@ -35,7 +35,7 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
           ))}
           <ComponentWithLineAdornment
             as="Link"
-            href=""
+            href="about"
             color="black"
             className={styles.link}
           >

@@ -8,7 +8,7 @@
 
 .textWrapper {
   display: grid;
-  max-width: var(--bp-xl);
+  width: min(var(--bp-xl), 100%);
   margin-bottom: var(--xl);
   padding: 0 var(--2xl);
   grid-template-columns: repeat(2, 1fr);

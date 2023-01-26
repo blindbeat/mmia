@@ -80,6 +80,7 @@
 }
 
 .paper {
+  display: flex;
   transition: transform ease-in-out 0.45s, opacity linear 0.45s;
   color: black;
   background: white;
@@ -104,7 +105,23 @@
 }
 
 .paperContentWrapper {
-  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: var(--sm) var(--xs);
+}
+
+.paperContentTitle {
+  margin-bottom: var(--xs);
+}
+
+.pageContentText {
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.paperContentLink {
+  margin-top: var(--3xs);
 }
 
 .flyingPaper {

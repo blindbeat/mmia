@@ -10,12 +10,14 @@ import {
   HomeLandingContent,
   HomeProjectsContent,
 } from "types"
-import { fetchAbout, fetchProjects } from "api"
+import { fetchAbout, fetchBuilding, fetchProjects } from "api"
+import { HomeBuildingContent } from "types/pageTypes/buildingTypes"
 
 interface Props {
   landingBlock: HomeLandingContent
   projectsBlock: HomeProjectsContent
   aboutBlock: HomeAboutContent
+  buildingBlock: HomeBuildingContent
 }
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
@@ -24,6 +26,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const landing = await fetchHome(locale)
   const projects = (await fetchProjects(locale)).data.slice(-3)
   const about = await fetchAbout(locale)
+  const building = await fetchBuilding(locale)
   return {
     props: {
       landingBlock: {
@@ -38,12 +41,20 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
       },
       projectsBlock: {
         projects,
+        title: landing.projects_title,
+        description: landing.projects_description,
       },
       aboutBlock: {
         title: about.title,
         image1: about.image1,
         image2: about.image2,
         text: about.text,
+      },
+      buildingBlock: {
+        title: building.homeTitle,
+        description: building.homeDescription,
+        image: building.image,
+        content: building.homeContent,
       },
     },
   }
@@ -53,13 +64,14 @@ const Home: NextPageWithLayoutConfig<Props> = ({
   landingBlock,
   projectsBlock,
   aboutBlock,
+  buildingBlock,
 }: Props) => {
   return (
     <>
       <HomeLanding projects={landingBlock.projects} />
       <HomeAbout {...aboutBlock} />
-      <HomePapers />
-      <HomeProjects projects={projectsBlock.projects} />
+      <HomePapers {...buildingBlock} />
+      <HomeProjects {...projectsBlock} />
     </>
   )
 }

@@ -41,3 +41,50 @@ export interface AboutFetchSanitized
   image1: ImageWithDimensions
   image2: ImageWithDimensions
 }
+
+export interface BuildingFetch {
+  id: number
+  title: string
+  image: string
+  block1_title: string
+  block1_description: string
+  block2_sub_blocks: {
+    layout: string
+    key: string
+    attributes: {
+      name: string
+      description: string
+    }[]
+  }
+  block3_title: string
+  block3_description: string
+  block3_sub_blocks: {
+    layout: string
+    key: string
+    attributes: {
+      name: string
+      description: string
+    }
+  }[]
+  medium_block_title: string
+  medium_sub_blocks: {
+    layout: string
+    key: string
+    attributes: {
+      name: string
+      description: string
+    }
+  }[]
+  gallery: string[]
+}
+
+export interface BuildingFetchSanitized
+  extends Omit<BuildingFetch, "block1_description" | "block1_title"> {
+  homeDescription: string
+  homeTitle: string
+  homeContent: {
+    key: string
+    title: string
+    description: string
+  }[]
+}

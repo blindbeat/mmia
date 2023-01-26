@@ -13,4 +13,6 @@ export interface HomeProjectsSwiperContent {
 }
 export interface HomeProjectsContent {
   projects: HomeProjectsProject[]
+  title: string
+  description: string
 }

@@ -2,22 +2,13 @@ import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
 import styles from "./HomePapers.module.css"
 import Image from "next/image"
-import backgroundImage from "assets/dummyPics/home/homePapers/scaffolding.jpg"
 import { Bubble, ComponentWithLineAdornment, Heading } from "components"
 import { useRef, useState } from "react"
 import { useThresholdObserver } from "hooks"
 import { Swiper, SwiperSlide } from "swiper/react"
-import {
-  dummyParagraph,
-  dummyParagraphLong2,
-  dummyParagraphShort,
-} from "assets/dummyText"
 import Link from "next/link"
 import { generatePreparationIndex } from "modules/building/BuildingPreparation/BuildingPreparation"
-
-const textHeading = "We improve the world around us and create an"
-
-const bubbleTextArr = new Array(3).fill(dummyParagraphShort)
+import { HomeBuildingContent } from "types"
 
 const movePapers = (papersArr: number[]) => {
   const [firstPaper, ...rest] = papersArr
@@ -26,8 +17,13 @@ const movePapers = (papersArr: number[]) => {
 
 type AnimationName = "toLeft" | "toRight"
 
-const HomePapers = () => {
-  const [papers, setPapers] = useState([1, 2, 3, 4])
+const HomePapers = ({
+  title,
+  description,
+  image,
+  content,
+}: HomeBuildingContent) => {
+  const [papers, setPapers] = useState([1, 2, 3])
   const [currentPaper, setCurrentPaper] = useState(0)
   const [flyingPapers, setFlyingPapers] = useState<[number, AnimationName][]>(
     []
@@ -49,10 +45,10 @@ const HomePapers = () => {
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
         <div className={styles.text}>
-          <Heading as="h3">{textHeading}</Heading>
-          <p>{dummyParagraph}</p>
+          <Heading as="h3">{title}</Heading>
+          <p>{description}</p>
           <ComponentWithLineAdornment
-            href=""
+            href="building"
             color="white"
             className={styles.link}
           >
@@ -77,9 +73,15 @@ const HomePapers = () => {
                   }}
                 >
                   <div className={styles.paperContentWrapper}>
-                    <h5>{dummyParagraphShort}</h5>
-                    {dummyParagraphLong2}
-                    <h5>{paper + 1}</h5>
+                    <h5 className={styles.paperContentTitle}>
+                      {content[paper].title}
+                    </h5>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: content[paper].description,
+                      }}
+                      className={styles.pageContentText}
+                    />
                   </div>
                 </div>
               ))}
@@ -96,9 +98,22 @@ const HomePapers = () => {
                 <div className={styles.paperContentWrapper}>
                   {index === 0 && (
                     <>
-                      <h5>{dummyParagraphShort}</h5>
-                      {dummyParagraphLong2}
-                      <h5>{currentPaper + 1}</h5>
+                      <h5 className={styles.paperContentTitle}>
+                        {content[currentPaper].title}
+                      </h5>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: content[currentPaper].description,
+                        }}
+                        className={styles.pageContentText}
+                      />
+                      <ComponentWithLineAdornment
+                        color="black"
+                        href={`building#${generatePreparationIndex(index + 1)}`}
+                        className={styles.paperContentLink}
+                      >
+                        View More
+                      </ComponentWithLineAdornment>
                     </>
                   )}
                 </div>
@@ -108,7 +123,7 @@ const HomePapers = () => {
         </div>
         {extendsThreshold ? (
           <div className={styles.bubblesWrapper}>
-            {bubbleTextArr.map((text, index) => (
+            {content.map(({ title }, index) => (
               <Bubble
                 key={index}
                 index={index}
@@ -117,17 +132,17 @@ const HomePapers = () => {
                 variant="papers"
                 withIndex
               >
-                <p className={styles.bubbleText}>{text}</p>
+                <p className={styles.bubbleText}>{title}</p>
               </Bubble>
             ))}
           </div>
         ) : (
           <Swiper slidesPerView={1.75} centeredSlides className={styles.swiper}>
-            {bubbleTextArr.map((text, index) => (
+            {content.map(({ title }, index) => (
               <SwiperSlide key={index}>
                 <Link href={`building#${generatePreparationIndex(index + 1)}`}>
                   <Bubble index={index} variant="papers" withIndex>
-                    {text}
+                    {title}
                   </Bubble>
                 </Link>
               </SwiperSlide>
@@ -135,12 +150,7 @@ const HomePapers = () => {
           </Swiper>
         )}
       </div>
-      <Image
-        className={utilStyles.backgroundImage}
-        src={backgroundImage}
-        fill
-        alt=""
-      />
+      <Image className={utilStyles.backgroundImage} src={image} fill alt="" />
     </div>
   )
 }
