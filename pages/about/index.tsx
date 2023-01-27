@@ -7,8 +7,21 @@ import AboutPhoto from "modules/about/AboutPhoto"
 import AboutPhilosophy from "modules/about/AboutPhilosophy"
 import AboutWordTape from "modules/about/AboutWordtape"
 import AboutVacancies from "modules/about/AboutVacancies"
+import {AboutPage} from "types";
+import {GetServerSideProps} from "next";
+import {fetchAbout} from "../../api";
 
-const About: NextPageWithLayoutConfig = () => {
+export const getServerSideProps: GetServerSideProps<AboutPage> = async ({locale}) => {
+  locale ||= "en"
+  const about = await fetchAbout(locale)
+  return {
+    props: {
+      ...about
+    }
+  }
+}
+
+const About: NextPageWithLayoutConfig<AboutPage> = ({title,}) => {
   return (
     <>
       <AboutHeading />
