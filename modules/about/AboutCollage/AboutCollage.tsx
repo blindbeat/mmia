@@ -1,10 +1,8 @@
 import styles from "./AboutCollage.module.css"
-import { dummyParagraph } from "assets/dummyText"
 import { Paragraph } from "components"
 import Image from "next/image"
-import founderPhoto from "assets/dummyPics/home/homeAbout/founderPhoto.jpg"
-import officeImage from "assets/dummyPics/home/homeAbout/backdropPhoto.jpg"
 import { motion } from "framer-motion"
+import { ImageWithDimensions } from "types"
 
 const founderImageSizes = `
                    (max-width: calc(48em - 1px)) 100vw,
@@ -16,12 +14,18 @@ const officeImageSizes = `
                          (max-width: calc(64em - 1px)) 30vw,
                          550px,
                          `
-const AboutCollage = () => {
+interface Props {
+  textArr: [string, string]
+  founderPhoto: ImageWithDimensions
+  officePhoto: ImageWithDimensions
+}
+const AboutCollage = ({ textArr, founderPhoto, officePhoto }: Props) => {
   return (
     <div className={styles.content}>
       <div className={styles.text}>
-        <Paragraph>{dummyParagraph}</Paragraph>
-        <Paragraph>{dummyParagraph}</Paragraph>
+        {textArr.map((text, index) => (
+          <Paragraph key={index}>{text}</Paragraph>
+        ))}
       </div>
       <Image
         src={founderPhoto}
@@ -32,7 +36,7 @@ const AboutCollage = () => {
       <div className={styles.office}>
         <span className={styles.officeTitle}>our office in Kyiv</span>
         <Image
-          src={officeImage}
+          src={officePhoto}
           alt=""
           sizes={officeImageSizes}
           className={styles.officeImage}

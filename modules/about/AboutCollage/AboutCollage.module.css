@@ -20,6 +20,8 @@
   height: auto;
   grid-column: 3;
   grid-row: span 2;
+  aspect-ratio: 0.71;
+  object-fit: cover;
 }
 
 .office {

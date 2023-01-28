@@ -1,12 +1,14 @@
 import styles from "./AboutPhilosophy.module.css"
 import { ScreenTitle } from "components"
-import { dummyPhilosophy } from "assets/dummyText"
 
-const AboutPhilosophy = () => {
+interface Props {
+  text: string
+}
+const AboutPhilosophy = ({ text }: Props) => {
   return (
     <div className={styles.content}>
       <ScreenTitle>our philosophy</ScreenTitle>
-      <p>{dummyPhilosophy}</p>
+      <p>{text}</p>
     </div>
   )
 }

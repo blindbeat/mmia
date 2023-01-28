@@ -6,7 +6,7 @@ export interface Vacancy {
   name: string
   country: string
   city: string
-  employmentTime: "Full-Time" | "Part-Time"
+  employmentTime: string
   description: string
 }
 

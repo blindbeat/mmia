@@ -1,4 +1,4 @@
-import { ImageWithDimensions, Project } from "types"
+import { ImageWithDimensions, Project, Vacancy } from "types"
 
 export interface HomeFetch {
   building_title: string
@@ -8,7 +8,7 @@ export interface HomeFetch {
   projects: Omit<Project, "next" | "content">[]
 }
 
-interface Vacancy {
+interface VacancyFetched {
   id: number
   title: string
   image: string
@@ -33,13 +33,15 @@ export interface AboutFetch {
   running_title1: string
   running_title2: string
   running_sub_title: string
-  vacancies: Vacancy[]
+  vacancies: VacancyFetched[]
 }
 
 export interface AboutFetchSanitized
-  extends Omit<AboutFetch, "image1" | "image2"> {
+  extends Omit<AboutFetch, "image" | "image1" | "image2" | "vacancies"> {
+  image: ImageWithDimensions
   image1: ImageWithDimensions
   image2: ImageWithDimensions
+  vacancies: Vacancy[]
 }
 
 export interface BuildingFetch {

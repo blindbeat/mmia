@@ -1,8 +1,28 @@
-import { AboutFetchSanitized } from "types"
+import { AboutFetchSanitized, ImageWithDimensions, Vacancy } from "types"
 
 export type HomeAboutContent = Pick<
   AboutFetchSanitized,
   "title" | "image1" | "image2" | "text"
 >
 
-export type AboutPage = AboutFetchSanitized
+export type AboutVacancy = Pick<
+  Vacancy,
+  "name" | "employmentTime" | "country" | "city"
+>
+export interface AboutPage {
+  title: string
+  collageTexts: [string, string]
+  collagePhotos: {
+    founder: ImageWithDimensions
+    office: ImageWithDimensions
+  }
+  quote: {
+    text: string
+    author: string
+  }
+  parallaxImage: ImageWithDimensions
+  tapes: [string, string]
+  tapesAfterword: string
+  philosophy: string
+  vacancies: AboutVacancy[]
+}

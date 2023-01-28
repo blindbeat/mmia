@@ -1,6 +1,5 @@
 import styles from "./AboutVacancies.module.css"
-import { Vacancy } from "types"
-import { dummyVacancies } from "assets/dummyText"
+import { AboutVacancy } from "types"
 import classNames from "classnames"
 import { motion } from "framer-motion"
 import Tilt from "react-parallax-tilt"
@@ -21,11 +20,14 @@ const positions: Position[] = [
   { top: 15, left: 80, rotate: 6.24 },
   { top: 15, left: 10, rotate: 1.5 },
 ]
-const AboutVacancies = () => {
+interface Props {
+  vacancies: AboutVacancy[]
+}
+const AboutVacancies = ({ vacancies }: Props) => {
   const [lastHoveredCard, setLastHoveredCard] = useState<number | null>(null)
   return (
     <div className={styles.content}>
-      {dummyVacancies.map((vacancy, index) => (
+      {vacancies.map((vacancy, index) => (
         <VacancyElem
           key={index}
           vacancy={vacancy}
@@ -43,7 +45,7 @@ export default AboutVacancies
 const duration = 0.2
 
 interface VacancyProps extends ComponentPropsWithoutRef<"div"> {
-  vacancy: Vacancy
+  vacancy: AboutVacancy
   position: Position
   isFirstPlan: boolean
 }

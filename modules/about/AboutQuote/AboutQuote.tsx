@@ -1,16 +1,18 @@
 import styles from "./AboutQuote.module.css"
 import { Heading } from "components"
-import { dummyTitleLong } from "assets/dummyText"
 
-const name = "Vasily Prikhotko"
-const AboutQuote = () => {
+interface Props {
+  text: string
+  author: string
+}
+const AboutQuote = ({ text, author }: Props) => {
   return (
     <div className={styles.content}>
       <span className={styles.quoteMark}>&ldquo;</span>
       <Heading as="h3" className={styles.quote}>
-        {dummyTitleLong}
+        {text}
       </Heading>
-      <span className={styles.name}>({name})</span>
+      <span className={styles.name}>({author})</span>
     </div>
   )
 }

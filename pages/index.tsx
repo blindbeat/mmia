@@ -68,7 +68,7 @@ const Home: NextPageWithLayoutConfig<Props> = ({
 }: Props) => {
   return (
     <>
-      <HomeLanding projects={landingBlock.projects} />
+      <HomeLanding {...landingBlock} />
       <HomeAbout {...aboutBlock} />
       <HomePapers {...buildingBlock} />
       <HomeProjects {...projectsBlock} />

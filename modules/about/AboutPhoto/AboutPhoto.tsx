@@ -1,11 +1,16 @@
 import styles from "./AboutPhoto.module.css"
-import photo from "assets/dummyPics/home/homeLanding/3.jpg"
 import { ImageWithParallax } from "components/ImageWithParallax"
+import { ImageWithDimensions } from "types"
 
-const AboutPhoto = () => {
+interface Props {
+  image: ImageWithDimensions
+}
+const AboutPhoto = ({ image }: Props) => {
   return (
     <ImageWithParallax
-      src={photo}
+      src={image.src}
+      width={image.width}
+      height={image.height}
       alt=""
       sizes="200vw"
       className={styles.content}

@@ -1,13 +1,14 @@
 import styles from "./AboutWordTape.module.css"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { dummyParagraph } from "assets/dummyText"
 import { Paragraph } from "components"
 
-const tape =
-  "We see architecture as a unique product, created at the intersection, "
+interface Props {
+  tapes: [string, string]
+  afterword: string
+}
 
-const AboutWordTape = () => {
+const AboutWordTape = ({ tapes, afterword }: Props) => {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -32,7 +33,7 @@ const AboutWordTape = () => {
           x: firstY,
         }}
       >
-        {tape}
+        {tapes[0]}
       </motion.div>
       <motion.div
         className="h1"
@@ -40,9 +41,9 @@ const AboutWordTape = () => {
           x: secondY,
         }}
       >
-        {tape}
+        {tapes[1]}
       </motion.div>
-      <Paragraph>{dummyParagraph}</Paragraph>
+      <Paragraph>{afterword}</Paragraph>
     </div>
   )
 }

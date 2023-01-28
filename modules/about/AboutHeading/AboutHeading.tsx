@@ -1,14 +1,14 @@
 import { Heading } from "components"
 import styles from "./AboutHeading.module.css"
 
-const heading =
-  "We are thoroughly familiar with the world, creating architecture that is hostile"
-
-const AboutHeading = () => {
+interface Props {
+  title: string
+}
+const AboutHeading = ({ title }: Props) => {
   return (
     <div className={styles.wrapper}>
       <Heading as="h1" className={styles.content}>
-        {heading}
+        {title}
       </Heading>
     </div>
   )

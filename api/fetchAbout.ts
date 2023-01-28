@@ -19,6 +19,15 @@ export const fetchAbout = async (
     ...about,
     image1: await populateImageWithDimensions(constructImageUrl(about.image1)),
     image2: await populateImageWithDimensions(constructImageUrl(about.image2)),
-    image: constructImageUrl(about.image),
+    image: await populateImageWithDimensions(constructImageUrl(about.image)),
+    vacancies: about.vacancies.map(
+      ({ title, place, state, type, description }) => ({
+        name: title,
+        country: place,
+        city: state,
+        employmentTime: type,
+        description,
+      })
+    ),
   }
 }
