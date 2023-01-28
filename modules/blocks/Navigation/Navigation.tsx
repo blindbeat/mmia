@@ -317,10 +317,7 @@ const Navigation = ({
             className={classNames(styles.corner)}
           />
         ) : (
-          <LanguageChangeButton
-            href="#"
-            className={classNames(styles.corner)}
-          />
+          <LanguageChangeButton className={classNames(styles.corner)} />
         )}
       </header>
       <div className={styles.fullscreenContent}>
