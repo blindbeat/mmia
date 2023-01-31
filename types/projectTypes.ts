@@ -86,7 +86,7 @@ export type ProjectContentTypeWithDimensions =
   | ProjectMaterials
   | ProjectText
 
-export interface Project {
+interface ProjectWithoutCoords {
   area: string
   city: string
   categories: Tag[]
@@ -104,10 +104,20 @@ export interface Project {
   }
 }
 
-export type ProjectBrief = Omit<Project, "next">
+interface ProjectWithCoords extends ProjectWithoutCoords {
+  lat: string
+  lng: string
+}
+
+export type Project = ProjectWithoutCoords | ProjectWithCoords
+
+export type ProjectWithoutCoordsBrief = Omit<Project, "next">
+export type ProjectWithCoordsBrief = Omit<ProjectWithCoords, "next">
+
+export type ProjectBrief = ProjectWithoutCoordsBrief | ProjectWithCoordsBrief
 
 export interface ProjectWithImageDimensions
-  extends Omit<Project, "image" | "content"> {
+  extends Omit<ProjectWithoutCoords, "image" | "content"> {
   image: ImageWithDimensions
   content: ProjectContentTypeWithDimensions[]
 }

@@ -1,11 +1,14 @@
-import { Project } from "types"
+import { ProjectWithoutCoords } from "types"
 
 export interface HomeLandingContent {
-  projects: Pick<Project, "heading" | "description" | "image" | "slug">[]
+  projects: Pick<
+    ProjectWithoutCoords,
+    "heading" | "description" | "image" | "slug"
+  >[]
 }
 
 type HomeProjectsProject = Pick<
-  Project,
+  ProjectWithoutCoords,
   "heading" | "image" | "slug" | "id" | "categories"
 >
 export interface HomeProjectsSwiperContent {

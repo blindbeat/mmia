@@ -15,41 +15,45 @@ import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
 import { createPortal } from "react-dom"
 import Image from "next/image"
-import projectImage from "assets/dummyPics/instagramPhotos/1.jpg"
-import { Contact } from "types"
+import { Contact, ProjectWithCoordsBrief } from "types"
 import Socials from "modules/blocks/Socials"
+import { GetServerSideProps } from "next"
+import { fetchContacts } from "api/fetchContacts"
+import { fetchProjects } from "api"
 
 const projection = geoAitoff().scale(200).center([45, 25])
-const points: [number, number][] = [
-  [30.006, 50.7128],
-  [10, 20],
-  [20, 40],
-  [-90, 42],
-  [90, 25],
-  [140.033484, 35.788226],
-  [150.98, -34.07],
-  [-73.959089, 40.627087],
-]
 
-const contacts: Contact[] = [
-  {
-    city: "Miami",
-    address: "5555 Biscayne Blvd, 4th Floor Space 2 Miami, FL 33137 / USA",
-    phone: 48510579790,
-  },
-  {
-    city: "Miami",
-    address: "5555 Biscayne Blvd, 4th Floor Space 2 Miami, FL 33137 / USA",
-    phone: 48510579790,
-  },
-]
+interface Props {
+  contacts: Contact[]
+  projects: ProjectWithCoordsBrief[]
+}
 
-const Contact: NextPageWithLayoutConfig = () => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  locale,
+}) => {
+  locale ||= "en"
+  const contacts = (await fetchContacts(locale)).contacts
+  const projects = (await fetchProjects(locale)).data.filter(
+    (project): project is ProjectWithCoordsBrief => {
+      return "lat" in project && "lng" in project
+    }
+  )
+
+  return {
+    props: {
+      contacts,
+      projects,
+    },
+  }
+}
+
+const Contact: NextPageWithLayoutConfig<Props> = ({ projects, contacts }) => {
+  console.log(projects)
   const [mapElemState, setMapElemState] = useState<HTMLDivElement | null>(null)
   const mapElem = useRef<HTMLDivElement | null>(null)
   const [lastWaveEnded, setLastWaveEnded] = useState(false)
   const [waveTriggeringCountingArray, setWaveTriggeringCountingArray] =
-    useState([...new Array(points.length).fill(0)])
+    useState([...new Array(projects.length).fill(0)])
 
   useEffect(() => {
     setMapElemState(mapElem.current as HTMLDivElement)
@@ -58,12 +62,12 @@ const Contact: NextPageWithLayoutConfig = () => {
   const lastIndexAnimated = useRef<null | number>(null)
 
   const increaseRandomAnimationIndex = useCallback(() => {
-    let randomIndexInArray = Math.floor(Math.random() * points.length)
+    let randomIndexInArray = Math.floor(Math.random() * projects.length)
     while (
       lastIndexAnimated.current !== null &&
       lastIndexAnimated.current == randomIndexInArray
     ) {
-      randomIndexInArray = Math.floor(Math.random() * points.length)
+      randomIndexInArray = Math.floor(Math.random() * projects.length)
     }
 
     lastIndexAnimated.current = randomIndexInArray
@@ -76,7 +80,7 @@ const Contact: NextPageWithLayoutConfig = () => {
   }, [])
 
   useEffect(() => {
-    if (!lastWaveEnded || points.length < 3) return
+    if (!lastWaveEnded || projects.length < 3) return
     increaseRandomAnimationIndex()
     const interval = setInterval(increaseRandomAnimationIndex, 1000)
     return () => clearInterval(interval)
@@ -99,15 +103,15 @@ const Contact: NextPageWithLayoutConfig = () => {
           }
         </Geographies>
         {mapElemState &&
-          points.map((point, index) => (
+          projects.map((project, index) => (
             <MarkerAnimated
-              key={point.join()}
+              key={index}
               delay={index / 5}
-              coordinates={point}
+              project={project}
               portalTarget={mapElemState}
               animationTriggeringNumber={waveTriggeringCountingArray[index]}
               setLastWaveEnded={
-                index === points.length - 1 ? setLastWaveEnded : undefined
+                index === projects.length - 1 ? setLastWaveEnded : undefined
               }
             />
           ))}
@@ -128,7 +132,7 @@ const Contact: NextPageWithLayoutConfig = () => {
                 }}
                 href={`tel:+${contact.phone}`}
               >
-                +48 (510) 579 790
+                {contact.phone}
               </motion.a>
             </div>
           ))}
@@ -161,6 +165,7 @@ Contact.layoutConfig = {
 export default Contact
 
 interface MarkerAnimatedProps extends MarkerProps {
+  project: ProjectWithCoordsBrief
   delay: number
   portalTarget: HTMLDivElement
   animationTriggeringNumber: number
@@ -172,6 +177,7 @@ const MarkerAnimated = ({
   portalTarget,
   animationTriggeringNumber,
   setLastWaveEnded,
+  project,
   ...rest
 }: MarkerAnimatedProps) => {
   const [hovered, setHovered] = useState(false)
@@ -204,7 +210,7 @@ const MarkerAnimated = ({
         createPortal(
           <Link
             key={position.join("-")}
-            href="/projects/projectName"
+            href={`/projects/${project.slug}`}
             style={{
               top: position[1],
               left: position[0],
@@ -327,7 +333,8 @@ const MarkerAnimated = ({
                       className={styles.imageWrapper}
                     >
                       <Image
-                        src={projectImage}
+                        src={project.image}
+                        fill
                         alt=""
                         className={styles.image}
                       />
@@ -339,7 +346,12 @@ const MarkerAnimated = ({
           </Link>,
           portalTarget
         )}
-      <Marker {...rest} ref={markerRef} className={styles.marker}>
+      <Marker
+        {...rest}
+        coordinates={[+project.lng, +project.lat]}
+        ref={markerRef}
+        className={styles.marker}
+      >
         <motion.circle
           initial={{
             fill: "#292929",

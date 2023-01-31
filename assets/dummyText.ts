@@ -1,4 +1,4 @@
-import { Vacancy } from "types"
+import { ArrayEntrySanitized, Vacancy } from "types"
 
 export const title = "Cardiovascular Hospital in Briukhovychi"
 export const tags = ["interior", "Architecture"]
@@ -30,10 +30,13 @@ const bubbleTitle = "Climate"
 const bubbleText =
   "Your work will be intensive, but the tasks will be interesting. You will independently "
 
-export const bubbles = [...new Array(4)].fill({
-  title: bubbleTitle,
-  text: bubbleText,
-})
+export const bubbles: ArrayEntrySanitized[] = [...new Array(4)].map(
+  (_, index) => ({
+    key: String(index),
+    title: bubbleTitle,
+    description: bubbleText,
+  })
+)
 
 export const dummyVacancies: Vacancy[] = [...new Array(6)].fill({
   name: "project manager",

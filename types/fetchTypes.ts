@@ -83,3 +83,28 @@ export interface BuildingFetchSanitized extends Pick<BuildingFetch, "title"> {
   }
   gallery: ImageWithDimensions[]
 }
+
+export interface ContactsFetch {
+  id: number
+  content: {
+    layout: string
+    key: string
+    attributes: {
+      city: string
+      address: string
+      phone: string
+      email: string
+    }
+  }[]
+}
+
+export interface Contact {
+  key: string
+  city: string
+  address: string
+  phone: string
+  email: string
+}
+export interface ContactsFetchSanitized {
+  contacts: Contact[]
+}

@@ -1,8 +1,8 @@
 import baseUrl from "api/baseUrl"
 import {
-  Project,
   ProjectContentTypeWithDimensions,
   ProjectWithImageDimensions,
+  ProjectWithoutCoords,
 } from "types"
 import { populateImageWithDimensions, saturateImageSrcs } from "misc/utils"
 
@@ -17,7 +17,7 @@ export const fetchProject = async (
     },
   })
   if (!response.ok) throw new Error()
-  const fetchedProject = (await response.json()) as Project
+  const fetchedProject = (await response.json()) as ProjectWithoutCoords
   const sanitizedProject = saturateImageSrcs(fetchedProject)
 
   const contentWithDimensions: ProjectContentTypeWithDimensions[] =
