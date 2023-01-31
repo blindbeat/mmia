@@ -20,6 +20,7 @@ import Socials from "modules/blocks/Socials"
 import { GetServerSideProps } from "next"
 import { fetchContacts } from "api/fetchContacts"
 import { fetchProjects } from "api"
+import { convertToPhone } from "utils/convertToPhone"
 
 const projection = geoAitoff().scale(200).center([45, 25])
 
@@ -129,7 +130,7 @@ const Contact: NextPageWithLayoutConfig<Props> = ({ projects, contacts }) => {
                 whileHover={{
                   opacity: 1,
                 }}
-                href={`tel:+${contact.phone}`}
+                href={`tel:+${convertToPhone(contact.phone)}`}
               >
                 {contact.phone}
               </motion.a>
