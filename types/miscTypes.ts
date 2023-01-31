@@ -10,12 +10,6 @@ export interface Vacancy {
   description: string
 }
 
-export interface Contact {
-  city: string
-  address: string
-  phone: number
-}
-
 export interface Media {
   logo: NextImageSrc
   hoverImage: NextImageSrc
