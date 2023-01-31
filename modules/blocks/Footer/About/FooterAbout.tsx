@@ -7,8 +7,7 @@ import BackgroundSvg from "./assets/backgroundLine.svg"
 import { useAnimateLine, useCalcElementHeight } from "hooks"
 import { useContext, useEffect } from "react"
 import { FooterHeightContext } from "contexts"
-
-const ctaText = "Let’s talk about  your project!"
+import { useStaticDataSWR } from "hooks/useStaticDataSWR"
 
 const links = ["services", "projects", "media", "building", "contact"]
 const email = "info@aimm-group.com"
@@ -18,15 +17,15 @@ const FooterAbout = () => {
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
   const { ref, height } = useCalcElementHeight()
   const footerHeightContext = useContext(FooterHeightContext)
-
+  const data = useStaticDataSWR()
   useEffect(() => {
     footerHeightContext?.(height)
-  }, [footerHeightContext, height])
+  }, [footerHeightContext, height, data])
 
   return (
     <div ref={ref} className={classNames(styles.content, utilStyles.wrapper)}>
       <div className={styles.ctaBlock}>
-        <Heading as="h3">{ctaText}</Heading>
+        <Heading as="h3">{data?.block2_description || ""}</Heading>
         <ComponentWithLineAdornment as="button" color="black">
           drop request
         </ComponentWithLineAdornment>

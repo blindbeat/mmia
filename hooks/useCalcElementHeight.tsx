@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
+import useResizeObserver from "@react-hook/resize-observer"
 
 export const useCalcElementHeight = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -12,9 +13,9 @@ export const useCalcElementHeight = () => {
 
   useEffect(() => {
     headerHeightSetter()
-    window.addEventListener("resize", headerHeightSetter)
-    return () => window.removeEventListener("resize", headerHeightSetter)
   }, [headerHeightSetter])
+
+  useResizeObserver(ref.current, headerHeightSetter)
   return {
     ref,
     height,

@@ -108,3 +108,28 @@ export interface Contact {
 export interface ContactsFetchSanitized {
   contacts: Contact[]
 }
+
+export interface StaticFetch {
+  id: number
+  gallery: string[]
+  description: string
+  title: string
+  token: string
+  block2_description: string
+  socials: {
+    layout: string
+    key: string
+    attributes: {
+      name: string
+      link: string
+    }
+  }[]
+}
+
+export interface StaticFetchSanitized extends Omit<StaticFetch, "socials"> {
+  socials: {
+    key: string
+    name: string
+    link: string
+  }[]
+}

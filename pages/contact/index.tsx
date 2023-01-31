@@ -48,7 +48,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 }
 
 const Contact: NextPageWithLayoutConfig<Props> = ({ projects, contacts }) => {
-  console.log(projects)
   const [mapElemState, setMapElemState] = useState<HTMLDivElement | null>(null)
   const mapElem = useRef<HTMLDivElement | null>(null)
   const [lastWaveEnded, setLastWaveEnded] = useState(false)

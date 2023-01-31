@@ -1,22 +1,24 @@
 import { ComponentPropsWithoutRef, forwardRef } from "react"
 import classNames from "classnames"
 import styles from "./Socials.module.css"
-
-const links = ["ig", "be", "fb", "yt"]
+import { useStaticDataSWR } from "hooks"
 
 const Socials = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<"div">>(
   ({ className, ...rest }, ref) => {
+    const data = useStaticDataSWR()
+
     return (
       <div
         ref={ref}
         className={classNames(styles.wrapper, className)}
         {...rest}
       >
-        {links.map((link) => (
-          <a key={link} className={styles.link}>
-            {link}
-          </a>
-        ))}
+        {data &&
+          data.socials.map(({ key, name, link }) => (
+            <a key={key} href={link} className={styles.link}>
+              {name}
+            </a>
+          ))}
       </div>
     )
   }
