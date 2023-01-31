@@ -5,14 +5,14 @@ import {
   ProjectPreviewTitle,
   TagList,
 } from "components"
-import { ProjectWithoutCoordsBrief } from "types"
+import { ProjectBrief } from "types"
 import Link from "next/link"
 import classNames from "classnames"
 import { AnimationEventHandler, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 
 interface Props {
-  projects: ProjectWithoutCoordsBrief[]
+  projects: ProjectBrief[]
   withDelay: boolean
 }
 
@@ -39,7 +39,7 @@ export default function ProjectsList({ projects, withDelay }: Props) {
 }
 
 interface ProjectProps {
-  project: ProjectWithoutCoordsBrief
+  project: ProjectBrief
   index: number
   lastVisibleIndex: number
   lastVisibleIndexSetter: (index: number) => void
