@@ -150,7 +150,12 @@ const HomePapers = ({
           </Swiper>
         )}
       </div>
-      <Image className={utilStyles.backgroundImage} src={image} fill alt="" />
+      <Image
+        className={utilStyles.backgroundImage}
+        src={image.src}
+        fill
+        alt=""
+      />
     </div>
   )
 }

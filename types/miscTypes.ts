@@ -36,3 +36,17 @@ export interface ImageWithDimensions {
   width: number
   height: number
 }
+
+export interface ArrayEntry {
+  layout: string
+  key: string
+  attributes: {
+    name: string
+    description: string
+  }
+}
+export interface ArrayEntrySanitized {
+  key: string
+  title: string
+  description: string
+}

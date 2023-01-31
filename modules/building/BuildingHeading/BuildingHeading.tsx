@@ -1,9 +1,10 @@
 import styles from "./BuildingHeading.module.css"
 import { Heading } from "components"
 
-const title = "The method of major overhaul"
-
-const BuildingHeading = () => {
+interface Props {
+  title: string
+}
+const BuildingHeading = ({ title }: Props) => {
   return (
     <Heading as="h1" className={styles.content}>
       {title}

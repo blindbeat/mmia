@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import { swiperStyles } from "components/swiperComponents/SwiperBullets"
 import { Bubble } from "components"
+import { ArrayEntrySanitized } from "types"
 
 interface Bubble {
   title: string
@@ -11,17 +12,17 @@ interface Bubble {
 }
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
-  bubbles: Bubble[]
+  bubbles: ArrayEntrySanitized[]
 }
 
 const Bubbles = ({ bubbles, className }: Props) => {
   return (
     <div className={className}>
       <div className={styles.bubbles}>
-        {bubbles.map(({ title, text }, index) => (
-          <Bubble key={index} index={index} className={styles.bubble}>
+        {bubbles.map(({ title, description, key }, index) => (
+          <Bubble key={key} index={index} className={styles.bubble}>
             <h4>{title}</h4>
-            <p>{text}</p>
+            <p>{description}</p>
           </Bubble>
         ))}
       </div>
@@ -38,11 +39,11 @@ const Bubbles = ({ bubbles, className }: Props) => {
         }}
         loop
       >
-        {bubbles.map(({ title, text }, index) => (
-          <SwiperSlide key={index}>
-            <Bubble key={index} index={index} className={styles.bubble}>
+        {bubbles.map(({ title, description, key }, index) => (
+          <SwiperSlide key={key}>
+            <Bubble key={key} index={index} className={styles.bubble}>
               <h4>{title}</h4>
-              <p>{text}</p>
+              <p>{description}</p>
             </Bubble>
           </SwiperSlide>
         ))}

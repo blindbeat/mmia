@@ -20,6 +20,12 @@
   margin: var(--xl) auto;
 }
 
+@media (min-width: calc(48em)) {
+  .swiper :global(.swiper-pagination) {
+    display: none;
+  }
+}
+
 @media (max-width: calc(48em - 1px)) {
   .slide {
     width: 100%;

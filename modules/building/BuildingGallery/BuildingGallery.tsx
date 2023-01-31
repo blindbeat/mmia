@@ -1,9 +1,11 @@
 import { Gallery } from "components"
-import image from "assets/dummyPics/building/buildingGallery/galleryPhoto.png"
 import styles from "./BuildingGallery.module.css"
+import { ImageWithDimensions } from "types"
 
-const images = new Array(3).fill(image)
-const BuildingGallery = () => {
+interface Props {
+  images: ImageWithDimensions[]
+}
+const BuildingGallery = ({ images }: Props) => {
   return <Gallery images={images} className={styles.content} />
 }
 

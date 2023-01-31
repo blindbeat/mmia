@@ -1,23 +1,24 @@
 import styles from "./BuildingBenefits.module.css"
 import { Heading, Paragraph, ScreenTitle } from "components"
 import Bubbles from "modules/blocks/Bubbles"
-import { bubbles } from "assets/dummyText"
+import { ArrayEntrySanitized } from "types"
 
-const heading = "we are the best guarantee of quality for our customers"
-const paragraph =
-  "Your work will be intensive, but the tasks will be interesting. You will independently build the process of your work and will be able to directly influence the result."
-
-const BuildingBenefits = () => {
+interface Props {
+  title: string
+  description: string
+  circles: ArrayEntrySanitized[]
+}
+const BuildingBenefits = ({ title, description, circles }: Props) => {
   return (
     <div className={styles.content}>
       <div className={styles.text}>
         <ScreenTitle className={styles.title}>our benefits</ScreenTitle>
         <Heading as="h3" className={styles.heading}>
-          {heading}
+          {title}
         </Heading>
-        <Paragraph className={styles.paragraph}>{paragraph}</Paragraph>
+        <Paragraph className={styles.paragraph}>{description}</Paragraph>
       </div>
-      <Bubbles bubbles={bubbles} />
+      <Bubbles bubbles={circles} />
     </div>
   )
 }

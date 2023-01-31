@@ -37,13 +37,16 @@
   grid-column: 2;
 }
 
-.step h5:first-of-type {
-  padding-top: var(--xs);
+.step h5 {
+  padding: var(--xs) 0;
 }
 
-.step h5,
-.stepText * {
+.stepText {
   padding-bottom: var(--xs);
+}
+
+.stepText li {
+  margin-bottom: var(--5xs);
 }
 
 @media (max-width: calc(64em - 1px)) {

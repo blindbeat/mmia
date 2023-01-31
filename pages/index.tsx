@@ -51,10 +51,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
         text: about.text,
       },
       buildingBlock: {
-        title: building.homeTitle,
-        description: building.homeDescription,
+        title: building.home.title,
+        description: building.home.description,
         image: building.image,
-        content: building.homeContent,
+        content: building.preparation.blocks,
       },
     },
   }

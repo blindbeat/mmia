@@ -6,16 +6,44 @@ import BuildingBenefits from "modules/building/BuildingBenefits"
 import BuildingPreparation from "modules/building/BuildingPreparation"
 import BuildingGallery from "modules/building/BuildingGallery"
 import Outro from "modules/blocks/Outro/Outro"
+import { GetServerSideProps } from "next"
+import { BuildingPage } from "types"
+import { fetchBuilding } from "api"
 
-const Building: NextPageWithLayoutConfig = () => {
+export const getServerSideProps: GetServerSideProps<BuildingPage> = async ({
+  locale,
+}) => {
+  locale ||= "en"
+  const { title, image, points, benefits, preparation, gallery } =
+    await fetchBuilding(locale)
+  return {
+    props: {
+      title,
+      parallaxImage: image,
+      points,
+      benefits,
+      preparation,
+      gallery,
+    },
+  }
+}
+
+const Building: NextPageWithLayoutConfig<BuildingPage> = ({
+  title,
+  parallaxImage,
+  points,
+  benefits,
+  preparation,
+  gallery,
+}) => {
   return (
     <>
-      <BuildingHeading />
-      <BuildingPhoto />
-      <BuildingPoints />
-      <BuildingBenefits />
-      <BuildingPreparation />
-      <BuildingGallery />
+      <BuildingHeading title={title} />
+      <BuildingPhoto image={parallaxImage} />
+      <BuildingPoints points={points} />
+      <BuildingBenefits {...benefits} />
+      <BuildingPreparation {...preparation} />
+      <BuildingGallery images={gallery} />
       <Outro />
     </>
   )
