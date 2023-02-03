@@ -2,6 +2,7 @@ import styles from "./ProjectPhotosBlock.module.css"
 import Image from "next/image"
 import { ImageWithDimensions } from "types"
 import classNames from "classnames"
+import { useProjectGallery } from "contexts/ProjectGalleryContext"
 
 type PhotoOrientation = "vertical" | "horizontal"
 
@@ -21,6 +22,7 @@ export default function ProjectPhotosBlock({
          `
       : `100vw
         `
+  const { selectImage } = useProjectGallery()
 
   return (
     <div
@@ -36,6 +38,7 @@ export default function ProjectPhotosBlock({
             src={image.src}
             width={image.width}
             height={image.height}
+            onClick={() => selectImage(image.src)}
             alt=""
             sizes={sizes}
           />

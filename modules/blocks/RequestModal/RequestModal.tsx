@@ -12,7 +12,7 @@ import { theme } from "utils/theme"
 import { ComponentWithLineAdornment } from "components"
 import { motion } from "framer-motion"
 import { RequestOpenerContext } from "contexts"
-import Cross from "./assets/cross.svg"
+import Cross from "assets/images/cross.svg"
 
 const RequestModal = () => {
   const requestWindowRef = useRef<HTMLDivElement>(null)

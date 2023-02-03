@@ -14,7 +14,11 @@ export default function ProjectSchemasBlock({ schemas }: Props) {
   return (
     <div className={styles.content}>
       <ScreenTitle className={styles.blockTitle}>project drawing</ScreenTitle>
-      <Gallery images={schemas} className={styles.photoWrapper} />
+      <Gallery
+        images={schemas}
+        triggerGalleryOpen={true}
+        className={styles.photoWrapper}
+      />
       <div className={styles.paragraphWrapper}>
         <p className={styles.paragraph}>{dummyParagraph}</p>
       </div>

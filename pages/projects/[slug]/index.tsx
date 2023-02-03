@@ -10,7 +10,11 @@ import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
 import { NextPageWithLayoutConfig } from "../../_app"
 import { GetServerSideProps } from "next"
 import { fetchProject } from "api/fetchProject"
-import { ProjectWithImageDimensions } from "types"
+import { ImageWithDimensions, ProjectWithImageDimensions } from "types"
+import ProjectGallery from "modules/project/ProjectGallery"
+import { useProjectGallery } from "contexts/ProjectGalleryContext"
+import React from "react"
+import { AnimatePresence } from "framer-motion"
 
 interface Props {
   project: ProjectWithImageDimensions
@@ -35,6 +39,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 }
 const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
+  const { state: initialGalleryImage } = useProjectGallery()
+
   const contentNodes = project.content.map((content) => {
     switch (content.layout) {
       case "horizontal_photo": {
@@ -92,8 +98,40 @@ const Project: NextPageWithLayoutConfig<Props> = ({ project }) => {
       }
     }
   })
+
+  const images: ImageWithDimensions[] = [project.image]
+  project.content.forEach((content) => {
+    switch (content.layout) {
+      case "horizontal_photo": {
+        images.push(content.attributes.image)
+        return
+      }
+      case "vertical_photo": {
+        const photos = [content.attributes.image1]
+        if (content.attributes.image2) photos.push(content.attributes.image2)
+        images.push(...photos)
+        return
+      }
+      case "photo_architecture": {
+        images.push(...content.attributes.images)
+        return
+      }
+      default: {
+        return
+      }
+    }
+  })
+
   return (
     <div>
+      <AnimatePresence>
+        {initialGalleryImage && (
+          <ProjectGallery
+            images={images}
+            initialImageSrc={initialGalleryImage}
+          />
+        )}
+      </AnimatePresence>
       <ProjectTopNavigation nextLink={project.next.slug} />
       <ProjectHeaderBlock project={project} />
       {contentNodes}

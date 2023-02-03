@@ -1,0 +1,43 @@
+.wrapper {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: brightness(0.3) blur(2px);
+}
+
+.swiper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.slide {
+  position: relative;
+}
+
+.next:disabled {
+  display: none;
+}
+
+.prev:disabled {
+  display: none;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.crossButton {
+  position: absolute;
+  z-index: 40;
+  top: 1.25em;
+  right: 1.25em;
+  width: 2.25em;
+  height: 2.25em;
+  padding: 0.5em;
+}

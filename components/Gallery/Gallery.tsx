@@ -10,9 +10,11 @@ import {
 import classNames from "classnames"
 import { ImageWithDimensions } from "types/miscTypes"
 import { ComponentPropsWithoutRef } from "react"
+import { useProjectGallery } from "contexts/ProjectGalleryContext"
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   images: ImageWithDimensions | ImageWithDimensions[]
+  triggerGalleryOpen?: boolean
 }
 
 const imageSizes = `
@@ -21,7 +23,13 @@ const imageSizes = `
                    50vw,
                    `
 
-export const Gallery = ({ images, className }: Props) => {
+export const Gallery = ({
+  images,
+  className,
+  triggerGalleryOpen = false,
+}: Props) => {
+  const { selectImage } = useProjectGallery()
+
   return (
     <div className={className}>
       {Array.isArray(images) && images.length > 1 ? (
@@ -70,6 +78,9 @@ export const Gallery = ({ images, className }: Props) => {
                 alt=""
                 width={image.width}
                 height={image.height}
+                onClick={
+                  triggerGalleryOpen ? () => selectImage(image.src) : undefined
+                }
                 sizes={imageSizes}
                 className={styles.image}
               />

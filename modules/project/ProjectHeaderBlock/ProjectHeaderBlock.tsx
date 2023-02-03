@@ -5,11 +5,13 @@ import Calendar from "./assets/calendar.svg"
 import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
 import { ProjectWithImageDimensions } from "types"
+import { useProjectGallery } from "contexts/ProjectGalleryContext"
 
 interface Props {
   project: ProjectWithImageDimensions
 }
 export default function ProjectHeaderBlock({ project }: Props) {
+  const { selectImage } = useProjectGallery()
   return (
     <div className={styles.content}>
       <div className={styles.titleWrapper}>
@@ -22,6 +24,7 @@ export default function ProjectHeaderBlock({ project }: Props) {
         src={project.image.src}
         width={project.image.width}
         height={project.image.height}
+        onClick={() => selectImage(project.image.src)}
         alt=""
         className={styles.image}
         sizes="100vw"
