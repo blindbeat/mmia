@@ -55,6 +55,7 @@
 }
 
 .slide {
+  height: auto;
   cursor: grab;
   transition: transform var(--tl);
 }
@@ -67,7 +68,9 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  justify-content: center;
   max-width: 80%;
+  height: 100%;
 }
 
 .slideContent h2 {
