@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<AboutPage> = async ({
   return {
     props: {
       title: title,
-      collageTexts: [text, text],
+      collageText: text,
       collagePhotos: {
         founder: image1,
         office: image2,
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps<AboutPage> = async ({
 
 const About: NextPageWithLayoutConfig<AboutPage> = ({
   title,
-  collageTexts,
+  collageText,
   collagePhotos,
   parallaxImage,
   quote,
@@ -66,7 +66,7 @@ const About: NextPageWithLayoutConfig<AboutPage> = ({
     <>
       <AboutHeading title={title} />
       <AboutCollage
-        textArr={collageTexts}
+        text={collageText}
         founderPhoto={collagePhotos.founder}
         officePhoto={collagePhotos.office}
       />

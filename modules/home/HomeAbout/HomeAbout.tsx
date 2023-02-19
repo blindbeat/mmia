@@ -30,9 +30,7 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
           {title}
         </Heading>
         <div ref={ref} className={styles.text}>
-          {[text, text].map((text, index) => (
-            <Paragraph key={index}>{text}</Paragraph>
-          ))}
+          <Paragraph>{text}</Paragraph>
           <ComponentWithLineAdornment
             as="Link"
             href="about"

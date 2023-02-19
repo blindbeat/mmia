@@ -9,7 +9,7 @@ import { useContext, useEffect } from "react"
 import { FooterHeightContext } from "contexts"
 import { useStaticDataSWR } from "hooks/useStaticDataSWR"
 
-const links = ["services", "projects", "media", "building", "contact"]
+const links = ["projects", "media", "building", "contact"]
 const email = "info@aimm-group.com"
 const number = "+38 (044) 228 91 59"
 

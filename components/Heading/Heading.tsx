@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, useEffect, useRef } from "react"
+import { ComponentPropsWithoutRef, ReactNode, useEffect, useRef } from "react"
 import SplitType from "split-type"
 import styles from "./Heading.module.css"
 import classNames from "classnames"
@@ -8,7 +8,7 @@ import { inViewOptions } from "misc/utils"
 type ElemTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 interface Props extends ComponentPropsWithoutRef<"h1"> {
-  children: string
+  children: ReactNode
   appearImmediately?: boolean
   delay?: number
   as: ElemTag

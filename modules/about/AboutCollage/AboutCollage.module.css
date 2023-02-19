@@ -7,13 +7,6 @@
   gap: var(--xl) var(--md-gap);
 }
 
-.text {
-}
-
-.text > p:first-child {
-  margin-bottom: var(--2xs);
-}
-
 .founderImage {
   width: 100%;
   max-width: 700px;

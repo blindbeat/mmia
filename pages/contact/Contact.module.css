@@ -80,7 +80,7 @@
   display: flex;
   justify-content: center;
   width: calc(100% / 3);
-  padding: var(--wrapper-padding-x);
+  padding: 0 var(--wrapper-padding-x);
   gap: var(--xs);
 }
 

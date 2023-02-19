@@ -11,7 +11,7 @@ export type AboutVacancy = Pick<
 >
 export interface AboutPage {
   title: string
-  collageTexts: [string, string]
+  collageText: string
   collagePhotos: {
     founder: ImageWithDimensions
     office: ImageWithDimensions

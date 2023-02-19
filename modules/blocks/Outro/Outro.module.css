@@ -5,6 +5,7 @@
 }
 
 .header {
+  margin: var(--sm-gap);
   text-align: center;
   text-transform: capitalize;
 }

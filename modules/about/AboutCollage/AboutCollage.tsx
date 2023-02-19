@@ -15,18 +15,14 @@ const officeImageSizes = `
                          550px,
                          `
 interface Props {
-  textArr: [string, string]
+  text: string
   founderPhoto: ImageWithDimensions
   officePhoto: ImageWithDimensions
 }
-const AboutCollage = ({ textArr, founderPhoto, officePhoto }: Props) => {
+const AboutCollage = ({ text, founderPhoto, officePhoto }: Props) => {
   return (
     <div className={styles.content}>
-      <div className={styles.text}>
-        {textArr.map((text, index) => (
-          <Paragraph key={index}>{text}</Paragraph>
-        ))}
-      </div>
+      <Paragraph className={styles.text}>{text}</Paragraph>
       <Image
         src={founderPhoto}
         alt=""

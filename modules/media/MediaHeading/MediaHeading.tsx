@@ -6,7 +6,7 @@ export const MediaHeading = () => {
   return (
     <div className={styles.content}>
       <Heading as="h1" className={styles.heading}>
-        The media is talking about us
+        The media is talking about{"\u00A0"}us
       </Heading>
       <p className={styles.paragraph}>{dummyParagraph}</p>
     </div>

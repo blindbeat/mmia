@@ -53,13 +53,9 @@
 
 .text p {
   max-width: 25.75em;
-  margin-bottom: var(--2xs);
+  margin-bottom: var(--md);
   text-align: right;
   opacity: 0.5;
-}
-
-.text p:last-of-type {
-  margin-bottom: var(--md);
 }
 
 .imageWrapper {
@@ -148,13 +144,13 @@
   }
 
   .text {
-    display: grid;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
     margin-top: var(--lg);
     margin-right: unset;
     margin-bottom: unset;
-    column-gap: var(--sm);
-    row-gap: var(--md);
-    grid-template-columns: repeat(2, 1fr);
+    gap: var(--md);
     grid-row: 4;
     grid-column: span 2;
   }
@@ -201,9 +197,6 @@
   }
 
   .text {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
     gap: var(--2xs);
   }
 

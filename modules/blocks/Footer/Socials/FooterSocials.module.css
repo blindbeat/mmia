@@ -6,8 +6,6 @@
   flex-direction: column;
   padding: var(--4xl) 0;
   color: white;
-  border-bottom-right-radius: 40px;
-  border-bottom-left-radius: 40px;
 }
 
 .content h3 {
