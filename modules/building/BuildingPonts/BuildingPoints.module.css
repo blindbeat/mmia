@@ -11,6 +11,10 @@
   width: min(calc(100% / 12 * 9), 45em);
 }
 
+.onePoint p {
+  line-height: 170.2%;
+}
+
 .icon {
   width: var(--sm);
   margin-bottom: var(--xs);
