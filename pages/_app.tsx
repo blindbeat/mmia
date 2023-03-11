@@ -7,7 +7,7 @@ import type { AppProps } from "next/app"
 import Layout from "Layout"
 import { NextPage } from "next"
 import { LayoutConfig } from "Layout/Layout"
-import localFont from "@next/font/local"
+import localFont from "next/font/local"
 import Head from "next/head"
 
 const Helvetica = localFont({

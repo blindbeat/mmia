@@ -77,14 +77,14 @@ const Contact: NextPageWithLayoutConfig<Props> = ({ projects, contacts }) => {
       newState[randomIndexInArray] = state[randomIndexInArray] + 1
       return newState
     })
-  }, [])
+  }, [projects.length])
 
   useEffect(() => {
     if (!lastWaveEnded || projects.length < 3) return
     increaseRandomAnimationIndex()
     const interval = setInterval(increaseRandomAnimationIndex, 1000)
     return () => clearInterval(interval)
-  }, [increaseRandomAnimationIndex, lastWaveEnded])
+  }, [increaseRandomAnimationIndex, lastWaveEnded, projects.length])
 
   return (
     <div className={styles.content} ref={mapElem} id="map">
@@ -335,6 +335,7 @@ const MarkerAnimated = ({
                       <Image
                         src={project.image}
                         fill
+                        sizes={`${7 / (28 / 43) * (16 / 9)}rem`}
                         alt=""
                         className={styles.image}
                       />
@@ -354,20 +355,20 @@ const MarkerAnimated = ({
       >
         <motion.circle
           initial={{
-            fill: "#292929",
             r: 2,
             opacity: 0,
+            fill: "#292929",
           }}
           animate={{
-            opacity: [null, 1, 1],
-            fill: [null, "#aaa", "#666"],
             r: [null, 3.5, 2.5],
+            fill: [null, "#aaa", "#666"],
+            opacity: [null, 1, 1],
           }}
           onAnimationComplete={() => setAnimationComplete(true)}
           transition={{
             delay,
             duration: 1.5,
-            type: "spring",
+            type: ["spring", "spring", "spring"],
           }}
         />
         {/*counter used with keys to force rerendering of waves*/}

@@ -70,7 +70,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: var(--sm);
   color: white;
   gap: var(--2xl);
