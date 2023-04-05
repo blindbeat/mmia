@@ -1,3 +1,3 @@
-const baseUrl = "http://api.mmmia.black-fire.work"
+const baseUrl = "https://api.mmmia.black-fire.work"
 
 export default baseUrl
