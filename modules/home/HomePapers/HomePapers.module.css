@@ -117,6 +117,17 @@
   flex-shrink: 1;
 }
 
+.pageContentText * {
+  font-size: inherit !important;
+  box-sizing: inherit !important;
+  font-family: inherit !important;
+  word-spacing: inherit !important;
+  z-index: inherit !important;
+  opacity: inherit !important;
+  transform: inherit !important;
+
+}
+
 .paperContentLink {
   margin-top: var(--3xs);
 }
