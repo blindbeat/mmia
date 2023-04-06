@@ -123,9 +123,16 @@
   font-family: inherit !important;
   word-spacing: inherit !important;
   z-index: inherit !important;
-  opacity: inherit !important;
   transform: inherit !important;
+  opacity: 0.5 !important;
+}
 
+.pageContentText li {
+  margin-bottom: var(--5xs) !important;
+}
+
+.pageContentText :is(li, ul, ol) {
+  opacity: 1 !important;
 }
 
 .paperContentLink {
