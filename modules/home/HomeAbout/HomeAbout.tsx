@@ -12,6 +12,7 @@ import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
 import { useAnimateLine } from "hooks"
 import { HomeAboutContent } from "types"
+import { useTranslation } from "next-i18next";
 
 const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
   const { ref, inView } = useInView({
@@ -19,6 +20,8 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
     triggerOnce: true,
     delay: 1000,
   })
+
+  const { t } = useTranslation('home')
 
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
 

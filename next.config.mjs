@@ -1,4 +1,8 @@
-/** @type {import('next').NextConfig} */
+import config from './next-i18next.config.js'
+
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -6,10 +10,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
     domains: ["api.mmmia.black-fire.work"],
   },
-  i18n: {
-    locales: ["en", "uk"],
-    defaultLocale: "en",
-  },
+  i18n: config.i18n,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -29,4 +30,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default nextConfig

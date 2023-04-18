@@ -9,6 +9,7 @@ import { NextPage } from "next"
 import { LayoutConfig } from "Layout/Layout"
 import localFont from "next/font/local"
 import Head from "next/head"
+import { appWithTranslation } from 'next-i18next'
 
 const Helvetica = localFont({
   src: [
@@ -33,7 +34,7 @@ interface AppPropsWithLayoutConfig extends AppProps {
   Component: NextPageWithLayoutConfig
 }
 
-export default function MyApp({
+function MyApp({
   Component,
   pageProps,
 }: AppPropsWithLayoutConfig) {
@@ -48,3 +49,5 @@ export default function MyApp({
     </>
   )
 }
+
+export default appWithTranslation(MyApp)
