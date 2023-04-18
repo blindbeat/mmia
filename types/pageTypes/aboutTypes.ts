@@ -1,15 +1,15 @@
 import { AboutFetchSanitized, ImageWithDimensions, Vacancy } from "types"
-import { SSRConfig } from "next-i18next";
 
 export type HomeAboutContent = Pick<
   AboutFetchSanitized,
   "title" | "image1" | "image2" | "text"
-> & SSRConfig
+>
 
 export type AboutVacancy = Pick<
   Vacancy,
   "name" | "employmentTime" | "country" | "city"
 >
+
 export interface AboutPage {
   title: string
   collageText: string

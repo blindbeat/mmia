@@ -1,3 +1,6 @@
 {
-  "about": "about company"
+  "about": {
+    "title": "about company",
+    "founder title": "company founder"
+  }
 }

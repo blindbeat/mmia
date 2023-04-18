@@ -13,15 +13,14 @@ import {
 import { fetchAbout, fetchBuilding, fetchProjects } from "api"
 import { HomeBuildingContent } from "types/pageTypes/buildingTypes"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
-import { SSRConfig } from "next-i18next"
 
 interface Props {
   landingBlock: HomeLandingContent
   projectsBlock: HomeProjectsContent
   aboutBlock: HomeAboutContent
   buildingBlock: HomeBuildingContent
-  translations: SSRConfig
 }
+
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
 }) => {
@@ -30,10 +29,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const projects = (await fetchProjects(locale)).data.slice(-3)
   const about = await fetchAbout(locale)
   const building = await fetchBuilding(locale)
-  const translations = await serverSideTranslations(locale, ["home"])
   return {
     props: {
-      translations,
+      ...(await serverSideTranslations(locale, ["common", "home"])),
       landingBlock: {
         projects: landing.projects.map(
           ({ heading, description, image, slug }) => ({
@@ -70,12 +68,11 @@ const Home: NextPageWithLayoutConfig<Props> = ({
   projectsBlock,
   aboutBlock,
   buildingBlock,
-  translations,
 }: Props) => {
   return (
     <>
       <HomeLanding {...landingBlock} />
-      <HomeAbout {...aboutBlock} {...translations} />
+      <HomeAbout {...aboutBlock} />
       <HomePapers {...buildingBlock} />
       <HomeProjects {...projectsBlock} />
     </>

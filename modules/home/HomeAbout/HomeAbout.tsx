@@ -12,7 +12,7 @@ import classNames from "classnames"
 import utilStyles from "styles/utils.module.css"
 import { useAnimateLine } from "hooks"
 import { HomeAboutContent } from "types"
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next"
 
 const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
   const { ref, inView } = useInView({
@@ -21,14 +21,16 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
     delay: 1000,
   })
 
-  const { t } = useTranslation('home')
+  const { t } = useTranslation(["home", "common"])
 
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
 
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div className={styles.content}>
-        <ScreenTitle className={styles.screenTitle}>about company</ScreenTitle>
+        <ScreenTitle className={styles.screenTitle}>
+          {t("about.title")}
+        </ScreenTitle>
         <Heading as="h3" className={styles.title}>
           {title}
         </Heading>
@@ -40,7 +42,7 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
             color="black"
             className={styles.link}
           >
-            view more
+            {t("view more", { ns: "common" })}
           </ComponentWithLineAdornment>
         </div>
         <div className={styles.imageWrapper}>
@@ -63,7 +65,9 @@ const HomeAbout = ({ title, image1, image2, text }: HomeAboutContent) => {
             alt=""
           />
         </div>
-        <span className={styles.founderTitle}>( Company founder )</span>
+        <span className={styles.founderTitle}>
+          ( {t("about.founder title")} )
+        </span>
       </div>
       <BackgroundSvg
         ref={bgRef}
