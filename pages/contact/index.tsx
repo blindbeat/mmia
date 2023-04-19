@@ -335,7 +335,7 @@ const MarkerAnimated = ({
                       <Image
                         src={project.image}
                         fill
-                        sizes={`${7 / (28 / 43) * (16 / 9)}rem`}
+                        sizes={`${(7 / (28 / 43)) * (16 / 9)}rem`}
                         alt=""
                         className={styles.image}
                       />
