@@ -1,14 +1,14 @@
-import config from './next-i18next.config.js'
+import config from "./next-i18next.config.js";
 
 /**
- * @type {import('next').NextConfig}
+ * @type {import("next").NextConfig}
  */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["api.mmmia.black-fire.work"],
+    domains: ["api.mmmia.black-fire.work"]
   },
   i18n: config.i18n,
   webpack(config) {
@@ -18,16 +18,16 @@ const nextConfig = {
       use: {
         loader: "@svgr/webpack",
         options: {
-          ref: true,
-        },
-      },
-    })
+          ref: true
+        }
+      }
+    });
 
     // FS used for image dimensions populating in SSR
-    config.resolve.fallback = { fs: false }
+    config.resolve.fallback = { fs: false };
 
-    return config
-  },
-}
+    return config;
+  }
+};
 
-export default nextConfig
+export default nextConfig;
