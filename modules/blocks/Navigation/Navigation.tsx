@@ -396,7 +396,7 @@ const Navigation = ({
                   }}
                 >
                   <ComponentWithLineAdornment as="button">
-                    drop request
+                    {t("drop request")}
                   </ComponentWithLineAdornment>
                 </motion.div>
               </div>

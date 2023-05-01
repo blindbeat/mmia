@@ -8,6 +8,7 @@ import { ProjectBrief, TagWithCount } from "types"
 import { NextPageWithLayoutConfig } from "pages/_app"
 import { fetchProjects } from "api/fetchProjects"
 import { fetchCategories } from "api"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 interface Props {
   projects: ProjectBrief[]
@@ -22,6 +23,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const tags = await fetchCategories(locale)
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common", "project"])),
       projects,
       tags,
     },

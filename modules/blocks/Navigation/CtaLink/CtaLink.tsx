@@ -2,11 +2,13 @@ import styles from "./CtaLink.module.css"
 import classNames from "classnames"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
 import { useRequestOpener } from "hooks"
+import { useTranslation } from "next-i18next"
 
 interface Props extends ComponentPropsWithoutRef<"button"> {
   handleCLick?: () => void
 }
 const CtaLink = ({ className, handleCLick, ...rest }: Props) => {
+  const { t } = useTranslation(["common"])
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false)
 
   const openRequest = useRequestOpener()
@@ -39,7 +41,7 @@ const CtaLink = ({ className, handleCLick, ...rest }: Props) => {
       {...rest}
     >
       <span>
-        drop request
+        {t("drop request")}
         <svg
           viewBox="0 0 136 4"
           fill="none"

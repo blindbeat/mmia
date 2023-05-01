@@ -35,7 +35,7 @@ const FooterAbout = () => {
       <div className={styles.ctaBlock}>
         <Heading as="h3">{data?.block2_description || ""}</Heading>
         <ComponentWithLineAdornment as="button" color="black">
-          {t("navigation.drop request")}
+          {t("drop request")}
         </ComponentWithLineAdornment>
       </div>
       <div className={styles.pages}>

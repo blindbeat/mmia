@@ -5,7 +5,7 @@ import ProjectSchemasBlock from "modules/project/ProjectSchemasBlock/ProjectSche
 import ProjectMaterialsBlock from "modules/project/ProjectMaterialsBlock/ProjectMaterialsBlock"
 import ProjectParagraphBlock from "modules/project/ProjectParagraphBlock"
 import ProjectSocialsBlock from "modules/project/ProjectSocialsBlock"
-import Outro from "modules/blocks/Outro/Outro"
+import Outro from "modules/blocks/Outro"
 import ProjectNextPreviewBlock from "modules/project/ProjectNextPreviewBlock"
 import { NextPageWithLayoutConfig } from "../../_app"
 import { GetServerSideProps } from "next"
@@ -15,6 +15,7 @@ import ProjectGallery from "modules/project/ProjectGallery"
 import { useProjectGallery } from "contexts/ProjectGalleryContext"
 import React from "react"
 import { AnimatePresence } from "framer-motion"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 interface Props {
   project: ProjectWithImageDimensions
@@ -25,10 +26,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
 }) => {
   locale ||= "en"
+
   try {
-    const project = await fetchProject(params!.slug as string, locale)
+    if (params?.slug === undefined) throw new Error("slug error")
+
+    const project = await fetchProject(params.slug as string, locale)
     return {
       props: {
+        ...(await serverSideTranslations(locale, ["common", "project"])),
         project,
       },
     }

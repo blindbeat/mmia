@@ -1,1 +1,1 @@
-export * from "./Outro"
+export { default } from "./Outro"

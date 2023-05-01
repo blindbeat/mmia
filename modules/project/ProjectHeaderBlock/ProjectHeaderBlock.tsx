@@ -6,11 +6,14 @@ import Tape from "./assets/tape.svg"
 import Geomarker from "./assets/geoMarker.svg"
 import { ProjectWithImageDimensions } from "types"
 import { useProjectGallery } from "contexts/ProjectGalleryContext"
+import { useTranslation } from "next-i18next"
 
 interface Props {
   project: ProjectWithImageDimensions
 }
 export default function ProjectHeaderBlock({ project }: Props) {
+  const { t } = useTranslation(["project"])
+
   const { selectImage } = useProjectGallery()
   return (
     <div className={styles.content}>
@@ -33,17 +36,17 @@ export default function ProjectHeaderBlock({ project }: Props) {
         <div className={styles.metadata}>
           <Calendar className={styles.icon} />
           <span>
-            <span className={styles.metaTitle}>year: </span>
+            <span className={styles.metaTitle}>{t("year")}</span>
             {project.year}
           </span>
           <Tape className={styles.icon} />
           <span>
-            <span className={styles.metaTitle}>square meters:</span>
+            <span className={styles.metaTitle}>{t("size")}</span>
             {project.area}
           </span>
           <Geomarker className={styles.icon} />
           <span>
-            <span className={styles.metaTitle}>place:</span>
+            <span className={styles.metaTitle}>{t("place")}</span>
             {project.city}
           </span>
         </div>
