@@ -22,21 +22,9 @@ import {
 } from "framer-motion"
 import Socials from "modules/blocks/Socials"
 import { useCalcElementHeight, useThresholdObserver } from "hooks"
+import { useTranslation } from "next-i18next"
 
 type navLinkTuple = [name: string, url: string, padding: number]
-
-const navLinksFullscreen: navLinkTuple[] = [
-  ["projects", "/projects", 1],
-  ["about us", "/about", 0],
-  ["building", "/building", 2],
-  ["career", "/career", 3],
-  ["media", "/media", 1],
-  ["contact", "/contact", 2],
-]
-const navLinksHeader: navLinkTuple[] = [
-  ...navLinksFullscreen.slice(0, 2),
-  navLinksFullscreen[navLinksFullscreen.length - 1],
-]
 
 const isScrolled = (scrollY: number) => scrollY !== 0
 type navState = "hidden" | "transparent" | "header"
@@ -92,6 +80,8 @@ const Navigation = ({
   adaptiveHidingBreakpoint,
   navFullscreenSetter,
 }: Props) => {
+  const { t } = useTranslation(["common"])
+
   const lastScrollRef = useRef(
     typeof window !== "undefined" ? window.scrollY : 0
   )
@@ -207,6 +197,20 @@ const Navigation = ({
     springValueSoft,
     windowRect.height,
   ])
+
+  const navLinksFullscreen: navLinkTuple[] = [
+    [t("navigation.projects"), "/projects", 1],
+    [t("navigation.about"), "/about", 0],
+    [t("navigation.building"), "/building", 2],
+    [t("navigation.career"), "/career", 3],
+    [t("navigation.media"), "/media", 1],
+    [t("navigation.contact"), "/contact", 2],
+  ]
+
+  const navLinksHeader: navLinkTuple[] = [
+    ...navLinksFullscreen.slice(0, 2),
+    navLinksFullscreen[navLinksFullscreen.length - 1],
+  ]
 
   const startFullscreenCollapse = () => setFullscreenNavShouldBeVisible(false)
   const startParallelFullscreenCollapse = () => {

@@ -17,6 +17,7 @@ import { useState } from "react"
 import "swiper/css/effect-fade"
 import { Swiper as SwiperClass } from "swiper/types"
 import { HomeLandingContent } from "types"
+import { useTranslation } from "next-i18next"
 
 const baseDelay = 0.3
 const delayBetweenAppears = 0.4
@@ -26,7 +27,10 @@ const createAnimationDelayStyle = (showingOrder: number) => ({
   animationDelay: `${calcAnimationDelay(showingOrder)}s`,
 })
 const HomeLanding = ({ projects }: HomeLandingContent) => {
+  const { t } = useTranslation(["home", "common"])
+
   const [imageSwiper, setImageSwiper] = useState<SwiperClass | null>(null)
+
   return (
     <div className={classNames(utilStyles.wrapper, styles.wrapper)}>
       <div
@@ -37,7 +41,7 @@ const HomeLanding = ({ projects }: HomeLandingContent) => {
         )}
       >
         <Link href="/projects" className={styles.allProjectsLink}>
-          all projects
+          {t("landing.all projects")}
         </Link>
       </div>
       {imageSwiper && (
@@ -85,7 +89,7 @@ const HomeLanding = ({ projects }: HomeLandingContent) => {
                     href={`projects/${slug}`}
                     className={classNames(styles.linkWithLine)}
                   >
-                    view more
+                    {t("view more", { ns: "common" })}
                   </ComponentWithLineAdornment>
                 </div>
               </div>

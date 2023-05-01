@@ -1,6 +1,13 @@
 {
+  "landing": {
+    "all projects": "усі проекти"
+  },
   "about": {
     "title": "про компанію",
     "founder title": "засновник"
+  },
+  "papers": {},
+  "projects": {
+    "our projects": "наші проекти"
   }
 }

@@ -1,3 +1,20 @@
 {
+  "navigation": {
+    "projects": "projects",
+    "about": "about us",
+    "building": "building",
+    "career": "career",
+    "media": "media",
+    "contact": "contact",
+    "drop request": "drop request"
+  },
+  "footer": {
+    "pages": "pages",
+    "contacts": "contacts",
+    "rights": "all rights reserved",
+    "policy": "privacy policy",
+    "terms": "terms of use",
+    "developed": "developed by"
+  },
   "view more": "view more"
 }

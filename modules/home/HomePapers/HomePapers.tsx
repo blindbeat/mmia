@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import Link from "next/link"
 import { generatePreparationIndex } from "modules/building/BuildingPreparation/BuildingPreparation"
 import { HomeBuildingContent } from "types"
+import { useTranslation } from "next-i18next"
 
 const movePapers = (papersArr: number[]) => {
   const [firstPaper, ...rest] = papersArr
@@ -29,6 +30,7 @@ const HomePapers = ({
     []
   )
   const nextAnimationName = useRef<AnimationName>("toLeft")
+  const { t } = useTranslation(["home", "common"])
 
   const extendsThreshold = useThresholdObserver(768)
   const changePage = (pageIndex: number) => {
@@ -52,7 +54,7 @@ const HomePapers = ({
             color="white"
             className={styles.link}
           >
-            view more
+            {t("view more", { ns: "common" })}
           </ComponentWithLineAdornment>
         </div>
         <div className={styles.papersWrapper}>
@@ -112,7 +114,7 @@ const HomePapers = ({
                         href={`building#${generatePreparationIndex(index + 1)}`}
                         className={styles.paperContentLink}
                       >
-                        View More
+                        {t("view more", { ns: "common" })}
                       </ComponentWithLineAdornment>
                     </>
                   )}

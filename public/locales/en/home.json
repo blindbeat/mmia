@@ -1,6 +1,13 @@
 {
+  "landing": {
+    "all projects": "all projects"
+  },
   "about": {
     "title": "about company",
     "founder title": "company founder"
+  },
+  "papers": {},
+  "projects": {
+    "our projects": "our projects"
   }
 }

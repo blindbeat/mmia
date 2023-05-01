@@ -8,12 +8,20 @@ import { useAnimateLine, useCalcElementHeight } from "hooks"
 import { useContext, useEffect } from "react"
 import { FooterHeightContext } from "contexts"
 import { useStaticDataSWR } from "hooks/useStaticDataSWR"
+import { useTranslation } from "next-i18next"
 
-const links = ["projects", "media", "building", "contact"]
 const email = "info@aimm-group.com"
 const number = "+38 (044) 228 91 59"
 
 const FooterAbout = () => {
+  const { t } = useTranslation(["common"])
+  const links = [
+    t("navigation.projects"),
+    t("navigation.media"),
+    t("navigation.building"),
+    t("navigation.contact"),
+  ]
+
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
   const { ref, height } = useCalcElementHeight()
   const footerHeightContext = useContext(FooterHeightContext)
@@ -27,11 +35,11 @@ const FooterAbout = () => {
       <div className={styles.ctaBlock}>
         <Heading as="h3">{data?.block2_description || ""}</Heading>
         <ComponentWithLineAdornment as="button" color="black">
-          drop request
+          {t("navigation.drop request")}
         </ComponentWithLineAdornment>
       </div>
       <div className={styles.pages}>
-        <span className={styles.blockTitle}>pages</span>
+        <span className={styles.blockTitle}>{t("footer.pages")}</span>
         {links.map((link) => (
           <Link key={link} href={link}>
             {link}
@@ -39,7 +47,7 @@ const FooterAbout = () => {
         ))}
       </div>
       <div className={styles.contacts}>
-        <span className={styles.blockTitle}>contacts</span>
+        <span className={styles.blockTitle}>{t("footer.contacts")}</span>
         <Link key={email} href={`mailto:${email}`}>
           {email}
         </Link>
@@ -49,14 +57,14 @@ const FooterAbout = () => {
       </div>
       <div className={styles.copyright}>
         <span>aimm © copyright 2020.</span>{" "}
-        <span className={styles.textWithOpacity}>all rights reserved</span>
+        <span className={styles.textWithOpacity}>{t("footer.rights")}</span>
       </div>
       <div className={styles.policies}>
-        <Link href="">privacy policy</Link>
-        <Link href="">terms of use</Link>
+        <Link href="">{t("footer.policy")}</Link>
+        <Link href="">{t("footer.terms")}</Link>
       </div>
       <div className={styles.developedBy}>
-        <span className={styles.textWithOpacity}>developed by</span>{" "}
+        <span className={styles.textWithOpacity}> {t("footer.developed")}</span>{" "}
         <Link href="">black fire</Link>
       </div>
       <BackgroundSvg
