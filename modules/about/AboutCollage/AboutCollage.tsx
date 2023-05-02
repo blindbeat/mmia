@@ -3,6 +3,7 @@ import { Paragraph } from "components"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ImageWithDimensions } from "types"
+import { useTranslation } from "next-i18next"
 
 const founderImageSizes = `
                    (max-width: calc(48em - 1px)) 100vw,
@@ -20,6 +21,8 @@ interface Props {
   officePhoto: ImageWithDimensions
 }
 const AboutCollage = ({ text, founderPhoto, officePhoto }: Props) => {
+  const { t } = useTranslation(["about"])
+
   return (
     <div className={styles.content}>
       <Paragraph className={styles.text}>{text}</Paragraph>
@@ -30,7 +33,7 @@ const AboutCollage = ({ text, founderPhoto, officePhoto }: Props) => {
         className={styles.founderImage}
       />
       <div className={styles.office}>
-        <span className={styles.officeTitle}>our office in Kyiv</span>
+        <span className={styles.officeTitle}>{t("office title")}</span>
         <Image
           src={officePhoto}
           alt=""

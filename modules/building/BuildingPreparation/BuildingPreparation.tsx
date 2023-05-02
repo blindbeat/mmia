@@ -3,6 +3,7 @@ import { Heading, ScreenTitle } from "components"
 import { formIndexString } from "misc/utils"
 import { useCalcElementHeight } from "hooks"
 import { ArrayEntrySanitized } from "types"
+import { useTranslation } from "next-i18next"
 
 export const generatePreparationIndex = (index?: number) =>
   index === undefined ? `building-preparation` : `building-preparation-${index}`
@@ -12,6 +13,8 @@ interface Props {
   blocks: ArrayEntrySanitized[]
 }
 const BuildingPreparation = ({ heading, blocks }: Props) => {
+  const { t } = useTranslation(["building"])
+
   const { ref, height } = useCalcElementHeight()
 
   return (
@@ -22,7 +25,7 @@ const BuildingPreparation = ({ heading, blocks }: Props) => {
         id={generatePreparationIndex()}
         className={styles.text}
       >
-        <ScreenTitle className={styles.title}>preparation</ScreenTitle>
+        <ScreenTitle className={styles.title}>{t("preparation")}</ScreenTitle>
         <Heading as="h3" className={styles.heading}>
           {heading}
         </Heading>

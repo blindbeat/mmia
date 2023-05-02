@@ -9,6 +9,7 @@ import Outro from "modules/blocks/Outro"
 import { GetServerSideProps } from "next"
 import { BuildingPage } from "types"
 import { fetchBuilding } from "api"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 export const getServerSideProps: GetServerSideProps<BuildingPage> = async ({
   locale,
@@ -18,6 +19,7 @@ export const getServerSideProps: GetServerSideProps<BuildingPage> = async ({
     await fetchBuilding(locale)
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common", "building"])),
       title,
       parallaxImage: image,
       points,

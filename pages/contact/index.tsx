@@ -21,6 +21,7 @@ import { GetServerSideProps } from "next"
 import { fetchContacts } from "api/fetchContacts"
 import { fetchProjects } from "api"
 import { convertToPhone } from "utils/convertToPhone"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const projection = geoAitoff().scale(200).center([45, 25])
 
@@ -42,6 +43,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       contacts,
       projects,
     },

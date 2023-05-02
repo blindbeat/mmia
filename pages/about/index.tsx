@@ -10,6 +10,7 @@ import AboutVacancies from "modules/about/AboutVacancies"
 import { AboutPage } from "types"
 import { GetServerSideProps } from "next"
 import { fetchAbout } from "api"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 export const getServerSideProps: GetServerSideProps<AboutPage> = async ({
   locale,
@@ -32,6 +33,7 @@ export const getServerSideProps: GetServerSideProps<AboutPage> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common", "about"])),
       title: title,
       collageText: text,
       collagePhotos: {

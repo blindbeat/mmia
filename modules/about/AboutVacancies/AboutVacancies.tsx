@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import Tilt from "react-parallax-tilt"
 import { ComponentPropsWithoutRef, useState } from "react"
 import { useThresholdObserver } from "hooks"
+import { useTranslation } from "next-i18next"
 
 interface Position {
   top: number
@@ -55,6 +56,8 @@ const VacancyElem = ({
   onMouseEnter,
   isFirstPlan,
 }: VacancyProps) => {
+  const { t } = useTranslation(["common"])
+
   const extendsThreshold = useThresholdObserver(768)
   const style = extendsThreshold
     ? {
@@ -129,7 +132,7 @@ const VacancyElem = ({
             {vacancy.employmentTime}
           </div>
           <div className={styles.vacancyDropRequest}>
-            drop request
+            {t("drop request")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 76 4"
