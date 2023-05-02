@@ -5,8 +5,7 @@
     "building": "building",
     "career": "career",
     "media": "media",
-    "contact": "contact",
-    "drop request": "drop request"
+    "contact": "contact"
   },
   "footer": {
     "pages": "pages",
@@ -16,5 +15,14 @@
     "terms": "terms of use",
     "developed": "developed by"
   },
-  "view more": "view more"
+  "outro": {
+    "title": "Did you like this project?",
+    "word line": {
+      "passive": "Let's Discuss Yours!",
+      "active": "Click on the button!"
+    },
+    "verbiage": "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We see"
+  },
+  "view more": "view more",
+  "drop request": "drop request"
 }

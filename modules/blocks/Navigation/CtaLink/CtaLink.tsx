@@ -57,7 +57,6 @@ const CtaLink = ({ className, handleCLick, ...rest }: Props) => {
             ref={pathRef}
             opacity="0.2"
             d="M1 1C38.7206 5.49999 87.0294 1.00001 136 1"
-            vectorEffect="non-scaling-stroke"
           />
         </svg>
       </span>

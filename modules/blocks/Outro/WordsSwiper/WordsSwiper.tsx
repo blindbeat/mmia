@@ -3,8 +3,11 @@ import { Autoplay } from "swiper"
 import styles from "./WordsSwiper.module.css"
 import classNames from "classnames"
 import { Fragment } from "react"
+import { useTranslation } from "next-i18next"
 
 const WordsSwiper = () => {
+  const { t } = useTranslation(["common"])
+
   return (
     <Swiper
       slidesPerGroup={4}
@@ -25,7 +28,7 @@ const WordsSwiper = () => {
             key={`${index}-1`}
             className={classNames(styles.slide, "h3")}
           >
-            Let&apos;s discuss yours!
+            {t("outro.word line.passive")}
           </SwiperSlide>
           <SwiperSlide
             key={`${index}-2`}
@@ -37,7 +40,7 @@ const WordsSwiper = () => {
             key={`${index}-3`}
             className={classNames(styles.slide, "h3", styles.ctaText)}
           >
-            Click on the button!
+            {t("outro.word line.active")}
           </SwiperSlide>
           <SwiperSlide
             key={`${index}-4`}
