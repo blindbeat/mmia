@@ -7,6 +7,7 @@ import logo2 from "assets/dummyPics/media/logos/2.png"
 import logo3 from "assets/dummyPics/media/logos/3.png"
 import hoverImage from "assets/dummyPics/media/backgroundPhoto.jpeg"
 import { GetStaticProps } from "next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const mediaArr: Media[] = [
   {
@@ -30,9 +31,12 @@ const mediaArr: Media[] = [
     link: "",
   },
 ]
-export const getStaticProps: GetStaticProps<Props> = () => {
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+  locale ||= "en"
+
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common", "building"])),
       mediaArr: [...new Array(4).fill(mediaArr).flat()],
     },
   }
