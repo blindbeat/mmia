@@ -45,8 +45,15 @@
   padding-bottom: var(--xs);
 }
 
-.stepText li {
-  margin-bottom: var(--5xs);
+.step * {
+  font-family: inherit !important;
+  word-spacing: inherit !important;
+  opacity: 1 !important;
+}
+
+.step li {
+  margin-bottom: var(--5xs) !important;
+
 }
 
 @media (max-width: calc(64em - 1px)) {
