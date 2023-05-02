@@ -4,9 +4,11 @@ import styles from "./WordsSwiper.module.css"
 import classNames from "classnames"
 import { Fragment } from "react"
 import { useTranslation } from "next-i18next"
+import { useRequestOpener } from "../../../../hooks"
 
 const WordsSwiper = () => {
   const { t } = useTranslation(["common"])
+  const openRequest = useRequestOpener()
 
   return (
     <Swiper
@@ -38,6 +40,7 @@ const WordsSwiper = () => {
           </SwiperSlide>
           <SwiperSlide
             key={`${index}-3`}
+            onClick={openRequest}
             className={classNames(styles.slide, "h3", styles.ctaText)}
           >
             {t("outro.word line.active")}
