@@ -34,18 +34,18 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",
-    "@types/node": "18.15.11",
+    "@types/node": "18.16.3",
     "@types/probe-image-size": "^7.2.0",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
     "@types/react-simple-maps": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
-    "eslint": "8.38.0",
-    "eslint-config-next": "^13.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "8.39.0",
+    "eslint-config-next": "^13.3.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "typescript": "5.0.4"
   }
 }
