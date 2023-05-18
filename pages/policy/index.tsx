@@ -1,10 +1,12 @@
 import Info from "modules/info"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import { InfoData } from "types"
 import { fetchInfo } from "api/fetchInfo"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
-export const getStaticProps: GetStaticProps<InfoData> = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps<InfoData> = async ({
+  locale,
+}) => {
   locale ||= "en"
   const terms = await fetchInfo("privacy", locale)
 
