@@ -16,10 +16,10 @@ const number = "+38 (044) 228 91 59"
 const FooterAbout = () => {
   const { t } = useTranslation(["common"])
   const links = [
-    t("navigation.projects"),
-    t("navigation.media"),
-    t("navigation.building"),
-    t("navigation.contact"),
+    ["projects", t("navigation.projects")],
+    ["media", t("navigation.media")],
+    ["building", t("navigation.building")],
+    ["contact", t("navigation.contact")],
   ]
 
   const { ref: bgRef, style: bgStyle } = useAnimateLine()
@@ -40,9 +40,9 @@ const FooterAbout = () => {
       </div>
       <div className={styles.pages}>
         <span className={styles.blockTitle}>{t("footer.pages")}</span>
-        {links.map((link) => (
-          <Link key={link} href={link}>
-            {link}
+        {links.map(([href, text]) => (
+          <Link key={text} href={href}>
+            {text}
           </Link>
         ))}
       </div>
@@ -60,8 +60,8 @@ const FooterAbout = () => {
         <span className={styles.textWithOpacity}>{t("footer.rights")}</span>
       </div>
       <div className={styles.policies}>
-        <Link href="">{t("footer.policy")}</Link>
-        <Link href="">{t("footer.terms")}</Link>
+        <Link href="policy">{t("footer.policy")}</Link>
+        <Link href="terms">{t("footer.terms")}</Link>
       </div>
       <div className={styles.developedBy}>
         <span className={styles.textWithOpacity}> {t("footer.developed")}</span>{" "}

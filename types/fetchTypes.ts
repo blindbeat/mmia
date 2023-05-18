@@ -133,3 +133,18 @@ export interface StaticFetchSanitized extends Omit<StaticFetch, "socials"> {
     link: string
   }[]
 }
+
+export interface Content {
+  layout: string
+  key: string
+  attributes: {
+    name: string
+    description: string
+  }
+}
+export interface InfoFetch {
+  id: number
+  title: string
+  description: string
+  content: Content[]
+}

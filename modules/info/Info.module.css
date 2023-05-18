@@ -1,0 +1,35 @@
+.heading {
+  text-align: center;
+}
+
+.paragraph {
+  width: auto;
+  max-width: calc(35em + var(--wrapper-padding-x) * 2);
+  text-align: center;
+  margin: var(--xs) auto var(--2xl);
+  padding: 0 var(--wrapper-padding-x);
+}
+
+.block {
+  margin: 0 var(--wrapper-padding-x);
+  padding: var(--xs) 0;
+  width: calc(10 / 12 * 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.block .title {
+  margin-bottom: var(--xl);
+}
+
+.block p {
+  max-width: min(45em, 50%);
+}
+
+@media (max-width: calc(48em - 1px)) {
+  .paragraph {
+    max-width: initial;
+  }
+  .block p {
+    max-width: initial;
+  }
+}

@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image"
+import { InfoFetch } from "types/fetchTypes"
 
 export type NextImageSrc = string | StaticImageData
 
@@ -43,4 +44,11 @@ export interface ArrayEntrySanitized {
   key: string
   title: string
   description: string
+}
+
+export interface InfoData extends Pick<InfoFetch, "title" | "description"> {
+  blocks: {
+    name: string
+    description: string
+  }[]
 }
