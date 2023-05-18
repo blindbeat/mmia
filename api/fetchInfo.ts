@@ -14,7 +14,6 @@ export const fetchInfo = async (
   })
   if (!response.ok) throw new Error()
   const { title, description, content } = (await response.json()) as InfoFetch
-  console.log(title, description, content)
   return {
     title,
     description,
