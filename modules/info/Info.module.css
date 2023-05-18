@@ -1,10 +1,13 @@
 .heading {
   text-align: center;
+  max-width: calc(50% + var(--wrapper-padding-x) * 2);
+  margin: auto;
+  padding: 0 var(--wrapper-padding-x);
 }
 
 .paragraph {
   width: auto;
-  max-width: calc(35em + var(--wrapper-padding-x) * 2);
+  max-width: calc(50% + var(--wrapper-padding-x) * 2);
   text-align: center;
   margin: var(--xs) auto var(--2xl);
   padding: 0 var(--wrapper-padding-x);
@@ -26,6 +29,9 @@
 }
 
 @media (max-width: calc(48em - 1px)) {
+  .heading {
+    max-width: initial;
+  }
   .paragraph {
     max-width: initial;
   }
