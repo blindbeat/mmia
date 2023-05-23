@@ -1,14 +1,17 @@
 import { Heading } from "components"
-import { dummyParagraph } from "assets/dummyText"
 import styles from "./MediaHeading.module.css"
 
-export const MediaHeading = () => {
+interface Props {
+  title: string
+  description: string
+}
+export const MediaHeading = ({ title, description }: Props) => {
   return (
     <div className={styles.content}>
       <Heading as="h1" className={styles.heading}>
-        The media is talking about{"\u00A0"}us
+        {title}
       </Heading>
-      <p className={styles.paragraph}>{dummyParagraph}</p>
+      <p className={styles.paragraph}>{description}</p>
     </div>
   )
 }

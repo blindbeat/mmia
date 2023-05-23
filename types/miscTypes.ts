@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image"
 import { InfoFetch } from "types/fetchTypes"
+import { MediaFetch } from "api/fetchMedia"
 
 export type NextImageSrc = string | StaticImageData
 
@@ -11,10 +12,14 @@ export interface Vacancy {
   description: string
 }
 
-export interface Media {
+export interface MediaEntry {
   logo: NextImageSrc
   hoverImage: NextImageSrc
   link: string
+}
+
+export interface Media extends Pick<MediaFetch, "title" | "description"> {
+  media: MediaEntry[]
 }
 
 export interface Tag {

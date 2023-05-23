@@ -1,4 +1,4 @@
-import { Media } from "types"
+import { MediaEntry } from "types"
 import Image from "next/image"
 import styles from "./MediaCards.module.css"
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react"
@@ -13,7 +13,7 @@ import {
 } from "framer-motion"
 
 interface Props {
-  mediaArr: Media[]
+  mediaArr: MediaEntry[]
 }
 
 const calcColumnNumber = () => {
@@ -82,7 +82,7 @@ export const MediaCards = ({ mediaArr }: Props) => {
 }
 
 interface CardProps {
-  media: Media
+  media: MediaEntry
   handleInViewChange: (inView: boolean) => void
 }
 
@@ -118,7 +118,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
 
   return (
     <motion.a
-      href=""
+      href={media.link}
       onMouseMove={handleMouseMove}
       animate="hidden"
       whileHover="visible"
@@ -127,6 +127,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
     >
       <Image
         src={media.logo}
+        fill
         alt=""
         sizes="max(200px, 10vw)"
         className={styles.logo}
@@ -166,6 +167,7 @@ const Card = ({ media, handleInViewChange }: CardProps) => {
       >
         <Image
           src={media.hoverImage}
+          fill
           alt=""
           sizes="max(400px, 20vw)"
           className={styles.hoverImage}

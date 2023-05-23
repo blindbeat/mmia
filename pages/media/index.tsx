@@ -1,55 +1,36 @@
 import { NextPageWithLayoutConfig } from "pages/_app"
 import { MediaHeading } from "modules/media/MediaHeading"
 import { MediaCards } from "modules/media/MediaCards"
-import { Media } from "types"
-import logo1 from "assets/dummyPics/media/logos/1.png"
-import logo2 from "assets/dummyPics/media/logos/2.png"
-import logo3 from "assets/dummyPics/media/logos/3.png"
-import hoverImage from "assets/dummyPics/media/backgroundPhoto.jpeg"
+import { MediaEntry, Media } from "types"
 import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { fetchMedia } from "api/fetchMedia"
 
-const mediaArr: Media[] = [
-  {
-    logo: logo1,
-    hoverImage: hoverImage,
-    link: "",
-  },
-  {
-    logo: logo2,
-    hoverImage: hoverImage,
-    link: "",
-  },
-  {
-    logo: logo3,
-    hoverImage: hoverImage,
-    link: "",
-  },
-  {
-    logo: logo1,
-    hoverImage: hoverImage,
-    link: "",
-  },
-]
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
   locale ||= "en"
-
+  const media = await fetchMedia(locale)
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "building"])),
-      mediaArr: [...new Array(4).fill(mediaArr).flat()],
+      ...media,
     },
   }
 }
 
 interface Props {
-  mediaArr: Media[]
+  title: string
+  description: string
+  media: MediaEntry[]
 }
-const Media: NextPageWithLayoutConfig<Props> = ({ mediaArr }) => {
+const Media: NextPageWithLayoutConfig<Media> = ({
+  title,
+  description,
+  media,
+}) => {
   return (
     <>
-      <MediaHeading />
-      <MediaCards mediaArr={mediaArr} />
+      <MediaHeading title={title} description={description} />
+      <MediaCards mediaArr={media} />
     </>
   )
 }
