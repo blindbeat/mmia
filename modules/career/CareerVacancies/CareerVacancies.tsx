@@ -1,14 +1,18 @@
 import styles from "./CareerVacancies.module.css"
-import { dummyVacancies } from "assets/dummyText"
-import vacancyIllustration from "assets/dummyPics/career/careerVacancies/vacancy.png"
 import Image from "next/image"
 import { ComponentWithLineAdornment } from "components"
 import classNames from "classnames"
+import { Vacancy } from "types"
+import { useTranslation } from "next-i18next"
 
-const CareerVacancies = () => {
+interface Props {
+  vacancies: Vacancy[]
+}
+const CareerVacancies = ({ vacancies }: Props) => {
+  const { t } = useTranslation(["career", "common"])
   return (
     <div className={styles.content}>
-      {dummyVacancies.map((vacancy, index) => (
+      {vacancies.map((vacancy, index) => (
         <div
           key={index}
           className={styles.vacancy}
@@ -18,10 +22,10 @@ const CareerVacancies = () => {
         >
           <div className={styles.illustrationBlock}>
             <div className={classNames(styles.illustrationIndex, "a1")}>
-              vacancy / {index + 1}
+              {t("vacancy")} / {index + 1}
             </div>
             <Image
-              src={vacancyIllustration}
+              src={vacancy.image}
               alt={`${vacancy.name} illustration`}
               className={styles.illustrationImage}
             />
@@ -31,14 +35,17 @@ const CareerVacancies = () => {
               <h3>{vacancy.name}</h3>
               <div className={styles.square}></div>
             </div>
-            <p>{vacancy.description}</p>
+            <div
+              dangerouslySetInnerHTML={{ __html: vacancy.description }}
+              className={styles.vacancyText}
+            />
             <ComponentWithLineAdornment
               as="a"
               href=""
               color="black"
               className={styles.link}
             >
-              view more
+              {t("view more", { ns: "common" })}
             </ComponentWithLineAdornment>
           </div>
         </div>

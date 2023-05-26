@@ -5,11 +5,7 @@ export type HomeAboutContent = Pick<
   "title" | "image1" | "image2" | "text"
 >
 
-export type AboutVacancy = Pick<
-  Vacancy,
-  "name" | "employmentTime" | "country" | "city"
->
-
+export type AboutVacancy = Omit<Vacancy, "image">
 export interface AboutPage {
   title: string
   collageText: string

@@ -2,17 +2,26 @@ import { NextPageWithLayoutConfig } from "pages/_app"
 import CareerVacancies from "modules/career/CareerVacancies"
 import { GetServerSideProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { fetchVacancies } from "api/fetchVacancies"
+import { Vacancy } from "types"
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+interface Props {
+  vacancies: Vacancy[]
+}
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  locale,
+}) => {
   locale ||= "en"
+  const vacancies = await fetchVacancies(locale)
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "building"])),
+      vacancies,
+      ...(await serverSideTranslations(locale, ["common", "career"])),
     },
   }
 }
-const Career: NextPageWithLayoutConfig = () => {
-  return <CareerVacancies />
+const Career: NextPageWithLayoutConfig<Props> = ({ vacancies }) => {
+  return <CareerVacancies vacancies={vacancies} />
 }
 
 Career.layoutConfig = {

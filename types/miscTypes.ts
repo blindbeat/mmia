@@ -10,6 +10,7 @@ export interface Vacancy {
   city: string
   employmentTime: string
   description: string
+  image: ImageWithDimensions
 }
 
 export interface MediaEntry {

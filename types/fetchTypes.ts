@@ -1,9 +1,9 @@
 import {
+  AboutVacancy,
   ArrayEntry,
   ArrayEntrySanitized,
   ImageWithDimensions,
   Project,
-  Vacancy,
 } from "types"
 
 export interface HomeFetch {
@@ -47,7 +47,7 @@ export interface AboutFetchSanitized
   image: ImageWithDimensions
   image1: ImageWithDimensions
   image2: ImageWithDimensions
-  vacancies: Vacancy[]
+  vacancies: AboutVacancy[]
 }
 
 export interface BuildingFetch {

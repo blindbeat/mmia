@@ -41,6 +41,18 @@
   border-top-width: 1px;
 }
 
+.vacancyText * {
+  font-size: inherit !important;
+  font-family: inherit !important;
+  background-color: inherit !important;
+  opacity: 1 !important;
+  color: black !important;
+}
+
+.vacancyText > * {
+  opacity: 0.5 !important;
+}
+
 .vacancy:first-child .illustrationIndex,
 .vacancy:first-child .vacancyDescription {
   border-top-width: 0;
@@ -58,6 +70,7 @@
   height: var(--size);
   background: black;
   --size: 10px;
+  flex-shrink: 0;
 }
 
 .link {
