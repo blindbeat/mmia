@@ -33,7 +33,7 @@
     "swr": "^2.1.5"
   },
   "devDependencies": {
-    "@svgr/webpack": "^7.0.0",
+    "@svgr/webpack": "^8.0.1",
     "@types/node": "20.2.5",
     "@types/probe-image-size": "^7.2.0",
     "@types/react": "18.2.7",
