@@ -23,6 +23,32 @@
     },
     "verbiage": "AIMM is the team that implements project ideas into reality. We see architecture as a unique product, created at the intersection of the zeitgeist, and the development of engineering. We see"
   },
+  "request": {
+    "heading": "Let's discuss your questions",
+    "paragraph": "Our team of specialists will contact you at the specified email address within 24 business hours",
+    "submit": "send a request",
+    "submitted": {
+      "heading": "Thank you, we have received your request!",
+      "button": "back to home"
+    },
+    "form": {
+      "name": {
+        "value": "Name",
+        "error": "name is required"
+      },
+      "email": {
+        "value": "Email",
+        "error": {
+          "empty": "email is required",
+          "invalid": "provide valid email"
+        }
+      },
+      "message": {
+        "value": "Message",
+        "error": "message is required"
+      }
+    }
+  },
   "view more": "view more",
   "drop request": "drop request"
 }

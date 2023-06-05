@@ -47,7 +47,7 @@ export const ComponentWithLineAdornment = <T extends AllowedType = "Link">({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={classNames(styles.content, className)}
-      onClick={onClick ?? as === "button" ? openRequest : undefined}
+      onClick={!onClick && as === "button" ? openRequest : onClick}
       {...rest}
     >
       <span

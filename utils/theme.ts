@@ -20,7 +20,7 @@ export const theme = createTheme({
         input: {
           marginBottom: "0.5rem",
         },
-        root: ({ ownerState, theme }) => ({
+        root: ({ theme }) => ({
           ":before": {
             borderBottomColor: `${theme.palette.grey[700]} !important`,
           },
@@ -29,11 +29,19 @@ export const theme = createTheme({
     },
     MuiInputLabel: {
       styleOverrides: {
-        root: ({ ownerState, theme }) => ({
-          textTransform: "capitalize",
+        root: ({ theme }) => ({
           color: theme.palette.grey[600],
-          // ...(ownerState.shrink && {}),
         }),
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          textAlign: "right",
+          color: "white !important",
+          opacity: 1,
+          fontSize: "0.625rem",
+        },
       },
     },
   },

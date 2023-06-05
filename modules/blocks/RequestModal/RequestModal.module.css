@@ -26,9 +26,27 @@
   padding: var(--xl) 12.5%;
 }
 
+.requestWindowContentHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.requestWindowContentSubmitted {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .header,
 .paragraph {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -70,8 +88,8 @@
   background: #999;
 }
 
-.form button {
-  margin: auto;
+.button {
+  margin: 0 auto;
 }
 
 .crossButton {
